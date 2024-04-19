@@ -184,3 +184,54 @@ button {
     background-image: url('../images/wave2.svg');
     z-index: -1;
 }
+@media (max-width: 1176px) {
+    /* Ocultar las waves y la imagen */
+    .waves-background,
+    .waves2-background,
+    .imagenLogin {
+      display: none;
+    }
+  
+    /* Ajustes para el formulario en dispositivos móviles */
+    .loginForm {
+        width: 80%;
+      padding: 20px;
+      border-radius: 20px; /* Redondear los bordes */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+      background-color: white; /* Fondo blanco */
+      margin: 0 auto; /* Centrar horizontalmente */
+      max-width: 90%; /* Ancho máximo */
+      position: absolute; /* Posición absoluta */
+      top: 50%; /* 50% desde arriba */
+      left: 50%; /* 50% desde la izquierda */
+      transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    }
+  
+    .input-box {
+      margin: 15px 0; /* Espaciado entre los campos */
+    }
+  
+    input {
+      width: 100%; /* Ancho completo */
+      padding: 15px; /* Espaciado interno */
+      font-size: 16px; /* Tamaño de fuente */
+    }
+  
+    button {
+      width: 100%; /* Ancho completo */
+      margin: 20px 0; /* Espaciado */
+    }
+  
+    .too-good,
+    .to-go {
+      font-size: 36px; /* Tamaño de fuente más pequeño */
+    }
+    .icon {
+        position: absolute;
+        right: 15px; /* Ajusta el valor según sea necesario */
+        top: 35%; /* Centra verticalmente el icono */
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: var(--color-primary);
+      }
+  }
