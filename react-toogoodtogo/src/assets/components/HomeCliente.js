@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/cliente.css'
 import pizza from '../images/pizza.png'
+import LocalesCards from './LocalesCards';
 function HomeCliente() {
     
   
@@ -17,10 +18,11 @@ function HomeCliente() {
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo">
-            <div className="contenedorBlanco">
-                
+                <div className="contenedorBlanco">
+                    <h1>Ofertas</h1>
+                   
+                </div>
             </div>
-        </div>
         </div>
 
       </div>
