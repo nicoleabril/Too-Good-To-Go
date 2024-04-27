@@ -1,0 +1,19 @@
+.custom-breadcrumb {
+    margin-top: 80px;
+    display: flex;
+    background-color: var(--color-fondoLogin);
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  .separator {
+    margin: 0 5px; 
+  }
+.custom-breadcrumb ol{
+    list-style-type: none;
+    margin-left: 40px;
+    font-weight: bold;
+    color: var(--color-button);
+}  

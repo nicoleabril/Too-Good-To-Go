@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PiHamburgerBold } from "react-icons/pi";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
+import DynamicBreadcrumb from '../components/Bredcrumb'
 
 import '../styles/header.css'
 const Header = () => {
@@ -26,7 +27,9 @@ const Header = () => {
             </ul>
         </div>
         <a href='#' className='logo'><AiOutlineShopping  className='iconOrders'/></a>
+       
     </nav>
+   
 );
 };
 
