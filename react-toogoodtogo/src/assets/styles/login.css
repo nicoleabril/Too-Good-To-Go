@@ -218,7 +218,7 @@ button:hover{
     font-size: 12px;
     white-space: nowrap;
     margin-top: 5px;
-    margin-left: 2px;
+    margin-left: 0;
   }
   button {
     width: 100%; /* Ancho completo */
