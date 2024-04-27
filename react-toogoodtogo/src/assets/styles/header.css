@@ -8,16 +8,15 @@
   --color-fondoLogin: #cfcfcf;
 }
 *{
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   
 }
-body{
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  padding: 0;
-}
+
 
 nav {
+  margin: 0;
+  padding: 0;
+  left: 0;
   width: 100%;
   position: fixed;
   top: 0;
@@ -80,12 +79,26 @@ nav ul li a {
 nav ul li a:hover {
   color: var(--color-primary);
 }
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; 
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s; 
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
 #menuToggle{
   display: none;
 }
 nav .iconMenu {
   display: flex;
-  align-items: center; /* Centra verticalmente los elementos */
+  align-items: center;
   font-size: 40px;
   color: orangered;
   cursor: pointer;
@@ -93,7 +106,7 @@ nav .iconMenu {
 }
 
 .iconMenu {
-  margin-top: 10px; /* Ajusta según sea necesario */
+  margin-top: 10px; 
 }
 
 
@@ -109,12 +122,13 @@ nav .iconMenu {
   .menu {
       display: none;
       position: absolute;
-      top: 60px; /* Ajusta la posición del menú desplegable */
+      top: 80px; 
       left: 0;
       right: 0;
-      background-color:white;
+      background-color:var(--color-secundary);
       padding: 10px 0;
       transition: transform 0.3s ease;
+     
   }
 
   .menu.show {
