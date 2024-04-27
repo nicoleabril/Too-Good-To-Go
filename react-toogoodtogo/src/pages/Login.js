@@ -22,7 +22,6 @@ export default class Login extends Component {
     return (
       <div className="container">
         <div className="waves-background"></div>
-        <div className="waves2-background"></div>
         <div className="loginForm">
           <form onSubmit={this.handleSubmit}>
             <h1 className="too-good">Too Good</h1>
