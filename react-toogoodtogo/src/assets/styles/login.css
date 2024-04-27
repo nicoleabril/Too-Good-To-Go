@@ -261,11 +261,11 @@ button {
 @media (max-width: 1280px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
   .loginForm {
-    padding: 8px 80px 10px 80px;
-    height: 100vh; 
-    margin-bottom: 0; 
+    padding: 8px 80px 50px 80px;
+    height: 70vh; 
+    margin-bottom: 0;
     bottom: 0;
-    overflow-y: auto; 
+    overflow-y: auto;
   }
 
   .new-account {
