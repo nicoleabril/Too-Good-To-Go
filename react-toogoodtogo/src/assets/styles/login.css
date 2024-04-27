@@ -209,9 +209,10 @@ button:hover{
   }
 
   input {
-    width: 100%; /* Ancho completo */
-    padding: 15px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
+    width: 100%; 
+    padding: 15px; 
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
   }
 
   button {
@@ -226,11 +227,18 @@ button:hover{
   .icon {
       position: absolute;
       right: 15px; /* Ajusta el valor según sea necesario */
-      top: 35%; /* Centra verticalmente el icono */
+      top: 40%; /* Centra verticalmente el icono */
       transform: translateY(-50%);
       font-size: 20px;
       color: var(--color-primary);
     }
+    .textoFooter {
+      font-size: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-left: 25px;
+  }
 }
 @media (max-width: 1366px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
