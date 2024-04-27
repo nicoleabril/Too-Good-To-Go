@@ -1,11 +1,10 @@
 
 import React from 'react';
-
+import Header from '../assets/components/Header';
 const Cliente = () => {
   return (
     <div>
-      <h1>Página del Cliente</h1>
-      <p>Bienvenido a la página del cliente.</p>
+      <Header></Header>
     </div>
   );
 };
