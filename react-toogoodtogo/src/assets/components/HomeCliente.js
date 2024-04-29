@@ -21,7 +21,13 @@ function HomeCliente() {
             </div>
             <div className="contenedorBlanco">
                     <h1>Ofertas</h1>
-                   
+                    <img src={pizza} />
+                    <img src={pizza} />
+                    <img src={pizza} />
+                    <img src={pizza} />
+                    <img src={pizza} />
+                    <img src={pizza} />
+                    <img src={pizza} />
                 </div>
         </div>
 

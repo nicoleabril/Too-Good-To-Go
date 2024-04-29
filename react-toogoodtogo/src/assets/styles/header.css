@@ -25,7 +25,8 @@ nav {
   background-color: white;
   padding: 10px 80px;
   height: 80px;
- 
+  position: fixed;
+  z-index: 3;
 }
 
 nav a img {

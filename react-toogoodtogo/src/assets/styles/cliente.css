@@ -21,11 +21,12 @@ body{
 }
 
 .contenedorBlanco {
-  display: flex;
+  display: block;
   justify-content: flex-start; 
   align-items: center;
-  position: fixed;
+  position: relative;
   bottom: 0;
+  top: 20vh;
   left: 0;
   width: 100%;
   height: auto;
