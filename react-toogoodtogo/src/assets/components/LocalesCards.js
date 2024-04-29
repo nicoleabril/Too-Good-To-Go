@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/localCards.css'
+import McDonalds from '../images/McDonalds.png'
 const LocalesCards = () => {
   const restaurants = [
     {
@@ -29,21 +30,61 @@ const LocalesCards = () => {
   ];
 
   return (
-    <div className="restaurant-cards-container">
-      {restaurants.map((restaurant) => (
-        <div key={restaurant.name} className="restaurant-card">
-          <div className="restaurant-info">
-            <h3>{restaurant.name}</h3>
-            <p>{restaurant.description}</p>
-            <div className="rating">
-              <span>{restaurant.rating}</span> ★ <span>{restaurant.comments}</span>
-            </div>
-          </div>
-          <button>COMPRAR AHORA</button>
+    <div className='contenedorCard'>
+      <div className='card'>
+        <img src={McDonalds} alt="McDonald's Logo" />
+        <div className='contenidoCard'>
+          <h3>McDonalds-Remigio</h3>
+          <p>4.5⭐</p>
+          <p>225+ comentarios</p>
+          <p>99.9% de tasa de satisfacción</p>
+          <p>Ofrecemos:</p>
+          <ul>
+            <li>-Burgers</li>
+            <li>-Papas fritas</li>
+            <li>-Malteadas</li>
+          </ul>
+          <button>VER OFERTAS</button>
         </div>
-      ))}
+      </div>
+      <div className='card'>
+        <img src={McDonalds} alt="McDonald's Logo" />
+        <div className='contenidoCard'>
+          <h3>McDonalds-Remigio</h3>
+          <p>4.5⭐</p>
+          <p>225+ comentarios</p>
+          <p>99.9% de tasa de satisfacción</p>
+          <p>Ofrecemos:</p>
+          <ul>
+            <li>-Burgers</li>
+            <li>-Papas fritas</li>
+            <li>-Malteadas</li>
+          </ul>
+          <button>VER OFERTAS</button>
+        </div>
+      </div>
+      <div className='card'>
+        <img src={McDonalds} alt="McDonald's Logo" />
+        <div className='contenidoCard'>
+          <h3>McDonalds-Remigio</h3>
+          <p>4.5⭐</p>
+          <p>225+ comentarios</p>
+          <p>99.9% de tasa de satisfacción</p>
+          <p>Ofrecemos:</p>
+          <ul>
+            <li>-Burgers</li>
+            <li>-Papas fritas</li>
+            <li>-Malteadas</li>
+          </ul>
+          <button>VER OFERTAS</button>
+        </div>
+      </div>
+      <div className='card-more'>
+          <button>VER MÁS</button>
+      </div>
     </div>
   );
+  
 };
 
 export default LocalesCards;

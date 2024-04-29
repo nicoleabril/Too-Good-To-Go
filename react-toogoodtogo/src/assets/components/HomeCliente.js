@@ -21,7 +21,7 @@ function HomeCliente() {
             </div>
             <div className="contenedorBlanco">
                     <h1>Ofertas</h1>
-                    <LocalesCards></LocalesCards>
+                    <LocalesCards/>
                 </div>
         </div>
 
