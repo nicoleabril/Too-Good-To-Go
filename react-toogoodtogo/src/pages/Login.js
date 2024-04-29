@@ -20,6 +20,7 @@ export default class Login extends Component {
 
   render() {
     return (
+     
       <div className="container">
         <div className="waves-background"></div>
         <div className="loginForm">
@@ -64,6 +65,7 @@ export default class Login extends Component {
           </div>
         </div>
       </div>
+     
     );
   }
 }

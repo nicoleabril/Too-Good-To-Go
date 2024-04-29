@@ -1,17 +1,20 @@
-
+// ClientePage.js
 import React from 'react';
 import Header from '../assets/components/Header';
-import DynamicBreadcrumb from '../assets/components/Bredcrumb'
+import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import HomeCliente from '../assets/components/HomeCliente';
+import '../assets/styles/cliente.css'
 
-const Cliente = () => {
+const ClientePage = () => {
   return (
-    <div style={{ overflowY: 'auto' }}> 
+    <div>
+      <div className='client-page'>
       <Header />
-      <DynamicBreadcrumb />
+      <DynamicBreadcrumb/>
       <HomeCliente />
+      </div>
     </div>
   );
 };
 
-export default Cliente;
+export default ClientePage;

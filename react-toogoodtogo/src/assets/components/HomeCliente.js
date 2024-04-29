@@ -6,7 +6,7 @@ function HomeCliente() {
     
   
     return (
-      <div className='contenedorCliente'>
+    
         <div>
             <div className='textoImagen'>
             <h1 className='texto1'>Tu comida favorita</h1>
@@ -18,14 +18,14 @@ function HomeCliente() {
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo">
-                <div className="contenedorBlanco">
+            </div>
+            <div className="contenedorBlanco">
                     <h1>Ofertas</h1>
                    
                 </div>
-            </div>
         </div>
 
-      </div>
+    
     );
     
     
