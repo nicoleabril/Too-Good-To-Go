@@ -7,7 +7,7 @@ body{
 }
 
 .contenedorRojo {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -42,7 +42,7 @@ body{
 
 
 .imagenPizza {
-  position: fixed;
+  position: absolute;
   top: 20vh; 
   margin-left: 57%; 
   z-index: 1; 
