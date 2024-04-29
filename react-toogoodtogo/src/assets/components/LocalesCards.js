@@ -1,33 +1,11 @@
 import React from 'react';
 import '../styles/localCards.css'
 import McDonalds from '../images/McDonalds.png'
+import KFC from '../images/KFC.png'
+import BurgerKing from '../images/BurgerKing.png'
+
 const LocalesCards = () => {
-  const restaurants = [
-    {
-      name: 'Kung Fu Tea',
-      rating: 3.8,
-      comments: '250+',
-      description: 'Batidos y bebidas con un toque especial.',
-    },
-    {
-      name: "Domino's",
-      rating: 4.0,
-      comments: '78+',
-      description: 'Pizza realizada con los mejores ingredientes para su paladar.',
-    },
-    {
-      name: "Victoriano's Pizza",
-      rating: 4.1,
-      comments: '28+',
-      description: 'Pizza como si fuera hecha en casa.',
-    },
-    {
-      name: 'Las Empanadas del Paco',
-      rating: 4.7,
-      comments: '198+',
-      description: 'Empanadas de distintos sabores, todas deliciosas.',
-    },
-  ];
+  
 
   return (
     <div className='contenedorCard'>
@@ -48,9 +26,9 @@ const LocalesCards = () => {
         </div>
       </div>
       <div className='card'>
-        <img src={McDonalds} alt="McDonald's Logo" />
+        <img src={KFC} alt="KFC Logo" />
         <div className='contenidoCard'>
-          <h3>McDonalds-Remigio</h3>
+          <h3>KFC-Mall del Río</h3>
           <p>4.5⭐</p>
           <p>225+ comentarios</p>
           <p>99.9% de tasa de satisfacción</p>
@@ -64,9 +42,9 @@ const LocalesCards = () => {
         </div>
       </div>
       <div className='card'>
-        <img src={McDonalds} alt="McDonald's Logo" />
+        <img src={BurgerKing} alt="BurgerKing Logo" />
         <div className='contenidoCard'>
-          <h3>McDonalds-Remigio</h3>
+          <h3>BurgerKing</h3>
           <p>4.5⭐</p>
           <p>225+ comentarios</p>
           <p>99.9% de tasa de satisfacción</p>
