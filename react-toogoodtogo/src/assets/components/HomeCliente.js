@@ -28,6 +28,13 @@ function HomeCliente() {
                     <h1>¿Buscas de lo siempre?</h1>
                     <LocalesCards/>
                     <h1>Localización</h1>
+                   
+                   
+            </div>
+            <div className="contenedorFooter">
+              <div className="textoFooter2">
+                Copyright © 2024 Too Good To Go International. All Rights Reserved.
+              </div>
             </div>
         </div>
 

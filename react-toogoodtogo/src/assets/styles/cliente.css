@@ -95,3 +95,19 @@ body{
 .contenedorBlanco h1{
   margin-top: 30px;
 }
+.contenedorFooter {
+  margin-top: 8%;
+  bottom: 0;
+  position:relative;
+  width: 100%;
+  background-color: var(--color-fondoLogin);
+  color: var(--color-button);
+  text-align: right;
+  padding-right: 40px;
+  border-radius: 60px 60px 0 0;
+  z-index: 2;
+}
+
+.textoFooter2 {
+  height: 5vh; 
+}
