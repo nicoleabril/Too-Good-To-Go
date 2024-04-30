@@ -38,13 +38,15 @@ body{
   z-index: 2;
  
 }
-.contenedorBlanco h1{
-  color: var(--color-);
+.contenedorBlanco h1 {
+  color: var(--color-textos);
   text-align: center;
   font-weight: bold;
-  text-transform: uppercase;
-  
+  text-decoration: underline;
+  text-decoration-color: var(--color-button);
+ 
 }
+
 
 
 .imagenPizza {

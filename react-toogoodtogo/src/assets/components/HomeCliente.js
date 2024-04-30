@@ -20,11 +20,12 @@ function HomeCliente() {
             <div className="contenedorRojo">
             </div>
             <div className="contenedorBlanco">
-                    <h1>Ofertas</h1>
+                    <h1>OFERTAS</h1>
+                    <div className="linea"></div>
                     <LocalesCards/>
                     <h1>Negocios</h1>
                     <LocalesCards/>
-                    <h1>¿BUSCAS LO DE SIEMPRE?</h1>
+                    <h1>¿Buscas de lo siempre?</h1>
                     <LocalesCards/>
                     <h1>Localización</h1>
             </div>
