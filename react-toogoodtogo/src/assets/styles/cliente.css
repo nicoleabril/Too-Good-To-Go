@@ -109,5 +109,11 @@ body{
 }
 
 .textoFooter2 {
-  height: 5vh; 
+  display: flex;
+  justify-content: right; 
+  align-items: center;
+  height: 5%;
+  padding-right: 40px;
+  text-align: right;
+ 
 }
