@@ -20,7 +20,7 @@ function DynamicBreadcrumb() {
               linkProps={isLast ? { to: routeTo } : undefined}
               active={isLast}
             >
-              {name}
+              {name} &gt;
             </Breadcrumb.Item>
             {separator}
           </React.Fragment>

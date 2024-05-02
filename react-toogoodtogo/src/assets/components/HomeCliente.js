@@ -2,9 +2,37 @@ import React from 'react';
 import '../styles/cliente.css'
 import pizza from '../images/pizza.png'
 import LocalesCards from './LocalesCards';
+import McDonalds from '../images/McDonalds.png'
+import KFC from '../images/KFC.png'
+import BurgerKing from '../images/BurgerKing.png'
 function HomeCliente() {
+  const localesData = [
+    {
+      name: 'McDonalds-Remigio',
+      image: McDonalds,
+      rating: '4.5',
+      reviews: '225',
+      satisfaction: '99.9',
+      menu: ['Burgers', 'Papas fritas', 'Malteadas']
+    },
+    {
+      name: 'KFC-Mall del Río',
+      image: KFC,
+      rating: '4.5',
+      reviews: '225',
+      satisfaction: '99.9',
+      menu: ['Burgers', 'Papas fritas', 'Malteadas']
+    },
+    {
+      name: 'BurgerKing',
+      image: BurgerKing,
+      rating: '4.5',
+      reviews: '225',
+      satisfaction: '99.9',
+      menu: ['Burgers', 'Papas fritas', 'Malteadas']
+    }
+  ];
     
-  
     return (
     
         <div>
@@ -22,11 +50,11 @@ function HomeCliente() {
             <div className="contenedorBlanco">
                     <h1>OFERTAS</h1>
                     <div className="linea"></div>
-                    <LocalesCards/>
+                    <LocalesCards locales={localesData} />;
                     <h1>Negocios</h1>
-                    <LocalesCards/>
+                    <LocalesCards locales={localesData} />;
                     <h1>¿Buscas de lo siempre?</h1>
-                    <LocalesCards/>
+                    <LocalesCards locales={localesData} />;
                     <h1>Localización</h1>
                    
                    

@@ -1,68 +1,32 @@
 import React from 'react';
-import '../styles/localCards.css'
-import McDonalds from '../images/McDonalds.png'
-import KFC from '../images/KFC.png'
-import BurgerKing from '../images/BurgerKing.png'
+import '../styles/localCards.css';
 
-const LocalesCards = () => {
-  
-
+const LocalesCards = ({ locales }) => {
   return (
     <div className='contenedorCard'>
-      <div className='card'>
-        <img src={McDonalds} alt="McDonald's Logo" />
-        <div className='contenidoCard'>
-          <h3>McDonalds-Remigio</h3>
-          <p>4.5⭐</p>
-          <p>225+ comentarios</p>
-          <p>99.9% de tasa de satisfacción</p>
-          <p>Ofrecemos:</p>
-          <ul>
-            <li>-Burgers</li>
-            <li>-Papas fritas</li>
-            <li>-Malteadas</li>
-          </ul>
-          <button>VER OFERTAS</button>
+      {locales.map((local, index) => (
+        <div className='card' key={index}>
+          <img src={local.image} alt={`${local.name} Logo`} />
+          <div className='contenidoCard'>
+            <h3>{local.name}</h3>
+            <p>{local.rating}⭐</p>
+            <p>{local.reviews}+ comentarios</p>
+            <p>{local.satisfaction}% de tasa de satisfacción</p>
+            <p>Ofrecemos:</p>
+            <ul>
+              {local.menu.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+            <button>VER OFERTAS</button>
+          </div>
         </div>
-      </div>
-      <div className='card'>
-        <img src={KFC} alt="KFC Logo" />
-        <div className='contenidoCard'>
-          <h3>KFC-Mall del Río</h3>
-          <p>4.5⭐</p>
-          <p>225+ comentarios</p>
-          <p>99.9% de tasa de satisfacción</p>
-          <p>Ofrecemos:</p>
-          <ul>
-            <li>-Burgers</li>
-            <li>-Papas fritas</li>
-            <li>-Malteadas</li>
-          </ul>
-          <button>VER OFERTAS</button>
-        </div>
-      </div>
-      <div className='card'>
-        <img src={BurgerKing} alt="BurgerKing Logo" />
-        <div className='contenidoCard'>
-          <h3>BurgerKing</h3>
-          <p>4.5⭐</p>
-          <p>225+ comentarios</p>
-          <p>99.9% de tasa de satisfacción</p>
-          <p>Ofrecemos:</p>
-          <ul>
-            <li>-Burgers</li>
-            <li>-Papas fritas</li>
-            <li>-Malteadas</li>
-          </ul>
-          <button>VER OFERTAS</button>
-        </div>
-      </div>
+      ))}
       <div className='card-more'>
-          <button>VER MÁS</button>
+        <button>VER MÁS</button>
       </div>
     </div>
   );
-  
 };
 
 export default LocalesCards;
