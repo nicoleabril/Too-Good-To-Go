@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/localCards.css';
 
-const LocalesCards = ({ locales }) => {
+const LocalesCards = ({ locales, nombreBoton }) => {
   return (
     <div className='contenedorCard'>
       {locales.map((local, index) => (
@@ -18,7 +18,7 @@ const LocalesCards = ({ locales }) => {
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <button>VER OFERTAS</button>
+            <button>{nombreBoton}</button>
           </div>
         </div>
       ))}

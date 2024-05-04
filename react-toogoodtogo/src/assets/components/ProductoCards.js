@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/localCards.css';
+import '../styles/productoCards.css';
 
-const ProductosCards = ({ productos }) => {
+const ProductosCards = ({ productos, nombreBoton }) => {
   return (
     <div className='contenedorCard'>
       {productos.map((producto, index) => (
@@ -11,7 +11,7 @@ const ProductosCards = ({ productos }) => {
                 <img src={producto.image} alt={`${producto.name} Logo`} />
                 <h3>{producto.name}</h3> 
                 <p>{producto.descript}</p>
-                <button>VER OFERTAS</button>
+                <button>{nombreBoton}</button>
             </div>
         </div>
       ))}

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../styles/cliente.css'
+import '../styles/restaurante.css'
 import donas from '../images/donas.png'
-//import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
+import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
 import bolsa from '../images/bolsa.jpeg'
 import combo1 from '../images/combo1.jpeg'
 import combo2 from '../images/combo2.jpeg'
@@ -13,6 +13,7 @@ import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche2 from '../images/sanduche2.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import ProductosCards from './ProductoCards';
+import perfilMujer from '../images/perfilMujer.jpg'
 function HomeRestaurante() {
   const ofertasData = [
         {
@@ -98,11 +99,25 @@ function HomeRestaurante() {
     return (
     
         <div>
-            
             <div className='textoImagen'>
-            <p className='subtexto'>Dunkin' Donuts ofrece una amplia variedad de productos,</p>
-            <p className='subtexto'>incluyendo donas, café, bebidas frías y calientes, sándwiches</p>
-            <p className='subtexto'>de desayuno, bagels, muffins y otros productos de panadería.</p>
+              <img src={dunkin_logo} alt="Pizza" className="imagenLogo"/>
+              <div className='textoRestaurante'>
+                <p className='subtexto'>Dunkin' Donuts ofrece una amplia variedad de productos, incluyendo donas, café, bebidas frías y calientes, sándwiches de desayuno, bagels, muffins y otros productos de panadería.</p>
+              </div>
+              <div class="comentario">
+                <div class="cliente">
+                    <div className='fotoCliente'>
+                      <img src={perfilMujer} alt="Foto del cliente"/>
+                    </div>
+                    <div className='textoComentario'>
+                      <h3>Juliana Abril</h3>
+                        ⭐⭐⭐⭐⭐
+                      <div class="contenido">
+                        <p>Excelente! Las donas me encantaron 10/10. Lo volveré a pedir.</p>
+                      </div>
+                    </div>
+                </div>
+              </div>
             </div>
             <div className="imagenPizza">
             <img src={donas} alt="Pizza" className="imagen2" />
@@ -113,13 +128,13 @@ function HomeRestaurante() {
             <div className="contenedorBlanco">
                     <h1>OFERTAS</h1>
                     <div className="linea"></div>
-                    <ProductosCards productos={ofertasData}/>
+                    <ProductosCards productos={ofertasData} nombreBoton={'VER OFERTAS'}/>
                     <h1>Combos</h1>
-                    <ProductosCards productos={combosData}/>
+                    <ProductosCards productos={combosData} nombreBoton={'COMPRAR AHORA'}/>
                     <h1>Bebidas</h1>
-                    <ProductosCards productos={bebidasData}/>
+                    <ProductosCards productos={bebidasData} nombreBoton={'COMPRAR AHORA'}/>
                     <h1>Sánduches</h1>
-                    <ProductosCards productos={sanduchesData}/>                   
+                    <ProductosCards productos={sanduchesData} nombreBoton={'COMPRAR AHORA'}/>                   
                    
             </div>
             <div className="contenedorFooter">

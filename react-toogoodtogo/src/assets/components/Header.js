@@ -20,7 +20,7 @@ const Header = () => {
         </label>
         <div className={`menu ${showMenu ? 'show' : ''}`}>
             <ul>
-                <li><a href="">Inicio</a></li>
+                <li><a href="/Inicio">Inicio</a></li>
                 <li><a href="">Negocios</a></li>
                 <li><a href="">Reservas</a></li>
                 <li><a href="">Mi Perfil</a></li>

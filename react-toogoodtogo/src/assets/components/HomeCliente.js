@@ -50,11 +50,11 @@ function HomeCliente() {
             <div className="contenedorBlanco">
                     <h1>OFERTAS</h1>
                     <div className="linea"></div>
-                    <LocalesCards locales={localesData} />;
+                    <LocalesCards locales={localesData} nombreBoton={'VER OFERTAS'} />
                     <h1>Negocios</h1>
-                    <LocalesCards locales={localesData} />;
+                    <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'}/>
                     <h1>¿Buscas de lo siempre?</h1>
-                    <LocalesCards locales={localesData} />;
+                    <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'}/>
                     <h1>Localización</h1>
                    
                    
