@@ -1,0 +1,127 @@
+body{
+    overflow-y: auto;
+  }
+  .contenedorCliente {
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .contenedorRojo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
+    color: white;
+    text-align: center;
+    height: 30vh;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    z-index: 1; 
+  }
+  
+  .contenedorBlanco {
+    display: block;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    top: 20vh;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--color-secundary);
+    color: var(--color-button);
+    padding: 20px;
+    text-align: left; 
+    border-radius: 60px 60px 0 0;
+    z-index: 2;
+   
+  }
+  .contenedorBlanco h1 {
+    color: var(--color-textos);
+    text-align: center;
+    font-weight: bold;
+    
+  }
+  
+  
+  
+  .imagenPizza {
+    position: absolute;
+    top: 20vh; 
+    margin-left: 57%; 
+    z-index: 1; 
+    width: 10vw;
+    height: auto; 
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+  }
+    
+  .imagen2 {
+    margin-top: -20px;
+    border-radius: 50%;
+    z-index: 1;
+      width: 400px; 
+      height: 350px;
+      filter: drop-shadow(
+          0 0 10px rgba(0,0,0,0.5)
+      );
+  }
+  .waves-background2 {
+    position: fixed;
+    top: 2%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/waves.png');
+    z-index: -1;
+  }
+  .texto1,.texto2{
+    font-size: 3.5rem;
+  }
+  .texto1{
+    color: var(--color-textos)
+  }
+  .texto2{
+    color: var(--color-primary);
+  }
+  
+  .texto1, .texto2 {
+    display: inline-block;
+}
+
+
+  .subtexto{
+    font-size: 1.2rem;
+  }
+  .textoImagen{
+    margin-top: 30vh;
+    display: block;
+    margin-left: -40%;
+  }
+  .contenedorBlanco h1{
+    margin-top: 30px;
+  }
+  .contenedorFooter {
+    margin-top: 8%;
+    bottom: 0;
+    position:relative;
+    width: 100%;
+    background-color: var(--color-fondoLogin);
+    color: var(--color-button);
+    text-align: right;
+    padding-right: 40px;
+    border-radius: 60px 60px 0 0;
+    z-index: 2;
+  }
+  
+  .textoFooter2 {
+    display: flex;
+    justify-content: right; 
+    align-items: center;
+    height: 5%;
+    padding-right: 40px;
+    text-align: right;
+   
+  }
