@@ -70,6 +70,7 @@ nav ul li {
 }
 
 nav ul li a {
+  width: 100px;
   text-decoration: none;
   font-size: 1.3rem;
   color: #000;
@@ -103,6 +104,37 @@ nav .iconMenu {
   color: orangered;
   cursor: pointer;
   display: none;
+}
+
+.buttonIniciarSesion {
+  margin: 30px;
+  height: 35px;
+  width: 90%;
+  background-color: var(--color-button);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.buttonRegistrarse {
+  margin: 30px;
+  height: 35px;
+  width: 90%;
+  background-color: #303030;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.buttonRegistrarse:hover{
+  cursor: pointer;
+  background: linear-gradient(90deg, rgb(109, 108, 108) 0%, rgb(78, 76, 76) 30%, rgb(0, 0, 0) 100%);
 }
 
 .iconMenu {

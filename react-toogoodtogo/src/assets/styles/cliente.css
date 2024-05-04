@@ -79,10 +79,10 @@ body{
   font-size: 3.5rem;
 }
 .texto1{
-  color: var(--color-textos)
+  color: var(--color-primary)
 }
 .texto2{
-  color: var(--color-primary);
+  color: var(--color-textos);
 }
 .subtexto{
   font-size: 1.2rem;

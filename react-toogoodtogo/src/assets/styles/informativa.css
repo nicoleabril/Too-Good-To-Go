@@ -45,8 +45,6 @@ body{
     
   }
   
-  
-  
   .imagenPizza {
     position: absolute;
     top: 20vh; 
@@ -56,9 +54,22 @@ body{
     height: auto; 
     filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
   }
+
+  .seccionIniciativa {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+  }
+
+  .seccionImagen {
+    display: flex;
+
+  }
     
-  .imagen2 {
-    margin-top: -20px;
+  .imagenBolsa {
     border-radius: 50%;
     z-index: 1;
       width: 400px; 
@@ -67,6 +78,51 @@ body{
           0 0 10px rgba(0,0,0,0.5)
       );
   }
+
+  .imagenSecundaria {
+    border-radius: 50%;
+      width: 125px; 
+      height: 125px;
+      margin-top: 25px;
+      filter: drop-shadow(
+          0 0 10px rgba(0,0,0,0.5)
+      );
+  }
+
+  .imagenPrimaria {
+    width: 150px; 
+    height: 150px;
+    z-index: 1;
+    border-radius: 50%;
+    margin-right: -40px;
+    margin-left: -40px; /* ajusta según sea necesario */
+  }
+
+  .texto-seccionImagen {
+    z-index: 1;
+    position: absolute;
+    background-color: #B01818;
+    border-radius: 30px;
+    margin-top: -30px;
+    margin-left: 10px;
+    height: 40px;
+    width: 300px;
+  }
+
+  .texto-seccionImagen p{
+    margin-top: 5px;
+    color: white;
+    text-align: center;
+
+  }
+
+  .textoIniciativa {
+    width: 60%; /* ajusta el ancho según sea necesario */
+    margin: 0 auto; /* esto centrará el div horizontalmente */
+    text-align: justify; /* justifica el texto */
+    }
+
+
   .waves-background2 {
     position: fixed;
     top: 2%;
@@ -77,21 +133,17 @@ body{
     background-image: url('../images/waves.png');
     z-index: -1;
   }
-  .texto1,.texto2{
+  .textoTooGood,.textoToGo{
     font-size: 3.5rem;
-  }
-  .texto1{
-    color: var(--color-textos)
-  }
-  .texto2{
-    color: var(--color-primary);
-  }
-  
-  .texto1, .texto2 {
     display: inline-block;
-}
-
-
+  }
+  .textoTooGood{
+    color: var(--color-primary);
+    margin-right: 10px;
+  }
+  .textoToGo{
+    color: var(--color-textos);
+  }
   .subtexto{
     font-size: 1.2rem;
   }

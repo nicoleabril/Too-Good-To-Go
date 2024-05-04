@@ -59,7 +59,6 @@ body{
     
   .imagen2 {
     z-index: 1;
-
       filter: drop-shadow(
           0 0 10px rgba(0,0,0,0.5)
       );
@@ -82,12 +81,7 @@ body{
   .texto1,.texto2{
     font-size: 3.5rem;
   }
-  .texto1{
-    color: var(--color-textos)
-  }
-  .texto2{
-    color: var(--color-primary);
-  }
+
   .subtexto{
     font-size: 1.2rem;
   }
@@ -137,6 +131,7 @@ body{
     vertical-align: top;
     box-sizing: border-box;
     border-radius: 10px;
+    opacity: 0.9; 
 }
 
 .cliente {

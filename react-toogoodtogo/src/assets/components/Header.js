@@ -4,7 +4,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 
 import '../styles/header.css'
-const Header = () => {
+const Header = ({page}) => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleToggleMenu = () => {
@@ -23,6 +23,13 @@ const Header = () => {
                 <li><a href="/">Negocios</a></li>
                 <li><a href="/">Reservas</a></li>
                 <li><a href="/">Mi Perfil</a></li>
+                {page === 'Informativa' && (
+                    <React.Fragment>
+                        <li><a href="/"><button className='buttonRegistrarse'>Registrarse</button></a></li>
+                        <li><a href="/Login"><button className='buttonIniciarSesion'>Iniciar Sesión</button></a></li>
+                    </React.Fragment>
+                )}
+                
             </ul>
         </div>
         <a href='/' className='logo'><AiOutlineShopping  className='iconOrders'/></a>
