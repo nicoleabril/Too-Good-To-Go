@@ -61,12 +61,28 @@ body{
     height: 500px;
     background-color: white;
     justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center; /* Centra los elementos verticalmente */
+    align-items: center;
   }
 
   .seccionImagen {
     display: flex;
+  }
 
+  .seccionMensaje {
+    margin-left: 100px;
+  }
+
+  .seccionTexto {
+    justify-content: left;
+    width: 60%;
+    height: 200px;
+  }
+
+  .seccionTexto h1{
+    color: #B01818;
+    padding-left: 80px;
+    display: inline-block;
+    vertical-align: top;
   }
     
   .imagenBolsa {
@@ -81,8 +97,8 @@ body{
 
   .imagenSecundaria {
     border-radius: 50%;
-      width: 125px; 
-      height: 125px;
+      width: 150px; 
+      height: 150px;
       margin-top: 25px;
       filter: drop-shadow(
           0 0 10px rgba(0,0,0,0.5)
@@ -90,8 +106,8 @@ body{
   }
 
   .imagenPrimaria {
-    width: 150px; 
-    height: 150px;
+    width: 200px; 
+    height: 200px;
     z-index: 1;
     border-radius: 50%;
     margin-right: -40px;
@@ -103,10 +119,10 @@ body{
     position: absolute;
     background-color: #B01818;
     border-radius: 30px;
-    margin-top: -30px;
-    margin-left: 10px;
+    margin-top: -40px;
+    margin-left: -40px;
     height: 40px;
-    width: 300px;
+    width: 500px;
   }
 
   .texto-seccionImagen p{
@@ -117,7 +133,7 @@ body{
   }
 
   .textoIniciativa {
-    width: 60%; /* ajusta el ancho según sea necesario */
+    width: 80%; /* ajusta el ancho según sea necesario */
     margin: 0 auto; /* esto centrará el div horizontalmente */
     text-align: justify; /* justifica el texto */
     }
@@ -177,3 +193,49 @@ body{
     text-align: right;
    
   }
+
+  .contenedorSlide {
+    position: relative;
+}
+
+.cuadroTexto {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.oculto {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.controles {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot-radio {
+    display: none;
+}
+
+.dot-radio:checked + label {
+    background-color: #555;
+}
+
+#cliente-dot:checked ~ #cliente,
+#negocio-dot:checked ~ #negocio {
+    opacity: 1;
+}
