@@ -30,6 +30,11 @@
 .contenidoCard {
   text-align: center;
 }
+
+.contenidoCard button {
+  font-size: 14px;
+}
+
 .card-more{
   background-color: var(--color-button);
   border-radius: 10px;
