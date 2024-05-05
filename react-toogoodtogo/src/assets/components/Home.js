@@ -74,30 +74,18 @@ function Home() {
                 <h1>Nuestros Servicios</h1>
                 <div className="linea"></div>     
                 <ServicioCards productos={ofertasData} nombreBoton={'SER PARTE'}/>  
-                <h1>¿Cómo funciona el proceso de compra  para un cliente?</h1>
                 <div className="linea"></div>     
-                <div className='seccionIniciativa'>
-                  <div className='seccionMensaje'>
-                    <div className='seccionImagen'>
-                      <img src={bolsa2} alt="Bolsa 1" className="imagenSecundaria" />
-                      <img src={bolsa3} alt="Bolsa 2" className="imagenPrimaria" />
-                      <img src={bolsa4} alt="Bolsa 3" className="imagenSecundaria" />
-                    </div>
-                    <div className='texto-seccionImagen'>
-                      <p >¡Tú puedes marcar la diferencia!</p>
-                    </div>
-                  </div>
-                  <div className='seccionTexto'>
-                    <h1>INICIATIVA</h1>
-                    <div className='textoIniciativa'>
-                      <p>En nuestros restaurantes locales, demasiada comida termina en la basura todos los días. Pero creemos que podemos cambiar eso.Para los restaurantes, reducir el desperdicio de alimentos no solo significa ahorrar dinero y mejorar la eficiencia operativa.Para nuestros clientes, participar en Too Good To Go significa disfrutar de deliciosas ofertas a precios reducidos mientras contribuyen a un mundo más sostenible.</p>
-                    </div>
-                  </div>
-                </div>  
                 <div class="contenedorSlide">
-                    <div id="cliente" class="cuadroTexto">
-                        <h2>Información del Cliente</h2>
-                        <p>Texto que explica cosas sobre el cliente...</p>
+                    <div id="cliente" className="cuadroTexto">
+                      <div className='tituloCuadroTexto'>
+                        <h1 >¿Cómo funciona el proceso de compra</h1>
+                        <h1 style={{ color: '#B01818' }}>para un cliente?</h1>
+                      </div>
+                      <ul class="custom-list">
+                          <li>Elemento de lista 1</li>
+                          <li>Elemento de lista 2</li>
+                          <li>Elemento de lista 3</li>
+                      </ul>
                     </div>
                     <div id="negocio" class="cuadroTexto oculto">
                         <h2>Información del Negocio</h2>

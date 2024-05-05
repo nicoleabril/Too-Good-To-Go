@@ -195,15 +195,33 @@ body{
   }
 
   .contenedorSlide {
-    position: relative;
+    margin: 0 auto;
+    display: flex;
+    width: 95%;
+    height: 500px;
+    border-radius: 40px;
+    background-color: white;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;
 }
 
 .cuadroTexto {
-    width: 300px;
-    padding: 20px;
-    border: 1px solid #ccc;
+    width: auto;
+    margin-top: -350px;
+    margin-right: -100px;
     transition: opacity 0.5s ease-in-out;
 }
+
+.tituloCuadroTexto {
+  display: flex;
+}
+
+.tituloCuadroTexto h1 {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+
 
 .oculto {
     opacity: 0;
