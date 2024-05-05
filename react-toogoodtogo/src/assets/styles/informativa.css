@@ -2,6 +2,8 @@ body{
     overflow-y: auto;
   }
   .contenedorCliente {
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
     position: relative;
   }
@@ -196,21 +198,21 @@ body{
 
   .contenedorSlide {
     margin: 0 auto;
-    display: flex;
     width: 95%;
-    height: 500px;
     border-radius: 40px;
     background-color: white;
-    justify-content: center; /* Centra los elementos horizontalmente */
+    justify-content: center;
     align-items: center;
-}
-
-.cuadroTexto {
+    position: relative; /* Añade posición relativa */
+  }
+  
+  .cuadroTexto {
     width: auto;
-    margin-top: -350px;
-    margin-right: -100px;
+    margin-right: -200px;
+    margin-left: 20px;
     transition: opacity 0.5s ease-in-out;
-}
+  }
+
 
 .tituloCuadroTexto {
   display: flex;
@@ -221,28 +223,30 @@ body{
   display: inline-block;
 }
 
-
-
 .oculto {
     opacity: 0;
     pointer-events: none;
 }
 
 .controles {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dot {
-    height: 10px;
-    width: 10px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 0 5px;
-    cursor: pointer;
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  cursor: pointer;
+  border: none; /* Removemos el borde del botón */
 }
 
 .dot-radio {
@@ -256,4 +260,19 @@ body{
 #cliente-dot:checked ~ #cliente,
 #negocio-dot:checked ~ #negocio {
     opacity: 1;
+}
+
+.custom-list {
+  text-align: justify; /* justifica el texto */
+  list-style-type: none; /* Esto quita las viñetas predeterminadas */
+  padding-top: 1%;
+  padding-left: 20px; /* Añade un espacio a la izquierda para el icono */
+  width: 80%;
+}
+
+.custom-list li {
+  background-image: url('../images/cheque.png');
+  background-repeat: no-repeat;
+  background-position: left center; /* Posiciona el icono a la izquierda del texto */
+  padding-left: 25px; /* Ajusta el espacio entre el icono y el texto */
 }

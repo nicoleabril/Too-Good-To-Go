@@ -76,26 +76,61 @@ function Home() {
                 <ServicioCards productos={ofertasData} nombreBoton={'SER PARTE'}/>  
                 <div className="linea"></div>     
                 <div class="contenedorSlide">
-                    <div id="cliente" className="cuadroTexto">
-                      <div className='tituloCuadroTexto'>
-                        <h1 >¿Cómo funciona el proceso de compra</h1>
-                        <h1 style={{ color: '#B01818' }}>para un cliente?</h1>
-                      </div>
-                      <ul class="custom-list">
-                          <li>Elemento de lista 1</li>
-                          <li>Elemento de lista 2</li>
-                          <li>Elemento de lista 3</li>
-                      </ul>
+                  <div id="cliente" className="cuadroTexto">
+                    <div className='tituloCuadroTexto'>
+                      <h1>¿Cómo funciona el proceso de compra</h1>
+                      <h1 style={{ color: '#B01818' }}>para un cliente?</h1>
                     </div>
-                    <div id="negocio" class="cuadroTexto oculto">
-                        <h2>Información del Negocio</h2>
-                        <p>Texto que explica cosas sobre el negocio...</p>
+                    <ul className="custom-list">
+                      <li>El usuario se registra como cliente en la página web para acceder a las promociones y ofertas disponibles.</li>
+                      <li>El cliente explora las promociones disponibles en la página web. La plataforma facilita el registro de la dirección, lo que le permite visualizar los restaurantes cercanos y las ofertas disponibles en cada uno de ellos.</li>
+                      <li>El cliente elige el restaurante de su agrado entre las opciones disponibles.</li>
+                      <li>En el perfil de cada restaurante, el cliente encuentra una variedad de fundas sorpresa que contienen una selección de alimentos a un precio reducido.</li>
+                      <li>El cliente selecciona la funda sorpresa que desea y reserva su pedido a través de la plataforma para que el restaurante pueda apartarlo.</li>
+                      <li>Una vez confirmada la reserva, el cliente recibe un correo electrónico de confirmación con los detalles del pedido y el horario en el cual debe recogerlo en el restaurante.</li>
+                    </ul>
+                  </div>
+                  <div id="negocio" className="cuadroTexto oculto">
+                    <div className='tituloCuadroTexto'>
+                      <h1>¿Cómo funciona el proceso de reserva</h1>
+                      <h1 style={{ color: '#B01818' }}>para un negocio?</h1>
                     </div>
-                    <div class="controles">
-                        <label for="cliente-dot" class="dot" onclick>p</label>
-                        <label for="negocio-dot" class="dot" onclick>p</label>
+                    <ul className="custom-list">
+                      <li>Regístrate como negocio proporcionando la información requerida.</li>
+                      <li>Agrega los productos disponibles en tu establecimiento a través de un formulario en la plataforma.</li>
+                      <li>Utiliza la función de gestión de categorías para organizar tus productos de manera efectiva y facilitar la navegación de los clientes.</li>
+                      <li>Crea ofertas especiales para atraer a los clientes, proporcionando detalles sobre la disponibilidad y el precio reducido.</li>
+                      <li>Una vez que los clientes reserven sus pedidos a través de la plataforma, recibirás una notificación y podrás preparar los productos para su recogida.</li>
+                      <li>Confirma cada pedido realizado por los clientes a través de la plataforma y proporciona información sobre el horario de recogida.</li>
+                    </ul>
+                  </div>
+                  <div className="controles">
+                    <input type="radio" id="cliente-dot" name="dot" className="dot-radio" checked />
+                    <label htmlFor="cliente-dot" className="dot" onClick={() => document.getElementById("cliente-dot").click()}></label>
+                    <input type="radio" id="negocio-dot" name="dot" className="dot-radio" />
+                    <label htmlFor="negocio-dot" className="dot" onClick={() => document.getElementById("negocio-dot").click()}></label>
+                  </div>
+                </div>
+                <h1>Recoge tu Pedido</h1>
+                <div className="linea"></div>
+                <div className='seccionIniciativa'>
+                  <div className='seccionMensaje'>
+                    <div className='seccionImagen'>
+                      <img src={bolsa2} alt="Bolsa 1" className="imagenSecundaria" />
+                      <img src={bolsa3} alt="Bolsa 2" className="imagenPrimaria" />
+                      <img src={bolsa4} alt="Bolsa 3" className="imagenSecundaria" />
                     </div>
-                </div> 
+                    <div className='texto-seccionImagen'>
+                      <p >¡Tú puedes marcar la diferencia!</p>
+                    </div>
+                  </div>
+                  <div className='seccionTexto'>
+                    <h1>INICIATIVA</h1>
+                    <div className='textoIniciativa'>
+                      <p>En nuestros restaurantes locales, demasiada comida termina en la basura todos los días. Pero creemos que podemos cambiar eso.Para los restaurantes, reducir el desperdicio de alimentos no solo significa ahorrar dinero y mejorar la eficiencia operativa.Para nuestros clientes, participar en Too Good To Go significa disfrutar de deliciosas ofertas a precios reducidos mientras contribuyen a un mundo más sostenible.</p>
+                    </div>
+                  </div>
+                </div>  
             </div>
             <div className="contenedorFooter">
               <div className="textoFooter2">
