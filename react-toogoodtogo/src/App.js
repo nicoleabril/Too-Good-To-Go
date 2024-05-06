@@ -4,6 +4,7 @@ import "./assets/styles/App.css";
 import Cliente from "./pages/Cliente"
 import Restaurante from "./pages/Restaurante";
 import Bienvenida from "./pages/Bienvenida"
+import CrudProducto from "./pages/crudProducto";
 function App() {
   return (
     <div className="App">
@@ -13,6 +14,7 @@ function App() {
           <Route path="/Inicio" element={<Cliente />} />
           <Route path="/Restaurante" element={<Restaurante />} />
           <Route path="/Informativa" element={<Bienvenida />} />
+          <Route path="/RegistroProductos" element={<CrudProducto />} />
         </Routes>
       </Router>
     </div>
