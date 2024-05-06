@@ -50,7 +50,7 @@
     margin-top: 30px;
     max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
     overflow-y: auto; /* Agrega la barra de desplazamiento vertical */
-    width: 86%;
+    width:90%;
 }
 
 .botonesCrud {
@@ -58,6 +58,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+}
+
+div[id^="row-"] {
+  background-color: rgb(245, 243, 243);
 }
 
 .botonesCrud button {
