@@ -4,14 +4,14 @@ import Header from '../assets/components/Header';
 import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import HomeRestaurante from '../assets/components/HomeRestaurante';
 import '../assets/styles/cliente.css'
-
+import Chatbot from '../assets/components/Chatbot';
 const RestaurantePage = () => {
   return (
     <div>
       <div className='client-page'>
-      <Header />
-      <DynamicBreadcrumb/>
-      <HomeRestaurante />
+        <Header />
+        <DynamicBreadcrumb/>
+        <HomeRestaurante />
       </div>
     </div>
   );
