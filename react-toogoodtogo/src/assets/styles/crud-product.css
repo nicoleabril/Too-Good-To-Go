@@ -60,14 +60,39 @@
     margin-bottom: 10px;
 }
 
+.sc-fbJSV.lbIPMj {
+    margin: 0 auto;
+    font-weight: bold;
+}
+
 div[id^="row-"] {
-  background-color: rgb(245, 243, 243);
+    background-color: rgb(245, 243, 243);
+    border: 2px solid #ccc;
+}
+
+div[id^="row-"] div {
+    margin: 0 auto; /* Centrar los elementos div horizontalmente */
+}
+
+.sc-dmqGRC.cxuENM.rdt_TableHeadRow {
+    background-color: rgb(245, 243, 243);
+    border: 3px solid #ccc;
+}
+
+  
+.sc-dmqGRC.cxuENM.rdt_TableHeadRow > div {
+    border-right: 2px solid #ccc;
+}
+
+/* Evita agregar un borde derecho al último elemento de la fila */
+.sc-dmqGRC.cxuENM.rdt_TableHeadRow > div:last-child {
+    border-right: none;
 }
 
 .botonesCrud button {
     background-color: var(--color-button);
     cursor: pointer;
-    margin-right: 10px;
     padding: 10px;
     width: 50px;
+    margin: 10px;
 }
