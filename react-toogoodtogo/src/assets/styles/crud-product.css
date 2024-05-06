@@ -46,3 +46,24 @@
     width: 100%;
 }
 
+.tabla-productos-container {
+    margin-top: 30px;
+    max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto; /* Agrega la barra de desplazamiento vertical */
+    width: 86%;
+}
+
+.botonesCrud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.botonesCrud button {
+    background-color: var(--color-button);
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 10px;
+    width: 50px;
+}
