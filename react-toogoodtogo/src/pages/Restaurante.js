@@ -12,6 +12,7 @@ const RestaurantePage = () => {
         <Header />
         <DynamicBreadcrumb/>
         <HomeRestaurante />
+        <Chatbot></Chatbot>
       </div>
     </div>
   );
