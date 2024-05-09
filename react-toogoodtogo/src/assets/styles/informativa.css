@@ -219,7 +219,7 @@ body{
     width: 95%;
     height: 400px;
     border-radius: 60px;
-    background-color: white;
+    opacity: 0.7;
     justify-content: center;
     align-items: center;
     position: relative; 
@@ -227,8 +227,8 @@ body{
     background-image: url('../images/paperbag.jpg');
     background-size: cover; /* Ajustar tamaño de la imagen al contenedor */
     background-position: center; /* Centrar la imagen */
-    opacity: 0.5; /* Ajusta la opacidad según lo desees (valor entre 0 y 1) */
-  }
+}
+
 
   #reservaConfirmada {
     margin-top: 50px;
@@ -237,14 +237,19 @@ body{
     padding: 20px; /* Ajusta el espacio interior del subcuadro */
     border-radius: 60px;
     margin: 20px; /* Margen con respecto al contenedor principal */
-    opacity: 1; /* Anula la opacidad heredada */
+    opacity: 1; 
   }
+
+  
   
   #reservaConfirmada h1 {
     color: #B01818;
   }
   
   #reservaConfirmada ul {
+    padding-left: 30px;
+    width: 90%;
+    text-align: justify;
     list-style-type: disc; /* Tipo de viñeta */
     color: black; /* Color del texto */
   }
@@ -338,4 +343,94 @@ body{
   background-repeat: no-repeat;
   background-position: left center; /* Posiciona el icono a la izquierda del texto */
   padding-left: 25px; /* Ajusta el espacio entre el icono y el texto */
+}
+
+@media only screen and (max-width: 768px) {
+  .seccionIniciativa {
+    flex-direction: row; /* Vuelve a la dirección de fila en dispositivos grandes */
+  }
+
+  .seccionMensaje {
+    flex: 1; /* Ocupa todo el ancho disponible */
+    margin-right: 20px; /* Agrega espacio entre secciones */
+    margin-bottom: 0; /* Elimina espacio inferior */
+  }
+
+  .seccionImagen {
+    margin-left: -40px;
+    flex: 1; /* Ocupa todo el ancho disponible */
+    justify-content: flex-end; /* Alinea las imágenes al final en dispositivos grandes */
+  }
+
+  .texto-seccionImagen {
+    margin-bottom: 0; /* Elimina espacio inferior */
+  }
+
+  .imagenSecundaria {
+    width: 70px; /* Ajusta el tamaño de la imagen secundaria */
+    height: 70px;
+  }
+
+  .imagenPrimaria {
+    width: 90px; /* Ajusta el tamaño de la imagen primaria */
+    height: 90px;
+  }
+
+  .textoIniciativa {
+    width: 70%; /* Ancho reducido en dispositivos grandes */
+  }
+
+  .textoIniciativa p{
+    font-size: 70%; /* Ancho reducido en dispositivos grandes */
+  }
+
+  .textoImagen {
+    margin-top: 20vh; /* Ajuste para dispositivos más pequeños */
+  }
+
+  .texto-seccionImagen {
+    height: 80px;
+    width: 15vh; /* Ajuste para dispositivos más pequeños */
+  }
+
+  .textoTooGood, .textoToGo {
+    font-size: 1.5rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
+  }
+
+  .seccionTexto h1 {
+    text-align: left;
+    font-size: 1.5rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
+  }
+
+  .subtexto {
+    font-size: 1rem; /* Reducir el tamaño del subtexto en dispositivos más pequeños */
+  }
+
+  .fotoCliente img {
+    width: 40px; /* Reducir el tamaño de la foto del cliente en dispositivos más pequeños */
+    height: 40px;
+  }
+
+  .seccionPedido {
+      height: 400px; /* Restaurar la altura para pantallas más grandes */
+  }
+
+  #reservaConfirmada {
+      width: 80%; /* Restaurar el ancho para pantallas más grandes */
+  }
+
+  .comentario {
+    margin-left: 30%;
+    width: 60%; /* Restaurar el ancho para pantallas más grandes */
+  }
+
+  .imagenPizza {
+
+      margin-left: 57%; /* Restaurar la posición para pantallas más grandes */
+  }
+
+  .imagenBolsa {
+    width: 200px; /* Reducir el tamaño de la foto del cliente en dispositivos más pequeños */
+    height: 200px;/* Restaurar la posición para pantallas más grandes */
+  }
 }

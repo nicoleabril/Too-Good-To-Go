@@ -39,10 +39,10 @@ function Home() {
             <div className='textoImagen'>
               <h1 className='textoTooGood'>Too Good</h1>
               <h1 className='textoToGo'>To Go</h1>
-                <div className='textoRestaurante'>
-                    <p className='subtexto'>Demuestra que te importa el planeta mientras disfrutas de deliciosas ofertas. ¡Too Good To Go te lo hace posible!</p>
-                </div>
-                <div class="comentario">
+              <div className='textoRestaurante'>
+                  <p className='subtexto'>Demuestra que te importa el planeta mientras disfrutas de deliciosas ofertas. ¡Too Good To Go te lo hace posible!</p>
+              </div>
+              <div class="comentario">
                 <div class="cliente">
                     <div className='fotoCliente'>
                       <img src={perfilMujer} alt="Foto del cliente"/>
