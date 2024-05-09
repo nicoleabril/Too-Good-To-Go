@@ -22,7 +22,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 10px;
-    width: 60%;
+    width: 100%;
 }
 
 
@@ -48,8 +48,8 @@
 
 .tabla-productos-container {
     margin-top: 30px;
-    max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
-    overflow-y: auto; /* Agrega la barra de desplazamiento vertical */
+    max-height: 400px;
+    overflow-y: auto; 
     width:90%;
 }
 
@@ -84,7 +84,6 @@ div[id^="row-"] div {
     border-right: 2px solid #ccc;
 }
 
-/* Evita agregar un borde derecho al último elemento de la fila */
 .sc-dmqGRC.cxuENM.rdt_TableHeadRow > div:last-child {
     border-right: none;
 }
@@ -96,3 +95,106 @@ div[id^="row-"] div {
     width: 50px;
     margin: 10px;
 }
+/*responsive para dispositivos móviles*/
+
+@media screen and (max-width: 768px) {
+
+    .crud-producto {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 10px;
+        padding-right: 10px; 
+        margin: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .TextoBusquedaProducto {
+        width: 100%;
+    }
+    
+    .botonAgregarProducto {
+        width: 60%;
+        max-width: none;
+    }
+
+    .BusquedaProducto {
+        margin-right: 50px;
+        width: 100%;
+        display: flex;
+        margin-left: 50px;
+        min-width: 200px;
+    }
+
+    .botonAgregarProducto{
+        font-size: 14px;
+    }
+
+    .botonesCrud button {
+        background-color: var(--color-button);
+        cursor: pointer;
+        padding: 5px;
+        width: 35px; 
+        height: 35px;
+        margin: 5px;
+        font-size: 10px; 
+    }
+    
+}
+/*responsive para tablets*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .crud-producto {
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px; 
+        margin: 20px;
+    }
+
+    .BusquedaProducto {
+        margin-right: 200px;
+        width: 100%; 
+        margin-left: 0; 
+    }
+
+    .TextoBusquedaProducto {
+        width: 100%; 
+    }
+
+    .botonAgregarProducto {
+        width: 100%;
+        max-width: 250px;
+        font-size: 16px;
+    }
+
+    .botonesCrud button {
+        padding: 8px;
+        width: 50px; 
+        height: 50px;
+        font-size: 12px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1250px) {
+    .crud-producto {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .BusquedaProducto {
+        width: 100%;
+        margin-right: 350px;
+    }
+
+    .botonAgregarProducto {
+        width: 100%;
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .botonesCrud button {
+        padding: 8px;
+        width: 45px;
+        height: 45px;
+        font-size: 12px;
+    }
+}
+
