@@ -140,6 +140,11 @@ body{
     text-align: justify; /* justifica el texto */
     }
 
+    ul {
+      list-style-type: disc; /* Establece el tipo de viñeta como puntos */
+      /* Otras propiedades de estilo, como el tamaño y el color, pueden agregarse según sea necesario */
+    }
+
 
   .waves-background2 {
     position: fixed;
@@ -205,12 +210,68 @@ body{
     align-items: center;
     position: relative; /* Añade posición relativa */
   }
+
+  .seccionPedido {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 95%;
+    height: 400px;
+    border-radius: 60px;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    /* Establecer imagen de fondo */
+    background-image: url('../images/paperbag.jpg');
+    background-size: cover; /* Ajustar tamaño de la imagen al contenedor */
+    background-position: center; /* Centrar la imagen */
+    opacity: 0.5; /* Ajusta la opacidad según lo desees (valor entre 0 y 1) */
+  }
+
+  #reservaConfirmada {
+    margin-top: 50px;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+    padding: 20px; /* Ajusta el espacio interior del subcuadro */
+    border-radius: 60px;
+    margin: 20px; /* Margen con respecto al contenedor principal */
+    opacity: 1; /* Anula la opacidad heredada */
+  }
+  
+  #reservaConfirmada h1 {
+    color: #B01818;
+  }
+  
+  #reservaConfirmada ul {
+    list-style-type: disc; /* Tipo de viñeta */
+    color: black; /* Color del texto */
+  }
+  
+  #reservaConfirmada li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+  }
   
   .cuadroTexto {
     width: auto;
+    height: 500px;
     margin-right: -200px;
     margin-left: 20px;
     transition: opacity 0.5s ease-in-out;
+  }
+
+  .imagenProceso {
+    border-radius: 30px;
+    margin-top: 50px;
+    width: 400px;
+    height: 250px;
+  }
+
+  .contenedorLista {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
   }
 
 
@@ -226,6 +287,7 @@ body{
 .oculto {
     opacity: 0;
     pointer-events: none;
+    display: none;
 }
 
 .controles {
@@ -267,7 +329,8 @@ body{
   list-style-type: none; /* Esto quita las viñetas predeterminadas */
   padding-top: 1%;
   padding-left: 20px; /* Añade un espacio a la izquierda para el icono */
-  width: 80%;
+  width: 50%;
+  
 }
 
 .custom-list li {
