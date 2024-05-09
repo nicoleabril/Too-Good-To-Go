@@ -388,6 +388,10 @@ body{
     margin-top: 20vh; /* Ajuste para dispositivos más pequeños */
   }
 
+  .imagenProceso {
+    display: none;
+  }
+
   .texto-seccionImagen {
     height: 80px;
     width: 15vh; /* Ajuste para dispositivos más pequeños */
