@@ -6,7 +6,7 @@
     height: 100vh;
     flex-wrap: wrap;
     margin-top: -160px;
-  }
+}
   
   .cardService {
     background-color: #fff;
@@ -17,7 +17,7 @@
     align-items: center;
     padding: 20px;
     width: 500px;
-    margin: 100px  10px -80px 10px;
+    margin: -80px  10px -400px 10px;
     height: 60%;
   }
   
@@ -108,6 +108,83 @@
     margin-bottom: 5px;
     color: black;
   }
+  
+  @media only screen and (max-width: 930px) {
+    
+    .cardService {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40vh;
+      flex-wrap: wrap;
+      position: relative;
+      margin-top: 20%;
+      margin-bottom: -20%;
+    }
+
+
+
+
+  }
+  @media only screen and (max-width: 768px) {
+    
+    .cardService {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      flex-wrap: wrap;
+      margin-top: 40%;
+      margin-bottom: -145px;
+    }
+
+    .cardService img {
+      width: 250px;
+      height: 150px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+  }
+
+  @media only screen and (max-width: 484px) {
+    
+    .cardService {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+      flex-wrap: wrap;
+      margin-top: 70%;
+      margin-bottom: -120px;
+      position: relative;
+    }
+
+    .contenedorCard {
+      height: 30%;
+    }
+
+    .contenidoCardService h3{
+      font-size: 1.25rem;
+    }
+
+    .contenidoCardService p{
+      font-size: 1rem;
+    }
+
+    .cardService img {
+      width: 200px;
+      height: 150px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+    }
+
+  }
+
+
+
+
 
 
 

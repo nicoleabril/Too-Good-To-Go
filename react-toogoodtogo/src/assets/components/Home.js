@@ -58,7 +58,7 @@ function Home() {
               </div>
             </div>
             <div className="imagenPizza">
-            <img src={bolsa} alt="Pizza" className="imagenBolsa" />
+              <img src={bolsa} alt="Pizza" className="imagenBolsa" />
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo"></div>
@@ -84,8 +84,10 @@ function Home() {
                   </div>
                 </div>   
                 <h1>Nuestros Servicios</h1>
-                <div className="linea"></div>     
+                <div className="linea"></div>  
+                <div>
                   <ServicioCards productos={ofertasData} nombreBoton={'SER PARTE'}/>  
+                </div>   
                 <div className="linea"></div>     
                 <div class="contenedorSlide">
                   <div id="cliente" className={`cuadroTexto ${currentSlide === 'cliente' ? '' : 'oculto'}`}>
