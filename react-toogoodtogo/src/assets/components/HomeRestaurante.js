@@ -98,7 +98,7 @@ function HomeRestaurante() {
   
     return (
     
-        <div>
+        <div className="RestauranteContainer">
             <div className='textoImagen'>
               <img src={dunkin_logo} alt="Pizza" className="imagenLogo"/>
               <div className='textoRestaurante'>

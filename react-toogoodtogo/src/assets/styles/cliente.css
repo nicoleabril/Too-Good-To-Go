@@ -1,32 +1,28 @@
 body{
   overflow-y: auto;
 }
-.contenedorCliente {
-  overflow-y: auto;
-  position: relative;
-}
 
-.contenedorRojo {
-  position: absolute;
-  bottom: 0;
+.ClienteContainer .contenedorRojo {
+  position: relative;
+  bottom: -30vh;
   left: 0;
   width: 100%;
   background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
   color: white;
   text-align: center;
-  height: 30vh;
+  height: 15vh;
   border-radius: 60px 60px 0 0;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
   z-index: 1; 
 }
 
-.contenedorBlanco {
+.ClienteContainer .contenedorBlanco {
   display: block;
   justify-content: center; 
   align-items: center;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  margin-top: 0.5%;
+  top: 10rem;
   left: 0;
   width: 100%;
   height: 100%; 
@@ -37,14 +33,14 @@ body{
   border-radius: 60px 60px 0 0;
   z-index: 2;
 }
-.contenedorBlanco h1 {
+.ClienteContainer .contenedorBlanco h1 {
   color: var(--color-textos);
   text-align: center;
   font-weight: bold;
   
 }
 
-.imagenPizza {
+.ClienteContainer .imagenPizza {
   position: absolute;
   top: 20vh; 
   margin-left: 57%; 
@@ -54,7 +50,7 @@ body{
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
   
-.imagen2 {
+.ClienteContainer .imagen2 {
   z-index: 1;
     width: 400px; 
     height: 350px;
@@ -62,7 +58,7 @@ body{
         0 0 10px rgba(0,0,0,0.5)
     );
 }
-.waves-background2 {
+.ClienteContainer .waves-background2 {
   position: fixed;
   top: 2%;
   bottom: 0;
@@ -72,30 +68,34 @@ body{
   background-image: url('../images/waves.png');
   z-index: -1;
 }
-.texto1,.texto2{
-  font-size: 2.5rem;
+.ClienteContainer .texto1{
+  font-size: 4rem;
 }
-.texto1{
+.ClienteContainer .texto2{
+  font-size: 3.5rem;
+}
+.ClienteContainer .texto1{
   color: var(--color-primary)
 }
-.texto2{
+.ClienteContainer .texto2{
   color: var(--color-textos);
 }
-.subtexto{
+.ClienteContainer .subtexto{
   font-size: 1.3rem;
 }
-div .textoImagen{
+.ClienteContainer  .textoImagen{
   margin-top: 30vh;
   display: block;
   margin-left: -40%;
+  margin-bottom: -18vh;
 }
-.contenedorBlanco h1{
+.ClienteContainer  .contenedorBlanco h1{
   margin-top: 30px;
 }
-div .contenedorFooter {
-  margin-top: 8%;
-  bottom: 0;
-  position:relative;
+.ClienteContainer .contenedorFooter {
+  margin-top: 9%; 
+  margin-bottom: 0; 
+  position: relative;
   width: 100%;
   background-color: var(--color-fondoLogin);
   color: var(--color-button);
@@ -105,12 +105,11 @@ div .contenedorFooter {
   z-index: 2;
 }
 
-.textoFooter2 {
+.ClienteContainer .textoFooter2 {
   display: flex;
-  justify-content: right; 
+  justify-content: flex-end;
   align-items: center;
-  height: 5%;
+  height: 100%;
   padding-right: 40px;
   text-align: right;
- 
 }

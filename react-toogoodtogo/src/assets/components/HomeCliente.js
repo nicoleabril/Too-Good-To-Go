@@ -36,7 +36,7 @@ function HomeCliente() {
   ];
   
   return (
-    <div>
+    <div className='ClienteContainer'>
       <div className='textoImagen'>
         <h1 className='texto1'>Tu comida favorita</h1>
         <h1 className='texto2'>al mejor precio</h1>
