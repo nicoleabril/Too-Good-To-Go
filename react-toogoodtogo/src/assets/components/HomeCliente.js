@@ -56,7 +56,8 @@ function HomeCliente() {
         <h1>¿Buscas de lo siempre?</h1>
         <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
         <h1>Localización</h1>
-        
+        <MapComponent/>
+       
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">
