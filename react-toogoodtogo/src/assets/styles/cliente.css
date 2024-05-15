@@ -24,9 +24,9 @@ body{
   display: block;
   justify-content: center; 
   align-items: center;
-  position: relative;
+  position: absolute;
   bottom: 0;
-  margin-top: 10vh;
+  margin-top: 0.5%;
   left: 0;
   width: 100%;
   height: 100%; 
@@ -43,8 +43,6 @@ body{
   font-weight: bold;
   
 }
-
-
 
 .imagenPizza {
   position: absolute;
@@ -75,7 +73,7 @@ body{
   z-index: -1;
 }
 .texto1,.texto2{
-  font-size: 3.5rem;
+  font-size: 2.5rem;
 }
 .texto1{
   color: var(--color-primary)
@@ -84,9 +82,9 @@ body{
   color: var(--color-textos);
 }
 .subtexto{
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
-.textoImagen{
+div .textoImagen{
   margin-top: 30vh;
   display: block;
   margin-left: -40%;
