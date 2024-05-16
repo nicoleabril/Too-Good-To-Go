@@ -20,7 +20,7 @@ const Header = ({page}) => {
         <div className={`menu ${showMenu ? 'show' : ''}`}>
             <ul>
                 <li><a href="/Inicio">Inicio</a></li>
-                {page !== 'RegistroProductos' && <li><a href="/">Negocios</a></li>}
+                {page !== 'RegistroProductos' && page !== 'agregarProducto' && <li><a href="/">Negocios</a></li>}
                 <li><a href="/">Reservas</a></li>
                 <li><a href="/">Mi Perfil</a></li>
                 {page === 'Informativa' && (
@@ -32,7 +32,7 @@ const Header = ({page}) => {
                 
             </ul>
         </div>
-        {page !== 'RegistroProductos' && page !=='Informativa' && (
+        {page !== 'RegistroProductos' && page !=='Informativa' && page !== 'agregarProducto' && (
             <a href='/' className='logo'><AiOutlineShopping className='iconOrders'/></a>
         )}
        

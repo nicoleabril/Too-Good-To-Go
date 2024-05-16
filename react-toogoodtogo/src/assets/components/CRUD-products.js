@@ -102,7 +102,9 @@ function CRUDProducts() {
                     <img className="FotoBuscar" src={buscar} alt="Buscar" />
                     <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
                 </div>
-                <button className="botonAgregarProducto">Agregar Producto</button>
+                <React.Fragment>
+                    <a href="/RegistroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
+                </React.Fragment>
             </div>
             <div className="tabla-productos-container">
                 <DataTable

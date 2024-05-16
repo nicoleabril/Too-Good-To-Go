@@ -13,7 +13,31 @@
   }
 .custom-breadcrumb ol{
     list-style-type: none;
+    display: flex;
     margin-left: 40px;
     font-weight: bold;
     color: var(--color-button);
 }  
+
+.breadcrumb-item{
+  padding: 5px;
+  color: var(--color-button);
+}
+
+.breadcrumb-link {
+  color: var(--color-button); /* Utiliza la variable CSS para el color */
+}
+
+.custom-breadcrumb .breadcrumb-item .breadcrumb-link,
+.custom-breadcrumb .breadcrumb-item a { /* Añade el selector 'a' también por si acaso */
+  color: var(--color-button);
+  text-decoration: none;
+}
+
+.custom-breadcrumb .breadcrumb-item .breadcrumb-link:hover,
+.custom-breadcrumb .breadcrumb-item a:hover {
+    color: var(--color-button);
+    text-decoration: underline; 
+}
+
+
