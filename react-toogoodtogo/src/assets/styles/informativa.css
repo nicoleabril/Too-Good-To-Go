@@ -1,28 +1,24 @@
 body{
     overflow-y: auto;
   }
-  .contenedorCliente {
-    display: flex;
-    flex-direction: column;
-    overflow-y: auto;
-    position: relative;
-  }
   
-  .contenedorRojo {
-    position: absolute;
+  
+  .HomeContainer .contenedorRojo {
+    position: relative;
     bottom: 0;
+    margin-bottom: -30vh;
     left: 0;
     width: 100%;
     background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
     color: white;
     text-align: center;
-    height: 30vh;
+    height: 20vh;
     border-radius: 60px 60px 0 0;
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     z-index: 1; 
   }
   
-  .contenedorBlanco {
+  .HomeContainer .contenedorBlanco {
     display: block;
     justify-content: center; 
     align-items: center;
@@ -34,20 +30,20 @@ body{
     height: 100%; 
     background-color: var(--color-secundary);
     color: var(--color-button);
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     text-align: left; 
     border-radius: 60px 60px 0 0;
     z-index: 2;
    
   }
-  .contenedorBlanco h1 {
+  .HomeContainer .contenedorBlanco h1 {
     color: var(--color-textos);
     text-align: center;
     font-weight: bold;
     
   }
   
-  .imagenPizza {
+  .HomeContainer .imagenPizza {
     position: absolute;
     top: 20vh; 
     margin-left: 57%; 
@@ -57,47 +53,50 @@ body{
     filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
   }
 
-  .seccionIniciativa {
+  .HomeContainer .seccionIniciativa {
     display: flex;
     width: 100%;
     height: 500px;
-    background-color: white;
     justify-content: center; /* Centra los elementos horizontalmente */
     align-items: center;
   }
 
-  .seccionImagen {
+  .HomeContainer .seccionImagen {
     display: flex;
   }
 
-  .seccionMensaje {
+  .HomeContainer .seccionMensaje {
     margin-left: 100px;
   }
 
-  .seccionTexto {
+  .HomeContainer .seccionTexto {
     justify-content: left;
     width: 60%;
     height: 200px;
   }
 
-  .seccionTexto h1{
+  .HomeContainer .seccionTexto h1{
     color: #B01818;
     padding-left: 80px;
     display: inline-block;
     vertical-align: top;
   }
     
-  .imagenBolsa {
+  .HomeContainer .imagenBolsa {
+    margin-top: 5vh;
+    margin-left: 10vh;
     border-radius: 50%;
     z-index: 1;
-      width: 400px; 
-      height: 350px;
+      width: 300px; 
+      height: 300px;
       filter: drop-shadow(
           0 0 10px rgba(0,0,0,0.5)
       );
   }
-
-  .imagenSecundaria {
+  .HomeContainer .cardsInformativa{
+    margin-top: -30vh;
+  }
+  .HomeContainer .imagenSecundaria {
     border-radius: 50%;
       width: 150px; 
       height: 150px;
@@ -107,7 +106,7 @@ body{
       );
   }
 
-  .imagenPrimaria {
+  .HomeContainer .imagenPrimaria {
     width: 200px; 
     height: 200px;
     z-index: 1;
@@ -116,7 +115,7 @@ body{
     margin-left: -40px; /* ajusta según sea necesario */
   }
 
-  .texto-seccionImagen {
+  .HomeContainer .texto-seccionImagen {
     z-index: 1;
     position: absolute;
     background-color: #B01818;
@@ -127,14 +126,14 @@ body{
     width: 500px;
   }
 
-  .texto-seccionImagen p{
+  .HomeContainer .texto-seccionImagen p{
     margin-top: 5px;
     color: white;
     text-align: center;
 
   }
 
-  .textoIniciativa {
+  .HomeContainer .textoIniciativa {
     width: 80%; /* ajusta el ancho según sea necesario */
     margin: 0 auto; /* esto centrará el div horizontalmente */
     text-align: justify; /* justifica el texto */
@@ -146,7 +145,7 @@ body{
     }
 
 
-  .waves-background2 {
+    .HomeContainer .waves-background2 {
     position: fixed;
     top: 2%;
     bottom: 0;
@@ -156,32 +155,43 @@ body{
     background-image: url('../images/waves.png');
     z-index: -1;
   }
-  .textoTooGood,.textoToGo{
+  .HomeContainer .textoTooGood,.textoToGo{
     font-size: 3.5rem;
     display: inline-block;
   }
-  .textoTooGood{
+  .HomeContainer .textoTooGood{
     color: var(--color-primary);
     margin-right: 10px;
   }
-  .textoToGo{
+  .HomeContainer .textoToGo{
     color: var(--color-textos);
   }
-  .subtexto{
+  .HomeContainer .subtexto{
     font-size: 1.2rem;
+    
   }
-  .textoImagen{
+  .HomeContainer .textoInformativo {
+    width: 25%; /* ajusta el ancho según sea necesario */
+    margin: 0 auto; /* esto centrará el div horizontalmente */
+    text-align: justify; /* justifica el texto */
+    }
+    .RestauranteContainer .contenedorBlanco h1{
+    margin-top: 30px;
+  }
+  .HomeContainer .textoImagen{
+
     margin-top: 20vh;
+    margin-bottom: 6vh;
     display: block;
     margin-left: -40%;
   }
-  .contenedorBlanco h1{
+  .HomeContainer .contenedorBlanco h1{
     margin-top: 30px;
   }
-  .contenedorFooter {
-    margin-top: 20%;
-    bottom: 0;
-    position:relative;
+  .HomeContainer .contenedorFooter {
+    margin-top: 8%; 
+    margin-bottom: 0; 
+    position: relative;
     width: 100%;
     background-color: var(--color-fondoLogin);
     color: var(--color-button);
@@ -191,17 +201,15 @@ body{
     z-index: 2;
   }
   
-  .textoFooter2 {
+  .HomeContainer .textoFooter2 {
     display: flex;
-    justify-content: right; 
+    justify-content: flex-end;
     align-items: center;
-    height: 5%;
+    height: 100%;
     padding-right: 40px;
     text-align: right;
-   
   }
-
-  .contenedorSlide {
+  .HomeContainer .contenedorSlide {
     margin: 0 auto;
     width: 95%;
     border-radius: 40px;
@@ -211,7 +219,7 @@ body{
     position: relative; /* Añade posición relativa */
   }
 
-  .seccionPedido {
+  .HomeContainer .seccionPedido {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -258,7 +266,7 @@ body{
     margin-bottom: 10px; /* Espacio entre elementos de la lista */
   }
   
-  .cuadroTexto {
+  .HomeContainer .cuadroTexto {
     width: auto;
     height: 550px;
     margin-top: 200px;
@@ -266,36 +274,79 @@ body{
     transition: opacity 0.5s ease-in-out;
   }
 
-  .imagenProceso {
+  .HomeContainer .imagenProceso {
     border-radius: 30px;
     margin-top: 50px;
     width: 400px;
     height: 250px;
   }
 
-  .contenedorLista {
+  .HomeContainer .contenedorLista {
     display: flex;
     flex-direction: row;
     gap: 40px;
   }
+  .HomeContainer .comentario {
+    width: 25%;
+    background-color: #575555; /* Fondo gris */
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    border-radius: 10px;
+    opacity: 0.9; 
+}
+
+.HomeContainer .cliente {
+    margin-bottom: 10px;
+    display: flex;
+    
+}
+.HomeContainer  .fotoCliente img {
+  margin-top: 30px;
+  width: 50px; /* Ajusta el tamaño de la imagen según lo necesites */
+  height: 50px;
+  border-radius: 50%; /* Para hacer la imagen circular */
+  margin-right: 10px;
+  float: left;
+}
+
+.HomeContainer .textoComentario {
+  text-align: left;
+  
+}
+
+.HomeContainer .textoComentario h3 {
+  color: white;
+  margin: 0;
+  font-size: 16px;
+}
+
+.HomeContainer .contenido p {
+  color: white;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
 
 
-.tituloCuadroTexto {
+  .HomeContainer .tituloCuadroTexto {
   display: flex;
 }
 
-.tituloCuadroTexto h1 {
+.HomeContainer .tituloCuadroTexto h1 {
   margin-left: 10px;
   display: inline-block;
 }
 
-.oculto {
+.HomeContainer .oculto {
     opacity: 0;
     pointer-events: none;
     display: none;
 }
 
-.controles {
+.HomeContainer .controles {
   position: absolute;
   bottom: 10px;
   left: 50%;
@@ -305,7 +356,7 @@ body{
   align-items: center;
 }
 
-.dot {
+.HomeContainer .dot {
   height: 10px;
   width: 10px;
   background-color: #bbb;
@@ -316,11 +367,11 @@ body{
   border: none; /* Removemos el borde del botón */
 }
 
-.dot-radio {
+.HomeContainer .dot-radio {
     display: none;
 }
 
-.dot-radio:checked + label {
+.HomeContainer .dot-radio:checked + label {
     background-color: #555;
 }
 
@@ -329,7 +380,7 @@ body{
     opacity: 1;
 }
 
-.custom-list {
+.HomeContainer .custom-list {
   text-align: justify; /* justifica el texto */
   list-style-type: none; /* Esto quita las viñetas predeterminadas */
   padding-top: 1%;
@@ -338,7 +389,7 @@ body{
   
 }
 
-.custom-list li {
+.HomeContainer .custom-list li {
   background-image: url('../images/cheque.png');
   background-repeat: no-repeat;
   background-position: left center; /* Posiciona el icono a la izquierda del texto */
@@ -346,145 +397,145 @@ body{
 }
 
 @media only screen and (max-width: 930px) {
-  .imagenBolsa {
+  .HomeContainer .imagenBolsa {
     width: 300px;
     height: 300px;
   }
 
-  .texto-seccionImagen {
+  .HomeContainer .texto-seccionImagen {
     width: 50%;
   }
 
-  .seccionImagen {
+  .HomeContainer .seccionImagen {
     margin-left: -5%;
   }
 
-  .seccionTexto {
+  .HomeContainer .seccionTexto {
     margin-top: -30%;
   }
 
-  .custom-list{
+  .HomeContainer .custom-list{
     width: 65% ;
     font-size: 1rem;
   }
 
-  .contenedorSlide{
+  .HomeContainer .contenedorSlide{
     height: 700px;
   }
 
-  .imagenProceso {
+  .HomeContainer .imagenProceso {
     margin-top: 20%;
     width: 225px;
     height: 150px;
     
   }
 
-  .contenedorFooter {
+  .HomeContainer .contenedorFooter {
     margin-top: 30%;
   }
   
 }
 
 @media only screen and (max-width: 768px) {
-  .seccionIniciativa {
+  .HomeContainer .seccionIniciativa {
     height: 400px;
     flex-direction: row; /* Vuelve a la dirección de fila en dispositivos grandes */
   }
 
-  .seccionMensaje {
+  .HomeContainer .seccionMensaje {
     flex: 1; /* Ocupa todo el ancho disponible */
     margin-right: 20px; /* Agrega espacio entre secciones */
     margin-bottom: 0; /* Elimina espacio inferior */
   }
 
-  .seccionImagen {
+  .HomeContainer .seccionImagen {
     margin-left: -40px;
     flex: 1; /* Ocupa todo el ancho disponible */
     justify-content: flex-end; /* Alinea las imágenes al final en dispositivos grandes */
   }
 
-  .texto-seccionImagen {
+  .HomeContainer .texto-seccionImagen {
     margin-bottom: 0; /* Elimina espacio inferior */
   }
 
-  .imagenSecundaria {
+  .HomeContainer .imagenSecundaria {
     width: 70px; /* Ajusta el tamaño de la imagen secundaria */
     height: 70px;
   }
 
-  .imagenPrimaria {
+  .HomeContainer .imagenPrimaria {
     width: 90px; /* Ajusta el tamaño de la imagen primaria */
     height: 90px;
   }
 
-  .textoIniciativa {
+  .HomeContainer .textoIniciativa {
     width: 150px;
   }
 
-  .textoIniciativa p, .contenedorLista, #reservaConfirmada ul{
+  .HomeContainer .textoIniciativa p, .contenedorLista, #reservaConfirmada ul{
     font-size: 70%; /* Ancho reducido en dispositivos grandes */
   }
 
-  .tituloCuadroTexto {
+  .HomeContainer .tituloCuadroTexto {
     width: 90%;
   }
 
-  .custom-list {
+  .HomeContainer .custom-list {
     width: 90%;
     font-size: 0.85rem;
   }
 
-  .tituloCuadroTexto h1, #reservaConfirmada h1 {
+  .HomeContainer .tituloCuadroTexto h1, #reservaConfirmada h1 {
     font-size: 1.0rem;
   }
 
-  .cuadroTexto {
+  .HomeContainer .cuadroTexto {
     height: 510px;
   }
 
-  .contenedorFooter {
+  .HomeContainer .contenedorFooter {
     margin-top: 45%;
   }
 
 
-  .textoImagen {
+  .HomeContainer .textoImagen {
     margin-top: 20vh; /* Ajuste para dispositivos más pequeños */
   }
 
-  .imagenProceso {
+  .HomeContainer .imagenProceso {
     display: none;
   }
 
-  .texto-seccionImagen {
+  .HomeContainer .texto-seccionImagen {
     height: 80px;
     width: 15vh; /* Ajuste para dispositivos más pequeños */
   }
 
-  .textoTooGood, .textoToGo {
+  .HomeContainer .textoTooGood, .textoToGo {
     font-size: 1.5rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
   }
 
-  .seccionTexto h1 {
+  .HomeContainer .seccionTexto h1 {
     margin-left: -80px;
     text-align: left;
     font-size: 1.5rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
   }
 
-  .seccionTexto  {
+  .HomeContainer .seccionTexto  {
     margin-right: 5%;
     margin-top: -60%;
   }
 
-  .subtexto {
+  .HomeContainer .subtexto {
     font-size: 1rem; /* Reducir el tamaño del subtexto en dispositivos más pequeños */
   }
 
-  .fotoCliente img {
+  .HomeContainer .fotoCliente img {
     width: 40px; /* Reducir el tamaño de la foto del cliente en dispositivos más pequeños */
     height: 40px;
   }
 
-  .seccionPedido {
+  .HomeContainer .seccionPedido {
       height: 400px; /* Restaurar la altura para pantallas más grandes */
   }
 
@@ -492,17 +543,17 @@ body{
       width: 80%; /* Restaurar el ancho para pantallas más grandes */
   }
 
-  .comentario {
+  .HomeContainer .comentario {
     margin-left: 30%;
     width: 60%; /* Restaurar el ancho para pantallas más grandes */
   }
 
-  .imagenPizza {
+  .HomeContainer .imagenPizza {
 
       margin-left: 57%; /* Restaurar la posición para pantallas más grandes */
   }
 
-  .imagenBolsa {
+  .HomeContainer .imagenBolsa {
     width: 150px; /* Reducir el tamaño de la foto del cliente en dispositivos más pequeños */
     height: 150px;/* Restaurar la posición para pantallas más grandes */
   }
@@ -514,58 +565,58 @@ body{
 /* Para pantallas más pequeñas de hasta 375px de ancho */
 @media only screen and (max-width: 484px) {
 
-  .contenedorRojo
+  .HomeContainer .contenedorRojo
   {
     position: relative;
     margin-top: 80px;
     margin-bottom: -200px;
   }
 
-  .seccionMensaje {
+  .HomeContainer .seccionMensaje {
     gap: 20px;
   }
 
-  .seccionIniciativa {
+  .HomeContainer .seccionIniciativa {
     height: 300px;
   }
 
-  .texto-seccionImagen {
+  .HomeContainer .texto-seccionImagen {
     margin-left: -80px;
     margin-top: -10%;
   }
 
-  .texto-seccionImagen p{
+  .HomeContainer .texto-seccionImagen p{
     font-size: 0.75rem;
     padding-top: 10px;
   }
-  .cardService,
+  .HomeContainer .cardService,
   .cardService-more {
     margin: 10px; /* Ajusta los márgenes en todos los lados */
   }
 
-  .textoIniciativa {
+  .HomeContainer .textoIniciativa {
     width: 140px;
   }
 
-  .textoIniciativa p, .contenedorLista, #reservaConfirmada ul{
+  .HomeContainer .textoIniciativa p, .contenedorLista, #reservaConfirmada ul{
     font-size: 60%; /* Ancho reducido en dispositivos grandes */
   }
 
-  .custom-list{
+  .HomeContainer .custom-list{
     font-size: 0.8rem;
   }
 
-  .seccionTexto h1 {
+  .HomeContainer .seccionTexto h1 {
     margin-left: -50px;
     text-align: left;
     font-size: 1rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
   }
 
-  .seccionImagen {
+  .HomeContainer .seccionImagen {
     display: none;
   }
 
-  .seccionTexto  {
+  .HomeContainer .seccionTexto  {
     margin-right: 5%;
     margin-top: -35%;
   }

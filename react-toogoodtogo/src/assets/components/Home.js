@@ -35,11 +35,11 @@ function Home() {
     },
 ];
     return (
-        <div>
+        <div className="HomeContainer">
             <div className='textoImagen'>
               <h1 className='textoTooGood'>Too Good</h1>
               <h1 className='textoToGo'>To Go</h1>
-              <div className='textoRestaurante'>
+              <div className='textoInformativo'>
                   <p className='subtexto'>Demuestra que te importa el planeta mientras disfrutas de deliciosas ofertas. ¡Too Good To Go te lo hace posible!</p>
               </div>
               <div class="comentario">
@@ -85,7 +85,7 @@ function Home() {
                 </div>   
                 <h1>Nuestros Servicios</h1>
                 <div className="linea"></div>  
-                <div>
+                <div className="cardsInformativa">
                   <ServicioCards productos={ofertasData} nombreBoton={'SER PARTE'}/>  
                 </div>   
                 <div className="linea"></div>     
