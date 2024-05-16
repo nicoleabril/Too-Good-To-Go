@@ -60,11 +60,11 @@
     margin-bottom: 10px;
 }
 
-.sc-fbJSV.lbIPMj {
+.sc-cwHqhk.kzZBXj{
     margin: 0 auto;
     font-weight: bold;
-}
 
+}
 div[id^="row-"] {
     background-color: rgb(245, 243, 243);
     border: 2px solid #ccc;
@@ -74,17 +74,17 @@ div[id^="row-"] div {
     margin: 0 auto; /* Centrar los elementos div horizontalmente */
 }
 
-.sc-dmqGRC.cxuENM.rdt_TableHeadRow {
+.sc-eqUzNf.dODGfY.rdt_TableHeadRow{
     background-color: rgb(245, 243, 243);
     border: 3px solid #ccc;
 }
 
   
-.sc-dmqGRC.cxuENM.rdt_TableHeadRow > div {
+.sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
     border-right: 2px solid #ccc;
 }
 
-.sc-dmqGRC.cxuENM.rdt_TableHeadRow > div:last-child {
+.sc-eqUzNf.dODGfY.rdt_TableHeadRow > div:last-child {
     border-right: none;
 }
 
@@ -95,6 +95,15 @@ div[id^="row-"] div {
     width: 50px;
     margin: 10px;
 }
+
+.imagenProd {
+    width: 50px;  /* Cambia el tamaño a tu preferencia */
+    height: 50px; /* Cambia el tamaño a tu preferencia */
+    border-radius: 8px;  /* Añade borde redondeado */
+    object-fit: cover;   /* Asegura que la imagen mantenga su aspecto */
+    margin: 0 auto;
+}
+  
 /*responsive para dispositivos móviles*/
 
 @media screen and (max-width: 768px) {
@@ -137,6 +146,13 @@ div[id^="row-"] div {
         height: 35px;
         margin: 5px;
         font-size: 10px; 
+    }
+
+    .imagenProd {
+        width: 35px;  /* Cambia el tamaño a tu preferencia */
+        height: 35px; /* Cambia el tamaño a tu preferencia */
+        border-radius: 8px;  /* Añade borde redondeado */
+        object-fit: cover;   /* Asegura que la imagen mantenga su aspecto */
     }
     
 }
