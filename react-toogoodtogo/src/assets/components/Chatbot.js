@@ -1,36 +1,36 @@
 import React, { useEffect } from 'react';
+import ChatBot from "react-chatbotify";
+import Chatbot from "../images/chatbot.png"
+import Chatbot2 from "../images/chatbot2.png"
+const MyChatbot  = () => {
 
-const Chatbot = () => {
-  useEffect(() => {
-    // Configura el objeto window.chatbotConfig
-    window.chatbotConfig = {
-      bot_id: "c973ce11-4188-43e5-9cae-24c89773cf5d",
-    };
-
-    const script = document.createElement('script');
-    script.src = 'https://app.chatfly.co/Chat.js';
-    script.async = true;
-
-    script.onload = () => {
-      console.log("El script del chatbot se ha cargado correctamente.");
-    };
-
-    script.onerror = () => {
-      console.error("Error al cargar el script del chatbot.");
-    };
-
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  const options = {
+    // ...other configurations
+    theme: {
+			primaryColor: "#B01818",
+			secondaryColor: "#B01818",
+		},
+    header : {
+      title : <b>ChatFood</b>,
+      avatar: Chatbot2,
+    },
+    chatButton: {
+      icon: Chatbot2,
+    },
+    tooltipStyle: {
+      zIndex : 1000,
+    },
+    chatButtonStyle: {
+      backgroundColor: '#ffffff',
+      border: '4px solid #ffffff',
+    },
+  };
 
   return (
-    <div>
-      Loading chatbot...
-    </div>
+    <ChatBot options={options}>
+
+    </ChatBot>
   );
 };
 
-export default Chatbot;
+export default MyChatbot ;
