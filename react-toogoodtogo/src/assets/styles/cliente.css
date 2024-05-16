@@ -113,3 +113,43 @@ body{
   padding-right: 40px;
   text-align: right;
 }
+
+
+@media only screen and (max-width: 484px) {
+  .ClienteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+   
+  }
+  
+  .ClienteContainer .textoImagen {
+    margin-left: 2%;
+    justify-content: center;
+    
+  }
+  
+  .ClienteContainer .imagen2 {
+    display: none;
+  }
+  
+  .ClienteContainer .contenedorRojo {
+    margin-top: 150px;
+  }
+  .ClienteContainer .card:first-child {
+    margin-top: 30vh;
+  }
+  
+  .ClienteContainer .card{
+    margin: 10px;
+  }
+  .ClienteContainer .card-more{
+    margin-bottom: auto;
+    margin-top: 10px;
+  }
+  .ClienteContainer .contenedorFooter{
+    margin-top: 30%; 
+    position: relative;
+  }
+}

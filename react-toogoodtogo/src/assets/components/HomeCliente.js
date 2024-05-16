@@ -53,7 +53,7 @@ function HomeCliente() {
         <LocalesCards locales={localesData} nombreBoton={'VER OFERTAS'} />
         <h1>Negocios</h1>
         <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
-        <h1>¿Buscas de lo siempre?</h1>
+        <h1>¿Buscas lo siempre?</h1>
         <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
         <h1>Localización</h1>
         <MapComponent/>

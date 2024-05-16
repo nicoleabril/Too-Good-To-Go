@@ -165,3 +165,52 @@
     font-size: 14px;
     line-height: 1.5;
 }
+@media only screen and (max-width: 484px) {
+  .RestauranteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+   
+  }
+  .RestauranteContainer .subtexto{
+    text-align: justify;
+    width: 200px;
+    margin-left: -8vh;
+  }
+  .RestauranteContainer .comentario{
+   
+    width: 280px;
+  }
+  .RestauranteContainer .textoImagen {
+    margin-left: 2%;
+    justify-content: center;
+    
+  }
+  
+  .RestauranteContainer .imagen2 {
+    display: none;
+  }
+  
+  .RestauranteContainer .contenedorRojo {
+    margin-top: 150px;
+  }
+  .RestauranteContainer .card:first-child {
+    margin-top: 30vh;
+  }
+  
+  .RestauranteContainer .card{
+    margin: 10px;
+  }
+  .RestauranteContainer .card-more{
+    margin-bottom: auto;
+    margin-top: 10px;
+  }
+  .RestauranteContainer .card-more:last-child {
+    margin-bottom: 10vh;
+  }
+  .RestauranteContainer .contenedorFooter{
+    margin-top: 30%; 
+    position: relative;
+  }
+}
