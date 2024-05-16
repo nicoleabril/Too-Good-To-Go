@@ -25,7 +25,7 @@ const Header = ({page}) => {
                 <li><a href="/">Mi Perfil</a></li>
                 {page === 'Informativa' && (
                     <React.Fragment>
-                        <li><a href="/"><button className='buttonRegistrarse'>Registrarse</button></a></li>
+                        <li><a href="/Registro"><button className='buttonRegistrarse'>Registrarse</button></a></li>
                         <li><a href="/Login"><button className='buttonIniciarSesion'>Iniciar Sesión</button></a></li>
                     </React.Fragment>
                 )}
