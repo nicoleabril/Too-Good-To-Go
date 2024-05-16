@@ -32,7 +32,7 @@ const Header = ({page}) => {
                 
             </ul>
         </div>
-        {page !== 'RegistroProductos' && (
+        {page !== 'RegistroProductos' && page !=='Informativa' && (
             <a href='/' className='logo'><AiOutlineShopping className='iconOrders'/></a>
         )}
        
