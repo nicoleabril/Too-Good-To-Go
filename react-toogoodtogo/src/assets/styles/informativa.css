@@ -459,7 +459,12 @@ body{
     height: 400px;
     flex-direction: row; /* Vuelve a la dirección de fila en dispositivos grandes */
   }
-
+  .HomeContainer .imagenBolsa {
+    width: 250px;
+    height: 250px;
+    margin-top: 10vh;
+    margin-left: -5px;
+  }
   .HomeContainer .seccionMensaje {
     flex: 1; /* Ocupa todo el ancho disponible */
     margin-right: 20px; /* Agrega espacio entre secciones */
@@ -520,7 +525,7 @@ body{
   }
 
   .HomeContainer .contenedorFooter {
-    margin-top: 45%;
+    margin-top: 30%;
   }
 
 
