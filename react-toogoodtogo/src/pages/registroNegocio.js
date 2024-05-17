@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import '../assets/styles/registroUsuario.css';
+import '../assets/styles/registroNegocio.css';
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
@@ -120,9 +120,9 @@ export default class RegistroNegocio extends Component {
     };
 
     return (
-      <div className="container">
+      <div className="containerNegocio">
         <div className="waves-background"></div>
-        <div className="loginForm">
+        <div className="loginForm2">
           <form>
             <h1 className="too-good">Registro de</h1>
             <h1 className="to-go">Negocio</h1>
@@ -174,8 +174,18 @@ export default class RegistroNegocio extends Component {
                     />
                 </div>
             </div>
-            <div id="mapContainer">
-              <MapContainer center={[this.state.latitude || 51.505, this.state.longitude || -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
+            
+            <button onClick={this.handleSubmit}>Registrarse</button>
+            <div className="new-account">
+              <p>¿Eres nuevo aquí? <a href="/">Crear cuenta</a></p>
+            </div>
+          </form>
+        </div>
+        <div className="map-container">
+          <div className="ubicacion"><p>Selecciona tu ubicación</p></div>
+            <div className="burger-image"></div>
+            <div className="map-wrapper">
+              <MapContainer center={[-2.90055, -79.00453]} zoom={13}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -183,15 +193,8 @@ export default class RegistroNegocio extends Component {
                 <LocationMarker />
               </MapContainer>
             </div>
-            <button onClick={this.handleSubmit}>Registrarse</button>
-            <div className="new-account">
-              <p>¿Eres nuevo aquí? <a href="/">Crear cuenta</a></p>
-            </div>
-          </form>
-        </div>
-        <div className="imagenLogin">
-          <img src={burger} alt="Hamburguesa" className="imagen" />
-        </div>
+          </div>
+
         <div className="footer">
           <div className="textoFooter">
             Copyright © 2024 Too Good To Go International. All Rights Reserved.
