@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import '../assets/styles/registroUsuario.css';
-import { FaCircleUser } from "react-icons/fa6";
-import { RiLockPasswordFill } from "react-icons/ri";
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
 

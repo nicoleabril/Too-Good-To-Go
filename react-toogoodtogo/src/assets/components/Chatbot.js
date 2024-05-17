@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import ChatBot from "react-chatbotify";
-import Chatbot from "../images/chatbot.png"
 import Chatbot2 from "../images/chatbot2.png"
 const MyChatbot  = () => {
 

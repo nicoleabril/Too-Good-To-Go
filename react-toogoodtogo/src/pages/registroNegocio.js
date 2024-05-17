@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import '../assets/styles/registroUsuario.css';
-import { FaCircleUser } from "react-icons/fa6";
-import { RiLockPasswordFill } from "react-icons/ri";
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import L, { icon } from 'leaflet';
+import L from 'leaflet';
 import markerIcon from '../assets/images/map-marker-icon.png'; 
 export default class RegistroNegocio extends Component {
   constructor(props) {
@@ -187,7 +185,7 @@ export default class RegistroNegocio extends Component {
             </div>
             <button onClick={this.handleSubmit}>Registrarse</button>
             <div className="new-account">
-              <p>¿Eres nuevo aquí? <a href="#">Crear cuenta</a></p>
+              <p>¿Eres nuevo aquí? <a href="/">Crear cuenta</a></p>
             </div>
           </form>
         </div>

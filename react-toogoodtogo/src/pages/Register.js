@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import '../assets/styles/registro.css'
-//import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
-import ventas from '../assets/images/ventas.jpg'
 import Header from '../assets/components/Header';
 import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import Chatbot from '../assets/components/Chatbot';
