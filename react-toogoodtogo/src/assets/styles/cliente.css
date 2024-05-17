@@ -113,7 +113,9 @@ body{
   padding-right: 40px;
   text-align: right;
 }
-
+.ClienteContainer .contenidoCard li{
+  list-style: none;
+}
 
 @media only screen and (max-width: 484px) {
   .ClienteContainer {

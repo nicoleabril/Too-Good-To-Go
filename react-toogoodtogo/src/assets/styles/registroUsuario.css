@@ -7,14 +7,10 @@
   --color-fondoLogin: #cfcfcf;
   --color-textos:#595959;
 }
-.container{
+.containerRegistro{
   overflow: hidden;
 }
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 input::placeholder {
     color: #6e6a6a; /* Cambia el color del placeholder */
@@ -30,7 +26,7 @@ body {
  
 }
 
-.container {
+.containerRegistro {
   margin-left: 30vh;
   display: flex;
   min-height: 80vh;
@@ -40,10 +36,10 @@ body {
   
 }
 
-.loginForm {
+.containerRegistro .loginForm {
   flex: 1;
   top: 10vh;
-  padding: 30px 80px 10px 80px;
+  padding: 30px 80px 80px 80px;
   border-radius: 40px 40px 0 0;
   height: 120vh;
   background-color: var(--color-fondoLogin);
@@ -52,14 +48,14 @@ body {
   position: fixed;
 }
 
-.input-box {
+.containerRegistro .input-box2 {
   position: relative;
   height: 50px;
   width: 100%;
-  margin: 30px 0;
+  margin: 20px 0;
 }
 
-input {
+.containerRegistro input {
   border-radius: 15px;
   width: 80%;
   height: 35px;
@@ -70,7 +66,7 @@ input {
 }
 
 
-.icon {
+.containerRegistro .icon {
   position: absolute;
   right: 60px;
   top: 40%;
@@ -79,7 +75,7 @@ input {
   color: var(--color-primary);
 }
 
-#botonRegistro {
+.containerRegistro #botonRegistro {
   margin: 30px;
   margin-top: -30%;
   height: 45px;
@@ -92,62 +88,48 @@ input {
   color: white;
   border-radius: 5px;
 }
-#botonRegistro:hover{
+.containerRegistro #botonRegistro:hover{
   cursor: pointer;
   background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
 }
-.too-good,
-.to-go {
-  font-size: 58px;
-  display: inline-block;
-}
 
-.too-good {
-  color: var(--color-primary);
-}
-
-.to-go {
-  color: #595959;
-  margin-left: 10px;
-}
-
-.forgot-password {
+.containerRegistro .forgot-password {
   margin-left: 10%;
   margin-top: -25px;
   display: flex;
   font-size: 14px;
 }
 
-.forgot-password a {
+.containerRegistro .forgot-password a {
   text-decoration: none;
   color: #595959;
 }
 
-.new-account {
+.containerRegistro .new-account {
   font-size: 14px;
   color: #595959;
   margin-top: -20px;
 }
 
-.new-account a {
+.containerRegistro .new-account a {
   margin-left: 5px;
   color: var(--color-primary);
   font-weight: bold;
 }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
-    color: white;
-    text-align: center;
-    height: 23vh;
-    border-radius: 60px 60px 0 0;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5)
+.containerRegistro .footer2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
+  color: white;
+  text-align: center;
+  border-radius: 60px 60px 0 0;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5)
 }
-.textoFooter {
+.containerRegistro .textoFooter {
     display: flex;
     justify-content: right; 
     align-items: center;
@@ -162,7 +144,7 @@ input {
     text-align: right;
     border-radius: 60px 60px 0 0;
 }
-.imagenLogin {
+.containerRegistro .imagenLogin {
   position: fixed;
   top: 5vh; 
   margin-left: 47%; 
@@ -172,14 +154,14 @@ input {
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
   
-.imagen {
+.containerRegistro .imagen {
     width: 500px; 
     height: 500px;
     filter: drop-shadow(
         0 0 10px rgba(0,0,0,0.5)
     );
 }
-.waves-background {
+.containerRegistro .waves-background {
     position: fixed;
     top: 2%;
     bottom: 0;
@@ -190,25 +172,34 @@ input {
     z-index: -1;
 }
 
-#mapContainer {
+.containerRegistro #mapContainer {
   height: '400px';
   width: '400px'; 
   margin-bottom: '10px';
   background-color: black;
   z-index: 1000;
 }
-
-.password-container {
-  display: flex;
+.containerRegistro .password-container {
   margin-top: -30px;
-  width: 490px;
-  margin-left: 33px;
-  gap: 5px;
+  width: 90%;
+  display: inline-flex;
+  justify-content: center;
 }
 
-.password-container .input-box {
-  width: 350px;
+.containerRegistro .password-container .input-box2:first-child input {
+  margin-right: -20px;
 }
+
+.containerRegistro .password-container .input-box2:last-child input {
+  margin-left: -20px;
+}
+
+.containerRegistro .password-container input {
+  width: 220px;
+}
+
+
+
 
 
 

@@ -90,13 +90,13 @@ export default class RegistroCliente extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="containerRegistro">
         <div className="waves-background"></div>
         <div className="loginForm">
           <form>
             <h1 className="too-good">Registro de</h1>
             <h1 className="to-go">Cliente</h1>
-            <div className="input-box">
+            <div className="input-box2">
                 <input
                     placeholder="Nombre Completo"
                     required
@@ -104,7 +104,7 @@ export default class RegistroCliente extends Component {
                     onChange={this.handleInputChange}
                 />
             </div>
-            <div className="input-box">
+            <div className="input-box2">
               <input
                 type="email"
                 placeholder="Correo Electrónico"
@@ -113,7 +113,7 @@ export default class RegistroCliente extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <div className="input-box">
+            <div className="input-box2">
               <input
                 type="email"
                 placeholder="Teléfono"
@@ -123,7 +123,7 @@ export default class RegistroCliente extends Component {
               />
             </div>
             <div className="password-container">
-                <div className="input-box">
+                <div className="input-box2">
                 <input
                     type="password"
                     placeholder="Contraseña"
@@ -133,7 +133,7 @@ export default class RegistroCliente extends Component {
                     onKeyDown={this.handleEnterPress}
                 />
                 </div>
-                <div className="input-box">
+                <div className="input-box2">
                     <input
                         type="password"
                         placeholder="Confirmar Contraseña"
@@ -153,7 +153,7 @@ export default class RegistroCliente extends Component {
         <div className="imagenLogin">
           <img src={burger} alt="Hamburguesa" className="imagen" />
         </div>
-        <div className="footer">
+        <div className="footer2">
           <div className="textoFooter">
             Copyright © 2024 Too Good To Go International. All Rights Reserved.
           </div>
