@@ -103,7 +103,7 @@ function CRUDProducts() {
                     <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
                 </div>
                 <React.Fragment>
-                    <a href="/RegistroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
+                    <a href="/registroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
                 </React.Fragment>
             </div>
             <div className="tabla-productos-container">
@@ -111,6 +111,12 @@ function CRUDProducts() {
                     columns={columns} 
                     data={data} 
                     />
+            </div>
+            <div className="waves-background2"></div>
+            <div className="contenedorFooter">
+                <div className="textoFooter2">
+                Copyright © 2024 Too Good To Go International. All Rights Reserved.
+                </div>
             </div>
         </div>
     );
