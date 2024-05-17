@@ -129,6 +129,14 @@ export default class RegistroNegocio extends Component {
             <h1 className="too-good">Registro de</h1>
             <h1 className="to-go">Negocio</h1>
             <div className="input-box">
+                <input
+                    placeholder="Nombre del Negocio"
+                    required
+                    name="name"
+                    onChange={this.handleInputChange}
+                />
+            </div>
+            <div className="input-box">
               <input
                 type="email"
                 placeholder="Correo Electrónico"
@@ -136,20 +144,39 @@ export default class RegistroNegocio extends Component {
                 name="username"
                 onChange={this.handleInputChange}
               />
-              <FaCircleUser className="icon" />
             </div>
             <div className="input-box">
               <input
-                type="password"
-                placeholder="Contraseña"
+                type="email"
+                placeholder="Teléfono"
                 required
-                name="password"
+                name="username"
                 onChange={this.handleInputChange}
-                onKeyDown={this.handleEnterPress}
               />
-              <RiLockPasswordFill className="icon" />
             </div>
-            <div style={{ height: '200px', width: '200px', marginBottom: '10px' }}>
+            <div className="password-container">
+                <div className="input-box">
+                <input
+                    type="password"
+                    placeholder="Contraseña"
+                    required
+                    name="password"
+                    onChange={this.handleInputChange}
+                    onKeyDown={this.handleEnterPress}
+                />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="password"
+                        placeholder="Confirmar Contraseña"
+                        required
+                        name="passwordConfirm"
+                        onChange={this.handleInputChange}
+                        onKeyDown={this.handleEnterPress}
+                    />
+                </div>
+            </div>
+            <div id="mapContainer">
               <MapContainer center={[this.state.latitude || 51.505, this.state.longitude || -0.09]} zoom={13} style={{ height: '100%', width: '100%' }}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

@@ -9,13 +9,15 @@ export default class RegistroCliente extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      rol: '',
-      token: Cookies.get('authToken'),
-      isLoggedIn: false,
-      currentImageIndex: 0,
-      error: false,
+        name: '',
+        username: '',
+        password: '',
+        passwordConfirm: '',
+        rol: '',
+        token: Cookies.get('authToken'),
+        isLoggedIn: false,
+        currentImageIndex: 0,
+        error: false,
     };
   }
 
@@ -122,17 +124,29 @@ export default class RegistroCliente extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <div className="input-box">
-              <input
-                type="password"
-                placeholder="Contraseña"
-                required
-                name="password"
-                onChange={this.handleInputChange}
-                onKeyDown={this.handleEnterPress}
-              />
+            <div className="password-container">
+                <div className="input-box">
+                <input
+                    type="password"
+                    placeholder="Contraseña"
+                    required
+                    name="password"
+                    onChange={this.handleInputChange}
+                    onKeyDown={this.handleEnterPress}
+                />
+                </div>
+                <div className="input-box">
+                    <input
+                        type="password"
+                        placeholder="Confirmar Contraseña"
+                        required
+                        name="passwordConfirm"
+                        onChange={this.handleInputChange}
+                        onKeyDown={this.handleEnterPress}
+                    />
+                </div>
             </div>
-            <button onClick={this.handleSubmit}>Registrarse</button>
+            <button onClick={this.handleSubmit} id="botonRegistro">Registrarse</button>
             <div className="new-account">
               <p>¿Ya tienes una cuenta? <a href="/Login">Inicia Sesión</a></p>
             </div>

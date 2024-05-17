@@ -79,8 +79,9 @@ input {
   color: var(--color-primary);
 }
 
-button {
+#botonRegistro {
   margin: 30px;
+  margin-top: -30%;
   height: 45px;
   width: 60%;
   background-color: var(--color-button);
@@ -91,7 +92,7 @@ button {
   color: white;
   border-radius: 5px;
 }
-button:hover{
+#botonRegistro:hover{
   cursor: pointer;
   background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
 }
@@ -189,6 +190,28 @@ button:hover{
     z-index: -1;
 }
 
+#mapContainer {
+  height: '400px';
+  width: '400px'; 
+  margin-bottom: '10px';
+  background-color: black;
+  z-index: 1000;
+}
+
+.password-container {
+  display: flex;
+  margin-top: -30px;
+  width: 490px;
+  margin-left: 33px;
+  gap: 5px;
+}
+
+.password-container .input-box {
+  width: 350px;
+}
+
+
+
 @media (max-width: 800px) {
   /* Ocultar las waves y la imagen */
   .waves-background,
@@ -228,9 +251,9 @@ button:hover{
     margin-top: 5px;
     margin-left: 0;
   }
-  button {
+  #botonRegistro {
     width: 100%; /* Ancho completo */
-    margin: 20px 0; /* Espaciado */
+    margin: 20px 85; /* Espaciado */
   }
 
   .too-good,
@@ -266,7 +289,7 @@ button:hover{
     margin-top: 0; 
   }
 
-  button {
+  #botonRegistro {
     margin: 30px 0 10px; 
   }
   .footer {
@@ -296,7 +319,7 @@ button:hover{
     margin-top: 0; 
   }
 
-  button {
+  #botonRegistro {
     margin: 30px 0 10px; 
   }
   .footer {

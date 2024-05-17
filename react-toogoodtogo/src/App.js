@@ -4,16 +4,11 @@ import "./assets/styles/App.css";
 import Cliente from "./pages/Cliente"
 import Restaurante from "./pages/Restaurante";
 import Bienvenida from "./pages/Bienvenida"
-<<<<<<< Updated upstream
-import CrudProducto from "./pages/CrudProducto";
-import AddProduct from "./pages/AddProduct";
-
-=======
 import CrudProducto from "./pages/crudProducto";
+import AddProduct from "./pages/AddProduct";
 import Register from "./pages/Register";
 import RegistroCliente from "./pages/registroCliente";
 import RegistroNegocio from "./pages/registroNegocio";
->>>>>>> Stashed changes
 function App() {
   return (
     <div className="App">
