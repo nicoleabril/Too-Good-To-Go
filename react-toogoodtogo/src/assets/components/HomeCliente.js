@@ -57,7 +57,6 @@ function HomeCliente() {
         <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
         <h1>Localización</h1>
         <MapComponent/>
-       
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">
