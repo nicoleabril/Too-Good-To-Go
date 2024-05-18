@@ -1,5 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 import areaChart from "./configs/areaChart";
+import "../styles/graficas.css"
 
 function AreaChart() {
 
