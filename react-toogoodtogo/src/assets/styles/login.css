@@ -89,17 +89,17 @@ button:hover{
   cursor: pointer;
   background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
 }
-.containerLogin .too-good,
-.containerLogin .to-go {
+ .too-good,
+.to-go {
   font-size: 58px;
   display: inline-block;
 }
 
-.containerLogin .too-good {
+.too-good {
   color: var(--color-primary);
 }
 
-.containerLogin .to-go {
+.to-go {
   color: #595959;
   margin-left: 10px;
 }
