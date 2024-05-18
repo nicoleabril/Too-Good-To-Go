@@ -55,14 +55,14 @@ function CRUDCategoria() {
             categoria: "Ofertas",
             icono: <img className="logoOfertasCrudProd" src={ofertasLogo} alt="Ofertas" />,
             estado: "Activo",
-            fechaCreacion: "2023-10-10",
+            fechaCreacion: "10/10/2023",
         },
         {
             id: 2,
             categoria: "Combos",
             icono: <img className="logoCombosCrudProd" src={combosLogo} alt="Combos" />,
             estado: "Activo",
-            fechaCreacion: "2021-10-10",
+            fechaCreacion: "02/08/2021",
 
         },
         {
@@ -70,21 +70,21 @@ function CRUDCategoria() {
             categoria: "Bebidas",
             icono: <img className="logoBebidasCrudProd" src={bebidasLogo} alt="Bebidas" />,
             estado: "Activo",
-            fechaCreacion: "2022-10-10",
+            fechaCreacion: "05/07/2022",
         },
         {
             id: 4,
             categoria: "Sánduches",
             icono: <img className="logoSanduchesCrudProd" src={sanduchesLogo} alt="Sánduches" />,
             estado: "Activo",
-            fechaCreacion: "2022-05-03",
+            fechaCreacion: "03/05/2022",
         },
         {
             id: 5,
             categoria: "Donas Premium",
             icono: <img className="logoPremiumCrudProd" src={donaPremiumLogo} alt="Donas Premium" />,
             estado: "Inactivo",
-            fechaCreacion: "2023-02-25",
+            fechaCreacion: "25/02/2023",
         }
     ];
     return (
@@ -96,7 +96,7 @@ function CRUDCategoria() {
                         <input type="text" className="TextoBusquedaCategoria" placeholder="Buscar Categoría" />
                     </div>
                     <React.Fragment>
-                        <a href="/registroProductos/agregarProducto"><button className='botonAgregarCategoria'>Agregar Categoría</button></a>
+                        <a href="/RegistroCategoria/AgregarCategoria"><button className='botonAgregarCategoria'>Agregar Categoría</button></a>
                     </React.Fragment>
                 </div>
                 <div className="tabla-categoria-container">
