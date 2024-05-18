@@ -96,29 +96,31 @@ function CRUDProducts() {
         }
     ];
     return (
-        <div className="crud-producto-container">
-            <div className="crud-producto">
-                <div className="BusquedaProducto">
-                    <img className="FotoBuscar" src={buscar} alt="Buscar" />
-                    <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
+        <body className="container-crud-prod">
+            <main className="crud-producto-container">
+                <div className="crud-producto">
+                    <div className="BusquedaProducto">
+                        <img className="FotoBuscar" src={buscar} alt="Buscar" />
+                        <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
+                    </div>
+                    <React.Fragment>
+                        <a href="/registroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
+                    </React.Fragment>
                 </div>
-                <React.Fragment>
-                    <a href="/registroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
-                </React.Fragment>
-            </div>
-            <div className="tabla-productos-container">
-                <DataTable
-                    columns={columns} 
-                    data={data} 
-                    />
-            </div>
-            <div className="waves-background2"></div>
-            <div className="contenedorFooter">
+                <div className="tabla-productos-container">
+                    <DataTable
+                        columns={columns} 
+                        data={data} 
+                        />
+                </div>
+            </main>
+            <footer className="contenedorFooter-prod">
                 <div className="textoFooter2">
                 Copyright © 2024 Too Good To Go International. All Rights Reserved.
                 </div>
-            </div>
-        </div>
+            </footer>
+            <div className="waves-background2-prod"></div>
+        </body>
     );
 }
 
