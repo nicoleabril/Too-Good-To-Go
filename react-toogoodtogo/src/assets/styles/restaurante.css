@@ -28,13 +28,14 @@
     margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
 }
 
+.RestauranteContainer .seccionEstadistica {
+  display: flex;
+  flex-direction: row;
+}
+
 .RestauranteContainer .componentesDashboard {
   display: flex;
   flex-direction: row;/* Espacio entre los elementos, puedes ajustar este valor */
-}
-
-.RestauranteContainer .seccionEstadistica {
-  margin-bottom: 5px;
 }
   
   .RestauranteContainer .contenedorBlanco {
@@ -225,11 +226,7 @@
     margin: 10px;
   }
   .RestauranteContainer .card-more{
-    margin-bottom: auto;
     margin-top: 10px;
-  }
-  .RestauranteContainer .card-more:last-child {
-    margin-bottom: 10vh;
   }
   .RestauranteContainer .contenedorFooter{
     margin-top: 30%; 
