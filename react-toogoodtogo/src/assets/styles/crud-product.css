@@ -52,6 +52,8 @@
 
 .crud-producto-container .TextoBusquedaProducto {
     width: 100%;
+    padding: none;
+    border:none;
 }
 
 .crud-producto-container .tabla-productos-container {
@@ -213,6 +215,8 @@
 
     .crud-producto-container .TextoBusquedaProducto {
         width: 100%; 
+        padding: none;
+        border:none;
     }
 
     .crud-producto-container .botonAgregarProducto {
