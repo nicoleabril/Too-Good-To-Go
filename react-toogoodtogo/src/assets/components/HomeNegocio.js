@@ -7,7 +7,6 @@ import StatisticsCards from './StatisticsCard';
 import GraficaCard from './GraficaCard';
 import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
-import sanduche2 from '../images/sanduche2.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import ProductosCards from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
