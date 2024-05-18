@@ -105,7 +105,14 @@
     width: 50px;
     margin: 10px;
 }
-  
+
+.logoOfertasCrudProd, .logoCombosCrudProd, .logoBebidasCrudProd, .logoSanduchesCrudProd, .logoPremiumCrudProd{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin: 0 auto;
+}  
+
 .contenedorFooter-categoria {
     margin-top: auto;
     position: relative;
@@ -153,6 +160,11 @@
         margin-left: 20px;
         margin-right: 20px;
     }
+
+    .logoOfertasCrudProd, .logoCombosCrudProd, .logoBebidasCrudProd, .logoSanduchesCrudProd, .logoPremiumCrudProd{
+        width: 40px;
+        height: 40px;
+    }  
 
     .crud-categoria-container .TextoBusquedaCategoria {
         width: 100%;
