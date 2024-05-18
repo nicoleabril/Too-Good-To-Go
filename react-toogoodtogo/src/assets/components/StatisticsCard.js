@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/statisticsCards.css';
 
-const StatisticsCards = ({ datos }) => {
-  const [selectedIndex, setSelectedIndex] = useState(null);
+const StatisticsCards = ({ datos, selectedIndex, setSelectedIndex}) => {
 
   const handleCardClick = (index) => {
     setSelectedIndex(index);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/restaurante.css'
 import donas from '../images/donas.png'
 import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
@@ -15,6 +15,8 @@ import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
 function HomeNegocio() {
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const ordenesPopulares = [
     {
@@ -70,13 +72,6 @@ function HomeNegocio() {
   },
   ];
 
-  const datosGráfica = [
-    {
-      name: 'Nuevos Clientes',
-      number: '24',
-      icon: <GrGroup size={30}/>,
-    }
-  ];
 
     return (
     
@@ -118,8 +113,8 @@ function HomeNegocio() {
                     <div className='componentesDashboard'>
                       <DashboardCards platos={masVendidos} /> 
                       <div className='seccionEstadistica'>
-                        <StatisticsCards datos={datosEstadisticos} /> 
-                        <GraficaCard datos={datosGráfica} /> 
+                        <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/> 
+                        {selectedIndex !== null && <GraficaCard datos={selectedIndex} />}
                       </div>
                     </div>
                     <div className="linea"></div>   

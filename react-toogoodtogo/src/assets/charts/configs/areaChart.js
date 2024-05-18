@@ -13,13 +13,13 @@ const lineChart = {
     options: {
       chart: {
         width: "100%",
-        height: 350,
+        height: 400,
         type: "area",
         toolbar: {
           show: false,
         },
         margin: {
-          top: 20,
+          top: 50,
           right: 20,
           bottom: 20,
           left: 20
@@ -28,7 +28,7 @@ const lineChart = {
     
       grid: {
         padding: {
-            top: -40,
+            top: -20,
           right: 20,
           bottom: 90,
           left: 20
@@ -38,6 +38,7 @@ const lineChart = {
       legend: {
         show: true,
         position: 'top',
+        offsetY: 5 // Ajusta este valor según sea necesario
       },
     
       dataLabels: {

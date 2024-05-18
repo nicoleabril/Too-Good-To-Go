@@ -4,7 +4,7 @@ import "./assets/styles/App.css";
 import Cliente from "./pages/Cliente"
 import Restaurante from "./pages/Restaurante";
 import Bienvenida from "./pages/Bienvenida"
-import CrudProducto from "./pages/crudProducto";
+import CrudProducto from "./pages/CrudProducto";
 import AddProduct from "./pages/AddProduct";
 import Register from "./pages/Register";
 import RegistroCliente from "./pages/registroCliente";
