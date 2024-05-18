@@ -9,6 +9,7 @@ import AddProduct from "./pages/AddProduct";
 import Register from "./pages/Register";
 import RegistroCliente from "./pages/registroCliente";
 import RegistroNegocio from "./pages/registroNegocio";
+import NegocioPage from "./pages/InicioNegocio";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/Inicio" element={<Cliente />} />
+          <Route path="/Inicio-Negocio" element={<NegocioPage />} />
           <Route path="/Registro" element={<Register />} />
           <Route path="/Registro-Cliente" element={<RegistroCliente />} />
           <Route path="/Registro-Negocio" element={<RegistroNegocio />} />

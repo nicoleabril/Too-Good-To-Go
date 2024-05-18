@@ -7,7 +7,7 @@
   --color-fondoLogin: #cfcfcf;
   --color-textos:#595959;
 }
-.container{
+.containerLogin{
   overflow: hidden;
 }
 * {
@@ -16,12 +16,12 @@
   box-sizing: border-box;
 }
 
-body {
+.containerLogin body {
   font-family: 'Poppins', sans-serif;
  
 }
 
-.container {
+.containerLogin {
   margin-left: 30vh;
   display: flex;
   min-height: 80vh;
@@ -31,7 +31,7 @@ body {
   
 }
 
-.loginForm {
+.containerLogin .loginForm {
   flex: 1;
   top: 10vh;
   padding: 30px 80px 10px 80px;
@@ -43,14 +43,14 @@ body {
   position: fixed;
 }
 
-.input-box {
+.containerLogin .input-box {
   position: relative;
   height: 50px;
   width: 100%;
   margin: 30px 0;
 }
 
-input {
+.containerLogin input {
   border-radius: 15px;
   width: 80%;
   height: 35px;
@@ -60,11 +60,11 @@ input {
   padding: 20px 45px 20px 20px;
 }
 
-input::placeholder {
+.containerLogin input::placeholder {
   color: var(--color-secundary);
 }
 
-.icon {
+.containerLogin .icon {
   position: absolute;
   right: 60px;
   top: 40%;
@@ -73,7 +73,7 @@ input::placeholder {
   color: var(--color-primary);
 }
 
-button {
+.containerLogin button {
   margin: 30px;
   height: 45px;
   width: 60%;
@@ -85,50 +85,50 @@ button {
   color: white;
   border-radius: 5px;
 }
-button:hover{
+.containerLogin button:hover{
   cursor: pointer;
   background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
 }
-.too-good,
-.to-go {
+.containerLogin .too-good,
+.containerLogin .to-go {
   font-size: 58px;
   display: inline-block;
 }
 
-.too-good {
+.containerLogin .too-good {
   color: var(--color-primary);
 }
 
-.to-go {
+.containerLogin .to-go {
   color: #595959;
   margin-left: 10px;
 }
 
-.forgot-password {
+.containerLogin .forgot-password {
   margin-left: 10%;
   margin-top: -25px;
   display: flex;
   font-size: 14px;
 }
 
-.forgot-password a {
+.containerLogin .forgot-password a {
   text-decoration: none;
   color: #595959;
 }
 
-.new-account {
+.containerLogin .new-account {
   font-size: 14px;
   color: #595959;
   margin-top: -20px;
 }
 
-.new-account a {
+.containerLogin .new-account a {
   margin-left: 5px;
   color: var(--color-primary);
   font-weight: bold;
 }
 
-.footer {
+.containerLogin .footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -140,7 +140,7 @@ button:hover{
     border-radius: 60px 60px 0 0;
     box-shadow: 0 0 30px rgba(0,0,0,0.5)
 }
-.textoFooter {
+.containerLogin .textoFooter {
     display: flex;
     justify-content: right; 
     align-items: center;
@@ -155,7 +155,7 @@ button:hover{
     text-align: right;
     border-radius: 60px 60px 0 0;
 }
-.imagenLogin {
+.containerLogin .imagenLogin {
   position: fixed;
   top: 5vh; 
   margin-left: 47%; 
@@ -165,14 +165,15 @@ button:hover{
   filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
   
-.imagen {
-    width: 500px; 
-    height: 500px;
-    filter: drop-shadow(
-        0 0 10px rgba(0,0,0,0.5)
-    );
+  
+.containerLogin .imagen {
+  width: 500px; 
+  height: 500px;
+  filter: drop-shadow(
+      0 0 10px rgba(0,0,0,0.5)
+  );
 }
-.waves-background {
+.containerLogin .waves-background {
     position: fixed;
     top: 2%;
     bottom: 0;
@@ -185,13 +186,13 @@ button:hover{
 
 @media (max-width: 800px) {
   /* Ocultar las waves y la imagen */
-  .waves-background,
-  .imagenLogin {
+  .containerLogin .waves-background,
+  .containerLogin .imagenLogin {
     display: none;
   }
 
   /* Ajustes para el formulario en dispositivos móviles */
-  .loginForm {
+  .containerLogin .loginForm {
     width: 80%;
     border-radius: 20px; /* Redondear los bordes */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -206,32 +207,32 @@ button:hover{
     transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
   }
 
-  .input-box {
+  .containerLogin .input-box {
     margin: 15px 0; /* Espaciado entre los campos */
   }
 
-  input {
+  .containerLogin input {
     width: 100%; 
     padding: 15px; 
     font-size: 16px;
     padding: 20px 45px 20px 20px;
   }
-  .forgot-password{
+  .containerLogin .forgot-password{
     font-size: 12px;
     white-space: nowrap;
     margin-top: 5px;
     margin-left: 0;
   }
-  button {
+  .containerLogin button {
     width: 100%; /* Ancho completo */
     margin: 20px 0; /* Espaciado */
   }
 
-  .too-good,
-  .to-go {
+  .containerLogin .too-good,
+  .containerLogin .to-go {
     font-size: 36px; /* Tamaño de fuente más pequeño */
   }
-  .icon {
+  .containerLogin .icon {
       position: absolute;
       right: 15px; /* Ajusta el valor según sea necesario */
       top: 40%; /* Centra verticalmente el icono */
@@ -239,7 +240,7 @@ button:hover{
       font-size: 20px;
       color: var(--color-primary);
     }
-    .textoFooter {
+    .containerLogin .textoFooter {
       font-size: 10px;
       justify-content: center;
       align-items: center;
@@ -249,21 +250,21 @@ button:hover{
 }
 @media (max-width: 1366px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
-  .loginForm {
+  .containerLogin .loginForm {
     padding: 60px 80px 60px 80px;
     height: 100vh; 
     margin-bottom: 0; 
     overflow-y: auto; 
   }
 
-  .new-account {
+  .containerLogin .new-account {
     margin-top: 0; 
   }
 
-  button {
+  .containerLogin button {
     margin: 30px 0 10px; 
   }
-  .footer {
+  .containerLogin .footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -278,7 +279,7 @@ button:hover{
 }
 @media (max-width: 1280px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
-  .loginForm {
+  .containerLogin .loginForm {
     padding: 8px 80px 50px 80px;
     height: 80vh; 
     margin-bottom: 0;
@@ -286,14 +287,14 @@ button:hover{
     overflow-y: auto;
   }
 
-  .new-account {
+  .containerLogin .new-account {
     margin-top: 0; 
   }
 
-  button {
+  .containerLogin button {
     margin: 30px 0 10px; 
   }
-  .footer {
+  .containerLogin .footer {
     position: fixed;
     bottom: 0;
     left: 0;

@@ -79,7 +79,7 @@ function HomeRestaurante() {
     {
       precio: '1.99',
       name: 'Cubanitos',
-      descript: 'Sánduche de pan flauta. ',
+      descript: 'Sánduche de pan flauta con jamón y queso',
       image: sanduche1,
     },
     {
