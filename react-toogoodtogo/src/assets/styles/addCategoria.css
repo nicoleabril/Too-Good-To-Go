@@ -129,3 +129,61 @@
     height: 50px;
     filter: none;
 }
+
+.main-container-categoria-add .iconoIngresadaCategoria {
+    display: none;
+}
+
+.main-container-categoria-add .btn_subirIconoCategoria {
+    background-color: var(--color-button); 
+    color: white;
+    border: none;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.main-container-categoria-add .image-upload-container-categoria {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-categoria-add .image-preview-container-categoria {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-categoria-add .categoria-icono {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.main-container-categoria-add .image-placeholder {
+    text-align: center;
+    color: #aaa;
+    background-color: rgb(245, 243, 243);
+    height: 200px;
+    border: 2px dashed #ccc;
+}
+
+.main-container-categoria-add .btn_agregarCategoria {
+    background-color: var(--color-button); 
+    color: white;
+    border: none;
+    margin-top: 50px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
