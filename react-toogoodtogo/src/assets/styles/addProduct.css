@@ -59,7 +59,7 @@
     margin-left: 30px;
     margin-right: 10px;
     border-radius: 0%;
-    border: 7px solid rgb(245, 243, 243);
+    border: 3px solid rgb(245, 243, 243);
 }
 
 .main-container-product-add .descripcion{
@@ -76,10 +76,10 @@
 .main-container-product-add .descripcionIngresada{
     width: 60%;
     height: 200px;
-    margin-left: 77px;
+    margin-left: 73px;
     margin-right: 10px;
     border-radius: 0%;
-    border: 7px solid rgb(245, 243, 243);
+    border: 3px solid rgb(245, 243, 243);
     resize: none;
 }
 
@@ -99,7 +99,7 @@
     margin-left: 85px;
     margin-right: 10px;
     border-radius: 0%;
-    border: 7px solid rgb(245, 243, 243);
+    border: 3px solid rgb(245, 243, 243);
 
 }
 
@@ -124,6 +124,7 @@
     margin-left: 20px;
     margin-right: 10px;
     border-radius: 0%;
+    border: 3px solid rgb(245, 243, 243);
 }
 
 

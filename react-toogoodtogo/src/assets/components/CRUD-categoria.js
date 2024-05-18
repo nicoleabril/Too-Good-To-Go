@@ -1,28 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import "../styles/crud-categoria.css";
 import buscar from "../images/buscar.png";
 import DataTable from "react-data-table-component";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
-import Modal from "react-modal";
-
-const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)'
-    }
-};
-
-Modal.setAppElement('#root');
+import donaPremiumLogo from "../images/donaPremiumLogo.png";
+import bebidasLogo from "../images/bebidasLogo.png";
+import combosLogo from "../images/combosLogo.png";
+import ofertasLogo from "../images/ofertasLogo.png";
+import sanduchesLogo from "../images/sanduchesLogo.png";
 
 function CRUDCategoria() {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [categoria, setCategoria] = useState("");
-    const [estado, setEstado] = useState("Activo")
     const columns = [
         {
             name: "Id",
@@ -80,24 +68,6 @@ function CRUDCategoria() {
             estado: "Inactivo",
         }
     ];
-
-    const openModal = () => {
-        setModalIsOpen(true);
-    };
-
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Aquí puedes agregar la lógica para agregar la nueva categoría a la lista
-        // Por ejemplo, podrías actualizar el estado 'data' para incluir la nueva categoría
-
-        // Cierra el modal después de agregar la categoría
-        closeModal();
-    };
-
     return (
         <body className="container-crud-categoria">
             <main className="crud-categoria-container">
@@ -106,7 +76,9 @@ function CRUDCategoria() {
                         <img className="FotoBuscarCategoria" src={buscar} alt="Buscar" />
                         <input type="text" className="TextoBusquedaCategoria" placeholder="Buscar Categoría" />
                     </div>
-                    <button className='botonAgregarCategoria' onClick={openModal}>Agregar Categoría</button>
+                    <React.Fragment>
+                        <a href="/registroProductos/agregarProducto"><button className='botonAgregarCategoria'>Agregar Categoría</button></a>
+                    </React.Fragment>
                 </div>
                 <div className="tabla-categoria-container">
                     <DataTable
@@ -121,38 +93,6 @@ function CRUDCategoria() {
                 </div>
             </footer>
             <div className="waves-background2-categoria"></div>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-                contentLabel="Agregar Categoría"
-            >
-                <h2>Agregar Nueva Categoría</h2>
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>Nombre de la Categoría:</label>
-                        <input
-                            type="text"
-                            value={categoria}
-                            onChange={(e) => setCategoria(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <label>Estado:</label>
-                        <select
-                            value={estado}
-                            onChange={(e) => setEstado(e.target.value)}
-                            required
-                        >
-                            <option value="Activo">Activo</option>
-                            <option value="Inactivo">Inactivo</option>
-                        </select>
-                    </div>
-                    <button type="submit">Agregar</button>
-                    <button type="button" onClick={closeModal}>Cancelar</button>
-                </form>
-            </Modal>
         </body>
     );
 }
