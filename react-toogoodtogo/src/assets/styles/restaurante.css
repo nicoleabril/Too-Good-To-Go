@@ -1,6 +1,4 @@
 
- 
-  
   .RestauranteContainer .contenedorRojo {
     position: relative;
     bottom: -30vh;
@@ -119,8 +117,10 @@
     .RestauranteContainer .contenedorBlanco h1{
     margin-top: 30px;
   }
+
+
   .RestauranteContainer .contenedorFooter {
-    margin-top: 9%; 
+    margin-top: 10%; 
     margin-bottom: 0; 
     position: relative;
     width: 100%;
@@ -130,7 +130,7 @@
     padding-right: 40px;
     border-radius: 60px 60px 0 0;
     z-index: 2;
-  }
+}
   
   .RestauranteContainer .textoFooter2 {
     display: flex;

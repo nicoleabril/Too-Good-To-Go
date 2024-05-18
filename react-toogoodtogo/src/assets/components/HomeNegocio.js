@@ -62,12 +62,12 @@ function HomeNegocio() {
     },
     {
         name: 'Total Ordenado',
-        number: '186',
+        number: '156',
         icon: <IoReceipt size={30}/>,
     },
     {
       name: 'Total Ingreso',
-      number: '$ 240',
+      number: '$ 1500',
       icon: <FaMoneyBillWave size={30}/>,
   },
   ];
@@ -114,7 +114,7 @@ function HomeNegocio() {
                       <DashboardCards platos={masVendidos} /> 
                       <div className='seccionEstadistica'>
                         <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/> 
-                        {selectedIndex !== null && <GraficaCard datos={selectedIndex} />}
+                        {selectedIndex !== null && <GraficaCard selectedIndex={selectedIndex} />}
                       </div>
                     </div>
                     <div className="linea"></div>   
