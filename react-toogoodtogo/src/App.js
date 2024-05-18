@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import RegistroCliente from "./pages/registroCliente";
 import RegistroNegocio from "./pages/registroNegocio";
 import NegocioPage from "./pages/InicioNegocio";
+import RegistroCategoria from "./pages/crudCategoria";
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
           <Route path="/" element={<Bienvenida />} />
           <Route path="/RegistroProductos" element={<CrudProducto />} />
           <Route path="/RegistroProductos/agregarProducto" element={<AddProduct />} />
+          <Route path="/RegistroCategoria" element={<RegistroCategoria />} />
         </Routes>
       </Router>
     </div>

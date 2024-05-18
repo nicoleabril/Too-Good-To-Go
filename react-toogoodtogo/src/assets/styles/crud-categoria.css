@@ -1,10 +1,10 @@
-.container-crud-prod {
+.container-crud-categoria {
     display: flex;
     flex-direction: column;
     height: 100vh; /* Esto hará que el contenedor ocupe el 100% del alto de la pantalla */
     width: 100vw; /* Esto hará que el contenedor ocupe el 100% del ancho de la pantalla */
 }
-.crud-producto-container {
+.crud-categoria-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,7 +13,7 @@
     position: relative;
 }
 
-.crud-producto-container .crud-producto {
+.crud-categoria-container .crud-categoria {
     display: flex;
     flex-direction: row; 
     align-items: center;
@@ -23,7 +23,7 @@
     padding-right: 25px; 
 }
 
-.crud-producto-container .botonAgregarProducto{
+.crud-categoria-container .botonAgregarCategoria{
     background-color: var(--color-button);
     cursor: pointer;
     margin-top: 10px;
@@ -34,7 +34,7 @@
 }
 
 
-.crud-producto-container .BusquedaProducto {
+.crud-categoria-container .BusquedaCategoria {
     background-color: white;
     margin-right: 600px;
     width: 100%;
@@ -45,77 +45,69 @@
     align-items: center;
 }
 
-.crud-producto-container .FotoBuscar{
+.crud-categoria-container .FotoBuscarCategoria{
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.crud-producto-container .TextoBusquedaProducto {
+.crud-categoria-container .TextoBusquedaCategoria {
     width: 100%;
     padding: 0;
     border:none;
 }
 
-.crud-producto-container .tabla-productos-container {
+.crud-categoria-container .tabla-categoria-container {
     margin-top: 30px;
     max-height: 400px;
     overflow-y: auto; 
     width:90%;
 }
 
-.crud-producto-container .botonesCrud {
+.crud-categoria-container .botonesCrudCategoria {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.crud-producto-container .sc-cwHqhk.kzZBXj{
+.crud-categoria-container .sc-cwHqhk.kzZBXj{
     margin: 0 auto;
     font-weight: bold;
 
 }
-.crud-producto-container div[id^="row-"] {
+.crud-categoria-container div[id^="row-"] {
     background-color: rgb(245, 243, 243);
     border: 2px solid #ccc;
 }
 
-.crud-producto-container div[id^="row-"] div {
+.crud-categoria-container div[id^="row-"] div {
     margin: 0 auto;
 }
 
-.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow{
+.crud-categoria-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow{
     background-color: rgb(245, 243, 243);
     border: 3px solid #ccc;
 }
 
   
-.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
+.crud-categoria-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
     border-right: 2px solid #ccc;
 }
 
-.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow > div:last-child {
+.crud-categoria-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow > div:last-child {
     border-right: none;
 }
 
-.crud-producto-container .botonesCrud button {
+.crud-categoria-container .botonesCrudCategoria button {
     background-color: var(--color-button);
     cursor: pointer;
     padding: 10px;
     width: 50px;
     margin: 10px;
 }
-
-.crud-producto-container .imagenProd {
-    width: 50px;  
-    height: 50px; 
-    border-radius: 8px; 
-    object-fit: cover;
-    margin: 0 auto;
-}
   
-.contenedorFooter-prod {
-    margin-top: auto; /* Esto empuja el footer hacia abajo */
+.contenedorFooter-categoria {
+    margin-top: auto;
     position: relative;
     width: 100%;
     background-color: var(--color-fondoLogin);
@@ -124,9 +116,9 @@
     padding-right: 40px;
     border-radius: 60px 60px 0 0;
     z-index: 2;
-  }
+}
 
-.waves-background2-prod {
+.waves-background2-categoria {
     position: absolute;
     top: 2%;
     width: 100%;
@@ -139,7 +131,7 @@
     z-index: -1;
 }
 
-.contenedorFooter-prod .textoFooter2 {
+.contenedorFooter-categoria .textoFooter2 {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -152,7 +144,7 @@
 
 @media screen and (max-width: 768px) {
 
-    .crud-producto-container .crud-producto {
+    .crud-categoria-container .crud-categoria {
         flex-direction: column;
         align-items: center;
         padding-left: 10px;
@@ -161,18 +153,19 @@
         margin-left: 20px;
         margin-right: 20px;
     }
-    .crud-producto-container .TextoBusquedaProducto {
+
+    .crud-categoria-container .TextoBusquedaCategoria {
         width: 100%;
     }
     
-    .crud-producto-container .botonAgregarProducto {
+    .crud-categoria-container .botonAgregarCategoria {
         width: 60%;
         text-align: center;
         padding: 5px 10px 10px 10px;
         font-size: 12px;
     }
 
-    .crud-producto-container .BusquedaProducto {
+    .crud-categoria-container .BusquedaCategoria {
         margin-right: 50px;
         width: 100%;
         display: flex;
@@ -180,7 +173,7 @@
         min-width: 200px;
     }
 
-    .crud-producto-container .botonesCrud button {
+    .crud-categoria-container .botonesCrudCategoria button {
         background-color: var(--color-button);
         cursor: pointer;
         padding: 5px;
@@ -189,44 +182,38 @@
         margin: 5px;
         font-size: 10px; 
     }
-
-    .crud-producto-container .imagenProd {
-        width: 35px; 
-        height: 35px;
-        border-radius: 8px; 
-        object-fit: cover;  
-    }
 }
 
 /*responsive para tablets*/
+
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .crud-producto-container .crud-producto {
+    .crud-categoria-container .crud-categoria {
         align-items: center;
         padding-left: 20px;
         padding-right: 20px; 
         margin: 20px;
     }
 
-    .crud-producto-container .BusquedaProducto {
+    .crud-categoria-container .BusquedaCategoria {
         margin-right: 200px;
         width: 100%; 
         margin-left: 0; 
     }
 
-    .crud-producto-container .TextoBusquedaProducto {
+    .crud-categoria-container .TextoBusquedaCategoria {
         width: 100%; 
         padding: 0;
         border:none;
     }
 
-    .crud-producto-container .botonAgregarProducto {
+    .crud-categoria-container .botonAgregarCategoria {
         width: 80%;
         max-width: 200px;
         padding: 5px 10px 10px 10px;
         font-size: 12px;
     }
-    
-    .crud-producto-container .botonesCrud button {
+
+    .crud-categoria-container .botonesCrudCategoria button {
         padding: 5px;
         width: 35px; 
         height: 35px;
@@ -234,28 +221,27 @@
         margin: 5px;
         align-items: center;
     }
-
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1250px) {
-    .crud-producto-container .crud-producto {
+    .crud-categoria-container .crud-categoria {
         padding-left: 30px;
         padding-right: 30px;
     }
 
-    .crud-producto-container .BusquedaProducto {
+    .crud-categoria-container .BusquedaCategoria {
         width: 100%;
         margin-right: 350px;
         padding: none;
     }
 
-    .crud-producto-container .botonAgregarProducto {
+    .crud-categoria-container .botonAgregarCategoria {
         width: 80%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;
     }
 
-    .crud-producto-container .botonesCrud button {
+    .crud-categoria-container .botonesCrudCategoria button {
         padding: 8px;
         width: 45px;
         height: 45px;
@@ -264,27 +250,26 @@
 }
 
 @media screen and (min-width: 1250px) {
-    .crud-producto-container .crud-producto {
+    .crud-categoria-container .crud-categoria {
         padding-left: 40px;
         padding-right: 40px;
     }
 
-    .crud-producto-container .BusquedaProducto {
+    .crud-categoria-container .BusquedaCategoria {
         width: 100%;
         margin-right: 600px;
     }
 
-    .crud-producto-container .botonAgregarProducto {
+    .crud-categoria-container .botonAgregarCategoria {
         width: 100%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;
     }
 
-    .botonesCrud button {
+    .botonesCrudCategoria button {
         padding: 8px;
         width: 45px;
         height: 45px;
         font-size: 12px;
     }
 }
-
