@@ -18,7 +18,8 @@ export default class RegistroNegocio extends Component {
       currentImageIndex: 0,
       error: false,
       latitude: -2.90055,
-      longitude: -79.00453
+      longitude: -79.00453,
+      showMap: false,
     };
   }
 
@@ -176,8 +177,8 @@ export default class RegistroNegocio extends Component {
             </div>
             
             <button onClick={this.handleSubmit}>Registrarse</button>
-            <div className="new-account">
-              <p>¿Eres nuevo aquí? <a href="/">Crear cuenta</a></p>
+            <div className="ubicacionMovil">
+              <p>Seleccionar <a href="/">ubicacion</a></p>
             </div>
           </form>
         </div>

@@ -102,16 +102,26 @@
   color: #595959;
 }
 
-.containerNegocio .new-account {
+.containerNegocio .ubicacionMovil {
+  display: none;
   font-size: 14px;
   color: #595959;
   margin-top: -20px;
 }
 
-.containerNegocio .new-account a {
+.containerNegocio .ubicacionMovil a {
   margin-left: 5px;
   color: var(--color-primary);
   font-weight: bold;
+  text-decoration: none;
+}
+
+.containerNegocio .ubicacionMovil a:visited {
+  color: var(--color-primary);
+}
+
+.containerNegocio .ubicacionMovil a:focus {
+  outline: none; 
 }
 
 .containerNegocio .footer {
@@ -194,10 +204,6 @@
     top:18vh;
     margin-bottom: -25px;
     z-index: 1;
-    
-   
-  
-   
     padding: 0;
   }
   .containerNegocio .map-container .ubicacion p{
@@ -233,137 +239,94 @@
 }
 
 
-@media (max-width: 800px) {
-  /* Ocultar las waves y la imagen */
-  .waves-background,
-  .imagenLogin {
+@media (max-width: 480px) {
+  .containerNegocio {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .containerLogin .waves-background,
+  .containerLogin .imagenLogin {
     display: none;
   }
 
-  /* Ajustes para el formulario en dispositivos móviles */
-  .loginForm2 {
+  .containerNegocio .loginForm2 {
     width: 80%;
-    border-radius: 20px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-    background-color: var(--color-fondoLogin); /* Fondo blanco */
-    margin: 0 auto; /* Centrar horizontalmente */
-    max-width: 90%; /* Ancho máximo */
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-fondoLogin);
+    margin: 0 auto;
+    max-width: 90%;
     position: fixed;
-    top: 60%;/* 50% desde arriba */
+    top: 60%;
     padding-top: 30px;
-    left: 50%; /* 50% desde la izquierda */
+    left: 50%;
     bottom: -40%;
-    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    transform: translate(-50%, -50%);
   }
 
-  .input-box {
-    margin: 15px 0; /* Espaciado entre los campos */
+  .containerNegocio .password-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    width: 100%;
+    justify-content: center;
   }
 
-  input {
+  .containerNegocio .password-container .input-box:first-child input {
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .containerNegocio .password-container .input-box:last-child input {
+    margin-left: 0;
+    margin-top: -40px;
+  }
+
+  .containerNegocio .password-container input {
+    width: 100%;
+  }
+
+  .containerNegocio .input-box {
+    margin: 10px 0;
+  }
+
+  .containerNegocio input {
     width: 100%; 
     padding: 15px; 
     font-size: 16px;
     padding: 20px 45px 20px 20px;
   }
-  .forgot-password{
-    font-size: 12px;
-    white-space: nowrap;
-    margin-top: 5px;
-    margin-left: 0;
-  }
-  #botonRegistro {
-    width: 100%; /* Ancho completo */
-    margin: 20px 85; /* Espaciado */
-  }
 
-  .too-good,
-  .to-go {
-    font-size: 36px; /* Tamaño de fuente más pequeño */
-  }
-  .icon {
-      position: absolute;
-      right: 15px; /* Ajusta el valor según sea necesario */
-      top: 40%; /* Centra verticalmente el icono */
-      transform: translateY(-50%);
-      font-size: 20px;
-      color: var(--color-primary);
-    }
-    .textoFooter {
-      font-size: 10px;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding-left: 25px;
-  }
-}
-@media (max-width: 1366px) {
-  /* Estilos para pantallas con resolución máxima de 1366px */
-  .loginForm {
-    padding: 60px 80px 60px 80px;
-    height: 100vh; 
-    margin-bottom: 0; 
-    overflow-y: auto; 
-  }
-
-  .new-account {
-    margin-top: 0; 
-  }
-
-  #botonRegistro {
-    margin: 30px 0 10px; 
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  .containerNegocio button {
     width: 100%;
-    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
-    color: white;
+    margin: 0;
+  }
+
+  .containerNegocio .too-good,
+  .containerNegocio .to-go {
+    font-size: 30px;
+  }
+
+  .containerNegocio .textoFooter {
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    height: 15vh;
-    border-radius: 60px 60px 0 0;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5)
+    padding-left: 25px;
+  }
+
+  .containerNegocio .ubicacionMovil {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 14px;
+    color: #595959;
+    margin-top: 1vh;
+    text-align: center;
+  }
+
+  .map-container {
+    display: none;
   }
 }
-@media (max-width: 1280px) {
-  /* Estilos para pantallas con resolución máxima de 1366px */
-  .loginForm {
-    padding: 8px 80px 50px 80px;
-    height: 80vh; 
-    margin-bottom: 0;
-    bottom: 0;
-    overflow-y: auto;
-  }
-
-  .new-account {
-    margin-top: 0; 
-  }
-
-  #botonRegistro {
-    margin: 30px 0 10px; 
-  }
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
-    color: white;
-    text-align: center;
-    height: 15vh;
-    border-radius: 60px 60px 0 0;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5)
-  }
-}
-
-
-
-
-
-
- 
-  
-  
-  
-  
