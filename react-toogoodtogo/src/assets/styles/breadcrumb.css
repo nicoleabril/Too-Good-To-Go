@@ -40,4 +40,19 @@
     text-decoration: underline; 
 }
 
+@media screen and (max-width: 768px) {
+    .custom-breadcrumb {
+        margin-top: 60px;
+        padding: 0 10px;
+    }
+    .custom-breadcrumb ol{
+        margin-left: 20px;
+    }
+    .breadcrumb-item{
+        padding: 5px;
+        font-size: smaller;
+    }
+
+}
+
 
