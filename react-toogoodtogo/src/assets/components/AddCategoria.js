@@ -22,7 +22,7 @@ function AddCategorias() {
           <div className="formulario-addCategoria">
             <form>
               <div className="nombreCategoria">
-                <label>Nombre del Producto</label>
+                <label>Nombre de la Categoria</label>
                 <input type="text" className="nombreIngresadoCategoria" />
               </div>
               <div className="descripcionCategoria">
