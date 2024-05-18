@@ -1,13 +1,11 @@
 
-.contenedorStatisticDashboard {
+.contenedorGraficaDashboard {
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    
   }
   
-  .contenedorStatisticDashboard .card {
+  .contenedorGraficaDashboard .card {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -16,56 +14,47 @@
     gap: 20px;
     align-items: center;
     padding: 20px;
-    width: 300px;
+    width: 500px;
     margin: 60px -10px -40px 40px;
-    height: 15%;
-    /* Estilos de la tarjeta normal */
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    height: 50%;
   }
 
-  .contenedorStatisticDashboard .card.selected {
-    /* Estilos de la tarjeta seleccionada */
-    background-color: #b84935; /* Cambia esto por el color que desees */
-    transform: scale(1.05); /* Opcional: aumenta ligeramente el tamaño */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: añade sombra */
+  
+  .contenedorGraficaDashboard .card img {
+    width: 100px;
+    height: 100px;
+    margin-top: -10px;
   }
 
-  .contenedorStatisticDashboard #iconoEstadistica{
-    height: 60px;
-    width: 60px;
-    padding-top: 15px;
-    border-radius: 50%;
-    background-color: #e9c2be;
-  }
-
-  .contenedorStatisticDashboard #infoPlato{
+  .contenedorGraficaDashboard #infoPlato{
+    display: flex;
+    flex-direction: column;
     text-align: left;
   }
 
-  .contenedorStatisticDashboard #textoGris {
+  .contenedorGraficaDashboard #textoGris {
     color: var(--color-fondoLogin);
   }
 
 
-  .contenedorStatisticDashboard .inline {
+  .contenedorGraficaDashboard .inline {
     
         display: inline-block;
         margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
     }
   
-  .contenedorStatisticDashboard .contenidoCard {
+  .contenedorGraficaDashboard .contenidoCard {
     display: flex;
     flex-direction: row;
-    margin-top: 10px;
+    margin-top: 50px;
     gap: 20px;
   }
   
-  .contenedorStatisticDashboard .contenidoCard button {
+  .contenedorGraficaDashboard .contenidoCard button {
     font-size: 14px;
   }
   
-  .contenedorStatisticDashboard .card-more{
+  .contenedorGraficaDashboard .card-more{
     background-color: var(--color-button);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -77,7 +66,7 @@
     margin: 100px  10px -80px 10px;
     height: 70%;
   }
-  .contenedorStatisticDashboard .card-more button {
+  .contenedorGraficaDashboard .card-more button {
     margin: auto auto; 
     width: 60%;
     background-color: #fff;
@@ -89,31 +78,28 @@
     border-radius: 5px;
   }
   
-  .contenedorStatisticDashboard .card-more button:hover{
+  .contenedorGraficaDashboard .card-more button:hover{
     cursor: pointer;
     background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(167, 163, 163) 30%, rgb(209, 209, 209) 100%);
     color: black;
   }
-  .contenedorStatisticDashboard h3 {
+  .contenedorGraficaDashboard h3 {
     font-size: 1.5rem;
-    margin-bottom: 10px;
     color: black;
   }
   
-  .contenedorStatisticDashboard p {
+  .contenedorGraficaDashboard p {
     font-size: 1rem;
-    margin-bottom: 5px;
     color: black;
   }
   
-  .contenedorStatisticDashboard ul {
+  .contenedorGraficaDashboard ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  .contenedorStatisticDashboard li {
-    margin-bottom: 5px;
+  .contenedorGraficaDashboard li {
     color: black;
   }
   

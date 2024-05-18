@@ -4,6 +4,7 @@ import donas from '../images/donas.png'
 import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
 import DashboardCards from './DashboardCard';
 import StatisticsCards from './StatisticsCard';
+import GraficaCard from './GraficaCard';
 import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche2 from '../images/sanduche2.jpeg'
@@ -69,6 +70,14 @@ function HomeNegocio() {
   },
   ];
 
+  const datosGráfica = [
+    {
+      name: 'Nuevos Clientes',
+      number: '24',
+      icon: <GrGroup size={30}/>,
+    }
+  ];
+
     return (
     
         <div className="RestauranteContainer">
@@ -110,6 +119,7 @@ function HomeNegocio() {
                       <DashboardCards platos={masVendidos} /> 
                       <div className='seccionEstadistica'>
                         <StatisticsCards datos={datosEstadisticos} /> 
+                        <GraficaCard datos={datosGráfica} /> 
                       </div>
                     </div>
                     <div className="linea"></div>   

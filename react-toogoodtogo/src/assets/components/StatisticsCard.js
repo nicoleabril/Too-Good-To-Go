@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/statisticsCards.css';
 
 const StatisticsCards = ({ datos }) => {
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+  const handleCardClick = (index) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <div className='contenedorStatisticDashboard'>
       {datos.map((producto, index) => (
-        <div className='card' key={index}>
-            <div className='contenidoCard'>
-                <div id='iconoEstadistica'>
-                  {producto.icon}
-                </div>
-                <div id='infoPlato'>
-                    <h3>{producto.number}</h3> 
-                    <div>
-                        <p class="inline">{producto.name}</p>
-                    </div>
-                </div>
+        <div
+          className={`card ${selectedIndex === index ? 'selected' : ''}`}
+          key={index}
+          onClick={() => handleCardClick(index)}
+        >
+          <div className='contenidoCard'>
+            <div id='iconoEstadistica'>
+              {producto.icon}
             </div>
+            <div id='infoPlato'>
+              <h3>{producto.number}</h3>
+              <div>
+                <p className='inline'>{producto.name}</p>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
     </div>
