@@ -46,7 +46,8 @@
   .contenedorGraficaDashboard .contenidoCard {
     display: flex;
     flex-direction: row;
-    margin-top: 50px;
+    width: 100%;
+    margin-top: 20px;
     gap: 20px;
   }
   
@@ -101,6 +102,60 @@
   
   .contenedorGraficaDashboard li {
     color: black;
+  }
+  
+
+  @media only screen and (max-width: 1440px) {
+    /* Estilos para pantallas de hasta 1440px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
+  }
+  
+  @media only screen and (max-width: 1366px) {
+    /* Estilos para pantallas de hasta 1366px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
+  }
+  
+  @media only screen and (max-width: 1280px) {
+    /* Estilos para pantallas de hasta 1280px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    /* Estilos para pantallas de hasta 1024px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
+  }
+  
+  @media only screen and (max-width: 768px) {
+    /* Estilos para pantallas de hasta 768px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .contenedorGraficaDashboard {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin-top: -450px;
+      align-items: center;
+    }
+    .contenedorGraficaDashboard .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: left;
+      padding: 20px;
+      width: 300px;
+      height: 250px;
+      margin: 20px 20px 20px 20px;
+    }
+  }
+  
+  @media only screen and (max-width: 320px) {
+    /* Estilos para pantallas de hasta 320px de ancho */
+    /* Puedes agregar aquí tus estilos específicos para esta resolución */
   }
   
   

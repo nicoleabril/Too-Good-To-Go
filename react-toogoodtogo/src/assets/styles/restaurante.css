@@ -202,8 +202,11 @@
   }
 
   .RestauranteContainer .seccionEstadistica {
+    background-color: palevioletred;
     display: flex;
+    height:  auto;
     flex-direction: column;/* Espacio entre los elementos, puedes ajustar este valor */
+    gap: 30px;
   }
 
   .RestauranteContainer .subtexto{

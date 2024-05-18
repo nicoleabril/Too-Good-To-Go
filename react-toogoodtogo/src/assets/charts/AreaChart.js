@@ -3,19 +3,20 @@ import areaChart from "./configs/areaChart";
 import "../styles/graficas.css"
 
 function AreaChart() {
-
   return (
     <>
-      <ReactApexChart
-        className="full-width"
-        options={areaChart.options}
-        series={areaChart.series}
-        type="area"
-        height={400}
-        width={400}
-      />
+      <div className="chart-container">
+        <ReactApexChart
+          options={areaChart.options}
+          series={areaChart.series}
+          type="area"
+          height="100%"
+          width="100%"
+        />
+      </div>
     </>
   );
 }
 
 export default AreaChart;
+
