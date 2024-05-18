@@ -1,12 +1,19 @@
+.container-crud-prod {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Esto hará que el contenedor ocupe el 100% del alto de la pantalla */
+    width: 100vw; /* Esto hará que el contenedor ocupe el 100% del ancho de la pantalla */
+}
 .crud-producto-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     margin-top: 150px;
+    position: relative;
 }
 
-.crud-producto {
+.crud-producto-container .crud-producto {
     display: flex;
     flex-direction: row; 
     align-items: center;
@@ -16,7 +23,7 @@
     padding-right: 25px; 
 }
 
-.botonAgregarProducto{
+.crud-producto-container .botonAgregarProducto{
     background-color: var(--color-button);
     cursor: pointer;
     margin-top: 10px;
@@ -27,7 +34,7 @@
 }
 
 
-.BusquedaProducto {
+.crud-producto-container .BusquedaProducto {
     background-color: white;
     margin-right: 600px;
     width: 100%;
@@ -38,58 +45,60 @@
     align-items: center;
 }
 
-.FotoBuscar{
+.crud-producto-container .FotoBuscar{
     margin-left: 10px;
     margin-right: 10px;
 }
 
-.TextoBusquedaProducto {
+.crud-producto-container .TextoBusquedaProducto {
     width: 100%;
+    padding: none;
+    border:none;
 }
 
-.tabla-productos-container {
+.crud-producto-container .tabla-productos-container {
     margin-top: 30px;
     max-height: 400px;
     overflow-y: auto; 
     width:90%;
 }
 
-.botonesCrud {
+.crud-producto-container .botonesCrud {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
 }
 
-.sc-cwHqhk.kzZBXj{
+.crud-producto-container .sc-cwHqhk.kzZBXj{
     margin: 0 auto;
     font-weight: bold;
 
 }
-div[id^="row-"] {
+.crud-producto-container div[id^="row-"] {
     background-color: rgb(245, 243, 243);
     border: 2px solid #ccc;
 }
 
-div[id^="row-"] div {
-    margin: 0 auto; /* Centrar los elementos div horizontalmente */
+.crud-producto-container div[id^="row-"] div {
+    margin: 0 auto;
 }
 
-.sc-eqUzNf.dODGfY.rdt_TableHeadRow{
+.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow{
     background-color: rgb(245, 243, 243);
     border: 3px solid #ccc;
 }
 
   
-.sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
+.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
     border-right: 2px solid #ccc;
 }
 
-.sc-eqUzNf.dODGfY.rdt_TableHeadRow > div:last-child {
+.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow > div:last-child {
     border-right: none;
 }
 
-.botonesCrud button {
+.crud-producto-container .botonesCrud button {
     background-color: var(--color-button);
     cursor: pointer;
     padding: 10px;
@@ -97,17 +106,16 @@ div[id^="row-"] div {
     margin: 10px;
 }
 
-.imagenProd {
-    width: 50px;  /* Cambia el tamaño a tu preferencia */
-    height: 50px; /* Cambia el tamaño a tu preferencia */
-    border-radius: 8px;  /* Añade borde redondeado */
-    object-fit: cover;   /* Asegura que la imagen mantenga su aspecto */
+.crud-producto-container .imagenProd {
+    width: 50px;  
+    height: 50px; 
+    border-radius: 8px; 
+    object-fit: cover;
     margin: 0 auto;
 }
   
-.contenedorFooter {
-    margin-top: 9%; 
-    margin-bottom: 0; 
+.contenedorFooter-prod {
+    margin-top: auto; /* Esto empuja el footer hacia abajo */
     position: relative;
     width: 100%;
     background-color: var(--color-fondoLogin);
@@ -118,18 +126,20 @@ div[id^="row-"] div {
     z-index: 2;
   }
 
-.waves-background2 {
-    position: fixed;
+.waves-background2-prod {
+    position: absolute;
     top: 2%;
-    bottom: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-image: url('../images/waves.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
     z-index: -1;
 }
 
-.textoFooter2 {
+.contenedorFooter-prod .textoFooter2 {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -142,7 +152,7 @@ div[id^="row-"] div {
 
 @media screen and (max-width: 768px) {
 
-    .crud-producto {
+    .crud-producto-container .crud-producto {
         flex-direction: column;
         align-items: center;
         padding-left: 10px;
@@ -151,18 +161,18 @@ div[id^="row-"] div {
         margin-left: 20px;
         margin-right: 20px;
     }
-    .TextoBusquedaProducto {
+    .crud-producto-container .TextoBusquedaProducto {
         width: 100%;
     }
     
-    .botonAgregarProducto {
+    .crud-producto-container .botonAgregarProducto {
         width: 60%;
         text-align: center;
         padding: 5px 10px 10px 10px;
         font-size: 12px;
     }
 
-    .BusquedaProducto {
+    .crud-producto-container .BusquedaProducto {
         margin-right: 50px;
         width: 100%;
         display: flex;
@@ -170,7 +180,7 @@ div[id^="row-"] div {
         min-width: 200px;
     }
 
-    .botonesCrud button {
+    .crud-producto-container .botonesCrud button {
         background-color: var(--color-button);
         cursor: pointer;
         padding: 5px;
@@ -180,40 +190,42 @@ div[id^="row-"] div {
         font-size: 10px; 
     }
 
-    .imagenProd {
-        width: 35px;  /* Cambia el tamaño a tu preferencia */
-        height: 35px; /* Cambia el tamaño a tu preferencia */
-        border-radius: 8px;  /* Añade borde redondeado */
-        object-fit: cover;   /* Asegura que la imagen mantenga su aspecto */
+    .crud-producto-container .imagenProd {
+        width: 35px; 
+        height: 35px;
+        border-radius: 8px; 
+        object-fit: cover;  
     }
-    
 }
+
 /*responsive para tablets*/
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .crud-producto {
+    .crud-producto-container .crud-producto {
         align-items: center;
         padding-left: 20px;
         padding-right: 20px; 
         margin: 20px;
     }
 
-    .BusquedaProducto {
+    .crud-producto-container .BusquedaProducto {
         margin-right: 200px;
         width: 100%; 
         margin-left: 0; 
     }
 
-    .TextoBusquedaProducto {
+    .crud-producto-container .TextoBusquedaProducto {
         width: 100%; 
+        padding: none;
+        border:none;
     }
 
-    .botonAgregarProducto {
+    .crud-producto-container .botonAgregarProducto {
         width: 100%;
         max-width: 250px;
         font-size: 12px;
     }
 
-    .botonesCrud button {
+    .crud-producto-container .botonesCrud button {
         padding: 8px;
         width: 50px; 
         height: 50px;
@@ -222,23 +234,23 @@ div[id^="row-"] div {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1250px) {
-    .crud-producto {
+    .crud-producto-container .crud-producto {
         padding-left: 30px;
         padding-right: 30px;
     }
 
-    .BusquedaProducto {
+    .crud-producto-container .BusquedaProducto {
         width: 100%;
         margin-right: 350px;
     }
 
-    .botonAgregarProducto {
+    .crud-producto-container .botonAgregarProducto {
         width: 100%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;
     }
 
-    .botonesCrud button {
+    .crud-producto-container .botonesCrud button {
         padding: 8px;
         width: 45px;
         height: 45px;
@@ -247,17 +259,17 @@ div[id^="row-"] div {
 }
 
 @media screen and (min-width: 1250px) {
-    .crud-producto {
+    .crud-producto-container .crud-producto {
         padding-left: 40px;
         padding-right: 40px;
     }
 
-    .BusquedaProducto {
+    .crud-producto-container .BusquedaProducto {
         width: 100%;
         margin-right: 600px;
     }
 
-    .botonAgregarProducto {
+    .crud-producto-container .botonAgregarProducto {
         width: 100%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;

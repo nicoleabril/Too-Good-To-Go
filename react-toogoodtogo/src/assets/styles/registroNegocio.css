@@ -239,18 +239,15 @@
 }
 
 
-@media (max-width: 480px) {
-  .containerNegocio {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .containerLogin .waves-background,
-  .containerLogin .imagenLogin {
+@media (max-width: 800px) {
+  /* Ocultar las waves y la imagen */
+  .waves-background,
+  .imagenLogin {
     display: none;
   }
 
-  .containerNegocio .loginForm2 {
+  /* Ajustes para el formulario en dispositivos móviles */
+  .loginForm2 {
     width: 80%;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -262,33 +259,11 @@
     padding-top: 30px;
     left: 50%;
     bottom: -40%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
   }
 
-  .containerNegocio .password-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: -10px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .containerNegocio .password-container .input-box:first-child input {
-    margin-right: 0;
-    margin-bottom: 0;
-  }
-
-  .containerNegocio .password-container .input-box:last-child input {
-    margin-left: 0;
-    margin-top: -40px;
-  }
-
-  .containerNegocio .password-container input {
-    width: 100%;
-  }
-
-  .containerNegocio .input-box {
-    margin: 10px 0;
+  .input-box {
+    margin: 15px 0; /* Espaciado entre los campos */
   }
 
   .containerNegocio input {
@@ -297,36 +272,93 @@
     font-size: 16px;
     padding: 20px 45px 20px 20px;
   }
+  .forgot-password{
+    font-size: 12px;
+    white-space: nowrap;
+    margin-top: 5px;
+    margin-left: 0;
+  }
+  #botonRegistro {
+    width: 100%; /* Ancho completo */
+    margin: 20px 85; /* Espaciado */
+  }
 
-  .containerNegocio button {
+  .too-good,
+  .to-go {
+    font-size: 36px; /* Tamaño de fuente más pequeño */
+  }
+  .icon {
+      position: absolute;
+      right: 15px; /* Ajusta el valor según sea necesario */
+      top: 40%; /* Centra verticalmente el icono */
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--color-primary);
+    }
+    .textoFooter {
+      font-size: 10px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-left: 25px;
+  }
+}
+@media (max-width: 1366px) {
+  /* Estilos para pantallas con resolución máxima de 1366px */
+  .loginForm {
+    padding: 60px 80px 60px 80px;
+    height: 100vh; 
+    margin-bottom: 0; 
+    overflow-y: auto; 
+  }
+
+  .new-account {
+    margin-top: 0; 
+  }
+
+  #botonRegistro {
+    margin: 30px 0 10px; 
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    margin: 0;
-  }
-
-  .containerNegocio .too-good,
-  .containerNegocio .to-go {
-    font-size: 30px;
-  }
-
-  .containerNegocio .textoFooter {
-    font-size: 10px;
-    justify-content: center;
-    align-items: center;
+    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
+    color: white;
     text-align: center;
-    padding-left: 25px;
+    height: 15vh;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5)
+  }
+}
+@media (max-width: 1280px) {
+  /* Estilos para pantallas con resolución máxima de 1366px */
+  .loginForm {
+    padding: 8px 80px 50px 80px;
+    height: 80vh; 
+    margin-bottom: 0;
+    bottom: 0;
+    overflow-y: auto;
   }
 
-  .containerNegocio .ubicacionMovil {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    font-size: 14px;
-    color: #595959;
-    margin-top: 1vh;
+  .new-account {
+    margin-top: 0; 
+  }
+
+  #botonRegistro {
+    margin: 30px 0 10px; 
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
+    color: white;
     text-align: center;
-  }
-
-  .map-container {
-    display: none;
+    height: 15vh;
+    border-radius: 60px 60px 0 0;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5)
   }
 }
