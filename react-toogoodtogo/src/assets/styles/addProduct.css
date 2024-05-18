@@ -6,7 +6,7 @@
 }
 
 .contenedorFooter-add-producto {
-    margin-top: 9%;
+    margin-top: auto;
     margin-bottom: 0; 
     width: 100%;
     background-color: var(--color-fondoLogin);
@@ -29,7 +29,7 @@
 .main-container-product-add .contenedor-addProduct {
     display: flex;
     justify-content: space-between;
-    margin-top: 140px;
+    margin-top: 170px;
     padding-left: 70px;
     padding-right: 70px;
 }
@@ -124,7 +124,6 @@
     margin-left: 20px;
     margin-right: 10px;
     border-radius: 0%;
-    border: 7px solid rgb(245, 243, 243);
 }
 
 
