@@ -14,6 +14,19 @@
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     z-index: 1; 
   }
+
+
+  .RestauranteContainer .titulosDashboard {
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    margin-left: 3%;
+  }
+
+  .RestauranteContainer .inline {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
+}
   
   .RestauranteContainer .contenedorBlanco {
     display: block;

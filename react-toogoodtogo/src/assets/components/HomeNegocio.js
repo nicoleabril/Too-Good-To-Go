@@ -3,12 +3,16 @@ import '../styles/restaurante.css'
 import donas from '../images/donas.png'
 import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
 import DashboardCards from './DashboardCard';
+import StatisticsCards from './StatisticsCard';
 import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche2 from '../images/sanduche2.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import ProductosCards from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
+import { GrGroup } from "react-icons/gr";
+import { IoReceipt } from "react-icons/io5";
+import { FaMoneyBillWave } from "react-icons/fa";
 function HomeNegocio() {
 
   const ordenesPopulares = [
@@ -47,7 +51,23 @@ function HomeNegocio() {
     },
   ];
 
-
+  const datosEstadisticos = [
+    {
+      name: 'Nuevos Clientes',
+      number: '24',
+      icon: <GrGroup size={30}/>,
+    },
+    {
+        name: 'Total Ordenado',
+        number: '186',
+        icon: <IoReceipt size={30}/>,
+    },
+    {
+      name: 'Total Ingreso',
+      number: '$ 240',
+      icon: <FaMoneyBillWave size={30}/>,
+  },
+  ];
 
     return (
     
@@ -82,8 +102,17 @@ function HomeNegocio() {
                     <h1>ÓRDENES POPULARES</h1>
                     <div className="linea"></div>
                     <ProductosCards productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'}/>
-                    <h1>Combos</h1>  
-                    <DashboardCards platos={masVendidos} />             
+                    <div className='titulosDashboard'>
+                      <h1 class="inline" >Más Vendidos</h1> 
+                      <h1 class="inline">Estadísticas</h1> 
+                    </div>
+                    <div className='componentesDashboard'>
+                      <DashboardCards platos={masVendidos} /> 
+                      <div className='seccionEstadistica'>
+                        <StatisticsCards datos={datosEstadisticos} /> 
+                      </div>
+                    </div>
+                                
             </div>
             <div className="contenedorFooter">
               <div className="textoFooter2">
