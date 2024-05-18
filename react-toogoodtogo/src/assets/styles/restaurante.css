@@ -27,6 +27,15 @@
     display: inline-block;
     margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
 }
+
+.RestauranteContainer .componentesDashboard {
+  display: flex;
+  flex-direction: row;/* Espacio entre los elementos, puedes ajustar este valor */
+}
+
+.RestauranteContainer .seccionEstadistica {
+  margin-bottom: 5px;
+}
   
   .RestauranteContainer .contenedorBlanco {
     display: block;

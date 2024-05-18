@@ -112,7 +112,7 @@ function HomeNegocio() {
                         <StatisticsCards datos={datosEstadisticos} /> 
                       </div>
                     </div>
-                                
+                    <div className="linea"></div>   
             </div>
             <div className="contenedorFooter">
               <div className="textoFooter2">

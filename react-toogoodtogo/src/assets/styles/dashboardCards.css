@@ -3,8 +3,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    
+    margin-bottom: 5px;
   }
   
   .contenedorCardDashboard .card {
@@ -18,7 +17,7 @@
     padding: 20px;
     width: 400px;
     margin: 60px -10px -40px 40px;
-    height: 30%;
+    height: 23.6%;
   }
   
   .contenedorCardDashboard .card img {
