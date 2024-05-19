@@ -23,17 +23,17 @@ export default class Login extends Component {
     {
       username: "nico@correo.com",
       password: "nico123",
-      rol: "admin"
+      rol: "Admin"
     },
     {
       username: "cami@correo.com",
       password: "cami123",
-      rol: "cliente"
+      rol: "Cliente"
     },
     {
       username: "emi@correo.com",
       password: "emi123",
-      rol: "negocio"
+      rol: "Negocio"
     },
     // Agrega más usuarios si lo deseas
   ];
@@ -73,10 +73,10 @@ export default class Login extends Component {
       Cookies.set('rol', user.rol);
 
       // Redirigir según el rol después de la autenticación
-      if (user.rol === 'cliente') {
+      if (user.rol === 'Cliente') {
         window.location.href = '/Inicio';
-      } else if (user.rol === 'negocio') {
-        window.location.href = '/Restaurante';
+      } else if (user.rol === 'Negocio') {
+        window.location.href = '/Inicio-Negocio';
       } else {
         window.location.href = '/Inicio'; // Redirección por defecto
       }

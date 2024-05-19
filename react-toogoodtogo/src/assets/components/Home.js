@@ -11,9 +11,10 @@ import perfilMujer from '../images/perfilMujer.jpg'
 import dosnegocios from '../images/dosnegocios.jpg'
 import entregando from '../images/entregando.jpg'
 import ServicioCards from './ServicioCards';
+import Cookies from 'js-cookie';
 function Home() {
   const [currentSlide, setCurrentSlide] = useState('cliente');
-
+  const rol = Cookies.get('rol');
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide(currentSlide === 'cliente' ? 'negocio' : 'cliente');
@@ -27,11 +28,13 @@ function Home() {
       name: 'Clientes',
       descript: 'Acceso a ofertas exclusivas. Apoyo a la sostenibilidad. Variedad de opciones. Ahorro de dinero.',
       image: cliente,
+      link: 'Registro-Cliente'
     },
     {
       name: 'Negocios',
       descript: 'Reducción de desperdicio de alimentos. Conexión con la comunidad. Incremento de ingresos.',
       image: negocio,
+      link: 'Registro-Negocio'
     },
 ];
     return (

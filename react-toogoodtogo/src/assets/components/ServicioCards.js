@@ -10,7 +10,7 @@ const ServicioCards = ({ productos, nombreBoton }) => {
                 <img src={producto.image} alt={`${producto.name} Logo`} />
                 <h3>{producto.name}</h3> 
                 <p>{producto.descript}</p>
-                <button className='buttonSerParte'>{nombreBoton}</button>
+                <a href={producto.link}><button className='buttonSerParte'>{nombreBoton}</button></a>
             </div>
         </div>
       ))}
