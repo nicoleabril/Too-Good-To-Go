@@ -35,9 +35,9 @@ function AddNegocio() {
         <div className="contenedor-addProduct">
           <div className="formulario-addProduct">
             <form>
-              <div className="nombre">
+              <div className="nombreNegocio">
                 <label>Nombre del Negocio</label>
-                <input type="text" className="nombreIngresado" value={nombreNegocio} />
+                <input type="text" className="nombreIngresadoNegocio" value={nombreNegocio} />
               </div>
               <div className="descripcion">
                 <label>Descripción</label>
@@ -55,11 +55,11 @@ function AddNegocio() {
             </form>
           </div>
           <div className="imagen-addProduct">
-            <div className="imagen">
+            <div className="imagen-logo">
               <label>Logotipo</label>
-              <div className="image-preview-container">
+              <div className="image-preview-container-logo">
                 {logoSrc ? (
-                  <img src={logoSrc} alt="Logotipo" className="producto-imagen" />
+                  <img src={logoSrc} alt="Logotipo" className="producto-imagen-logo" />
                 ) : (
                   <div className="image-placeholder">Vista previa de la imagen</div>
                 )}
@@ -77,8 +77,8 @@ function AddNegocio() {
               </div>
             </div>
           </div>
-          <div className="imagen-addProduct">
-            <div className="imagen">
+          <div className="imagen-addProduct-referencial">
+            <div className="imagen-referencial">
               <label>Imagen Referencial</label>
               <div className="image-preview-container">
                 {imageSrc ? (
