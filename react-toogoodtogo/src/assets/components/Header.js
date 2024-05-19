@@ -39,6 +39,7 @@ const Header = ({page, cartCount}) => {
                         <li><a href="/Inicio">Inicio</a></li>
                         <li><a href="/Inicio">Comentarios</a></li>
                         <li><a href="/MiPerfil">Mi Perfil</a></li>
+                        <li className="show-small"><a href="/Inicio">Bolsa de Compras</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>
                     </React.Fragment>
                 )}
