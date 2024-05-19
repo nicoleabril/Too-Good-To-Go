@@ -14,7 +14,7 @@ import sanduche2 from '../images/sanduche2.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import ProductosCards from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
-function HomeRestaurante() {
+function HomeRestaurante({ onBuyClick }) {
   const ofertasData = [
         {
           precio: '6.99',
@@ -128,13 +128,13 @@ function HomeRestaurante() {
             <div className="contenedorBlanco">
                     <h1>OFERTAS</h1>
                     <div className="linea"></div>
-                    <ProductosCards productos={ofertasData} nombreBoton={'VER OFERTAS'}/>
+                    <ProductosCards productos={ofertasData} nombreBoton={'VER OFERTAS'} onBuyClick={onBuyClick}/>
                     <h1>Combos</h1>
-                    <ProductosCards productos={combosData} nombreBoton={'COMPRAR AHORA'}/>
+                    <ProductosCards productos={combosData} nombreBoton={'COMPRAR AHORA'} onBuyClick={onBuyClick}/>
                     <h1>Bebidas</h1>
-                    <ProductosCards productos={bebidasData} nombreBoton={'COMPRAR AHORA'}/>
+                    <ProductosCards productos={bebidasData} nombreBoton={'COMPRAR AHORA'} onBuyClick={onBuyClick}/>
                     <h1>Sánduches</h1>
-                    <ProductosCards productos={sanduchesData} nombreBoton={'COMPRAR AHORA'}/>                   
+                    <ProductosCards productos={sanduchesData} nombreBoton={'COMPRAR AHORA'} onBuyClick={onBuyClick}/>                   
                    
             </div>
             <div className="contenedorFooter">

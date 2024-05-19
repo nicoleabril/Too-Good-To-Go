@@ -4,7 +4,7 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import Cookies from 'js-cookie';
 import '../styles/header.css'
-const Header = ({page}) => {
+const Header = ({page, cartCount}) => {
   const [showMenu, setShowMenu] = useState(false);
   const rol = Cookies.get('rol');
   const handleToggleMenu = () => {
@@ -65,7 +65,12 @@ const Header = ({page}) => {
         {page !== 'RegistroProductos' && page !=='Informativa' && page !== 'AgregarProducto' && page !== 'RegistroCategoria' &&
         page !== 'AgregarCategoria' && page !== 'EditarCategoria' && page !== 'EditarProducto' && rol !== 'Negocio' && 
          (
-            <a href='/' className='logo'><AiOutlineShopping className='iconOrders'/></a>
+            <div className="cart-icon">
+                <a href='/' className='logo'>
+                    <AiOutlineShopping className='iconOrders'/>
+                    {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
+                </a>
+            </div>
         )}
        
     </nav>

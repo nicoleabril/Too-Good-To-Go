@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/productoCards.css';
 
-const ProductosCards = ({ productos, nombreBoton }) => {
+const ProductosCards = ({ productos, nombreBoton, onBuyClick  }) => {
   return (
     <div className='contenedorCard'>
       {productos.map((producto, index) => (
@@ -11,7 +11,7 @@ const ProductosCards = ({ productos, nombreBoton }) => {
                 <img src={producto.image} alt={`${producto.name} Logo`} />
                 <h3>{producto.name}</h3> 
                 <p>{producto.descript}</p>
-                <button>{nombreBoton}</button>
+                <button onClick={onBuyClick}>{nombreBoton}</button>
             </div>
         </div>
       ))}
