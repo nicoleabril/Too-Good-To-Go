@@ -48,7 +48,7 @@
   .contenedorGraficaDashboard .contenidoCard {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
     margin-top: 20px;
     gap: 20px;
   }
