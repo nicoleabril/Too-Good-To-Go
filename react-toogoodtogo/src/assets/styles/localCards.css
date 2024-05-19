@@ -32,6 +32,8 @@
 }
 
 .contenidoCard button {
+  margin-top: 0px;
+  margin-bottom: 20px !important;
   font-size: 14px;
 }
 
