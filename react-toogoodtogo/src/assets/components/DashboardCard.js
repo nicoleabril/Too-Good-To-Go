@@ -12,7 +12,7 @@ const DashboardCards = ({ platos }) => {
                 </div>
                 <div id='infoPlato'>
                     <h3>{producto.name}</h3> 
-                    <div>
+                    <div className='descripcionPlato'>
                         <p class="inline">{producto.descript}</p>
                         <p id='textoGris' class="inline">{producto.sales}</p>
                     </div>
