@@ -21,7 +21,8 @@ const Header = ({page}) => {
             <ul>
                 <li><a href="/Inicio">Inicio</a></li>
                 {page !== 'RegistroProductos' && page !== 'AgregarProducto' && page !== 'RegistroCategoria' &&
-                 page !== 'AgregarCategoria' && <li><a href="/">Negocios</a></li>}
+                 page !== 'AgregarCategoria' && page !== 'EditarCategoria' && page !== 'EditarProducto' &&
+                  <li><a href="/">Negocios</a></li>}
                 <li><a href="/">Reservas</a></li>
                 <li><a href="/">Mi Perfil</a></li>
                 {page === 'Informativa' && (
@@ -34,7 +35,7 @@ const Header = ({page}) => {
             </ul>
         </div>
         {page !== 'RegistroProductos' && page !=='Informativa' && page !== 'AgregarProducto' && page !== 'RegistroCategoria' &&
-        page !== 'AgregarCategoria' &&
+        page !== 'AgregarCategoria' && page !== 'EditarCategoria' && page !== 'EditarProducto' &&
          (
             <a href='/' className='logo'><AiOutlineShopping className='iconOrders'/></a>
         )}

@@ -39,10 +39,14 @@ function CRUDCategoria() {
             name: "Acciones",
             cell: row => (
                 <div className="botonesCrudCategoria">
-                    <button>
-                        <FiEdit size={25}/>
-                    </button>
-                    <button>
+                    <React.Fragment>   
+                        <a href="/registroCategoria/editarCategoria">
+                            <button className="EditarProd">
+                                <FiEdit size={25}/>
+                            </button>
+                        </a>
+                    </React.Fragment>
+                    <button className="EliminarProd">
                         <BsTrash size={25}/>
                     </button>
                 </div>
