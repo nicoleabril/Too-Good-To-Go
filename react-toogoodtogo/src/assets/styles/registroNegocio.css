@@ -303,6 +303,22 @@
       padding-left: 25px;
   }
 }
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: var(--color-button);
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+  width: 40px;
+  height: 30px;
+}
+
 @media (max-width: 1366px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
   .loginForm {

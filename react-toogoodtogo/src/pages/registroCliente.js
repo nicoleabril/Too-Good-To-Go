@@ -91,6 +91,7 @@ export default class RegistroCliente extends Component {
   render() {
     return (
       <div className="containerRegistro">
+        <button className="back-button" onClick={() => window.history.back()}>←</button>
         <div className="waves-background"></div>
         <div className="loginForm">
           <form>
