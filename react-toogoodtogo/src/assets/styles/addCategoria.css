@@ -178,7 +178,7 @@
     border: 2px dashed #ccc;
 }
 
-.main-container-categoria-add .btn_agregarCategoria {
+.main-container-categoria-add .btn_agregarCategoria, .main-container-categoria-add .btn_actualizarCategoria {
     background-color: var(--color-button); 
     color: white;
     border: none;
@@ -266,7 +266,7 @@
         font-size: 12px;
     }
 
-    .main-container-categoria-add .btn_agregarCategoria {
+    .main-container-categoria-add .btn_agregarCategoria, .main-container-categoria-add .btn_actualizarCategoria {
         width: 250px;
     }
 }
@@ -338,7 +338,7 @@
         font-size: 12px;
     }
 
-    .main-container-categoria-add .btn_agregarCategoria {
+    .main-container-categoria-add .btn_agregarCategoria, .main-container-categoria-add .btn_actualizarCategoria {
         width: 250px;
     }
 }

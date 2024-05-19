@@ -1,20 +1,20 @@
 import React from 'react';
 import Header from '../assets/components/Header';
 import DynamicBreadcrumb from '../assets/components/Bredcrumb';
-import AddCategorias from '../assets/components/AddCategoria';
+import EditCategorias from '../assets/components/EditCategoria';
 import ChatBot from '../assets/components/Chatbot';
 
-const AddCategoria = () => {
+const EditCategoria = () => {
     return (
         <div>
         <div className='add-categoria-page'>
-            <Header page={'AgregarCategoria'}/>
+            <Header page={'EditarCategoria'}/>
             <DynamicBreadcrumb/>
-            <AddCategorias/>
+            <EditCategorias/>
             <ChatBot/>
         </div>
         </div>
     );
 };
 
-export default AddCategoria;
+export default EditCategoria;

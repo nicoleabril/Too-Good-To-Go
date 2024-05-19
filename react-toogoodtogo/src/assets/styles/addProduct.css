@@ -184,7 +184,7 @@
     border: 2px dashed #ccc;
 }
 
-.main-container-product-add .btn_agregarProducto {
+.main-container-product-add .btn_agregarProducto, .main-container-product-add .btn_editarProducto {
     background-color: var(--color-button); 
     color: white;
     border: none;
@@ -261,7 +261,7 @@
         font-size: 12px;
     }
 
-    .main-container-product-add .btn_agregarProducto{
+    .main-container-product-add .btn_agregarProducto, .main-container-product-add .btn_editarProducto{
         width: 250px;
     }
 }
