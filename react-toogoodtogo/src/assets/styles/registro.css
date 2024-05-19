@@ -2,56 +2,6 @@ body{
     overflow-y: auto;
   }
   
-  
-  .RegisterContainer .contenedorRojo {
-    position: relative;
-    bottom: 0;
-    margin-bottom: -30vh;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(90deg, rgba(221,107,107,1) 0%, rgba(219,84,84,1) 30%, rgba(176,24,24,1) 100%);
-    color: white;
-    text-align: center;
-    height: 20vh;
-    border-radius: 60px 60px 0 0;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    z-index: 1; 
-  }
-  
-  .RegisterContainer .contenedorBlanco {
-    display: block;
-    justify-content: center; 
-    align-items: center;
-    position: relative;
-    bottom: 0;
-    top: 20vh;
-    left: 0;
-    width: 100%;
-    height: 100%; 
-    background-color: var(--color-secundary);
-    color: var(--color-button);
-    padding: 20px 20px 40px 20px;
-    text-align: left; 
-    border-radius: 60px 60px 0 0;
-    z-index: 2;
-   
-  }
-  .RegisterContainer .contenedorBlanco h1 {
-    color: var(--color-textos);
-    text-align: center;
-    font-weight: bold;
-    
-  }
-  
-  .RegisterContainer .imagenPizza {
-    position: absolute;
-    top: 20vh; 
-    margin-left: 57%; 
-    z-index: 1; 
-    width: 10vw;
-    height: auto; 
-    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
-  }
 
   .RegisterContainer .seccionIniciativa {
     display: flex;
@@ -82,57 +32,8 @@ body{
     vertical-align: top;
   }
     
-  .RegisterContainer .imagenBolsa {
-    margin-top: 10vh;
-    margin-left: 0vh;
-    border-radius: 30%;
-    opacity: 0.7;
-    z-index: 1;
-      width: 300px; 
-      height: 200px;
-      filter: drop-shadow(
-          0 0 10px rgba(0,0,0,0.5)
-      );
-  }
-  .RegisterContainer .cardsInformativa{
-    margin-top: -30vh;
-  }
-  .RegisterContainer .imagenSecundaria {
-    border-radius: 50%;
-      width: 150px; 
-      height: 150px;
-      margin-top: 25px;
-      filter: drop-shadow(
-          0 0 10px rgba(0,0,0,0.5)
-      );
-  }
 
-  .RegisterContainer .imagenPrimaria {
-    width: 200px; 
-    height: 200px;
-    z-index: 1;
-    border-radius: 50%;
-    margin-right: -40px;
-    margin-left: -40px; /* ajusta según sea necesario */
-  }
-
-  .RegisterContainer .texto-seccionImagen {
-    z-index: 1;
-    position: absolute;
-    background-color: #B01818;
-    border-radius: 30px;
-    margin-top: -40px;
-    margin-left: -40px;
-    height: 40px;
-    width: 500px;
-  }
-
-  .RegisterContainer .texto-seccionImagen p{
-    margin-top: 5px;
-    color: white;
-    text-align: center;
-
-  }
+  
   .RegisterContainer  .textoIniciativa {
     width: 80%; /* ajusta el ancho según sea necesario */
     margin: 0 auto; /* esto centrará el div horizontalmente */
@@ -246,10 +147,18 @@ body{
   }
 
   .RegisterContainer .botonesRegistro {
-    width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    margin: auto;
 }
-
+  .RegisterContainer .contenedorFooterRegistro{
+    height: 8vh;
+    
+  }
+  .RegisterContainer .contenedorFooterRegistro .textoFooter2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   .RegisterContainer
   .textoFooter2 {
@@ -657,12 +566,12 @@ body{
 /* Para pantallas más pequeñas de hasta 375px de ancho */
 @media only screen and (max-width: 484px) {
 
-  .RegisterContainer .contenedorRojo
-  {
-    position: relative;
-    margin-top: 80px;
-    margin-bottom: -200px;
-  }
+  .RegisterContainer .botonesRegistro {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
 
   .RegisterContainer .seccionMensaje {
     gap: 20px;
@@ -714,5 +623,3 @@ body{
   }
 
 }
-
-/* Para tablets de hasta 930px de ancho */
