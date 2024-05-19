@@ -29,9 +29,11 @@
   
   .contenidoCard {
     text-align: center;
+    font-size: 12px;
   }
   
   .contenidoCard button {
+    margin-top: 10px;
     font-size: 14px;
   }
   
