@@ -396,7 +396,10 @@ body{
   padding-left: 25px; /* Ajusta el espacio entre el icono y el texto */
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 1079px) {
+}
+@media only screen and (max-width: 950px) {
+  
   .HomeContainer .imagenBolsa {
     width: 250px;
     height: 250px;
@@ -413,32 +416,36 @@ body{
     margin-bottom: 50px;
   }
   .HomeContainer .texto-seccionImagen {
-    width: 50%;
+    width: 40%;
   }
 
   .HomeContainer .seccionImagen {
-    margin-left: -5%;
+    margin-left: -13%;
   }
   .HomeContainer .contenedorSlide{
     top: 15vh;
   
   }
   .HomeContainer .seccionPedido{
-    top: 10vh;
+    top: 15vh;
     margin-bottom: 10vh;
+    height: auto;
   
   }
   .HomeContainer .seccionTexto {
     margin-top: -30%;
   }
 
+  .HomeContainer .seccionTexto h1{
+    padding-left: 20px;
+  }
   .HomeContainer .custom-list{
-    width: 65% ;
+    width: 55% ;
     font-size: 1rem;
   }
 
   .HomeContainer .contenedorSlide{
-    height: 700px;
+    height: 800px;
   }
 
   .HomeContainer .imagenProceso {
@@ -451,7 +458,25 @@ body{
   .HomeContainer .contenedorFooter {
     margin-top: 12%;
   }
+
+  .HomeContainer .seccionIniciativa{
+    height: 500px;
+  }
+
+  .HomeContainer .imagenSecundaria, .HomeContainer .imagenPrimaria {
+    width: 130px;
+    height: 130px;
+  }
+
+  .HomeContainer .cuadroTexto{
+    margin-top: auto;
+  }
   
+  .HomeContainer .tituloCuadroTexto{
+    width: 90%;
+    font-size: 0.7rem;
+  
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -460,15 +485,16 @@ body{
     flex-direction: row; /* Vuelve a la dirección de fila en dispositivos grandes */
   }
   .HomeContainer .imagenBolsa {
-    width: 250px;
-    height: 250px;
-    margin-top: 10vh;
+    width: 150px;
+    height: 150px;
+    margin-top: 6vh;
     margin-left: -5px;
   }
   .HomeContainer .seccionMensaje {
     flex: 1; /* Ocupa todo el ancho disponible */
-    margin-right: 20px; /* Agrega espacio entre secciones */
+    margin-right: 10px; /* Agrega espacio entre secciones */
     margin-bottom: 0; /* Elimina espacio inferior */
+    margin-left:20%;
   }
 
   .HomeContainer .seccionImagen {
@@ -485,7 +511,7 @@ body{
     }
   }
   .HomeContainer .cardsInformativa{
-    margin-top: 25vh;
+    margin-top: 10vh;
     margin-bottom: -20vh;
   }
 
@@ -540,7 +566,7 @@ body{
 
   .HomeContainer .texto-seccionImagen {
     height: 80px;
-    width: 15vh; /* Ajuste para dispositivos más pequeños */
+    width: 23vh; /* Ajuste para dispositivos más pequeños */
   }
 
   .HomeContainer .textoTooGood, .textoToGo {
@@ -548,14 +574,14 @@ body{
   }
 
   .HomeContainer .seccionTexto h1 {
-    margin-left: -80px;
+    margin-left: -30px;
     text-align: left;
     font-size: 1.5rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
   }
 
   .HomeContainer .seccionTexto  {
-    margin-right: 5%;
-    margin-top: -60%;
+    margin-right: 10%;
+    margin-top: -40%;
   }
 
   .HomeContainer .subtexto {
@@ -585,17 +611,11 @@ body{
       margin-left: 57%; /* Restaurar la posición para pantallas más grandes */
   }
 
-  .HomeContainer .imagenBolsa {
-    width: 150px; /* Reducir el tamaño de la foto del cliente en dispositivos más pequeños */
-    height: 150px;/* Restaurar la posición para pantallas más grandes */
-  }
-
-
 }
 
 
 /* Para pantallas más pequeñas de hasta 375px de ancho */
-@media only screen and (max-width: 484px) {
+@media only screen and (max-width: 500px) {
 
   .HomeContainer .contenedorRojo
   {
@@ -618,7 +638,7 @@ body{
   }
 
   .HomeContainer .texto-seccionImagen p{
-    font-size: 0.75rem;
+    font-size: 0.60rem;
     padding-top: 10px;
   }
   .HomeContainer .cardService,
@@ -639,7 +659,7 @@ body{
   }
 
   .HomeContainer .seccionTexto h1 {
-    margin-left: -50px;
+    margin-left: -5px;
     text-align: left;
     font-size: 1rem; /* Reducir el tamaño de la fuente en dispositivos más pequeños */
   }
@@ -655,4 +675,3 @@ body{
 
 }
 
-/* Para tablets de hasta 930px de ancho */

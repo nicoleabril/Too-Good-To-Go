@@ -109,13 +109,16 @@
     color: black;
   }
   
-  @media only screen and (max-width: 930px) {
-    
+  @media only screen and (max-width: 950px) {
+    .contenedorCard{
+      margin-top: 20%;
+      height: 30%;
+    }
     .cardService {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 40vh;
+      height: 80vh;
       flex-wrap: wrap;
       position: relative;
       margin-top: 20%;
@@ -133,10 +136,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 50vh;
+      height: 70vh;
       flex-wrap: wrap;
       margin-top: 40%;
       margin-bottom: -145px;
+    }
+
+    .contenedorCard {
+      margin-top: 5%;
+      height: 30%;
     }
 
     .cardService img {
@@ -148,7 +156,7 @@
 
   }
 
-  @media only screen and (max-width: 484px) {
+  @media only screen and (max-width: 500px) {
     
     .cardService {
       display: flex;
@@ -162,6 +170,7 @@
     }
 
     .contenedorCard {
+      margin-top: 5%;
       height: 30%;
     }
 
