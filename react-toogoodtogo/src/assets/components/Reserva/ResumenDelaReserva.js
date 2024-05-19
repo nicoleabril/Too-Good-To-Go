@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Collapsible from 'react-collapsible';
 import ProductoReservado from './ProductoReservado';
-import datosProductosComprados from '../../components/Reserva/datosProductosComprados';
 import '../../styles/paginadeReserva.css';
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
@@ -9,13 +8,14 @@ import { FaAngleUp } from "react-icons/fa6";
 
 
 
-function ResumenDelaReserva(props) {
+function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
     let cantidad = 1;
     const [isOpen, setIsOpen] = useState(false);
 
     const handleTriggerClick = () => {
         setIsOpen(!isOpen);
     };
+
     return (
         <>
             <Collapsible
@@ -27,20 +27,18 @@ function ResumenDelaReserva(props) {
                         </button>
                     </div>
                 }
-                className="tittleToggleSection"
-                open={isOpen}
-                onOpening={() => setIsOpen(true)}
-                onClosing={() => setIsOpen(false)}
+                className='tittleToggleSection'
             >
-                {/* Crear un componente por cada producto en datosProductosComprados */}
-                {datosProductosComprados.products.map((producto, index) => (
+                {productos.map((producto, index) => (
                     <ProductoReservado
-                        key={index} // Agrega una clave única para cada componente en el mapeo
+                        key={index}
                         imgProducto={producto.imgProducto}
                         nombreProducto={producto.nombrePromocion}
                         descripcionProducto={producto.descripcion}
                         precioProducto={producto.precio}
-                        cantidad={1} // Pasa la cantidad como un prop
+                        cantidad={producto.cantidad}
+                        onIncrement={() => onIncrement(index)}
+                        onDecrement={() => onDecrement(index)}
                     />
                 ))}
             </Collapsible>

@@ -7,8 +7,7 @@ function CabeceraDelResumen(props) {
         <>
         <p className="logoTooGoodToGo">Too Good To Go<PiHamburgerBold className='iconLogo' /></p>
         <p className="nombreRestaurante"> La Panaderia </p>
-        </>
-        
+        </> 
     );
 }
 export default CabeceraDelResumen;
