@@ -17,12 +17,14 @@
     /*Aplicamos el font*/
     font-family: 'Poppins', sans-serif;
     grid-area: resumen;
-    background-color: #B01818;
-    opacity: 0.8;
+    background-color: rgba(176, 24, 24, 0.80);
+    opacity: 1;
+    z-index: 10;
 }
 
 .cont-detallesReserva {
     grid-area: detalles;
+    z-index: 1; /* Asegúrate de que los detalles estén debajo */
 
 }
 
@@ -68,30 +70,74 @@
 
 
 /************************************TOGGLE_TEXT********************************************************************************/
-.tittleToggleSection {
-    background-color: #F7F7FB;
-    color: #B01818;
-    text-align: start;
+.triggerContent {
+    display: flex;
+    justify-content: space-between;
     font-family: Poppins;
     font-size: 1.2rem;
-
+    margin: 0px;
+    padding: 0px;
+    color: #B01818;
+    background-color: hsl(0, 100%, 100%);
 }
 
 .Collapsible {
-
     background-color: hsl(0, 100%, 100%);
     margin: 30px;
     text-align: start;
     min-width: 20rem;
+    opacity: 1; /* Asegúrate de que no hay transparencia */
+    z-index: 10; /* Asegúrate de que el resumen esté encima */
+}
 
+.Collapsible__trigger {
+    background-color: #F7F7FB;
+    width: 100%;
 }
 
 .is-open {
-    background-color: #F7F7FB;
-    color: #B01818;
+    color: #B01818; 
     text-align: start;
     font-family: Poppins;
     font-size: 1.2rem;
+}
+
+.triggerButton {
+    background-color: #F7F7FB;  
+    color: #a42929 ;  
+    margin: 0px 12px;
+    width: auto;
+    height: auto;
+    border: none; 
+    padding: 0; 
+    cursor: pointer;
+}
+.triggerButton:hover,
+.triggerButton:focus,
+.triggerButton:active {
+    background-color: #F7F7FB !important;
+    color: #a42929 !important;
+    outline: none !important;
+}
+
+.triggerButton svg {
+   
+    background-color: #F7F7FB !important;  /* Asegura que el color de fondo no cambie */
+    color: #a42929!important; 
+    margin: 0;  /* Elimina cualquier margen */
+    padding: 0;  /* Elimina cualquier padding */
+    border: none;  /* Asegura que no haya borde */
+    outline: none;  /* Elimina cualquier outline */
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+button.triggerButton {
+    background-color: #F7F7FB !important;
+    color: #a42929 !important;
+    border: none;  /* Asegura que no haya borde */
+    outline: none;  /* Elimina cualquier outline */
 }
 
 /************************************ DENTRO DEL TOGGLE_TEXT ********************************************************************************/
