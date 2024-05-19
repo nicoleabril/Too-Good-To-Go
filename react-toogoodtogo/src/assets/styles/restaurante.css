@@ -17,8 +17,9 @@
   .RestauranteContainer .titulosDashboard {
     display: flex;
     flex-direction: row;
-    gap: 15%;
+    gap: 12%;
     margin-left: 3%;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
   }
 
   .RestauranteContainer .inline {
@@ -29,10 +30,14 @@
 .RestauranteContainer .seccionEstadistica {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .RestauranteContainer .componentesDashboard {
+  position: relative;
   display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 10px; /* Espacio entre los elementos */
   flex-direction: row;/* Espacio entre los elementos, puedes ajustar este valor */
 }
   
@@ -60,7 +65,9 @@
     
   }
   
-  
+  .RestauranteContainer .seccionEstadistica {
+    flex: 1;
+  }
   
   .RestauranteContainer .imagenPizza {
     position: absolute;
@@ -197,17 +204,14 @@
   }
 
   .RestauranteContainer .componentesDashboard {
-    display: flex;
+    position: relative;
     flex-direction: column;/* Espacio entre los elementos, puedes ajustar este valor */
   }
 
-  .RestauranteContainer .seccionEstadistica {
-    background-color: palevioletred;
-    display: flex;
-    height:  auto;
-    flex-direction: column;/* Espacio entre los elementos, puedes ajustar este valor */
-    gap: 30px;
+  .RestauranteContainer .titulosDashboard {
+    flex-direction: column; /* Apila los títulos en pantallas más pequeñas */
   }
+
 
   .RestauranteContainer .subtexto{
     text-align: justify;
@@ -245,4 +249,14 @@
     margin-top: 30%; 
     position: relative;
   }
+
+  .RestauranteContainer .seccionEstadistica {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 320px){
+  
 }

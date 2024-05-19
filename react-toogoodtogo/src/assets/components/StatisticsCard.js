@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../styles/statisticsCards.css';
 
 const StatisticsCards = ({ datos, selectedIndex, setSelectedIndex}) => {
