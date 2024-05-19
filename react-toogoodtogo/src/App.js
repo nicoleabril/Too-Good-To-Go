@@ -16,6 +16,7 @@ import EditProduct from "./pages/EditProduct";
 import EditCategoria from "./pages/EditCategoria";
 import Negocio from "./pages/Negocio";
 import PaginaDeReserva from "./pages/PaginaDeReserva";
+import MiPerfil from "./pages/MiPerfil";
 
 function App() {
   return (
@@ -38,6 +39,8 @@ function App() {
           <Route path="/RegistroProductos/EditarProducto" element={<EditProduct />} />
           <Route path="/RegistroCategoria/EditarCategoria" element={<EditCategoria />} />
           <Route path="/Reserva" element={<PaginaDeReserva />} />
+          <Route path="/MiPerfil" element={<MiPerfil />} />
+
         </Routes>
       </Router>
     </div>

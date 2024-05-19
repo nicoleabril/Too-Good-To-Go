@@ -38,7 +38,7 @@ const Header = ({page, cartCount}) => {
                     <React.Fragment>
                         <li><a href="/Inicio">Inicio</a></li>
                         <li><a href="/Inicio">Comentarios</a></li>
-                        <li><a href="/Inicio">Mi Perfil</a></li>
+                        <li><a href="/MiPerfil">Mi Perfil</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>
                     </React.Fragment>
                 )}
