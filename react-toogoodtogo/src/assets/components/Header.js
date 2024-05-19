@@ -45,9 +45,9 @@ const Header = ({page}) => {
                 {rol === 'Negocio' && (
                     <React.Fragment>
                         <li><a href="/Inicio-Negocio">Inicio</a></li>
-                        <li><a href="/Inicio">Negocio</a></li>
-                        <li><a href="/Inicio">Categorías</a></li>
-                        <li><a href="/Inicio">Productos</a></li>
+                        <li><a href="/Negocio">Negocio</a></li>
+                        <li><a href="/RegistroCategoria">Categorías</a></li>
+                        <li><a href="/RegistroProductos">Productos</a></li>
                         <li><a href="/Inicio">Ofertas</a></li>
                         <li><a href="/Inicio">Reservas</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>

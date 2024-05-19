@@ -14,6 +14,7 @@ import RegistroCategoria from "./pages/crudCategoria";
 import AddCategoria from "./pages/AddCategoria";
 import EditProduct from "./pages/EditProduct";
 import EditCategoria from "./pages/EditCategoria";
+import Negocio from "./pages/Negocio";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Inicio" element={<Cliente />} />
           <Route path="/Inicio-Negocio" element={<NegocioPage />} />
+          <Route path="/Negocio" element={<Negocio />} />
           <Route path="/Registro" element={<Register />} />
           <Route path="/Registro-Cliente" element={<RegistroCliente />} />
           <Route path="/Registro-Negocio" element={<RegistroNegocio />} />
