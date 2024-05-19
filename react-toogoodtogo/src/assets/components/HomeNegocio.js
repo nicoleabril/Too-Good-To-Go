@@ -102,21 +102,15 @@ function HomeNegocio() {
             <div className="contenedorRojo">
             </div>
             <div className="contenedorBlanco">
-                    <h1>ÓRDENES POPULARES</h1>
-                    <div className="linea"></div>
-                    <ProductosCards productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'}/>
-                    <div className='titulosDashboard'>
-                      <h1 class="inline" >Más Vendidos</h1> 
-                      <h1 class="inline">Estadísticas</h1> 
-                    </div>
-                    <div className='componentesDashboard'>
-                      <DashboardCards platos={masVendidos} /> 
-                      <div className='seccionEstadistica'>
-                        <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex}/> 
-                        {selectedIndex !== null && <GraficaCard selectedIndex={selectedIndex} />}
-                      </div>
-                    </div>
-                    <div className="linea"></div>   
+              <h1>ÓRDENES POPULARES</h1>
+              <div className="linea"></div>
+              <ProductosCards productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'} />
+              <div className='componentesDashboard'>
+                  <DashboardCards platos={masVendidos} /> 
+                  <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} /> 
+                  {selectedIndex !== null && <GraficaCard selectedIndex={selectedIndex} />}
+              </div>
+              <div className="linea"></div>   
             </div>
             <div className="contenedorFooter">
               <div className="textoFooter2">
