@@ -15,6 +15,7 @@ import AddCategoria from "./pages/AddCategoria";
 import EditProduct from "./pages/EditProduct";
 import EditCategoria from "./pages/EditCategoria";
 import Negocio from "./pages/Negocio";
+import PaginaDeReserva from "./pages/PaginaDeReserva";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/RegistroCategoria/AgregarCategoria" element={<AddCategoria />} />
           <Route path="/RegistroProductos/EditarProducto" element={<EditProduct />} />
           <Route path="/RegistroCategoria/EditarCategoria" element={<EditCategoria />} />
+          <Route path="/Reserva" element={<PaginaDeReserva />} />
         </Routes>
       </Router>
     </div>
