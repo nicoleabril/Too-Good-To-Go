@@ -128,7 +128,7 @@ function HomeRestaurante({ onBuyClick }) {
             <div className="contenedorBlanco">
                     <h1>OFERTAS</h1>
                     <div className="linea"></div>
-                    <ProductosCards productos={ofertasData} nombreBoton={'VER OFERTAS'} onBuyClick={onBuyClick}/>
+                    <ProductosCards productos={ofertasData} nombreBoton={'COMPRAR AHORA'} onBuyClick={onBuyClick}/>
                     <h1>Combos</h1>
                     <ProductosCards productos={combosData} nombreBoton={'COMPRAR AHORA'} onBuyClick={onBuyClick}/>
                     <h1>Bebidas</h1>

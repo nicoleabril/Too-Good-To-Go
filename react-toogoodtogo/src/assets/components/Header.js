@@ -48,7 +48,7 @@ const Header = ({page, cartCount}) => {
                         <li><a href="/Negocio">Negocio</a></li>
                         <li><a href="/RegistroCategoria">Categorías</a></li>
                         <li><a href="/RegistroProductos">Productos</a></li>
-                        <li><a href="/Inicio">Ofertas</a></li>
+                        <li><a href="/RegistroOfertas">Ofertas</a></li>
                         <li><a href="/Inicio">Reservas</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>
                     </React.Fragment>

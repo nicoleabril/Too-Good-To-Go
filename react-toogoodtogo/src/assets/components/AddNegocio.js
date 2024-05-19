@@ -98,7 +98,7 @@ function AddNegocio() {
                   Subir Imagen
                 </label>
               </div>
-              <button className="btn_agregarProducto">Agregar Producto</button>
+              <button className="btn_agregarProducto">Guardar</button>
             </div>
           </div>
         </div>
