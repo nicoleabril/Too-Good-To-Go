@@ -27,7 +27,12 @@
     margin-right: 10px; 
 }
 
-
+.RestauranteContainer .seccionEstadistica {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
 
 .RestauranteContainer .componentesDashboard {
   display: flex;
@@ -205,14 +210,32 @@
     font-size: 14px;
     line-height: 1.5;
 }
-@media only screen and (max-width: 484px) {
+
+@media only screen and (max-width: 768px) {
+
   .RestauranteContainer {
+    height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    flex-wrap: wrap;
   }
- 
+
+
+  .RestauranteContainer .componentesDashboard {
+    display: flex;
+    position: relative;
+    flex-direction: column;/* Espacio entre los elementos, puedes ajustar este valor */
+    justify-content: center;
+  }
+
+  .RestauranteContainer .titulosDashboard {
+    display: none;
+  }
+
+
   .RestauranteContainer .subtexto{
     text-align: justify;
     width: 200px;
@@ -312,12 +335,78 @@
   }
   
   
-  
+  .RestauranteContainer .seccionEstadistica {
+    height: 20vw;
+    justify-content: center;
+  }
 
- 
-  
+  .RestauranteContainer .inline {
+    margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
+}
+}
+@media only screen and (max-width: 484px) {
+  .RestauranteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
+  .RestauranteContainer .componentesDashboard {
+    position: relative;
+    flex-direction: column;/* Espacio entre los elementos, puedes ajustar este valor */
+    justify-content: center;
+  }
+
+  .RestauranteContainer .titulosDashboard {
+    display: none;
+  }
+
+
+  .RestauranteContainer .subtexto{
+    text-align: justify;
+    width: 200px;
+    margin-left: -8vh;
+  }
+  .RestauranteContainer .comentario{
+   
+    width: 280px;
+  }
+  .RestauranteContainer .textoImagen {
+    margin-left: 2%;
+    justify-content: center;
+    
+  }
   
- 
+  .RestauranteContainer .imagen2 {
+    display: none;
+  }
+  
+  .RestauranteContainer .contenedorRojo {
+    margin-top: 150px;
+  }
+  .RestauranteContainer .card:first-child {
+    margin-top: 30vh;
+  }
+  
+  .RestauranteContainer .card{
+    margin: 10px;
+  }
+  .RestauranteContainer .card-more{
+    margin-top: 10px;
+  }
+  .RestauranteContainer .contenedorFooter{
+    margin-top: 30%; 
+    position: relative;
+  }
+
+  .RestauranteContainer .seccionEstadistica {
+    height: 20vw;
+    justify-content: center;
+  }
+
+  .RestauranteContainer .inline {
+    margin-right: 10px; /* Espacio entre los elementos, puedes ajustar este valor */
+}
 }
 

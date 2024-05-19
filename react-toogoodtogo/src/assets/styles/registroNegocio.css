@@ -24,7 +24,7 @@
 
 
 .containerNegocio {
-  margin-left: 30vh;
+  margin-left: 15vh;
   display: flex;
   min-height: 80vh;
   justify-content: space-between;
@@ -213,7 +213,7 @@
   }
   .containerNegocio .map-container .leaflet-container {
     top:22vh;
-    left: 18vh;
+    left: 19vh;
     height: 350px;
     width: 400px;
     border-radius: 10px;
@@ -303,6 +303,22 @@
       padding-left: 25px;
   }
 }
+
+.back-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: var(--color-button);
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+  width: 40px;
+  height: 30px;
+}
+
 @media (max-width: 1366px) {
   /* Estilos para pantallas con resolución máxima de 1366px */
   .loginForm {

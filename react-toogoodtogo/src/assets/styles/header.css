@@ -23,7 +23,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  padding: 10px 80px;
+  padding: 10px 30px;
   height: 80px;
   position: fixed;
   z-index: 3;
@@ -75,6 +75,23 @@ nav ul li a {
   font-size: 1.3rem;
   color: #000;
   transition: 0.1s ease;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -20px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
 }
 
 nav ul li a:hover {
@@ -141,14 +158,27 @@ nav .iconMenu {
   margin-top: 20px; 
 }
 
+.cart-text {
+  display: none;
+}
 
-@media (max-width: 991px) {
+.show-small {
+  display: none;
+}
+
+
+@media (max-width: 800px) {
   nav .iconOrders{
     display: none;
   }
+
   nav .iconMenu {
       display: initial; 
       cursor: pointer;
+  }
+
+  .show-small {
+    display: block;
   }
 
   .menu {
@@ -190,8 +220,46 @@ nav .iconMenu {
       }
   }
   
-
   #menuToggle:checked + .menu {
       transform: translateY(0); 
+  }
+
+  .buttonIniciarSesion, .buttonRegistrarse {
+    width: 120%;
+    font-size: 11px;
+    margin: auto auto;
+  }
+
+}
+
+@media screen and (min-width: 801px) and (max-width: 991px) {
+  nav {
+    padding: 10px 20px;
+  }
+
+  nav a img {
+    width: 8%;
+    margin-left: -30px;
+  }
+
+  nav .iconOrders{
+    margin-right: 10px;
+  }
+  nav .logo {
+    font-size: 1.1rem;
+    margin-left: -10px;
+  }
+
+  nav ul li a {
+    font-size: 1.1rem;
+  }
+
+  nav ul li {
+    padding: 0 15px;
+  }
+
+  .buttonIniciarSesion, .buttonRegistrarse {
+    width: 85%;
+    font-size: 11px;
   }
 }

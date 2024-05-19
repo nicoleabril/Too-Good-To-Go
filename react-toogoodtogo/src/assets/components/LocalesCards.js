@@ -18,7 +18,7 @@ const LocalesCards = ({ locales, nombreBoton }) => {
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <button>{nombreBoton}</button>
+            <a href={local.link}><button>{nombreBoton}</button></a>
           </div>
         </div>
       ))}

@@ -6,6 +6,7 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import markerIcon from '../assets/images/map-marker-icon.png'; 
+
 export default class RegistroNegocio extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,6 @@ export default class RegistroNegocio extends Component {
     popupAnchor: [1, -34],
     tooltipAnchor: [16, -28],
   });
-
 
   handleError = () => {
     this.setState({ error: true });
@@ -122,6 +122,7 @@ export default class RegistroNegocio extends Component {
 
     return (
       <div className="containerNegocio">
+        <button className="back-button" onClick={() => window.history.back()}>←</button>
         <div className="waves-background"></div>
         <div className="loginForm2">
           <form>

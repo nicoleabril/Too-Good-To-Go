@@ -44,6 +44,11 @@
     align-items: center;
 }
 
+.main-container-product-add .imagen-addProduct-referencial {
+    flex: 1;
+    align-items: center;
+}
+
 .main-container-product-add .nombre{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -57,6 +62,25 @@
 .main-container-product-add .nombreIngresado{
     width: 60%;
     margin-left: 30px;
+    margin-right: 10px;
+    border-radius: 0%;
+    border: 3px solid rgb(245, 243, 243);
+}
+
+.main-container-product-add .nombreNegocio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+}
+
+.main-container-product-add .nombreIngresadoNegocio{
+    width: 65%;
+    margin-left: 60px;
     margin-right: 10px;
     border-radius: 0%;
     border: 3px solid rgb(245, 243, 243);
@@ -113,6 +137,16 @@
     align-items: center;
 }
 
+.main-container-product-add .precio-oferta{
+    margin-top: 80px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
 .main-container-product-add .precio-inputs{
     width: 60%;
     margin-left: 100px;
@@ -129,6 +163,24 @@
 
 
 .main-container-product-add .imagen {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50px;
+    filter: none;
+}
+
+.main-container-product-add .imagen-logo {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50px;
+    filter: none;
+}
+
+.main-container-product-add .imagen-referencial {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
@@ -176,6 +228,22 @@
     object-fit: cover;
 }
 
+.main-container-product-add .image-preview-container-logo {
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-product-add .producto-imagen-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .main-container-product-add .image-placeholder {
     text-align: center;
     color: #aaa;
@@ -218,7 +286,7 @@
         padding-left: 20px;
         padding-right: 20px;
     }
-    .main-container-product-add .nombre,.main-container-product-add .descripcion,.main-container-product-add .categoria,.main-container-product-add .precio {
+    .main-container-product-add .nombre, .main-container-product-add .nombreNegocio,.main-container-product-add .descripcion,.main-container-product-add .categoria,.main-container-product-add .precio {
         flex-direction: column;
         align-items: flex-start;
         margin-left: 0;
@@ -237,7 +305,7 @@
         width: 25%;
     }
 
-    .main-container-product-add .nombreIngresado,.main-container-product-add .descripcionIngresada,.main-container-product-add .comboOpciones,.main-container-product-add .precio-inputs {
+    .main-container-product-add .nombreIngresado, .main-container-product-add .nombreIngresadoNegocio,.main-container-product-add .descripcionIngresada,.main-container-product-add .comboOpciones,.main-container-product-add .precio-inputs {
         width: 100%;
         margin-left: 0;
         margin-right: 0;
@@ -250,6 +318,10 @@
 
     .main-container-product-add .imagen{
         margin-top: 50px;
+    }
+
+    .main-container-product-add .imagen-addProduct-referencial{
+        margin-top: 300px;
     }
 
     .contenedorFooter-add-producto{

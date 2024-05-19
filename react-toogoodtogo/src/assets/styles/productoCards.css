@@ -18,7 +18,7 @@
     padding: 20px;
     width: 300px;
     margin: 100px  10px -80px 10px;
-    height: 70%;
+    height: 75%;
   }
   
   .card img {
@@ -29,6 +29,7 @@
   
   .contenidoCard {
     text-align: center;
+    font-size: 12px;
   }
   
   .contenidoCard button {
@@ -43,9 +44,9 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    width: 300px;
+    width: 280px;
     margin: 100px  10px -80px 10px;
-    height: 70%;
+    height: 75%;
   }
   .card-more button {
     margin: auto auto; 
