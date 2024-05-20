@@ -103,7 +103,7 @@
     text-align: start;
     min-width: 20rem;
     opacity: 1; /* Asegúrate de que no hay transparencia */
-    max-height: 40rem; /* Ajusta esto a la altura máxima deseada */
+    max-height: 28rem; /* Ajusta esto a la altura máxima deseada */
     overflow-y: auto; 
     filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
     
