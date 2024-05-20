@@ -9,6 +9,7 @@ import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import PopularCard from './PopularCard';
+import ProductoCard from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
 import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
@@ -107,13 +108,13 @@ function HomeNegocio() {
             <div className="contenedorBlanco">
               <h1>ÓRDENES POPULARES</h1>
               <div className="linea"></div>
-              <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'} />
+              <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'}/> 
               <div className='componentesDashboard'>
                   <DashboardCards platos={masVendidos} /> 
                   <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} /> 
                   {selectedIndex !== null && <GraficaCard selectedIndex={selectedIndex} />}
               </div>
-              <div className="linea"></div>   
+              <div className="linea"></div>
             </div>
             <div className="contenedorFooter">
               <div className="textoFooter2">

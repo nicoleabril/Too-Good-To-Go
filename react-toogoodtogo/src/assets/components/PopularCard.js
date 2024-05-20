@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/popularCard.css';
+import '../styles/productoCards.css';
 
 const PopularCard = ({ productos, nombreBoton  }) => {
   return (
-    <div className='contenedorCardPopular'>
+    <div className='contenedorCard'>
       {productos.map((producto, index) => (
         <div className='card' key={index}>
             <h3>${producto.precio}</h3> 
