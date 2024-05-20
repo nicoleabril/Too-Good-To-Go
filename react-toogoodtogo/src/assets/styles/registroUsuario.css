@@ -204,7 +204,7 @@ body {
   }
 
   /* Ajustes para el formulario en dispositivos móviles */
-  .loginForm {
+  .containerRegistro .loginForm {
     width: 80%;
     border-radius: 20px; /* Redondear los bordes */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
@@ -212,11 +212,20 @@ body {
     margin: 0 auto; /* Centrar horizontalmente */
     max-width: 90%; /* Ancho máximo */
     position: fixed;
-    top: 60%;/* 50% desde arriba */
+    top: 0;
     padding-top: 30px;
     left: 50%; /* 50% desde la izquierda */
     bottom: -40%;
-    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    transform: translate(-50%, 0); /* Centrar vertical y horizontalmente */
+  }
+
+  .containerRegistro .password-container {
+    margin-top: -20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
   }
 
   .input-box {

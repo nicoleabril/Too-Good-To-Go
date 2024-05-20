@@ -248,18 +248,17 @@
 
   /* Ajustes para el formulario en dispositivos móviles */
   .loginForm2 {
-    width: 80%;
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: var(--color-fondoLogin);
     margin: 0 auto;
     max-width: 90%;
     position: fixed;
-    top: 60%;
+    top: 0;
     padding-top: 30px;
     left: 50%;
     bottom: -40%;
-    transform: translate(-50%, -50%); /* Centrar vertical y horizontalmente */
+    transform: translate(-50%, 0); /* Centrar vertical y horizontalmente */
   }
 
   .input-box {
@@ -300,6 +299,15 @@
       align-items: center;
       text-align: center;
       padding-left: 25px;
+  }
+
+  .containerNegocio .password-container {
+    margin-top: -20px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
   }
 }
 
