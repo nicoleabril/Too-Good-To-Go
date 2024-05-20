@@ -180,7 +180,6 @@
   
   @media only screen and (max-width: 320px) {
     .contenedorStatisticDashboard {
-      background-color: black;
       width: 70%;
       display: flex;
       justify-content: center; /* Centra horizontalmente */

@@ -8,6 +8,7 @@ const StatisticsCards = ({ datos, selectedIndex, setSelectedIndex}) => {
 
   return (
     <div className='contenedorStatisticDashboard'>
+      <h1>Estadísticas</h1>
       {datos.map((producto, index) => (
         <div
           className={`card ${selectedIndex === index ? 'selected' : ''}`}

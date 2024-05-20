@@ -7,6 +7,7 @@ const GraficaCard = ({ selectedIndex }) => {
   const index = 0;
   return (
     <div className='contenedorGraficaDashboard'>
+        <h1></h1>
         <div className='card' key={index}>
             <div className='contenidoCard'>
               {selectedIndex === 0 && <AreaChart /> }
