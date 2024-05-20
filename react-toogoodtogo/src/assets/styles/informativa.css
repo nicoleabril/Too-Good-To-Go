@@ -189,7 +189,7 @@ body{
     margin-top: 30px;
   }
   .HomeContainer .contenedorFooter {
-    margin-top: 8%; 
+    margin-top: 10%; 
     margin-bottom: 0; 
     position: relative;
     width: 100%;
@@ -476,9 +476,6 @@ body{
     margin: 50px 10px 10px 0px;
   }
 
-  .HomeContainer .contenedorFooter {
-    margin-top: 30%;
-  }
   .HomeContainer .contenidoCardService{
     margin-top: 80px;
     margin-bottom: 50px;
@@ -524,7 +521,7 @@ body{
   }
 
   .HomeContainer .contenedorFooter {
-    margin-top: 12%;
+    margin-bottom: 0;
   }
 
   .HomeContainer .seccionIniciativa{
@@ -534,10 +531,6 @@ body{
   .HomeContainer .imagenSecundaria, .HomeContainer .imagenPrimaria {
     width: 130px;
     height: 130px;
-  }
-
-  .HomeContainer .cuadroTexto{
-    margin-top: auto;
   }
   
   .HomeContainer .tituloCuadroTexto{
@@ -556,7 +549,7 @@ body{
   .HomeContainer .imagenBolsa {
     width: 150px;
     height: 150px;
-    margin-top: 6vh;
+    margin-top: -2vh;
     margin-left: -5px;
   }
   .HomeContainer .seccionMensaje {
@@ -622,8 +615,6 @@ body{
   .HomeContainer .contenedorFooter {
     margin-top: 30%;
   }
-
-  
 
   .HomeContainer .textoImagen {
     margin-top: 20vh; /* Ajuste para dispositivos más pequeños */
