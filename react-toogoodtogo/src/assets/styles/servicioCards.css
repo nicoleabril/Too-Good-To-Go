@@ -109,6 +109,20 @@
     color: black;
   }
   
+  @media only screen and (max-width: 1079px){
+    .cardService{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 90vh;
+      flex-wrap: wrap;
+      position: relative;
+      margin-top: 25%;
+      margin-bottom: -20%;
+    }
+    
+    
+  }
   @media only screen and (max-width: 950px) {
     .contenedorCard{
       margin-top: 20%;

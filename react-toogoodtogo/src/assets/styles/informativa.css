@@ -397,6 +397,72 @@ body{
 }
 
 @media only screen and (max-width: 1079px) {
+
+  .HomeContainer .seccionImagen{
+    margin-left: -30px;
+  }
+
+  .HomeContainer .imagenPrimaria, .HomeContainer .imagenSecundaria {
+    width: 150px;
+    height: 150px;
+    margin-top: 100px;
+  }
+
+  .HomeContainer .texto-seccionImagen{
+    width: 40%;
+  }
+
+  .HomeContainer .contenedorSlide{
+    top: 150vh;
+  
+  }
+  .HomeContainer .seccionPedido{
+    top: 150vh;
+    margin-bottom: 10vh;
+    height: auto;
+  
+  }
+  .HomeContainer .seccionTexto {
+    margin-top: -30%;
+  }
+
+  .HomeContainer .seccionTexto h1{
+    padding-left: 20px;
+  }
+  .HomeContainer .custom-list{
+    width: 55% ;
+    font-size: 1rem;
+  }
+
+  .HomeContainer .contenedorSlide{
+    height: 700px;
+  }
+
+  .HomeContainer .imagenProceso {
+    margin-top: 20%;
+    width: 275px;
+    height: 200px;
+    
+  }
+
+  .HomeContainer .contenedorFooter {
+    margin-top: 120%;
+  }
+  
+  .HomeContainer .tituloCuadroTexto{
+    width: 90%;
+    font-size: 0.8rem;
+  
+  }
+
+  .HomeContainer .seccionIniciativa{
+    height: 450px;
+  }
+
+  .HomeContainer .cuadroTexto {
+    margin-top: 100px;
+  }
+
 }
 @media only screen and (max-width: 950px) {
   
@@ -408,8 +474,10 @@ body{
   }
   .HomeContainer .cardService{
     margin: 50px 10px 10px 0px;
+  }
 
-    
+  .HomeContainer .contenedorFooter {
+    margin-top: 30%;
   }
   .HomeContainer .contenidoCardService{
     margin-top: 80px;
@@ -482,6 +550,7 @@ body{
 @media only screen and (max-width: 768px) {
   .HomeContainer .seccionIniciativa {
     height: 400px;
+    padding-bottom: 20px;
     flex-direction: row; /* Vuelve a la dirección de fila en dispositivos grandes */
   }
   .HomeContainer .imagenBolsa {
@@ -630,11 +699,13 @@ body{
 
   .HomeContainer .seccionIniciativa {
     height: 300px;
+    padding-bottom:30px;
   }
 
   .HomeContainer .texto-seccionImagen {
     margin-left: -80px;
     margin-top: -10%;
+    width: 120px;
   }
 
   .HomeContainer .texto-seccionImagen p{
@@ -673,5 +744,13 @@ body{
     margin-top: -35%;
   }
 
+  .HomeContainer .contenedorSlide{
+    margin-top: 15vh;
+    height: 850px;
+  }
+
+  .HomeContainer .seccionPedido{
+    height: 500px;
+  }
 }
 
