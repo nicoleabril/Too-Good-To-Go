@@ -241,7 +241,6 @@ button:hover{
     margin-left: 0;
   }
   .containerLogin button {
-    width: 100%; /* Ancho completo */
     margin: 20px 0; /* Espaciado */
   }
 
