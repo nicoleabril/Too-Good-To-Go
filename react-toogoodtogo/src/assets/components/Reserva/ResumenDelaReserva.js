@@ -9,7 +9,6 @@ import { FaAngleUp } from "react-icons/fa6";
 
 
 function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
-    let cantidad = 1;
     const [isOpen, setIsOpen] = useState(false);
 
     const handleTriggerClick = () => {
@@ -19,10 +18,11 @@ function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
     return (
         <>
             <Collapsible
+                open={true}
                 trigger={
-                    <div className="triggerContent">
+                    <div className="triggerContent" onClick={handleTriggerClick}>
                         <span>Resumen de los pedidos</span>
-                        <button className="triggerButton" onClick={handleTriggerClick}>
+                        <button className="triggerButton" >
                             {isOpen ? <FaAngleUp /> : <FaAngleDown />}
                         </button>
                     </div>
@@ -36,7 +36,7 @@ function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
                         nombreProducto={producto.nombrePromocion}
                         descripcionProducto={producto.descripcion}
                         precioProducto={producto.precio}
-                        cantidad={producto.cantidad}
+                        cantidad={producto.cantidadVendida}
                         onIncrement={() => onIncrement(index)}
                         onDecrement={() => onDecrement(index)}
                     />
