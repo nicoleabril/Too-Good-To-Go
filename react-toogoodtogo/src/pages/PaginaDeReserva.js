@@ -55,6 +55,7 @@ function PaginaDeReserva() {
     <div className='cont-principalReserva' >
       <header page={'Reserva'} />
       <div className='cont-resumenReserva'>
+      
         <CabeceraDelResumen />
         <ResumenDelaReserva
           productos={productos}
@@ -65,6 +66,7 @@ function PaginaDeReserva() {
       </div>
       <div className='cont-detallesReserva'>
         <h1 className='texto_CompletaReserva'>Completa tu reserva</h1>
+        
         <IngresoDatosPersonales />
         <InformacionDeLaReserva metodoPago={dataInformacionReserva[0].metodoPago} estado={dataInformacionReserva[0].estado} restaurante={dataInformacionReserva[0].restaurante} direccion={dataInformacionReserva[0].direccion} horario={dataInformacionReserva[0].horario} />
         <div className='textoAviso'>

@@ -21,6 +21,7 @@ import Negocio from "./pages/Negocio";
 import PaginaDeReserva from "./pages/PaginaDeReserva";
 import MiPerfil from "./pages/MiPerfil";
 import RegistroComentarios from "./pages/crudComentarios";
+import ReservacionesRecibidas from "./pages/ReservacionesRecibidas";
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           <Route path="/MiPerfil" element={<MiPerfil />} />
           <Route path="/RegistroComentarios" element={<RegistroComentarios />} />
 
+          <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} />
         </Routes>
       </Router>
     </div>
