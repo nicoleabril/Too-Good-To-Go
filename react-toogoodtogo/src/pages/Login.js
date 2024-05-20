@@ -23,7 +23,7 @@ export default class Login extends Component {
     {
       username: "nico@correo.com",
       password: "nico123",
-      rol: "Admin"
+      rol: "Cliente"
     },
     {
       username: "cami@correo.com",
@@ -91,6 +91,7 @@ export default class Login extends Component {
   render() {
     return (
       <div className="containerLogin">
+        <button className="back-button" onClick={() => window.history.back()}>←</button>
         <div className="waves-background"></div>
         <div className="loginForm">
           <form>
