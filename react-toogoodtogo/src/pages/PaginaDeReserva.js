@@ -55,7 +55,7 @@ function PaginaDeReserva() {
     <div className='cont-principalReserva' >
       <header page={'Reserva'} />
       <div className='cont-resumenReserva'>
-      
+      <button className="back-button" onClick={() => window.history.back()}>←</button>
         <CabeceraDelResumen />
         <ResumenDelaReserva
           productos={productos}
@@ -73,16 +73,10 @@ function PaginaDeReserva() {
         <p >Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>
         </div>
         <div className='grupoDeBotones'>
-          
           <a href='/Restaurante'><button id='btnCancelar' className='btnCancelar '>Cancelar</button></a>
           <a href='/Inicio'><button id='btnReservar' className='btnReservar' onClick={handleReservarClick}>Reservar</button></a>
-          
-          
-
         </div>
-        
       </div>
-
     </div>
   );
 }

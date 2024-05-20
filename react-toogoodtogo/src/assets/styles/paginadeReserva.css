@@ -20,6 +20,8 @@
         "resumen detalles detalles"
         "resumen detalles detalles"
     ;
+    padding: 0px;
+    margin: 0px;
 }
 
 .cont-resumenReserva {
@@ -29,7 +31,6 @@
     background-color: rgba(176, 24, 24, 0.80);
     opacity: 1;
     min-width: 28rem;
-    position: relative; /* o absolute/fixed */
     z-index: 10;
     
 }
@@ -447,7 +448,7 @@ button.triggerButton {
     
 }
 
-.card {
+.cont-CardsReserva .card {
     margin-top: 10rem;
     width: 40%;
     min-width: 20rem;
@@ -514,9 +515,7 @@ button.triggerButton {
         width: auto;
     
     }
-    .cont-principalReserva {
-        overflow-y: visible; /* Cambia el overflow a visible en dispositivos más pequeños */
-      }
+    
     
     
    
@@ -535,11 +534,16 @@ button.triggerButton {
         align-items: center;
         
     }
-    .cont-principalReserva {
-        overflow-y: visible; /* Cambia el overflow a visible en dispositivos más pequeños */
-      }
+    
     .cont-resumenReserva {
         overflow-y: visible;
+      
+    }
+    .cont-detallesReserva {
+        height: 100vh;
+    }
+    .cont-principalReserva {
+        height: 150vh;
     }
 
 }

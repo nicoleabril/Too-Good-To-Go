@@ -50,7 +50,7 @@ const Header = ({page, cartCount}) => {
                         <li><a href="/RegistroCategoria">Categorías</a></li>
                         <li><a href="/RegistroProductos">Productos</a></li>
                         <li><a href="/RegistroOfertas">Ofertas</a></li>
-                        <li><a href="/Reserva">Reservas</a></li>
+                        <li><a href="/ReservasRecibidas">Reservas</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>
                     </React.Fragment>
                 )}
