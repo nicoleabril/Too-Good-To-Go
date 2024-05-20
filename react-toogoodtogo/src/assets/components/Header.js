@@ -39,7 +39,7 @@ const Header = ({page, cartCount}) => {
                         <li><a href="/Inicio">Inicio</a></li>
                         <li><a href="/Inicio">Comentarios</a></li>
                         <li><a href="/MiPerfil">Mi Perfil</a></li>
-                        <li className="show-small"><a href="/Inicio">Bolsa de Compras</a></li>
+                        <li className="show-small"><a href="/Reserva">Bolsa de Compras</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>
                     </React.Fragment>
                 )}
@@ -67,7 +67,7 @@ const Header = ({page, cartCount}) => {
         page !== 'AgregarCategoria' && page !== 'EditarCategoria' && page !== 'EditarProducto' && rol !== 'Negocio' && 
          (
             <div className="cart-icon">
-                <a href='/' className='logo'>
+                <a href='/Reserva' className='logo'>
                     <AiOutlineShopping className='iconOrders'/>
                     {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
                 </a>

@@ -47,6 +47,10 @@ function PaginaDeReserva() {
     }
   };
 
+  const handleReservarClick = () => {
+    alert("Reservación Exitosa, no olvides recoger tu pedido dentro del horario adecuado.");
+  };
+
   return (
     <div className='cont-principalReserva' >
       <header page={'Reserva'} />
@@ -63,6 +67,18 @@ function PaginaDeReserva() {
         <h1 className='texto_CompletaReserva'>Completa tu reserva</h1>
         <IngresoDatosPersonales />
         <InformacionDeLaReserva metodoPago={dataInformacionReserva[0].metodoPago} estado={dataInformacionReserva[0].estado} restaurante={dataInformacionReserva[0].restaurante} direccion={dataInformacionReserva[0].direccion} horario={dataInformacionReserva[0].horario} />
+        <div className='textoAviso'>
+        <p >Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>
+        </div>
+        <div className='grupoDeBotones'>
+          
+          <a href='/Restaurante'><button id='btnCancelar' className='btnCancelar '>Cancelar</button></a>
+          <a href='/Inicio'><button id='btnReservar' className='btnReservar' onClick={handleReservarClick}>Reservar</button></a>
+          
+          
+
+        </div>
+        
       </div>
 
     </div>

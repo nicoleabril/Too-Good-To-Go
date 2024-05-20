@@ -7,14 +7,7 @@
 .cont-detallesReserva div{
     unicode-bidi: normal;
 }
-.cont-DetallesDePago p{
-    /*Le quitamos toda la herencia */
-    all: unset;
-}
-.cont-DetallesDePago div{
-    unicode-bidi: normal;
-    
-}
+
 
 .cont-principalReserva {
     width: 100%;
@@ -110,7 +103,7 @@
     text-align: start;
     min-width: 20rem;
     opacity: 1; /* Asegúrate de que no hay transparencia */
-    max-height: 28rem; /* Ajusta esto a la altura máxima deseada */
+    max-height: 25rem; /* Ajusta esto a la altura máxima deseada */
     overflow-y: auto; 
     filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
     
@@ -394,6 +387,44 @@ button.triggerButton {
     margin: 0;
 }
 
+.textoAviso{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #000;
+    margin: 0;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    font-weight: 200;
+}
+
+.grupoDeBotones{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding:2rem;
+}
+
+#btnCancelar{
+    margin-left: 2rem;
+    background-color: #992b1a;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 10rem;
+    
+}
+#btnReservar{
+    margin-left: 2rem;
+    background-color: #2caa5e;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 10rem;
+}
+#btnReservar:active {
+    background-color: #1e7f4c!important; /* Cambia el color cuando se hace clic */
+}
 /* Estilos generales */
 
 /*********************************************************************************** PARTE RESPONSIVE ************************************************/
@@ -425,12 +456,10 @@ button.triggerButton {
         width: auto;
     
     }
-    .cont-detallesReserva {
-        overflow-y: visible;
-    }
     .cont-principalReserva {
         overflow-y: visible; /* Cambia el overflow a visible en dispositivos más pequeños */
       }
+    
     
    
 }
