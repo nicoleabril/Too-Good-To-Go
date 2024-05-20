@@ -1,5 +1,4 @@
-
-.contenedorCard {
+.contenedorCard{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +20,7 @@
     height: 75%;
   }
   
-  .card img {
+  .card img{
     width: 130px;
     height: 100px;
     margin-bottom: 10px;
@@ -48,7 +47,7 @@
     margin: 100px  10px -80px 10px;
     height: 75%;
   }
-  .card-more button {
+  .card-more button{
     margin: auto auto; 
     width: 60%;
     background-color: #fff;
@@ -66,27 +65,39 @@
     color: black;
   }
 
-  h3 {
+  .RestauranteContainer h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: black;
     height: 70px;
   }
   
-  p {
+  .RestauranteContainer p {
     font-size: 1rem;
     margin-bottom: 5px;
     color: black;
     height: 100px;
   }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: black;
+  }
   
-  ul {
+  p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: black;
+  }
+  
+  ul{
     list-style: none;
     padding: 0;
     margin: 0;
   }
   
-  li {
+  li{
     margin-bottom: 5px;
     color: black;
   }
