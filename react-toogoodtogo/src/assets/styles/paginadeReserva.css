@@ -283,7 +283,7 @@ button.triggerButton {
 }
 .inputDatosPersonales{
     font-family: Poppins;
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #000000;
     margin-top: 0.5rem;
     padding-left: 2rem;
@@ -291,7 +291,7 @@ button.triggerButton {
     width: auto;
     border-radius: 5px;
     border: 1px solid #000000;
-    width: 20rem;
+    width: 16rem;
     display: flex;
     height: 2rem;
    
@@ -332,6 +332,20 @@ button.triggerButton {
     flex-wrap: wrap;
     gap: 2rem 7rem;
     padding-top: 2rem;
+}
+
+.cont-DetallesDePago{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+
+}
+.texto_InformacionReserva{
+    font-weight: bold;
 }
 
 /*********************************************************************************** PARTE RESPONSIVE ************************************************/
