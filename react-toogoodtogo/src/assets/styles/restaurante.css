@@ -168,7 +168,7 @@
     width: 25%;
     background-color: #575555; 
     padding: 20px;
-    margin-top: 40px;
+    margin-top: 3%;
     display: inline-block;
     vertical-align: top;
     box-sizing: border-box;
@@ -201,6 +201,7 @@
 
 .RestauranteContainer .textoComentario h3 {
     color: white;
+    height: auto;
     margin: 0;
     font-size: 16px;
 }
@@ -243,7 +244,7 @@
     margin-left: -8vh;
   }
   .RestauranteContainer .comentario{
-   
+    margin-top: 70%;
     width: 280px;
   }
   .RestauranteContainer .textoImagen {
@@ -370,7 +371,7 @@
     margin-left: -8vh;
   }
   .RestauranteContainer .comentario{
-   
+    margin-top: 70%;
     width: 280px;
   }
   .RestauranteContainer .textoImagen {
