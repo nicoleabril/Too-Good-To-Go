@@ -37,7 +37,7 @@ const Header = ({page, cartCount}) => {
                 {rol === 'Cliente' && (
                     <React.Fragment>
                         <li><a href="/Inicio">Inicio</a></li>
-                        <li><a href="/Inicio">Comentarios</a></li>
+                        <li><a href="/RegistroComentarios">Comentarios</a></li>
                         <li><a href="/MiPerfil">Mi Perfil</a></li>
                         <li className="show-small"><a href="/Reserva">Bolsa de Compras</a></li>
                         <li><button className='buttonIniciarSesion' onClick={handleLogOut}>Cerrar Sesión</button></li>

@@ -20,6 +20,7 @@ import EditOferta from "./pages/EditOferta";
 import Negocio from "./pages/Negocio";
 import PaginaDeReserva from "./pages/PaginaDeReserva";
 import MiPerfil from "./pages/MiPerfil";
+import RegistroComentarios from "./pages/crudComentarios";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/RegistroCategoria/EditarCategoria" element={<EditCategoria />} />
           <Route path="/Reserva" element={<PaginaDeReserva />} />
           <Route path="/MiPerfil" element={<MiPerfil />} />
+          <Route path="/RegistroComentarios" element={<RegistroComentarios />} />
 
         </Routes>
       </Router>
