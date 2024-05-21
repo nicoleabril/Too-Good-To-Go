@@ -99,6 +99,7 @@ function CRUDProducts() {
             )
         },
     ];
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const nuevoProducto = Cookies.get('nuevoProducto');
@@ -109,13 +110,24 @@ function CRUDProducts() {
         }
     }, []);
 
+    // Función para filtrar los productos según el término de búsqueda
+    const filteredData = data.filter(producto =>
+        producto.producto.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <body className="container-crud-prod">
             <main className="crud-producto-container">
                 <div className="crud-producto">
                     <div className="BusquedaProducto">
                         <img className="FotoBuscar" src={buscar} alt="Buscar" />
-                        <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
+                        <input
+                            type="text"
+                            className="TextoBusquedaProducto"
+                            placeholder="Buscar Producto"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
                     <React.Fragment>
                         <a href="/registroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
@@ -124,7 +136,7 @@ function CRUDProducts() {
                 <div className="tabla-productos-container">
                     <DataTable
                         columns={columns} 
-                        data={data} 
+                        data={filteredData}
                         />
                 </div>
             </main>

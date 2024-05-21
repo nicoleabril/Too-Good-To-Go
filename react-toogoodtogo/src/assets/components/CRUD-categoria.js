@@ -94,6 +94,8 @@ function CRUDCategoria() {
         },
     ];
 
+    const [searchTerm, setSearchTerm] = useState("");
+
     useEffect(() => {
         const nuevaCategoria = Cookies.get('nuevaCategoria');
         if (nuevaCategoria) {
@@ -103,6 +105,11 @@ function CRUDCategoria() {
         }
     }, []); 
 
+    // Función para filtrar los productos según el término de búsqueda
+    const filteredData = data.filter(producto =>
+        producto.categoria.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <body>
             <div className="container-crud-categoria">
@@ -110,7 +117,13 @@ function CRUDCategoria() {
                     <div className="crud-categoria">
                         <div className="BusquedaCategoria">
                             <img className="FotoBuscarCategoria" src={buscar} alt="Buscar" />
-                            <input type="text" className="TextoBusquedaCategoria" placeholder="Buscar Categoría" />
+                            <input
+                            type="text"
+                            className="TextoBusquedaProducto"
+                            placeholder="Buscar Categoría"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            />
                         </div>
                         <React.Fragment>
                             <Link to="/RegistroCategoria/AgregarCategoria">
@@ -121,7 +134,7 @@ function CRUDCategoria() {
                     <div className="tabla-categoria-container">
                         <DataTable
                             columns={columns}
-                            data={data}
+                            data={filteredData}
                         />
                     </div>
                 </main>
