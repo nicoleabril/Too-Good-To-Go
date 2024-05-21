@@ -1,0 +1,127 @@
+.container-add-comt {
+    margin-top: 110px;
+}
+
+.container-add-comt .container-add-comment {
+    width: 100vw;
+    height: 100vh;
+    padding: 60px;
+    box-sizing: border-box;
+}
+
+.container-add-comt .form-label {
+    margin-left: -10px;
+}
+
+.container-add-comt .form-control {
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.container-add-comt #formUser {
+    margin-left: 65px;
+}
+
+.container-add-comt #formDate {
+    margin-left: 75px;
+}
+
+.container-add-comt h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.container-add-comt .form-group {
+    margin-top: 20px;
+}
+
+.container-add-comt textarea {
+    height: 150px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #0e0e0e;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+
+.container-add-comt .btn-primary {
+    margin: 10px;
+    width: 300px;
+    margin-top: 60px;
+}
+
+.container-add-comt .addcomment-textarea {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.container-add-comment .addcomment-textarea textarea {
+    margin: 0;
+    width: 100%;
+}
+.container-add-comt .contenedorFooter-addComentarios {
+    margin-top: auto; /* Esto empuja el footer hacia abajo */
+    position: relative;
+    width: 100%;
+    background-color: var(--color-fondoLogin);
+    color: var(--color-button);
+    text-align: right;
+    padding-right: 40px;
+    border-radius: 60px 60px 0 0;
+    z-index: 2;
+}
+
+.container-add-comt .waves-background2-addComentarios {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/waves.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    top: 150px;
+    left: 0;
+    z-index: -1;
+}
+
+.container-add-comt .textoFooter2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    padding-right: 40px;
+    text-align: right;
+}
+
+@media screen and (max-width: 608px) {
+    .container-add-comt #formUser {
+        display: flex;
+        margin-left: 40px;
+    }
+    
+    .container-add-comt #formDate {
+        display: flex;
+        margin-left: 40px;
+    }
+
+    .container-add-comment .addcomment-textarea textarea {
+        width: 150%;
+        margin-left: -50px;
+    }
+
+    .container-add-comt .form-control {
+        margin-top: 20px;
+        width: 80%;
+    }
+    .container-add-comt .btn-primary {
+        margin: 10px;
+        width: 150px;
+        font-size: 12px;
+    }
+    .container-add-comt .waves-background2-editComentarios {
+        top: 100px;
+    }
+}

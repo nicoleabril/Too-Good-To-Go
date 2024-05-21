@@ -31,9 +31,9 @@ const Comments = () => {
 
     return (
         <div className="container-comments">
-            <Button variant="primary" className="add-comment-button">
-                <FiPlus size={25} />
-            </Button>
+            <Link to={`/RegistroComentarios/AgregarComentarios`} className="add-comment-button">
+                <Button variant="primary"><FiPlus size={25} /></Button>
+            </Link>
             <div className="comments-list">
                 {comments.map(comment => (
                     <Card key={comment.id} className="mb-3">

@@ -23,6 +23,7 @@ import MiPerfil from "./pages/MiPerfil";
 import RegistroComentarios from "./pages/crudComentarios";
 import ReservacionesRecibidas from "./pages/ReservacionesRecibidas";
 import EditComentarios from "./pages/EditComentarios";
+import AddComentario from "./pages/AddComentario";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/RegistroComentarios" element={<RegistroComentarios />} />
           <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} />
           <Route path="/RegistroComentarios/EditarComentarios/:id" element={<EditComentarios />} />
+          <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} />
         </Routes>
       </Router>
     </div>
