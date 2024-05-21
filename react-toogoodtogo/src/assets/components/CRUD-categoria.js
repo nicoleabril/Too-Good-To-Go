@@ -17,35 +17,35 @@ function CRUDCategoria() {
         {
             id: 1,
             categoria: "Ofertas",
-            icono: <img className="logoOfertasCrudProd" src={ofertasLogo} alt="Ofertas" />,
+            icono: ofertasLogo,
             estado: "Activo",
             fechaCreacion: "10/10/2023",
         },
         {
             id: 2,
             categoria: "Combos",
-            icono: <img className="logoCombosCrudProd" src={combosLogo} alt="Combos" />,
+            icono: combosLogo,
             estado: "Activo",
             fechaCreacion: "02/08/2021",
         },
         {
             id: 3,
             categoria: "Bebidas",
-            icono: <img className="logoBebidasCrudProd" src={bebidasLogo} alt="Bebidas" />,
+            icono: bebidasLogo,
             estado: "Activo",
             fechaCreacion: "05/07/2022",
         },
         {
             id: 4,
             categoria: "Sánduches",
-            icono: <img className="logoSanduchesCrudProd" src={sanduchesLogo} alt="Sánduches" />,
+            icono: sanduchesLogo,
             estado: "Activo",
             fechaCreacion: "03/05/2022",
         },
         {
             id: 5,
             categoria: "Donas Premium",
-            icono: <img className="logoPremiumCrudProd" src={donaPremiumLogo} alt="Donas Premium" />,
+            icono: donaPremiumLogo,
             estado: "Inactivo",
             fechaCreacion: "25/02/2023",
         }
@@ -64,7 +64,7 @@ function CRUDCategoria() {
         },
         {
             name: "Icono",
-            cell: row => row.icono,
+            cell: row => <img className="logoPremiumCrudProd" src={row.icono} alt={row.icono} />,
         },
         {
             name: "Estado",
@@ -97,11 +97,11 @@ function CRUDCategoria() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        const nuevaCategoria = Cookies.get('nuevaCategoria');
+        const nuevaCategoria = sessionStorage.getItem('nuevaCategoria');
         if (nuevaCategoria) {
             const nuevoDato  = (JSON.parse( nuevaCategoria));
             setData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
-            Cookies.remove('nuevaCategoria');
+            sessionStorage.removeItem('nuevaCategoria');
         }
     }, []); 
 

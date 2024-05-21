@@ -102,11 +102,11 @@ function CRUDProducts() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        const nuevoProducto = Cookies.get('nuevoProducto');
+        const nuevoProducto = sessionStorage.getItem('nuevoProducto');
         if (nuevoProducto) {
             const nuevoDato  = (JSON.parse( nuevoProducto));
             setData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
-            Cookies.remove('nuevoProducto');
+            sessionStorage.removeItem('nuevoProducto');
         }
     }, []);
 

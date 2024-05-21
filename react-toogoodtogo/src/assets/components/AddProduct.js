@@ -39,9 +39,9 @@ function AddProduct() {
         producto,
         categoria,
         precio: precioCompleto,
-        imagen: null
+        imagen: imageSrc
     };
-    Cookies.set('nuevoProducto', JSON.stringify(nuevoProducto));
+    sessionStorage.setItem('nuevoProducto', JSON.stringify(nuevoProducto));
     navigate('/RegistroProductos'); // Redirige de vuelta al listado de categorías
 };
 

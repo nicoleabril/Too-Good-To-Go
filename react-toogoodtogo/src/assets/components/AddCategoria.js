@@ -24,13 +24,13 @@ function AddCategorias({onAgregarCategoria }) {
 
     const fechaCreacion = new Date().toLocaleDateString();
     const nuevaCategoria = {
-        categoria,
-        descripcion,
-        estado,
-        fechaCreacion,
-        icono: null
+      categoria,
+      icono: imageSrc,
+      estado,
+      fechaCreacion,
     };
-    Cookies.set('nuevaCategoria', JSON.stringify(nuevaCategoria));
+    sessionStorage.setItem('nuevaCategoria', JSON.stringify(nuevaCategoria));
+    console.log(nuevaCategoria);
     navigate('/RegistroCategoria'); // Redirige de vuelta al listado de categorías
 };
 

@@ -44,7 +44,7 @@ function CRUDOferta() {
         },
         {
             name: "Imagen",
-            cell: row => <img className="imagenProd" src={bolsa} alt={row.name}/>
+            cell: row => <img className="imagenProd" src={row.image} alt={row.name}/>
         },
         {
             name: "Descripción",
@@ -78,11 +78,11 @@ function CRUDOferta() {
     const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        const nuevaOferta = Cookies.get('nuevaOferta');
+        const nuevaOferta = sessionStorage.getItem('nuevaOferta');
         if (nuevaOferta) {
-            const nuevoDato  = (JSON.parse( nuevaOferta));
+            const nuevoDato = JSON.parse(nuevaOferta);
             setOfertasData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
-            Cookies.remove('nuevaOferta');
+            sessionStorage.removeItem('nuevaOferta');
         }
     }, []);
 

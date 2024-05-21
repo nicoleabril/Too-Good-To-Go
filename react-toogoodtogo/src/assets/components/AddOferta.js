@@ -37,9 +37,9 @@ function AddOfertas() {
         name: oferta,
         descript: descripcion,
         precio: precioCompleto,
-        image: null
+        image: imageSrc,
     };
-    Cookies.set('nuevaOferta', JSON.stringify(nuevaOferta));
+    sessionStorage.setItem('nuevaOferta', JSON.stringify(nuevaOferta));
     navigate('/RegistroOfertas'); // Redirige de vuelta al listado de categorías
 };
 
