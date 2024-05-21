@@ -6,6 +6,7 @@ import ResumenDelaReserva from '../assets/components/Reserva/ResumenDelaReserva'
 import datosProductosComprados from '../assets/components/Reserva/datosProductosComprados';
 import IngresoDatosPersonales from '../assets/components/Reserva/IngresoDatosPersonales';
 import InformacionDeLaReserva from '../assets/components/Reserva/InformacionDeLaReserva';
+import { getProductosComprados } from '../assets/components/productosComprados';
 
 
 const dataInformacionReserva = [
@@ -19,33 +20,25 @@ const dataInformacionReserva = [
 
 ];
 
-/* EN TEORÍA AQUÍ SE PASAN TODOS LOS DATOS DEL RESTAURANTE */
+//EN TEORÍA AQUÍ SE PASAN TODOS LOS DATOS DEL RESTAURANTE 
 function PaginaDeReserva() {
-  const [productos, setProductos] = useState(datosProductosComprados.products);
+  const [productos, setProductos] = useState(getProductosComprados);
   const [total, setTotal] = useState(0);
-  /* Calcula el total de la compra */
+  // Calcula el total de la compra 
   useEffect(() => {
     calcularTotal();
-  }, [productos]); /* Se ejecuta cada vez que cambia productos */
+  }, [productos]); // Se ejecuta cada vez que cambia productos 
   const calcularTotal = () => {
-    const nuevoTotal = productos.reduce((acc, producto) => acc + (producto.precio * producto.cantidadVendida), 0);
+    console.log('Calculando total');
+    console.log( productos);
+    //Redondeamos a dos decimales
+    const nuevoTotal = productos.reduce((acc, producto) => acc + producto.precio * (producto.cantidad || 1), 0).toFixed(2);
+    
+  
+
     setTotal(nuevoTotal);
   };
 
-  /* Incrementa la cantidad de un producto */
-  const incrementarCantidad = (index) => {
-    const nuevosProductos = [...productos];
-    nuevosProductos[index].cantidadVendida += 1;
-    setProductos(nuevosProductos);
-  };
-  /* Decrementa la cantidad de un producto */
-  const decrementarCantidad = (index) => {
-    const nuevosProductos = [...productos];
-    if (nuevosProductos[index].cantidadVendida > 0) {
-      nuevosProductos[index].cantidadVendida -= 1;
-      setProductos(nuevosProductos);
-    }
-  };
 
   const handleReservarClick = () => {
     alert("Reservación Exitosa, no olvides recoger tu pedido dentro del horario adecuado.");
@@ -58,9 +51,6 @@ function PaginaDeReserva() {
       <button className="back-button" onClick={() => window.history.back()}>←</button>
         <CabeceraDelResumen />
         <ResumenDelaReserva
-          productos={productos}
-          onIncrement={incrementarCantidad}
-          onDecrement={decrementarCantidad}
         />
         <p className='totalReserva'>Total: $ {total}</p>
       </div>

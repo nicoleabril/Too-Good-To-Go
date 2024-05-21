@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "../styles/crud-product.css";
 import buscar from "../images/buscar.png";
 import DataTable from "react-data-table-component";
@@ -10,8 +10,52 @@ import Combo3 from "../images/combo3.jpeg";
 import bebida1 from '../images/bebida1.jpeg'
 import bebida2 from '../images/bebida2.jpeg'
 import bebida3 from '../images/bebida3.jpeg'
-
+import Cookies from 'js-cookie';
 function CRUDProducts() {
+    const [data, setData] = useState([
+        {
+            id: 1,
+            producto: "Combo #1",
+            imagen: Combo1,
+            categoria: "Combos",
+            precio: "$25,99",
+        },
+        {
+            id: 2,
+            producto: "Combo #2",
+            imagen: Combo2,
+            categoria: "Combos",
+            precio: "$19,99",
+        },
+        {
+            id: 3,
+            producto: "Combo #3",
+            imagen: Combo3,
+            categoria: "Combos",
+            precio: "$20,99",
+        },
+        {
+            id: 4,
+            producto: "Té Helado Grande",
+            imagen: bebida1,
+            categoria: "Bebidas",
+            precio: "$1,50",
+        },
+        {
+            id: 5,
+            producto: "Iced Latte",
+            imagen: bebida2,
+            categoria: "Bebidas",
+            precio: "$3,50",
+        },
+        {
+            id: 6,
+            producto: "Chocolate Frío",
+            imagen: bebida3,
+            categoria: "Bebidas",
+            precio: "$3,75",
+        }
+    ]);
     const columns = [
         {
             name: "Id",
@@ -55,57 +99,35 @@ function CRUDProducts() {
             )
         },
     ];
-    const data = [
-        {
-            id: 1,
-            producto: "Combo #1",
-            imagen: Combo1,
-            categoria: "Combos",
-            precio: "$25,99",
-        },
-        {
-            id: 2,
-            producto: "Combo #2",
-            imagen: Combo2,
-            categoria: "Combos",
-            precio: "$19,99",
-        },
-        {
-            id: 3,
-            producto: "Combo #3",
-            imagen: Combo3,
-            categoria: "Combos",
-            precio: "$20,99",
-        },
-        {
-            id: 4,
-            producto: "Té Helado Grande",
-            imagen: bebida1,
-            categoria: "Bebidas",
-            precio: "$1,50",
-        },
-        {
-            id: 5,
-            producto: "Iced Latte",
-            imagen: bebida2,
-            categoria: "Bebidas",
-            precio: "$3,50",
-        },
-        {
-            id: 6,
-            producto: "Chocolate Frío",
-            imagen: bebida3,
-            categoria: "Bebidas",
-            precio: "$3,75",
+    const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(() => {
+        const nuevoProducto = sessionStorage.getItem('nuevoProducto');
+        if (nuevoProducto) {
+            const nuevoDato  = (JSON.parse( nuevoProducto));
+            setData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
+            sessionStorage.removeItem('nuevoProducto');
         }
-    ];
+    }, []);
+
+    // Función para filtrar los productos según el término de búsqueda
+    const filteredData = data.filter(producto =>
+        producto.producto.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <body className="container-crud-prod">
             <main className="crud-producto-container">
                 <div className="crud-producto">
                     <div className="BusquedaProducto">
                         <img className="FotoBuscar" src={buscar} alt="Buscar" />
-                        <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Producto" />
+                        <input
+                            type="text"
+                            className="TextoBusquedaProducto"
+                            placeholder="Buscar Producto"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
                     <React.Fragment>
                         <a href="/registroProductos/agregarProducto"><button className='botonAgregarProducto'>Agregar Producto</button></a>
@@ -114,7 +136,7 @@ function CRUDProducts() {
                 <div className="tabla-productos-container">
                     <DataTable
                         columns={columns} 
-                        data={data} 
+                        data={filteredData}
                         />
                 </div>
             </main>

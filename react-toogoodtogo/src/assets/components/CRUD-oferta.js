@@ -1,13 +1,36 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "../styles/crud-product.css";
 import buscar from "../images/buscar.png";
 import DataTable from "react-data-table-component";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import bolsa from "../images/bolsa.jpeg";
-
+import Cookies from 'js-cookie';
 
 function CRUDOferta() {
+    const [ofertasData, setOfertasData] = useState([
+        {
+            id: 1,
+          precio: '6.99',
+          name: 'Oferta #1',
+          descript: 'Esta bolsa sorpresa está valorada en $11,99',
+          image: bolsa,
+        },
+        {
+            id: 2,
+          precio: '4.99',
+          name: 'Oferta #2',
+          descript: 'Esta bolsa sorpresa está valorada en $7,99',
+          image: bolsa,
+        },
+        {
+            id: 3,
+          precio: '9.99',
+          name: 'Oferta #3',
+          descript: 'Esta bolsa sorpresa está valorada en $31,99',
+          image: bolsa,
+        }
+  ]);
     const columns = [
         {
             name: "Id",
@@ -52,36 +75,36 @@ function CRUDOferta() {
         },
     ];
 
-    const ofertasData = [
-        {
-            id: 1,
-          precio: '6.99',
-          name: 'Oferta #1',
-          descript: 'Esta bolsa sorpresa está valorada en $11,99',
-          image: bolsa,
-        },
-        {
-            id: 2,
-          precio: '4.99',
-          name: 'Oferta #2',
-          descript: 'Esta bolsa sorpresa está valorada en $7,99',
-          image: bolsa,
-        },
-        {
-            id: 3,
-          precio: '9.99',
-          name: 'Oferta #3',
-          descript: 'Esta bolsa sorpresa está valorada en $31,99',
-          image: bolsa,
+    const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(() => {
+        const nuevaOferta = sessionStorage.getItem('nuevaOferta');
+        if (nuevaOferta) {
+            const nuevoDato = JSON.parse(nuevaOferta);
+            setOfertasData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
+            sessionStorage.removeItem('nuevaOferta');
         }
-  ];
+    }, []);
+
+    // Función para filtrar los productos según el término de búsqueda
+    const filteredData = ofertasData.filter(producto =>
+        producto.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+
     return (
         <body className="container-crud-prod">
             <main className="crud-producto-container">
                 <div className="crud-producto">
                     <div className="BusquedaProducto">
                         <img className="FotoBuscar" src={buscar} alt="Buscar" />
-                        <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Oferta" />
+                        <input
+                            type="text"
+                            className="TextoBusquedaProducto"
+                            placeholder="Buscar Oferta"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
                     <React.Fragment>
                         <a href="/RegistroOfertas/AgregarOferta"><button className='botonAgregarProducto'>Agregar Oferta</button></a>
@@ -90,7 +113,7 @@ function CRUDOferta() {
                 <div className="tabla-productos-container">
                     <DataTable
                         columns={columns} 
-                        data={ofertasData} 
+                        data={filteredData} 
                         />
                 </div>
             </main>
