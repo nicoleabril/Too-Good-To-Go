@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FiEdit, FiPlus } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
-import "../styles/comments.css";
+import '../styles/comments.css';
+import { Link } from 'react-router-dom';
 
 const Comments = () => {
-    const commentsData = [
+
+    const [comments, setComments] = useState([
         {
             id: 1,
             restaurant: 'Dunkin Donuts',
@@ -20,7 +22,12 @@ const Comments = () => {
             comment: 'El ambiente es relajado y cómodo, perfecto para una pausa rápida durante el día. Las sillas y mesas son cómodas, ideal para trabajar un rato con el portátil.',
             date: '2024-05-12'
         },
-    ];
+    ]);
+
+    const handleDeleteComment = (id) => {
+        const updatedComments = comments.filter(comment => comment.id !== id);
+        setComments(updatedComments);
+    };
 
     return (
         <div className="container-comments">
@@ -28,7 +35,7 @@ const Comments = () => {
                 <FiPlus size={25} />
             </Button>
             <div className="comments-list">
-                {commentsData.map(comment => (
+                {comments.map(comment => (
                     <Card key={comment.id} className="mb-3">
                         <Card.Header>{comment.restaurant}</Card.Header>
                         <div>{comment.date}</div>
@@ -37,11 +44,11 @@ const Comments = () => {
                             <Card.Text>{comment.comment}</Card.Text>
                         </Card.Body>
                         <div className='botones_comentario'>
-                            <Button variant="outline-primary" size="sm" className="mx-1">
-                                <FiEdit size={25} /> 
-                            </Button>
-                            <Button variant="outline-danger" size="sm" className="mx-2">
-                                <BsTrash size={25} /> 
+                            <Link to={`/RegistroComentarios/EditarComentarios/${comment.id}`} className="btnEditar">
+                                <Button variant="outline-primary"><FiEdit size={25} /></Button>
+                            </Link>
+                            <Button  variant="outline-danger" size="sm" className="btnEliminar" 
+                                onClick={() => handleDeleteComment(comment.id)}><BsTrash size={25} /> 
                             </Button>
                         </div>
                     </Card>
@@ -58,5 +65,3 @@ const Comments = () => {
 };
 
 export default Comments;
-
-
