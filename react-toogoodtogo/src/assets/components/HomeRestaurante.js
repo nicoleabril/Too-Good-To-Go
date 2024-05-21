@@ -18,24 +18,24 @@ import { addProductoComprado } from './productosComprados';
 
 const HomeRestaurante = ({ onBuyClick }) => {
   const ofertasData = [
-    { precio: '6.99', name: 'Oferta #1', descript: 'Esta bolsa sorpresa está valorada en $11,99', image: bolsa },
-    { precio: '4.99', name: 'Oferta #2', descript: 'Esta bolsa sorpresa está valorada en $7,99', image: bolsa },
-    { precio: '9.99', name: 'Oferta #3', descript: 'Esta bolsa sorpresa está valorada en $31,99', image: bolsa },
+    { precio: '6.99', name: 'Oferta #1', descript: 'Esta bolsa sorpresa está valorada en $11,99', image: bolsa ,cantidadVendida: 1},
+    { precio: '4.99', name: 'Oferta #2', descript: 'Esta bolsa sorpresa está valorada en $7,99', image: bolsa, cantidadVendida: 1},
+    { precio: '9.99', name: 'Oferta #3', descript: 'Esta bolsa sorpresa está valorada en $31,99', image: bolsa, cantidadVendida: 1},
   ];
   const combosData = [
-    { precio: '25.99', name: 'Oferta #1', descript: '¡Disfruta de las donuts más famosas del mundo! Elige tus 12 donas favoritas.', image: combo1 },
-    { precio: '17.99', name: 'Oferta #2', descript: 'Desayuno para cuatro, incluye: 4 Cubanitos a elección + 1 Party Box + 4 Té helados Medianos.', image: combo2 },
-    { precio: '20.99', name: 'Oferta #3', descript: 'Elige tus 50 antojitos favoritos y disfruta de una variedad de sabores únicos.', image: combo3 },
+    { precio: '25.99', name: 'Oferta #1', descript: '¡Disfruta de las donuts más famosas del mundo! Elige tus 12 donas favoritas.', image: combo1 ,cantidadVendida: 1},
+    { precio: '17.99', name: 'Oferta #2', descript: 'Desayuno para cuatro, incluye: 4 Cubanitos a elección + 1 Party Box + 4 Té helados Medianos.', image: combo2, cantidadVendida: 1},
+    { precio: '20.99', name: 'Oferta #3', descript: 'Elige tus 50 antojitos favoritos y disfruta de una variedad de sabores únicos.', image: combo3, cantidadVendida: 1},
   ];
   const bebidasData = [
-    { precio: '1.50', name: 'Té Helado Grande', descript: 'Despierta tus sentidos y réfrescate con nuestro famosos Té Helado Dunkin', image: bebida1 },
-    { precio: '3.50', name: 'Iced Latte', descript: 'Despierta tus sentidos y refréscate con nuestro famoso Iced Latte Dunkin.', image: bebida2 },
-    { precio: '3.75', name: 'Chocolate Frío', descript: 'La combinación ideal de frío y dulzura de nuestro chocolate Dunkin.', image: bebida3 },
+    { precio: '1.50', name: 'Té Helado Grande', descript: 'Despierta tus sentidos y réfrescate con nuestro famosos Té Helado Dunkin', image: bebida1 ,cantidadVendida: 1 },
+    { precio: '3.50', name: 'Iced Latte', descript: 'Despierta tus sentidos y refréscate con nuestro famoso Iced Latte Dunkin.', image: bebida2,cantidadVendida: 1 },
+    { precio: '3.75', name: 'Chocolate Frío', descript: 'La combinación ideal de frío y dulzura de nuestro chocolate Dunkin.', image: bebida3,cantidadVendida: 1 },
   ];
   const sanduchesData = [
-    { precio: '1.99', name: 'Cubanitos', descript: 'Sánduche de pan flauta con jamón y queso', image: sanduche1 },
-    { precio: '2.99', name: 'Donut Sandwich', descript: 'Sánduche de donut glaseada con huevo, queso y tocino.', image: sanduche2 },
-    { precio: '2.99', name: 'Croissant de Jamón y Queso.', descript: 'Croissant de Jamón y Queso.', image: sanduche3 },
+    { precio: '1.99', name: 'Cubanitos', descript: 'Sánduche de pan flauta con jamón y queso', image: sanduche1 ,cantidadVendida: 1},
+    { precio: '2.99', name: 'Donut Sandwich', descript: 'Sánduche de donut glaseada con huevo, queso y tocino.', image: sanduche2,cantidadVendida: 1 },
+    { precio: '2.99', name: 'Croissant de Jamón y Queso.', descript: 'Croissant de Jamón y Queso.', image: sanduche3 ,cantidadVendida: 1},
   ];
 
   const handleBuyClick = (producto) => {
