@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import '../styles/addComments.css';
+import CommentsContext from '../../pages/commentsContext';
 
 const AddComment = () => {
+    const { addComment } = useContext(CommentsContext);
     const [restaurant, setRestaurant] = useState('');
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState('Camila Granda');
     const [comment, setComment] = useState('');
     const [date, setDate] = useState('');
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Obtener la fecha actual y establecerla en el estado
         const currentDate = new Date().toISOString().split('T')[0];
         setDate(currentDate);
     }, []);
@@ -36,8 +37,8 @@ const AddComment = () => {
             date,
         };
 
-        sessionStorage.setItem('nuevoComentario', JSON.stringify(nuevoComentario));
-        navigate('/RegistroComentarios'); // Redirige de vuelta al listado de comentarios
+        addComment(nuevoComentario);
+        navigate('/RegistroComentarios');
     };
 
     return (
@@ -66,7 +67,7 @@ const AddComment = () => {
                         <Form.Label>Usuario</Form.Label>
                         <Form.Control
                             type="text"
-                            value="Camila Granda"
+                            value={user}
                             onChange={(e) => setUser(e.target.value)}
                         />
                         <Form.Control.Feedback type="invalid">
@@ -110,5 +111,3 @@ const AddComment = () => {
 };
 
 export default AddComment;
-
-

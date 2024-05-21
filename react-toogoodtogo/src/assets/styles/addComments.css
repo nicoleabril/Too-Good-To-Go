@@ -5,7 +5,7 @@
 .container-add-comt .container-add-comment {
     width: 100vw;
     height: 100vh;
-    padding: 60px;
+    padding-top: 60px;
     box-sizing: border-box;
 }
 
@@ -64,7 +64,7 @@
     width: 100%;
 }
 .container-add-comt .contenedorFooter-addComentarios {
-    margin-top: auto; /* Esto empuja el footer hacia abajo */
+    margin-top: 12px;
     position: relative;
     width: 100%;
     background-color: var(--color-fondoLogin);

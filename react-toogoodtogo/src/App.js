@@ -24,10 +24,11 @@ import RegistroComentarios from "./pages/crudComentarios";
 import ReservacionesRecibidas from "./pages/ReservacionesRecibidas";
 import EditComentarios from "./pages/EditComentarios";
 import AddComentario from "./pages/AddComentario";
-
+import { CommentsProvider } from './pages/commentsContext'; 
 function App() {
   return (
     <div className="App">
+      <CommentsProvider>
       <Router>
         <Routes>
           <Route path="/Login" element={<Login />} />
@@ -56,6 +57,7 @@ function App() {
           <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} />
         </Routes>
       </Router>
+      </CommentsProvider>
     </div>
   );
 }

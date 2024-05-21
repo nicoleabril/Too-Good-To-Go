@@ -1,33 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { FiEdit, FiPlus } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
 import '../styles/comments.css';
 import { Link } from 'react-router-dom';
+// Import the commentsContext que se encuentra en la carpeta pages y CRUD-comentarios.js de la carpeta assets/components
+import { CommentsContext } from '../../pages/commentsContext';
 
 const Comments = () => {
-
-    const [comments, setComments] = useState([
-        {
-            id: 1,
-            restaurant: 'Dunkin Donuts',
-            user: 'Camila Granda',
-            comment: 'El café es excelente y hay muchas opciones para elegir, desde el clásico hasta los sabores más innovadores como el pumpkin spice en otoño.',
-            date: '2024-05-10'
-        },
-        {
-            id: 2,
-            restaurant: 'KFC-Mall del Río',
-            user: 'Camila Granda',
-            comment: 'El ambiente es relajado y cómodo, perfecto para una pausa rápida durante el día. Las sillas y mesas son cómodas, ideal para trabajar un rato con el portátil.',
-            date: '2024-05-12'
-        },
-    ]);
-
-    const handleDeleteComment = (id) => {
-        const updatedComments = comments.filter(comment => comment.id !== id);
-        setComments(updatedComments);
-    };
+    const { comments, deleteComment } = useContext(CommentsContext);
 
     return (
         <div className="container-comments">
@@ -47,19 +28,13 @@ const Comments = () => {
                             <Link to={`/RegistroComentarios/EditarComentarios/${comment.id}`} className="btnEditar">
                                 <Button variant="outline-primary"><FiEdit size={25} /></Button>
                             </Link>
-                            <Button  variant="outline-danger" size="sm" className="btnEliminar" 
-                                onClick={() => handleDeleteComment(comment.id)}><BsTrash size={25} /> 
+                            <Button variant="outline-danger" size="sm" className="btnEliminar" 
+                                onClick={() => deleteComment(comment.id)}><BsTrash size={25} />
                             </Button>
                         </div>
                     </Card>
                 ))}
             </div>
-            <footer className="contenedorFooter-comentarios">
-                <div className="textoFooter2">
-                    Copyright © 2024 Too Good To Go International. All Rights Reserved.
-                </div>
-            </footer>
-            <div className="waves-background2-comentarios"></div>
         </div>
     );
 };
