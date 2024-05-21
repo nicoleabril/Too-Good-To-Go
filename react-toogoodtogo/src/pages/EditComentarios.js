@@ -4,6 +4,8 @@ import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import EditComments from '../assets/components/EditComments';
 import Chatbot from '../assets/components/Chatbot';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Navigate, Link } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const EditarComentarios = () => {
     const { id } = useParams();
@@ -51,6 +53,13 @@ const EditarComentarios = () => {
     const handleCancel = () => {
         window.history.back();
     };
+
+    const authToken = Cookies.get('authToken');
+  
+    // Si la cookie no está presente, redirigir al usuario a la página de login
+    if (!authToken) {
+        return <Navigate to="/" />;
+    }
 
     return (
         <div>

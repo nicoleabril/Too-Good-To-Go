@@ -32,29 +32,29 @@ function App() {
       <Router>
         <Routes>
           <Route path="/Login" element={<Login />} />
-          <Route path="/Inicio" element={<Cliente />} />
-          <Route path="/Inicio-Negocio" element={<NegocioPage />} />
-          <Route path="/Negocio" element={<Negocio />} />
+          <Route path="/Inicio" element={<Cliente />} />  //COLOCADO autenticación
+          <Route path="/Inicio-Negocio" element={<NegocioPage />} /> //COLOCADO autenticación
+          <Route path="/Negocio" element={<Negocio />} /> //COLOCADO autenticación
           <Route path="/Registro" element={<Register />} />
           <Route path="/Registro-Cliente" element={<RegistroCliente />} />
           <Route path="/Registro-Negocio" element={<RegistroNegocio />} />
-          <Route path="/Restaurante" element={<Restaurante />} />
+          <Route path="/Restaurante" element={<Restaurante />} /> //COLOCADO autenticación
           <Route path="/" element={<Bienvenida />} />
-          <Route path="/RegistroOfertas" element={<CrudOferta />} />
-          <Route path="/RegistroOfertas/AgregarOferta" element={<AddOferta />} />
-          <Route path="/RegistroOfertas/EditarOferta" element={<EditOferta />} />
-          <Route path="/RegistroProductos" element={<CrudProducto />} />
-          <Route path="/RegistroProductos/AgregarProducto" element={<AddProduct />} />
-          <Route path="/RegistroCategoria" element={<RegistroCategoria />} />
-          <Route path="/RegistroCategoria/AgregarCategoria" element={<AddCategoria />} />
-          <Route path="/RegistroProductos/EditarProducto" element={<EditProduct />} />
-          <Route path="/RegistroCategoria/EditarCategoria" element={<EditCategoria />} />
-          <Route path="/Reserva" element={<PaginaDeReserva />} />
-          <Route path="/MiPerfil" element={<MiPerfil />} />
-          <Route path="/RegistroComentarios" element={<RegistroComentarios />} />
-          <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} />
-          <Route path="/RegistroComentarios/EditarComentarios/:id" element={<EditComentarios />} />
-          <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} />
+          <Route path="/RegistroOfertas" element={<CrudOferta />} /> //COLOCADO autenticación
+          <Route path="/RegistroOfertas/AgregarOferta" element={<AddOferta />} /> //COLOCADO autenticación
+          <Route path="/RegistroOfertas/EditarOferta" element={<EditOferta />} /> //COLOCADO autenticación
+          <Route path="/RegistroProductos" element={<CrudProducto />} /> //COLOCADO autenticación
+          <Route path="/RegistroProductos/AgregarProducto" element={<AddProduct />} /> //COLOCADO autenticación
+          <Route path="/RegistroCategoria" element={<RegistroCategoria />} /> //COLOCADO autenticación
+          <Route path="/RegistroCategoria/AgregarCategoria" element={<AddCategoria />} /> //COLOCADO autenticación
+          <Route path="/RegistroProductos/EditarProducto" element={<EditProduct />} /> //COLOCADO autenticación
+          <Route path="/RegistroCategoria/EditarCategoria" element={<EditCategoria />} /> //COLOCADO autenticación
+          <Route path="/Reserva" element={<PaginaDeReserva />} /> //COLOCADO autenticación
+          <Route path="/MiPerfil" element={<MiPerfil />} /> //COLOCADO autenticación
+          <Route path="/RegistroComentarios" element={<RegistroComentarios />} /> //COLOCADO autenticación
+          <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} /> //COLOCADO autenticación
+          <Route path="/RegistroComentarios/EditarComentarios/:id" element={<EditComentarios />} /> //COLOCADO autenticación
+          <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} /> //COLOCADO autenticación
         </Routes>
       </Router>
       </CommentsProvider>

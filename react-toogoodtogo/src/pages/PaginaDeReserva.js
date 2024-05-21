@@ -6,6 +6,8 @@ import IngresoDatosPersonales from '../assets/components/Reserva/IngresoDatosPer
 import InformacionDeLaReserva from '../assets/components/Reserva/InformacionDeLaReserva';
 import { getProductosComprados } from '../assets/components/productosComprados';
 import { addReservaEnCola } from '../assets/components/Reserva/reservaEnCola';
+import { Navigate, Link } from "react-router-dom";
+import Cookies from 'js-cookie';
 const dataInformacionReserva = [
   {
     metodoPago: 'Tarjeta de Crédito',
@@ -17,6 +19,7 @@ const dataInformacionReserva = [
 ];
 
 function PaginaDeReserva() {
+
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -49,6 +52,12 @@ function PaginaDeReserva() {
     addReservaEnCola(nuevaReserva);
     alert("Reservación Exitosa, no olvides recoger tu pedido dentro del horario adecuado.");
   };
+  const authToken = Cookies.get('authToken');
+  
+  // Si la cookie no está presente, redirigir al usuario a la página de login
+  if (!authToken) {
+      return <Navigate to="/" />;
+  }
 
   return (
     <div className='cont-principalReserva'>

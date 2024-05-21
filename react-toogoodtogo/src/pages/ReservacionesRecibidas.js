@@ -4,6 +4,8 @@ import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import Chatbot from '../assets/components/Chatbot';
 import Cards_Reservas from '../assets/components/Reserva/Cards_Reservas';
 import { getReservasEnCola } from '../assets/components/Reserva/reservaEnCola';
+import { Navigate, Link } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 function ReservacionesRecibidas() {
   const [reservas, setReservas] = useState([]);
@@ -28,6 +30,12 @@ function ReservacionesRecibidas() {
     const updatedReservas = reservas.filter(reserva => reserva.id !== id);
     localStorage.setItem('reservasEnCola', JSON.stringify(updatedReservas));
   };
+  const authToken = Cookies.get('authToken');
+  
+    // Si la cookie no está presente, redirigir al usuario a la página de login
+    if (!authToken) {
+        return <Navigate to="/" />;
+    }
 
   return (
     <>
