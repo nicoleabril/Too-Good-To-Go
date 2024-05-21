@@ -8,7 +8,7 @@ import { FaAngleUp } from "react-icons/fa6";
 
 
 
-function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
+function ResumenDelaReserva( ) {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleTriggerClick = () => {
@@ -29,7 +29,6 @@ function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
                 }
                 className='tittleToggleSection'
             >
-                
                     <ProductoReservado
                     />
                 
