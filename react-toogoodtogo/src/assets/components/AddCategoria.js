@@ -1,8 +1,38 @@
 import React, { useState } from "react";
 import "../styles/addCategoria.css";
-
-function AddCategorias() {
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+function AddCategorias({onAgregarCategoria }) {
   const [imageSrc, setImageSrc] = useState(null);
+  const [categoria, setCategoria] = useState('');
+  const [descripcion, setDescripcion] = useState('');
+  const [estado, setEstado] = useState('Activo'); // Valor por defecto "Activo"
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    if (!categoria) newErrors.categoria = 'La categoría es requerida';
+    if (!descripcion) newErrors.descripcion = 'La descripción es requerida';
+    if (!imageSrc) newErrors.icono = 'El icono es requerido';
+    
+    if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+    }
+
+    const fechaCreacion = new Date().toLocaleDateString();
+    const nuevaCategoria = {
+        categoria,
+        descripcion,
+        estado,
+        fechaCreacion,
+        icono: null
+    };
+    Cookies.set('nuevaCategoria', JSON.stringify(nuevaCategoria));
+    navigate('/RegistroCategoria'); // Redirige de vuelta al listado de categorías
+};
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -23,23 +53,21 @@ function AddCategorias() {
             <form>
               <div className="nombreCategoria">
                 <label>Nombre de la Categoria</label>
-                <input type="text" className="nombreIngresadoCategoria" />
+                <input type="text" className="nombreIngresadoCategoria" value={categoria} onChange={(e) => setCategoria(e.target.value)} required/>
+                {errors.categoria && <p style={{ color: 'red' }}>{errors.categoria}</p>}
               </div>
               <div className="descripcionCategoria">
                 <label>Descripción</label>
-                <textarea className="descripcionIngresadaCategoria"></textarea>
+                <textarea className="descripcionIngresadaCategoria" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} required></textarea>
+                {errors.descripcion && <p style={{ color: 'red' }}>{errors.descripcion}</p>}
               </div>
               <div className="estadoCategoria">
                 <label>Categoría</label>
-                <select className="comboOpcionesCategoria">
+                <select className="comboOpcionesCategoria" value={estado} onChange={(e) => setEstado(e.target.value)} required>
                   <option>Seleccionar...</option>
                   <option>Activo</option>
                   <option>Inactivo</option>
                 </select>
-              </div>
-              <div className="fechaCreacionCategoria">
-                <label>Fecha Creación</label>
-                <input type="date" className="fechaIngresadaCategoria" />
               </div>
             </form>
           </div>
@@ -60,11 +88,12 @@ function AddCategorias() {
                   className="iconoIngresadaCategoria"
                   onChange={handleImageChange}
                 />
+                {errors.icono && <p style={{ color: 'red' }}>{errors.icono}</p>}
                 <label htmlFor="file-input" className="btn_subirIconoCategoria">
                   Subir Icono
                 </label>
               </div>
-              <button className="btn_agregarCategoria">Agregar Categoría</button>
+              <button className="btn_agregarCategoria" onClick={handleSubmit}>Agregar Categoría</button>
             </div>
           </div>
         </div>
