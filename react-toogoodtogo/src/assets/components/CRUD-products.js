@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "../styles/crud-product.css";
 import buscar from "../images/buscar.png";
 import DataTable from "react-data-table-component";
@@ -10,8 +10,52 @@ import Combo3 from "../images/combo3.jpeg";
 import bebida1 from '../images/bebida1.jpeg'
 import bebida2 from '../images/bebida2.jpeg'
 import bebida3 from '../images/bebida3.jpeg'
-
+import Cookies from 'js-cookie';
 function CRUDProducts() {
+    const [data, setData] = useState([
+        {
+            id: 1,
+            producto: "Combo #1",
+            imagen: Combo1,
+            categoria: "Combos",
+            precio: "$25,99",
+        },
+        {
+            id: 2,
+            producto: "Combo #2",
+            imagen: Combo2,
+            categoria: "Combos",
+            precio: "$19,99",
+        },
+        {
+            id: 3,
+            producto: "Combo #3",
+            imagen: Combo3,
+            categoria: "Combos",
+            precio: "$20,99",
+        },
+        {
+            id: 4,
+            producto: "Té Helado Grande",
+            imagen: bebida1,
+            categoria: "Bebidas",
+            precio: "$1,50",
+        },
+        {
+            id: 5,
+            producto: "Iced Latte",
+            imagen: bebida2,
+            categoria: "Bebidas",
+            precio: "$3,50",
+        },
+        {
+            id: 6,
+            producto: "Chocolate Frío",
+            imagen: bebida3,
+            categoria: "Bebidas",
+            precio: "$3,75",
+        }
+    ]);
     const columns = [
         {
             name: "Id",
@@ -55,50 +99,16 @@ function CRUDProducts() {
             )
         },
     ];
-    const data = [
-        {
-            id: 1,
-            producto: "Combo #1",
-            imagen: Combo1,
-            categoria: "Combos",
-            precio: "$25,99",
-        },
-        {
-            id: 2,
-            producto: "Combo #2",
-            imagen: Combo2,
-            categoria: "Combos",
-            precio: "$19,99",
-        },
-        {
-            id: 3,
-            producto: "Combo #3",
-            imagen: Combo3,
-            categoria: "Combos",
-            precio: "$20,99",
-        },
-        {
-            id: 4,
-            producto: "Té Helado Grande",
-            imagen: bebida1,
-            categoria: "Bebidas",
-            precio: "$1,50",
-        },
-        {
-            id: 5,
-            producto: "Iced Latte",
-            imagen: bebida2,
-            categoria: "Bebidas",
-            precio: "$3,50",
-        },
-        {
-            id: 6,
-            producto: "Chocolate Frío",
-            imagen: bebida3,
-            categoria: "Bebidas",
-            precio: "$3,75",
+
+    useEffect(() => {
+        const nuevoProducto = Cookies.get('nuevoProducto');
+        if (nuevoProducto) {
+            const nuevoDato  = (JSON.parse( nuevoProducto));
+            setData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
+            Cookies.remove('nuevoProducto');
         }
-    ];
+    }, []);
+
     return (
         <body className="container-crud-prod">
             <main className="crud-producto-container">

@@ -1,13 +1,36 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "../styles/crud-product.css";
 import buscar from "../images/buscar.png";
 import DataTable from "react-data-table-component";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import bolsa from "../images/bolsa.jpeg";
-
+import Cookies from 'js-cookie';
 
 function CRUDOferta() {
+    const [ofertasData, setOfertasData] = useState([
+        {
+            id: 1,
+          precio: '6.99',
+          name: 'Oferta #1',
+          descript: 'Esta bolsa sorpresa está valorada en $11,99',
+          image: bolsa,
+        },
+        {
+            id: 2,
+          precio: '4.99',
+          name: 'Oferta #2',
+          descript: 'Esta bolsa sorpresa está valorada en $7,99',
+          image: bolsa,
+        },
+        {
+            id: 3,
+          precio: '9.99',
+          name: 'Oferta #3',
+          descript: 'Esta bolsa sorpresa está valorada en $31,99',
+          image: bolsa,
+        }
+  ]);
     const columns = [
         {
             name: "Id",
@@ -21,7 +44,7 @@ function CRUDOferta() {
         },
         {
             name: "Imagen",
-            cell: row => <img className="imagenProd" src={row.image} alt={row.name}/>
+            cell: row => <img className="imagenProd" src={bolsa} alt={row.name}/>
         },
         {
             name: "Descripción",
@@ -52,29 +75,16 @@ function CRUDOferta() {
         },
     ];
 
-    const ofertasData = [
-        {
-            id: 1,
-          precio: '6.99',
-          name: 'Oferta #1',
-          descript: 'Esta bolsa sorpresa está valorada en $11,99',
-          image: bolsa,
-        },
-        {
-            id: 2,
-          precio: '4.99',
-          name: 'Oferta #2',
-          descript: 'Esta bolsa sorpresa está valorada en $7,99',
-          image: bolsa,
-        },
-        {
-            id: 3,
-          precio: '9.99',
-          name: 'Oferta #3',
-          descript: 'Esta bolsa sorpresa está valorada en $31,99',
-          image: bolsa,
+    useEffect(() => {
+        const nuevaOferta = Cookies.get('nuevaOferta');
+        if (nuevaOferta) {
+            const nuevoDato  = (JSON.parse( nuevaOferta));
+            setOfertasData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
+            Cookies.remove('nuevaOferta');
         }
-  ];
+    }, []);
+
+
     return (
         <body className="container-crud-prod">
             <main className="crud-producto-container">
