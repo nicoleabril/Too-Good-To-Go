@@ -4,7 +4,6 @@ import { FiEdit, FiPlus } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
 import '../styles/comments.css';
 import { Link } from 'react-router-dom';
-// Import the commentsContext que se encuentra en la carpeta pages y CRUD-comentarios.js de la carpeta assets/components
 import { CommentsContext } from '../../pages/commentsContext';
 
 const Comments = () => {
