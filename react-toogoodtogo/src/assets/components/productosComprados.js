@@ -1,19 +1,15 @@
-const getProductosCompradosFromStorage = () => {
-    const productos = sessionStorage.getItem('productosComprados'); 
-    return productos ? JSON.parse(productos) : [];  
-  };
-  
-  let productosComprados = getProductosCompradosFromStorage(); 
-  
-  export const addProductoComprado = (producto) => { /*En esta función se agrega un producto al carrito de compras */
-    // Evitar agregar duplicados
-    if (!productosComprados.some(p => p.name === producto.name)) {
-      productosComprados.push(producto);
-    }
-    sessionStorage.setItem('productosComprados', JSON.stringify(productosComprados));
-    console.log('Producto agregado Storage:', producto);
-    console.log('Productos comprados Storage:', productosComprados);
-  };
-  
-  export const getProductosComprados = () => productosComprados;
-  
+let productosComprados = [];
+
+export const addProductoComprado = (producto) => {
+  productosComprados.push(producto);
+  console.log('Producto agregado:', producto);
+  console.log('Productos comprados:', productosComprados);
+  // Guardar en el almacenamiento local
+  sessionStorage.setItem('productos', JSON.stringify(productosComprados));
+};
+
+export const getProductosComprados = () => {
+  // Obtener los productos del almacenamiento local
+  const storedProductos = sessionStorage.getItem('productos');
+  return storedProductos ? JSON.parse(storedProductos) : productosComprados;
+};

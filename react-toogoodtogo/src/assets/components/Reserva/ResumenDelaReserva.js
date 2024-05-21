@@ -8,7 +8,7 @@ import { FaAngleUp } from "react-icons/fa6";
 
 
 
-function ResumenDelaReserva( ) {
+function ResumenDelaReserva({ productos, onIncrement, onDecrement }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleTriggerClick = () => {
@@ -29,9 +29,18 @@ function ResumenDelaReserva( ) {
                 }
                 className='tittleToggleSection'
             >
+                {productos.map((producto, index) => (
                     <ProductoReservado
+                        key={index}
+                        imgProducto={producto.image}
+                        nombreProducto={producto.name}
+                        descripcionProducto={producto.descript}
+                        precioProducto={producto.precio}
+                        cantidad={producto.cantidadVendida}
+                        onIncrement={() => onIncrement(index)}
+                        onDecrement={() => onDecrement(index)}
                     />
-                
+                ))}
             </Collapsible>
         </>
     );

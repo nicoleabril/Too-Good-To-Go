@@ -343,7 +343,7 @@ button.triggerButton {
     justify-content: center;
     padding-right: 0.5rem;
 }
-.btn_EleccionTarjeta{
+.cont-EleccionTarjeta .btn_EleccionTarjeta{
     /*Le quitamos toda la herencia */
     all: unset;
     margin-top: 0.5rem;
@@ -352,9 +352,12 @@ button.triggerButton {
     border-radius: 10px;
     width: 6rem;
     display: flex;
-    background-color: transparent; /* Color de fondo por defecto */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
 
+.cont-EleccionTarjeta .btn_EleccionTarjeta.active{
+    background-color: #25172b48;
+    color: #ffffff;
 
 }
 .formularioDatosPago{
