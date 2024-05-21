@@ -49,7 +49,6 @@ function App() {
           <Route path="/Reserva" element={<PaginaDeReserva />} />
           <Route path="/MiPerfil" element={<MiPerfil />} />
           <Route path="/RegistroComentarios" element={<RegistroComentarios />} />
-
           <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} />
         </Routes>
       </Router>
