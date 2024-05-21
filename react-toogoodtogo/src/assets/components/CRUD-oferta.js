@@ -75,6 +75,8 @@ function CRUDOferta() {
         },
     ];
 
+    const [searchTerm, setSearchTerm] = useState("");
+
     useEffect(() => {
         const nuevaOferta = Cookies.get('nuevaOferta');
         if (nuevaOferta) {
@@ -84,6 +86,11 @@ function CRUDOferta() {
         }
     }, []);
 
+    // Función para filtrar los productos según el término de búsqueda
+    const filteredData = ofertasData.filter(producto =>
+        producto.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
 
     return (
         <body className="container-crud-prod">
@@ -91,7 +98,13 @@ function CRUDOferta() {
                 <div className="crud-producto">
                     <div className="BusquedaProducto">
                         <img className="FotoBuscar" src={buscar} alt="Buscar" />
-                        <input type="text" className="TextoBusquedaProducto" placeholder="Buscar Oferta" />
+                        <input
+                            type="text"
+                            className="TextoBusquedaProducto"
+                            placeholder="Buscar Oferta"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                     </div>
                     <React.Fragment>
                         <a href="/RegistroOfertas/AgregarOferta"><button className='botonAgregarProducto'>Agregar Oferta</button></a>
@@ -100,7 +113,7 @@ function CRUDOferta() {
                 <div className="tabla-productos-container">
                     <DataTable
                         columns={columns} 
-                        data={ofertasData} 
+                        data={filteredData} 
                         />
                 </div>
             </main>
