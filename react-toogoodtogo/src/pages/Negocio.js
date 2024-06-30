@@ -1,5 +1,5 @@
 //CRUD_categoria.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../assets/components/Header';
 import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import AddNegocio from '../assets/components/AddNegocio';

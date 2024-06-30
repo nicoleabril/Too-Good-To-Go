@@ -4,6 +4,7 @@ import { FaCircleUser } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
 
 export default class Login extends Component {
   constructor(props) {
@@ -12,31 +13,12 @@ export default class Login extends Component {
       username: '',
       password: '',
       rol: '',
-      token: Cookies.get('authToken'),
+      token: Cookies.get('XSRF-TOKEN'),
       isLoggedIn: false,
       currentImageIndex: 0,
       error: false,
     };
   }
-
-  userData = [
-    {
-      username: "nico@correo.com",
-      password: "nico123",
-      rol: "Cliente"
-    },
-    {
-      username: "cami@correo.com",
-      password: "cami123",
-      rol: "Cliente"
-    },
-    {
-      username: "emi@correo.com",
-      password: "emi123",
-      rol: "Negocio"
-    },
-    // Agrega más usuarios si lo deseas
-  ];
 
   handleError = () => {
     this.setState({ error: true });
@@ -53,40 +35,64 @@ export default class Login extends Component {
     }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    const user = this.userData.find(user => user.username === username && user.password === password);
 
-    if (user) {
-      // Si el usuario existe, establecer el estado correspondiente
+    try {
+      
+      // Realizar la solicitud POST al endpoint de login
+      const response = await axios.post('http://localhost:8000/api/login', {
+        email: username,
+        contrasenia: password,
+      });
+      const response_rol = await axios.get(`http://localhost:8000/api/usuarios_email/${username}`);
       this.setState({
-        rol: user.rol,
+        rol: response_rol.data.tipo_usuario,
+        token: response.data.token,
         isLoggedIn: true,
-        error: false,
-        token: 'mockToken123' // Podrías generar un token aquí si lo necesitas
+        error: false, // Reiniciar el estado de error a false
       });
-
-      // Simular almacenamiento del token en cookies
-      Cookies.set('authToken', 'mockToken123');
+      Cookies.set('authToken', this.state.token);
+      Cookies.set('id', response_rol.data.id_usuario);
       Cookies.set('usr', username);
-      Cookies.set('rol', user.rol);
+      Cookies.set('rol', response_rol.data.tipo_usuario)
 
-      // Redirigir según el rol después de la autenticación
-      if (user.rol === 'Cliente') {
-        window.location.href = '/Inicio';
-      } else if (user.rol === 'Negocio') {
-        window.location.href = '/Inicio-Negocio';
+      const { data } = response;
+
+      if (response.status === 200 && data.message === 'Ingreso de Usuario Exitoso') {
+        // Actualizar el estado del componente con el rol y el token
+        this.setState({
+          rol: Cookies.get('rol'),
+          isLoggedIn: true,
+          error: false,
+          token: Cookies.get('authToken'),
+        });
+
+        // Redirigir según el rol después de la autenticación
+        if (Cookies.get('rol') === 'Cliente') {
+          window.location.href = '/Inicio';
+        } else if (Cookies.get('rol') === 'Negocio') {
+          window.location.href = '/Inicio-Negocio';
+        } else {
+          window.location.href = '/Inicio'; // Redirección por defecto
+        }
       } else {
-        window.location.href = '/Inicio'; // Redirección por defecto
+        // Si el servidor responde con 419 (Page Expired) o cualquier otro error
+        // muestra un mensaje de error específico para el usuario
+        if (response.status === 419) {
+          alert('Usuario no existe');
+        } else {
+          this.setState({ error: true });
+        }
       }
-    } else {
-      // Si el usuario no existe, mostrar error
-      this.setState({
-        error: true
-      });
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      // Manejo de otros errores, si es necesario
+      this.setState({ error: true });
     }
   }
+
 
   render() {
     return (

@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import '../assets/styles/registroUsuario.css';
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
 
 export default class RegistroCliente extends Component {
   constructor(props) {
     super(props);
     this.state = {
         name: '',
-        username: '',
+        email: '',
+        telefono:'',
         password: '',
         passwordConfirm: '',
         rol: '',
@@ -53,40 +55,34 @@ export default class RegistroCliente extends Component {
     }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, password } = this.state;
-    const user = this.userData.find(user => user.username === username && user.password === password);
+    const { name, email, telefono, password, passwordConfirm } = this.state;
 
-    if (user) {
-      // Si el usuario existe, establecer el estado correspondiente
-      this.setState({
-        rol: user.rol,
-        isLoggedIn: true,
-        error: false,
-        token: 'mockToken123' // Podrías generar un token aquí si lo necesitas
-      });
+    if(password === passwordConfirm){
+      try {
+        const response = await axios.post('http://localhost:8000/api/registrar-cliente', {
+          nombre: name,
+          email: email,
+          telefono: telefono,
+          contrasenia: password,
+        });
 
-      // Simular almacenamiento del token en cookies
-      Cookies.set('authToken', 'mockToken123');
-      Cookies.set('usr', username);
-      Cookies.set('rol', user.rol);
-
-      // Redirigir según el rol después de la autenticación
-      if (user.rol === 'cliente') {
-        window.location.href = '/Inicio';
-      } else if (user.rol === 'negocio') {
-        window.location.href = '/Restaurante';
-      } else {
-        window.location.href = '/Inicio'; // Redirección por defecto
+        if (response.status === 201) {
+          // Registro exitoso, redirige a la página de inicio de sesión
+          window.location.href = '/Login';
+        } else {
+          // Manejar otros casos de respuesta (por ejemplo, errores de validación)
+          this.setState({ error: true });
+        }
+      } catch (error) {
+        console.error('Error al registrar cliente:', error);
+        this.setState({ error: true });
       }
-    } else {
-      // Si el usuario no existe, mostrar error
-      this.setState({
-        error: true
-      });
     }
+
   }
+
 
   render() {
     return (
@@ -110,16 +106,15 @@ export default class RegistroCliente extends Component {
                 type="email"
                 placeholder="Correo Electrónico"
                 required
-                name="username"
+                name="email"
                 onChange={this.handleInputChange}
               />
             </div>
             <div className="input-box2">
               <input
-                type="email"
                 placeholder="Teléfono"
                 required
-                name="username"
+                name="telefono"
                 onChange={this.handleInputChange}
               />
             </div>
