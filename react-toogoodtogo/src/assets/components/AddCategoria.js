@@ -2,16 +2,23 @@ import React, { useState } from "react";
 import "../styles/addCategoria.css";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
+
 function AddCategorias({onAgregarCategoria }) {
+  const idNegocio = Cookies.get('id');
   const [imageSrc, setImageSrc] = useState(null);
+  const [subirImagen, setSubirImagen] = useState(null);
   const [categoria, setCategoria] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [estado, setEstado] = useState('Activo'); // Valor por defecto "Activo"
+  const [estado, setEstado] = useState(true); // Valor por defecto "Activo"
   const [errors, setErrors] = useState({});
+  
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+const handleAddCategoria = async (e) => {
+  try {
     e.preventDefault();
+
     const newErrors = {};
     if (!categoria) newErrors.categoria = 'La categoría es requerida';
     if (!descripcion) newErrors.descripcion = 'La descripción es requerida';
@@ -22,20 +29,32 @@ function AddCategorias({onAgregarCategoria }) {
         return;
     }
 
-    const fechaCreacion = new Date().toLocaleDateString();
-    const nuevaCategoria = {
-      categoria,
-      icono: imageSrc,
-      estado,
-      fechaCreacion,
-    };
-    sessionStorage.setItem('nuevaCategoria', JSON.stringify(nuevaCategoria));
-    console.log(nuevaCategoria);
-    navigate('/RegistroCategoria'); // Redirige de vuelta al listado de categorías
+    const fechaCreacion = new Date();
+
+    const formData = new FormData();
+    formData.append('id_negocio', idNegocio); // Ajusta según tu lógica de categoría seleccionada
+    formData.append('nombre_categoria', categoria);
+    formData.append('descripcion', descripcion);
+    formData.append('habilitado', estado);
+    formData.append('imagen_categoria', subirImagen);
+    formData.append('fecha_creacion', fechaCreacion);
+    const response = await axios.post(`http://localhost:8000/api/categorias/`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    console.log('Categoria creada:', response.data);
+    // Aquí podrías manejar la respuesta como necesites (actualizar estado, mostrar mensaje de éxito, etc.)
+  } catch (error) {
+    console.error('Error al crear categoria:', error);
+    // Aquí podrías manejar el error como necesites (mostrar mensaje de error, rollback de cambios, etc.)
+  }
 };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    setSubirImagen(file);
     const reader = new FileReader();
 
     reader.onload = (e) => {
@@ -44,6 +63,7 @@ function AddCategorias({onAgregarCategoria }) {
 
     reader.readAsDataURL(file);
   };
+
 
   return (
     <div className="main-container-categoria-add">
@@ -63,10 +83,10 @@ function AddCategorias({onAgregarCategoria }) {
               </div>
               <div className="estadoCategoria">
                 <label>Categoría</label>
-                <select className="comboOpcionesCategoria" value={estado} onChange={(e) => setEstado(e.target.value)} required>
-                  <option>Seleccionar...</option>
-                  <option>Activo</option>
-                  <option>Inactivo</option>
+                <select className="comboOpcionesCategoria" value={estado} onChange={(e) => setEstado(e.target.value)}>
+                  <option value="">Seleccionar...</option>
+                  <option value={true}>Activo</option>
+                  <option value={false}>Inactivo</option>
                 </select>
               </div>
             </form>
@@ -93,7 +113,7 @@ function AddCategorias({onAgregarCategoria }) {
                   Subir Icono
                 </label>
               </div>
-              <button className="btn_agregarCategoria" onClick={handleSubmit}>Agregar Categoría</button>
+              <button className="btn_agregarCategoria" onClick={handleAddCategoria}>Agregar Categoría</button>
             </div>
           </div>
         </div>

@@ -15,10 +15,11 @@ const AddNegocio = () => {
   const [subirImagen, setSubirImagen] = useState(null);
   const [categorias, setCategorias] = useState([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(null);
+  const [defaultCategoria, setDefaultCategoria] = useState(null);
   const [imageSrc, setImageSrc] = useState([]);
   const [logoSrc, setLogo] = useState([]);
-  const [nombreNegocio, setNombreNegocio] = useState('Dunkin\' Donuts');
-  const [descNegocio, setDescNegocio] = useState('Dunkin\' Donuts ofrece una amplia variedad de productos, incluyendo donas, café, bebidas frías y calientes, sándwiches de desayuno, bagels, muffins y otros productos de panadería.');
+  const [nombreNegocio, setNombreNegocio] = useState('');
+  const [descNegocio, setDescNegocio] = useState('');
   
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -65,28 +66,18 @@ const AddNegocio = () => {
           if(response.data.data != null){
             setNombreNegocio(response.data.data.nombre_negocio);
             setDescNegocio(response.data.data.descripcion);
+            const responseCategoria = await axios.get(`http://localhost:8000/api/categorias-negocio/`);
+            const categoriaSeleccionada = responseCategoria.data.categorias.find(departamento => departamento.id_categoria === (response.data.data.id_categoria));
+            if (categoriaSeleccionada) {
+              setDefaultCategoria(categoriaSeleccionada);
+              setCategoriaSeleccionada(categoriaSeleccionada.id_categoria);
+            }
           }
           if(response.data.data.logotipo!=null){
-            const binaryString = window.atob(response.data.data.logotipo);
-            // Convertir a un array de bytes
-            const byteArray = new Uint8Array(binaryString.length);
-            for (let i = 0; i < binaryString.length; i++) {
-              byteArray[i] = binaryString.charCodeAt(i);
-            }
-            const blob = new Blob([byteArray], { type: 'image/jpg' }); // Ajusta el tipo MIME según el tipo de imagen que esperas
-            const imageUrl = URL.createObjectURL(blob);
-            setLogo(imageUrl);
+            setLogo(response.data.data.logotipo);
           }
           if(response.data.data.imagen_referencial!=null){
-            const binaryString = window.atob(response.data.data.imagen_referencial);
-            // Convertir a un array de bytes
-            const byteArray = new Uint8Array(binaryString.length);
-            for (let i = 0; i < binaryString.length; i++) {
-              byteArray[i] = binaryString.charCodeAt(i);
-            }
-            const blob = new Blob([byteArray], { type: 'image/jpg' }); // Ajusta el tipo MIME según el tipo de imagen que esperas
-            const imageUrl = URL.createObjectURL(blob);
-            setImageSrc(imageUrl);
+            setImageSrc(response.data.data.imagen_referencial);
           }
       } catch (error) {
           console.error('Error al obtener negocio:', error);
@@ -101,9 +92,8 @@ const AddNegocio = () => {
           console.error('Error al obtener negocio:', error);
       }
     };
-
-  obtenerNegocio();
-  obtenerCategoria();
+    obtenerNegocio();
+    obtenerCategoria();
   }, []);
 
 
@@ -116,22 +106,19 @@ const AddNegocio = () => {
   };
 
   const handleInputCategoria = (selectedOption) => {
-    setCategoriaSeleccionada(selectedOption); // Actualizar la opción seleccionada
+    setCategoriaSeleccionada(selectedOption.value); // Actualizar la opción seleccionada
   };
 
-  
 
   const handleUpdateNegocio = async (e) => {
     try {
       e.preventDefault();
-      console.log(subirImagen);
-      console.log(subirLogo);
       const formData = new FormData();
-      formData.append('id_categoria', categoriaSeleccionada?.value); // Ajusta según tu lógica de categoría seleccionada
+      formData.append('id_categoria', categoriaSeleccionada); // Ajusta según tu lógica de categoría seleccionada
       formData.append('nombre_negocio', nombreNegocio);
       formData.append('descripcion', descNegocio);
-      formData.append('logotipo', subirLogo);
-      formData.append('imagen_referencial', subirImagen);
+      if(subirLogo != null) formData.append('logotipo', subirLogo);
+      if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
       formData.append('posicion_x', negocio.posicion_x);
       formData.append('posicion_y', negocio.posicion_y);
 
@@ -167,13 +154,17 @@ const AddNegocio = () => {
                 <label>Categoría</label>
                 <Select
                   className="comboOpciones"
-                  value={categoriaSeleccionada}
+                  defaultValue={defaultCategoria ?
+                    { label: defaultCategoria.nombre,
+                      value: defaultCategoria.id_categoria
+                    } : null
+                  }
                   onChange={handleInputCategoria}
                   options={categorias.map(categoria => ({
                     value: categoria.id_categoria,
                     label: categoria.nombre,
                   }))}
-                  placeholder="Selecciona una opción..."
+                  placeholder="Escoger categoría..."
                 />
               </div>
             </form>
