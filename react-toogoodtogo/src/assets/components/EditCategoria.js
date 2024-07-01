@@ -32,7 +32,7 @@ function AddCategorias() {
                 if(response.data.data){
                   setNombreCategoria(response.data.data.nombre_categoria);
                   setDescripcion(response.data.data.descripcion);
-                  setEstado(response.data.data.estado);
+                  setEstado(response.data.data.habilitado);
                 }
                 if(response.data.data.imagen_categoria!=null){
                   setImageSrc(response.data.data.imagen_categoria);
@@ -56,7 +56,7 @@ function AddCategorias() {
       formData.append('descripcion', descripcion);
       formData.append('habilitado', estado);
       if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
-
+      console.log(estado);
       const response = await axios.post(`http://localhost:8000/api/categorias/${id_categoria}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

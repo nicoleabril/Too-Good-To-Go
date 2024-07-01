@@ -121,7 +121,8 @@ const AddNegocio = () => {
       if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
       formData.append('posicion_x', negocio.posicion_x);
       formData.append('posicion_y', negocio.posicion_y);
-
+      console.log(subirImagen);
+      console.log(subirLogo);
       const response = await axios.post(`http://localhost:8000/api/negocios/${idNegocio}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',

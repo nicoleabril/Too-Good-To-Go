@@ -10,7 +10,7 @@ function AddCategorias({onAgregarCategoria }) {
   const [subirImagen, setSubirImagen] = useState(null);
   const [categoria, setCategoria] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [estado, setEstado] = useState(true); // Valor por defecto "Activo"
+  const [estado, setEstado] = useState(true);
   const [errors, setErrors] = useState({});
   
   const navigate = useNavigate();
@@ -83,10 +83,14 @@ const handleAddCategoria = async (e) => {
               </div>
               <div className="estadoCategoria">
                 <label>Categoría</label>
-                <select className="comboOpcionesCategoria" value={estado} onChange={(e) => setEstado(e.target.value)}>
-                  <option value="">Seleccionar...</option>
-                  <option value={true}>Activo</option>
-                  <option value={false}>Inactivo</option>
+                <select className="comboOpcionesCategoria" value={estado} onChange={(e) => {
+                    const selectedOption = e.target.value;
+                    console.log('Opción seleccionada:', selectedOption);
+                    setEstado(selectedOption);
+                }}>
+                    <option value="">Seleccionar...</option>
+                    <option value={true}>Activo</option>
+                    <option value={false}>Inactivo</option>
                 </select>
               </div>
             </form>
