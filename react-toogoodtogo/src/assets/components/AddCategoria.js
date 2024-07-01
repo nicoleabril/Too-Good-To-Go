@@ -3,6 +3,8 @@ import "../styles/addCategoria.css";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddCategorias({onAgregarCategoria }) {
   const idNegocio = Cookies.get('id');
@@ -45,8 +47,10 @@ const handleAddCategoria = async (e) => {
     });
 
     console.log('Categoria creada:', response.data);
+    toast.success('Guardado');
     // Aquí podrías manejar la respuesta como necesites (actualizar estado, mostrar mensaje de éxito, etc.)
   } catch (error) {
+    toast.error('Error al agregar.');
     console.error('Error al crear categoria:', error);
     // Aquí podrías manejar el error como necesites (mostrar mensaje de error, rollback de cambios, etc.)
   }
@@ -128,6 +132,7 @@ const handleAddCategoria = async (e) => {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
+      <ToastContainer />
     </div>
   );
 }
