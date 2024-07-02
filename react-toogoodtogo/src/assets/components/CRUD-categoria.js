@@ -3,15 +3,12 @@ import { BrowserRouter as Router, Route, Routes, Link  } from 'react-router-dom'
 import {Table} from "antd"; 
 import "../styles/crud-categoria.css";
 import buscar from "../images/buscar.png";
-import DataTable from "react-data-table-component";
 import { BsTrash } from "react-icons/bs";
 import { FiEdit } from "react-icons/fi";
 import { Typography, Modal, Alert } from 'antd'; 
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
-
-const { confirm } = Modal;
-const { Title } = Typography; // Usa Typography de antd para el título
+import { ToastContainer, toast } from 'react-toastify';
 
 function CRUDCategoria() {
     const idNegocio = Cookies.get('id');
@@ -22,8 +19,7 @@ function CRUDCategoria() {
         const obtenerCategoria = async () => {
             try {
                 const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
-                setCategorias(response.data.data);
-                console.log(response.data.data);
+                setCategorias(response.data.categorias);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
             }
@@ -38,7 +34,9 @@ function CRUDCategoria() {
             console.log('Categoría eliminada:', response.data);
             const nuevasCategorias = categorias.filter((cat) => cat.id_categoria !== idCategoria);
             setCategorias(nuevasCategorias); 
+            toast.success('Eliminado');
         } catch (error) {
+            toast.error('Error al eliminar.');
             console.error('Error al eliminar categoría:', error);
             throw error; // Maneja el error según tus necesidades
         }
@@ -114,10 +112,11 @@ function CRUDCategoria() {
          },
     ];
 
-    const filteredData = categorias.filter(producto =>
+    const filteredData = categorias && categorias.length > 0 ? categorias.filter(producto =>
         producto.nombre_categoria.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
+    ) : [];
+    
+    
     const editar_categoria = (id) => {
         sessionStorage.setItem('id_categoria', id);
     };
@@ -157,6 +156,13 @@ function CRUDCategoria() {
                 </footer>
                 <div className="waves-background2-categoria"></div>
             </div>
+            <ToastContainer
+            closeButtonStyle={{
+                fontSize: '12px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+            />
         </body>
     );
 }

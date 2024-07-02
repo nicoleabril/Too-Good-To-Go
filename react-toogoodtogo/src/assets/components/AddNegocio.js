@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import "../styles/addProduct.css";
-import donas from '../images/donas.png'
-import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddNegocio = () => {
 
@@ -61,40 +59,36 @@ const AddNegocio = () => {
   useEffect(() => {
     const obtenerNegocio = async () => {
       try {
-          const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
-          setNegocio(response.data.data);
-          if(response.data.data != null){
-            setNombreNegocio(response.data.data.nombre_negocio);
-            setDescNegocio(response.data.data.descripcion);
-            const responseCategoria = await axios.get(`http://localhost:8000/api/categorias-negocio/`);
-            const categoriaSeleccionada = responseCategoria.data.categorias.find(departamento => departamento.id_categoria === (response.data.data.id_categoria));
-            if (categoriaSeleccionada) {
-              setDefaultCategoria(categoriaSeleccionada);
-              setCategoriaSeleccionada(categoriaSeleccionada.id_categoria);
-            }
-          }
-          if(response.data.data.logotipo!=null){
-            setLogo(response.data.data.logotipo);
-          }
-          if(response.data.data.imagen_referencial!=null){
-            setImageSrc(response.data.data.imagen_referencial);
-          }
+        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        setNegocio(response.data.data);
+        if (response.data.data != null) {
+          setNombreNegocio(response.data.data.nombre_negocio);
+          setDescNegocio(response.data.data.descripcion);
+        }
+        if (response.data.data.logotipo != null) {
+          setLogo(response.data.data.logotipo);
+        }
+        if (response.data.data.imagen_referencial != null) {
+          setImageSrc(response.data.data.imagen_referencial);
+        }
       } catch (error) {
-          console.error('Error al obtener negocio:', error);
+        console.error('Error al obtener negocio:', error);
       }
     };
-
+  
     const obtenerCategoria = async () => {
       try {
-          const response = await axios.get(`http://localhost:8000/api/categorias-negocio/`);
-          setCategorias(response.data.categorias);
+        const response = await axios.get(`http://localhost:8000/api/categorias-negocio/`);
+        setCategorias(response.data.categorias);
       } catch (error) {
-          console.error('Error al obtener negocio:', error);
+        console.error('Error al obtener categorías:', error);
       }
     };
+  
     obtenerNegocio();
     obtenerCategoria();
-  }, []);
+  }, [idNegocio]); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
+  
 
 
   const handleInputNombre = (e) => {
@@ -121,8 +115,6 @@ const AddNegocio = () => {
       if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
       formData.append('posicion_x', negocio.posicion_x);
       formData.append('posicion_y', negocio.posicion_y);
-      console.log(subirImagen);
-      console.log(subirLogo);
       const response = await axios.post(`http://localhost:8000/api/negocios/${idNegocio}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -130,8 +122,10 @@ const AddNegocio = () => {
       });
 
       console.log('Negocio actualizado:', response.data);
+      toast.success('Guardado');
       // Aquí podrías manejar la respuesta como necesites (actualizar estado, mostrar mensaje de éxito, etc.)
     } catch (error) {
+      toast.error('Error al editar.');
       console.error('Error al actualizar negocio:', error);
       // Aquí podrías manejar el error como necesites (mostrar mensaje de error, rollback de cambios, etc.)
     }
@@ -225,6 +219,13 @@ const AddNegocio = () => {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
+      <ToastContainer
+          closeButtonStyle={{
+            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            padding: '4px'    // Espaciado interno del botón de cerrar
+          }}
+          style={{ width: '400px' }} // Ancho deseado para ToastContainer
+        />
     </div>
   );
 }

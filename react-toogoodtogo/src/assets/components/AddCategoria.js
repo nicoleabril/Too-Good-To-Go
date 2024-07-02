@@ -132,7 +132,13 @@ const handleAddCategoria = async (e) => {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
-      <ToastContainer />
+      <ToastContainer
+          closeButtonStyle={{
+            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            padding: '4px'    // Espaciado interno del botón de cerrar
+          }}
+          style={{ width: '400px' }} // Ancho deseado para ToastContainer
+        />
     </div>
   );
 }

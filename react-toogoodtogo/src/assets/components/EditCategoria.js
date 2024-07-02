@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import "../styles/addCategoria.css";
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
 
 function AddCategorias() {
   const [imageSrc, setImageSrc] = useState(null);
@@ -28,16 +29,15 @@ function AddCategorias() {
         const obtenerCategoria = async () => {
             try {
                 const response = await axios.get(`http://localhost:8000/api/categoria/${id_categoria}`);
-                setCategoria(response.data.data);
-                if(response.data.data){
-                  setNombreCategoria(response.data.data.nombre_categoria);
-                  setDescripcion(response.data.data.descripcion);
-                  setEstado(response.data.data.habilitado);
+                setCategoria(response.data.categoria);
+                if(response.data.categoria){
+                  setNombreCategoria(response.data.categoria.nombre_categoria);
+                  setDescripcion(response.data.categoria.descripcion);
+                  setEstado(response.data.categoria.habilitado);
                 }
-                if(response.data.data.imagen_categoria!=null){
-                  setImageSrc(response.data.data.imagen_categoria);
+                if(response.data.categoria.imagen_categoria!=null){
+                  setImageSrc(response.data.categoria.imagen_categoria);
                 }
-                console.log(response.data.data);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
             }
@@ -63,9 +63,11 @@ function AddCategorias() {
         },
       });
 
+      toast.success('Guardado');
       console.log('Categoria actualizada:', response.data);
       // Aquí podrías manejar la respuesta como necesites (actualizar estado, mostrar mensaje de éxito, etc.)
     } catch (error) {
+      toast.error('Error al editar.');
       console.error('Error al actualizar categoria:', error);
       // Aquí podrías manejar el error como necesites (mostrar mensaje de error, rollback de cambios, etc.)
     }
@@ -136,6 +138,13 @@ function AddCategorias() {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
+      <ToastContainer
+          closeButtonStyle={{
+            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            padding: '4px'    // Espaciado interno del botón de cerrar
+          }}
+          style={{ width: '400px' }} // Ancho deseado para ToastContainer
+        />
     </div>
   );
 }

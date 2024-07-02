@@ -324,8 +324,38 @@ button:hover{
   }
 }
 
+/* Estilo para el cuerpo del Toast */
+.toast-body {
+  font-size: 14px; /* Ajusta el tamaño del texto según sea necesario */
+  white-space: nowrap; /* Evita que el texto se envuelva en varias líneas */
+  overflow: hidden; /* Oculta cualquier desbordamiento del texto */
+  text-overflow: ellipsis; /* Agrega puntos suspensivos al final del texto si es necesario */
+}
 
+/* Ejemplo de estilo para Toast de éxito */
+.toast-success {
+  background-color: #4caf50; /* Color de fondo para Toast de éxito */
+  color: #fff; /* Color de texto para Toast de éxito */
+}
 
+/* Ejemplo de estilo para Toast de error */
+.toast-error {
+  background-color: #f44336; /* Color de fondo para Toast de error */
+  color: #fff; /* Color de texto para Toast de error */
+}
+
+.toast-container {
+  width: 800px; /* Ancho personalizado del ToastContainer */
+}
+
+.custom-toast-container {
+  width: 600px; /* Ancho deseado para ToastContainer */
+}
+
+.custom-toast-close-button {
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+  padding: 4px; /* Espaciado interno reducido */
+}
 
 
 
