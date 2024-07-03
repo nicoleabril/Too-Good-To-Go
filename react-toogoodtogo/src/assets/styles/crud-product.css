@@ -10,6 +10,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 150px;
+    margin-bottom: 70px;
     position: relative;
 }
 
@@ -63,6 +64,14 @@
     width:90%;
 }
 
+.crud-producto-container .tabla-productos-container button {
+    background-color: var(--color-button);
+    cursor: pointer;
+    padding: 10px;
+    width: 50px;
+    margin: 10px;
+}
+
 .crud-producto-container .botonesCrud {
     display: flex;
     justify-content: center;
@@ -84,9 +93,8 @@
     margin: 0 auto;
 }
 
-.crud-producto-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow{
+.crud-producto-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
     background-color: rgb(245, 243, 243);
-    border: 3px solid #ccc;
 }
 
   
@@ -180,6 +188,13 @@
         min-width: 200px;
     }
 
+    .crud-producto-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
     .crud-producto-container .botonesCrud button {
         background-color: var(--color-button);
         cursor: pointer;
@@ -218,9 +233,15 @@
         padding: 0;
         border:none;
     }
+    .crud-producto-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
 
     .crud-producto-container .botonAgregarProducto {
-        width: 80%;
+        width: 90%;
         max-width: 200px;
         padding: 5px 10px 10px 10px;
         font-size: 12px;
@@ -234,7 +255,6 @@
         margin: 5px;
         align-items: center;
     }
-
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1250px) {
@@ -250,7 +270,7 @@
     }
 
     .crud-producto-container .botonAgregarProducto {
-        width: 80%;
+        width: 90%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;
     }

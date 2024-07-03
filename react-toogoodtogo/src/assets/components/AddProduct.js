@@ -7,6 +7,18 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Select from 'react-select';
 
+const customStyles = {
+  menu: (provided) => ({
+    ...provided,
+    maxHeight: '100px', // Limitar la altura máxima del menú desplegable
+    overflowY: 'auto',  // Agregar barra de desplazamiento vertical
+  }),
+  option: (provided) => ({
+    ...provided,
+    height: '30px', // Altura de cada opción
+  }),
+};
+
 function AddProduct() {
   const idNegocio = Cookies.get('id');
   const [imageSrc, setImageSrc] = useState(null);
@@ -125,6 +137,7 @@ useEffect(() => {
                     label: categoria.nombre_categoria,
                   }))}
                   placeholder="Escoger categoría..."
+                  styles={customStyles}
                 />
               </div>
               <div className="precio">

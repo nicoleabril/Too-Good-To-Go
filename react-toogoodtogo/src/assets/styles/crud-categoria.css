@@ -10,6 +10,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin-top: 150px;
+    margin-bottom: 70px;
     position: relative;
 }
 
@@ -84,11 +85,9 @@
     margin: 0 auto;
 }
 
-.crud-categoria-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow{
+.crud-categoria-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
     background-color: rgb(245, 243, 243);
-    border: 3px solid #ccc;
 }
-
   
 .crud-categoria-container .sc-eqUzNf.dODGfY.rdt_TableHeadRow> div {
     border-right: 2px solid #ccc;
@@ -147,9 +146,37 @@
     text-align: right;
   }
 
+  .crud-categoria-container input {
+    width: 100%;
+    padding: 0;
+    border:none;
+}
+
+
 /*responsive para dispositivos móviles*/
+@media screen and (max-width: 768px){
+
+    .crud-categoria-container input {
+        width: 100%;
+        padding: 0;
+        border:none;
+    }
+
+    .crud-categoria-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+}
 
 @media screen and (max-width: 1024px) {
+
+    .crud-categoria-container input {
+        width: 100%;
+        padding: 0;
+        border:none;
+    }
 
     .crud-categoria-container .crud-categoria {
         flex-direction: column;
@@ -185,6 +212,13 @@
         min-width: 200px;
     }
 
+    .crud-categoria-container .ant-table-wrapper.css-dev-only-do-not-override-m4timi{
+        background-color: rgb(255, 255, 255);
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+
     .crud-categoria-container .botonesCrudCategoria button {
         background-color: var(--color-button);
         cursor: pointer;
@@ -198,6 +232,12 @@
 
 
 @media screen and (min-width: 1025px) and (max-width: 1250px) {
+    .crud-categoria-container input {
+        width: 100%;
+        padding: 0;
+        border:none;
+    }
+
     .crud-categoria-container .crud-categoria {
         padding-left: 30px;
         padding-right: 30px;
@@ -211,7 +251,7 @@
     }
 
     .crud-categoria-container .botonAgregarCategoria {
-        width: 80%;
+        width: 90%;
         padding: 5px 12px 10px 10px;
         font-size: 12px;
     }

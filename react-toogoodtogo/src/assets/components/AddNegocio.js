@@ -5,6 +5,18 @@ import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
 import { ToastContainer, toast } from 'react-toastify';
 
+const customStyles = {
+  menu: (provided) => ({
+    ...provided,
+    maxHeight: '70px', // Limitar la altura máxima del menú desplegable
+    overflowY: 'auto',  // Agregar barra de desplazamiento vertical
+  }),
+  option: (provided) => ({
+    ...provided,
+    height: '30px', // Altura de cada opción
+  }),
+};
+
 const AddNegocio = () => {
 
   const idNegocio = Cookies.get('id');
@@ -160,6 +172,7 @@ const AddNegocio = () => {
                     label: categoria.nombre,
                   }))}
                   placeholder="Escoger categoría..."
+                  styles={customStyles}
                 />
               </div>
             </form>
