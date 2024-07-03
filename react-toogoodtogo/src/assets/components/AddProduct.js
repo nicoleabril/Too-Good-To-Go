@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/addProduct.css";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Select from 'react-select';
+
 function AddProduct() {
+  const idNegocio = Cookies.get('id');
   const [imageSrc, setImageSrc] = useState(null);
+  const [subirImagen, setSubirImagen] = useState(null);
   const [producto, setProducto] = useState('');
   const [categoria, setCategoria] = useState('');
+  const [categorias, setCategorias] = useState([]);
   const [precio, setPrecio] = useState(''); 
   const [errors, setErrors] = useState({});
   const [descripcion, setDescripcion] = useState('');
@@ -21,40 +29,74 @@ function AddProduct() {
     setPrecioDecimal(event.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
-    const precioCompleto = '$'+parseFloat(precioEntero + '.' + precioDecimal);
-    if (!producto) newErrors.oferta = 'El producto es requerida';
-    if (!categoria) newErrors.descripcion = 'La categoría es requerida';
-    if (!precioCompleto) newErrors.precio = 'El precio es requerido';
+    const precio = parseFloat(precioEntero + '.' + precioDecimal);
+    const precioCompleto = '$' + precio;
+    if (!producto) newErrors.producto = 'El nombre del producto es requerido';
+    if (!categoria) newErrors.categoria = 'La categoría es requerida';
+    if (!precio) newErrors.precio = 'El precio es requerido';
     if (!imageSrc) newErrors.icono = 'El icono es requerido';
-    
+
     if (Object.keys(newErrors).length > 0) {
         setErrors(newErrors);
         return;
     }
 
-    const nuevoProducto = {
-        producto,
-        categoria,
-        precio: precioCompleto,
-        imagen: imageSrc
-    };
-    sessionStorage.setItem('nuevoProducto', JSON.stringify(nuevoProducto));
-    navigate('/RegistroProductos'); // Redirige de vuelta al listado de categorías
+    try {
+        const formData = new FormData();
+        formData.append('id_negocio', idNegocio);
+        formData.append('id_categoria', categoria);
+        formData.append('nombre_producto', producto);
+        formData.append('descripcion', descripcion);
+        formData.append('imagen', subirImagen);
+        formData.append('precio', precio);
+
+        const response = await axios.post(`http://localhost:8000/api/productos/`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        });
+
+        console.log('Producto creado:', response.data);
+        toast.success('Guardado');
+    } catch (error) {
+        toast.error('Error al agregar.');
+        console.error('Error al crear producto:', error);
+    }
 };
+
+
+
+useEffect(() => {
+
+  const obtenerCategoria = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+      setCategorias(response.data.categorias);
+    } catch (error) {
+      console.error('Error al obtener categorías:', error);
+    }
+  };
+
+  obtenerCategoria();
+}, [idNegocio]); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
 
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-
+    setSubirImagen(file);
     reader.onload = (e) => {
       setImageSrc(e.target.result);
     };
 
     reader.readAsDataURL(file);
+  };
+
+  const handleInputCategoria = (selectedOption) => {
+    setCategoria(selectedOption.value); // Actualizar la opción seleccionada
   };
 
   return (
@@ -75,12 +117,15 @@ function AddProduct() {
               </div>
               <div className="categoria">
                 <label>Categoría</label>
-                <select className="comboOpciones" value={categoria} onChange={(e) => setCategoria(e.target.value)} required>
-                  <option>Seleccionar...</option>
-                  <option>Combos</option>
-                  <option>Bebidas</option>
-                  <option>Postres</option>
-                </select>
+                <Select
+                  className="comboOpciones"
+                  onChange={handleInputCategoria}
+                  options={categorias.map(categoria => ({
+                    value: categoria.id_categoria,
+                    label: categoria.nombre_categoria,
+                  }))}
+                  placeholder="Escoger categoría..."
+                />
               </div>
               <div className="precio">
                 <label>Precio</label>
@@ -125,6 +170,13 @@ function AddProduct() {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
+      <ToastContainer
+          closeButtonStyle={{
+            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            padding: '4px'    // Espaciado interno del botón de cerrar
+          }}
+          style={{ width: '400px' }} // Ancho deseado para ToastContainer
+        />
     </div>
   );
 }

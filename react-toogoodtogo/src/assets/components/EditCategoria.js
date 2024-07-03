@@ -51,12 +51,10 @@ function AddCategorias() {
     try {
       e.preventDefault();
       const formData = new FormData();
-      formData.append('id_negocio', idNegocio);
       formData.append('nombre_categoria', nombreCategoria);
       formData.append('descripcion', descripcion);
       formData.append('habilitado', estado);
-      if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
-      console.log(estado);
+      if(subirImagen != null) formData.append('imagen_categoria', subirImagen);
       const response = await axios.post(`http://localhost:8000/api/categorias/${id_categoria}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
