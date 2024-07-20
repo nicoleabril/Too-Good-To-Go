@@ -1,43 +1,59 @@
-.contact-form-container {
+.contact-form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .contact-form-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 40px;
+    background-color: #A13225; /* Cambia esto al color exacto que necesitas */
+    padding: 20px;
     border-radius: 10px;
-    background-image: url('../images/vegetales.png');
     position: relative;
-    overflow: visible; /* Permite que los elementos sobresalgan del contenedor */
+    overflow: hidden;
   }
   
-  
-  .salad-image {
+  .contact-form-container::before {
+    content: '';
     position: absolute;
-    left: -30px; /* Ajusta estos valores según sea necesario */
-    top: -30px;  /* Ajusta estos valores según sea necesario */
-    width: 60%; /* Ajusta el tamaño según sea necesario */
-    border-radius: 10px;
-    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/vegetales.png'); /* Cambia esto a la ruta de tu imagen de fondo */
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.3; /* Ajusta la opacidad según sea necesario */
+    z-index: 1;
   }
   
-  .form-section {
+  .contact-form-container .salad-image {
+    width: 20%; /* Ajusta el tamaño según sea necesario */
+    border-radius: 10px;
+    z-index: 2;
+  }
+  
+  .contact-form-container .form-section {
     color: white;
-    margin-left: 60%; /* Asegúrate de que el formulario no se solape con la imagen */
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     z-index: 2;
   }
   
-  .form-section h2 {
+  .contact-form-container .form-section h2 {
     font-size: 24px;
-    margin: 0;
   }
   
-  .form-section p {
-    margin: 5px 0;
+  .contact-form-container .form-section p {
+    height: 30px;
+    color: white;
   }
   
-  .text-area {
-    margin-top: 10px;
+  .contact-form-container .text-area {
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -46,13 +62,66 @@
     height: 100px;
   }
   
-  .submit-button {
-    margin-top: 10px;
+  .contact-form-container .submit-button {
+    border-radius: 10px;
     padding: 10px;
     background-color: #EB5E28; /* Cambia esto al color exacto que necesitas */
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+  }
+  
+  /* Media Queries para hacer el diseño responsive */
+  @media (max-width: 768px) {
+    .contact-form-container {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .contact-form-container .salad-image {
+      width: 30%;
+      margin-bottom: 20px;
+    }
+  
+    .contact-form-container .form-section {
+      margin-left: 0;
+      text-align: center;
+    }
+    
+    .contact-form-container .form-section h2 {
+      font-size: 20px;
+    }
+    
+    .contact-form-container .form-section p {
+      height: auto;
+    }
+    
+    .contact-form-container .text-area {
+      width: 100%;
+      height: 80px;
+    }
+  
+    .contact-form-container .submit-button {
+      width: 100%;
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .contact-form-container .salad-image {
+      width: 20%;
+    }
+  
+    .contact-form-container .form-section h2 {
+      font-size: 18px;
+    }
+  
+    .contact-form-container .text-area {
+      height: 60px;
+    }
+  
+    .contact-form-container .submit-button {
+      padding: 10px;
+    }
   }
   

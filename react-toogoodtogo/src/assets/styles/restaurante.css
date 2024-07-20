@@ -213,6 +213,10 @@
     flex-wrap: wrap;
   }
 
+  .RestauranteContainer .contenedorCard {
+    margin-bottom: 10vh;
+  }
+
 
   .RestauranteContainer .componentesDashboard {
     display: flex;
@@ -285,11 +289,13 @@
       margin: 0;
     }
     .RestauranteContainer .contenedorCard .card:first-child{
-      margin-top: 20vh;
+      margin-top: 10vh;
     }
-    .RestauranteContainer .contenedorCardDashboard .card:first-child{
-      margin-top: 100vh;
+
+    .RestauranteContainer .contenedorCard {
+      margin-bottom: 20vh;
     }
+
     .RestauranteContainer .contenedorGraficaDashboard{
       display: flex;
       flex-direction: column;
