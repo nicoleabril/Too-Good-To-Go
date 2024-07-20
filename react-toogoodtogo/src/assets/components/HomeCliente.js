@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import pizza from '../images/pizza.png';
 import LocalesCards from './LocalesCards';
 import McDonalds from '../images/McDonalds.png';
@@ -6,11 +6,15 @@ import KFC from '../images/KFC.png';
 import BurgerKing from '../images/BurgerKing.png';
 import MapComponent from './MapComponent'; 
 import Dunkin from '../images/dunkin.png';
+import axios from 'axios'; // Importa Axios
 import '../styles/cliente.css';
 
 function HomeCliente() {
+  const [negocios, setNegocios] = useState([]);
+
   const localesDataP = [
-    {
+    { 
+      id_negocio: 'Dunkin\' Donuts',
       name: 'Dunkin\' Donuts',
       image: Dunkin,
       rating: '4.7',
@@ -20,6 +24,7 @@ function HomeCliente() {
       link: '/Restaurante',
     },
     {
+      id_negocio: 'KFC-Mall del Río',
       name: 'KFC-Mall del Río',
       image: KFC,
       rating: '4.5',
@@ -29,6 +34,7 @@ function HomeCliente() {
       link: '/Restaurante',
     },
     {
+      id_negocio: 'BurgerKing',
       name: 'BurgerKing',
       image: BurgerKing,
       rating: '4.5',
@@ -41,6 +47,7 @@ function HomeCliente() {
 
   const localesData = [
     {
+      id_negocio: 'BurgerKing',
       name: 'McDonalds-Remigio',
       image: McDonalds,
       rating: '4.5',
@@ -50,6 +57,7 @@ function HomeCliente() {
       link: '/Restaurante',
     },
     {
+      id_negocio: 'BurgerKing',
       name: 'KFC-Mall del Río',
       image: KFC,
       rating: '4.5',
@@ -59,6 +67,7 @@ function HomeCliente() {
       link: '/Restaurante',
     },
     {
+      id_negocio: 'BurgerKing',
       name: 'BurgerKing',
       image: BurgerKing,
       rating: '4.5',
@@ -68,6 +77,19 @@ function HomeCliente() {
       link: '/Restaurante',
     }
   ];
+
+  useEffect(() => {
+    const obtenerNegocios = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/negocios`);
+            setNegocios(response.data.data);
+        } catch (error) {
+            console.error('Error al obtener negocio:', error);
+        }
+    };
+
+    obtenerNegocios();
+}, []); 
   
   return (
     <div className='ClienteContainer'>

@@ -2,6 +2,12 @@ import React from 'react';
 import '../styles/localCards.css';
 
 const LocalesCards = ({ locales, nombreBoton }) => {
+
+  const verNegocio = (id) => {
+    sessionStorage.setItem('id_negocio', id);
+};
+  
+
   return (
     <div className='contenedorCard'>
       {locales.map((local, index) => (
@@ -18,7 +24,7 @@ const LocalesCards = ({ locales, nombreBoton }) => {
                 <li key={i}>{item}</li>
               ))}
             </ul>
-            <a href={local.link}><button>{nombreBoton}</button></a>
+            <a href={local.link}><button onClick={verNegocio(local.id_negocio)}>{nombreBoton}</button></a>
           </div>
         </div>
       ))}

@@ -17,6 +17,9 @@ import perfilMujer from '../images/perfilMujer.jpg';
 import { addProductoComprado } from './productosComprados';
 
 const HomeRestaurante = ({ onBuyClick }) => {
+  const idNegocio = sessionStorage.getItem("id_negocio");
+  console.log(idNegocio);
+
   const ofertasData = [
     { precio: '6.99', name: 'Oferta #1', descript: 'Esta bolsa sorpresa está valorada en $11,99', image: bolsa ,cantidadVendida: 1},
     { precio: '4.99', name: 'Oferta #2', descript: 'Esta bolsa sorpresa está valorada en $7,99', image: bolsa, cantidadVendida: 1},
