@@ -14,11 +14,11 @@ import sanduche2 from '../images/sanduche2.jpeg';
 import sanduche3 from '../images/sanduche3.jpeg';
 import ProductosCards from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg';
+import ComentarioCard from './ComentarioCard';
 import { addProductoComprado } from './productosComprados';
 
 const HomeRestaurante = ({ onBuyClick }) => {
   const idNegocio = sessionStorage.getItem("id_negocio");
-  console.log(idNegocio);
 
   const ofertasData = [
     { precio: '6.99', name: 'Oferta #1', descript: 'Esta bolsa sorpresa está valorada en $11,99', image: bolsa ,cantidadVendida: 1},
@@ -85,6 +85,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
         <ProductosCards productos={bebidasData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
         <h1>Sánduches</h1>
         <ProductosCards productos={sanduchesData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
+        <ComentarioCard/>
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">

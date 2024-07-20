@@ -129,15 +129,6 @@ function CRUDProducts() {
 
     const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        const nuevoProducto = sessionStorage.getItem('nuevoProducto');
-        if (nuevoProducto) {
-            const nuevoDato  = (JSON.parse( nuevoProducto));
-            setData(prevData => [...prevData, { id: prevData.length + 1, ...nuevoDato }]);
-            sessionStorage.removeItem('nuevoProducto');
-        }
-    }, []);
-
     const filteredData = productos && productos.length > 0 ? productos.filter(producto =>
         producto.nombre_producto.toLowerCase().includes(searchTerm.toLowerCase())
     ) : [];
