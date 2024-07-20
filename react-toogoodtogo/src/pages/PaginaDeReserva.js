@@ -10,11 +10,11 @@ import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 const dataInformacionReserva = [
   {
-    metodoPago: 'Tarjeta de Crédito',
+    metodoPago: '------',
     estado: 'Pendiente',
-    restaurante: 'Restaurante de Prueba',
-    direccion: 'Calle de Prueba',
-    horario: '12:00 - 14:00'
+    restaurante: '------',
+    direccion: '-------------',
+    horario: '-----------'
   }
 ];
 
@@ -65,7 +65,7 @@ function PaginaDeReserva() {
       <div className='cont-resumenReserva'>
         <button className="back-button" onClick={() => window.history.back()}>←</button>
         <CabeceraDelResumen />
-        <ResumenDelaReserva productos={productos} setProductos={setProductos} />
+        <ResumenDelaReserva productos={productos} setProductos={setProductos} /> 
         <p className='totalReserva'>Total: $ {total}</p>
       </div>
       <div className='cont-detallesReserva'>
