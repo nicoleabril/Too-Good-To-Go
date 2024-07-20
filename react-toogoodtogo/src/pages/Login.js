@@ -129,7 +129,7 @@ export default class Login extends Component {
             </div>
             <button onClick={this.handleSubmit}>Iniciar Sesión</button>
             <div className="new-account">
-              <p>¿Eres nuevo aquí? <a href="#">Crear cuenta</a></p>
+              <p>¿Eres nuevo aquí? <a href="/Registro">Crear cuenta</a></p>
             </div>
           </form>
         </div>

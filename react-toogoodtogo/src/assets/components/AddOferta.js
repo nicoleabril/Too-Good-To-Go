@@ -2,14 +2,20 @@ import React, { useState } from "react";
 import "../styles/addProduct.css";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function AddOfertas() {
+  const idNegocio = Cookies.get('id');
+  const navigate = useNavigate();
   const [imageSrc, setImageSrc] = useState(null);
   const [oferta, setOferta] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
   const [precioEntero, setPrecioEntero] = useState('');
   const [precioDecimal, setPrecioDecimal] = useState('');
+  const [subirImagen, setSubirImagen] = useState(null);
 
   const handleEnteroChange = (event) => {
     setPrecioEntero(event.target.value);
@@ -19,32 +25,48 @@ function AddOfertas() {
     setPrecioDecimal(event.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newErrors = {};
-    const precioCompleto = parseFloat(precioEntero + '.' + precioDecimal);
-    if (!oferta) newErrors.oferta = 'La oferta es requerida';
-    if (!descripcion) newErrors.descripcion = 'La descripción es requerida';
-    if (!precioCompleto) newErrors.precio = 'El precio es requerido';
-    if (!imageSrc) newErrors.icono = 'El icono es requerido';
-    
-    if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-        return;
-    }
+  const handleSubmit = async (e) => {
+    try{
+      e.preventDefault();
+      const newErrors = {};
+      const precioCompleto = parseFloat(precioEntero + '.' + precioDecimal);
+      if (!oferta) newErrors.oferta = 'La oferta es requerida';
+      if (!descripcion) newErrors.descripcion = 'La descripción es requerida';
+      if (!precioCompleto) newErrors.precio = 'El precio es requerido';
+      if (!imageSrc) newErrors.icono = 'El icono es requerido';
+      
+      if (Object.keys(newErrors).length > 0) {
+          setErrors(newErrors);
+          return;
+      }
 
-    const nuevaOferta = {
-        name: oferta,
-        descript: descripcion,
-        precio: precioCompleto,
-        image: imageSrc,
-    };
-    sessionStorage.setItem('nuevaOferta', JSON.stringify(nuevaOferta));
-    navigate('/RegistroOfertas'); // Redirige de vuelta al listado de categorías
+      const fechaCreacion = new Date();
+
+      const formData = new FormData();
+      formData.append('id_negocio', idNegocio); // Ajusta según tu lógica de categoría seleccionada
+      formData.append('nombre_oferta', oferta);
+      formData.append('descripcion', descripcion);
+      formData.append('imagen_oferta', subirImagen);
+      formData.append('precio', precioCompleto);
+      formData.append('fecha_creacion', fechaCreacion);
+      const response = await axios.post(`http://localhost:8000/api/ofertas/`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log('Oferta creada:', response.data);
+      toast.success('Guardado');
+    } catch(error){
+      toast.error('Error al agregar.');
+      console.error('Error al crear categoria:', error);
+    }
+    
 };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    setSubirImagen(file);
     const reader = new FileReader();
 
     reader.onload = (e) => {
@@ -123,6 +145,13 @@ function AddOfertas() {
            Copyright © 2024 Too Good To Go International. All Rights Reserved.
         </div>
       </footer>
+      <ToastContainer
+          closeButtonStyle={{
+            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            padding: '4px'    // Espaciado interno del botón de cerrar
+          }}
+          style={{ width: '400px' }} // Ancho deseado para ToastContainer
+        />
     </div>
   );
 }

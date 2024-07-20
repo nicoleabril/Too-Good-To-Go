@@ -39,12 +39,12 @@ function AddCategorias() {
                   setImageSrc(response.data.categoria.imagen_categoria);
                 }
             } catch (error) {
-                console.error('Error al obtener negocio:', error);
+                console.error('Error al obtener categoria:', error);
             }
         };
 
         obtenerCategoria();
-    }, [idNegocio]); 
+  }, [idNegocio]); 
 
 
   const handleUpdateCategoria = async (e) => {

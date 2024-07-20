@@ -43,7 +43,7 @@ function AddProduct() {
         entera: parseInt(entera, 10),
         decimal: decimal ? parseInt(decimal.padEnd(2, '0').substring(0, 2), 10) : 0
     };
-}
+  }
 
   useEffect(() => {
 
