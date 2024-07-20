@@ -8,6 +8,7 @@ import { getProductosComprados } from '../assets/components/productosComprados';
 import { addReservaEnCola } from '../assets/components/Reserva/reservaEnCola';
 import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
+
 const dataInformacionReserva = [
   {
     metodoPago: '------',
@@ -35,9 +36,23 @@ function PaginaDeReserva() {
 
   const calcularTotal = () => {
     const nuevoTotal = productos.reduce((acc, producto) => {
-      return acc + (producto.precio * (producto.cantidadVendida || 1));
+      return acc + (producto.precio * (producto.cantidadVendida ));
     }, 0).toFixed(2);
     setTotal(nuevoTotal);
+  };
+
+  const handleIncrement = (index) => {
+    const newProductos = [...productos];
+    newProductos[index].cantidadVendida += 1;
+    setProductos(newProductos);
+  };
+
+  const handleDecrement = (index) => {
+    const newProductos = [...productos];
+    if (newProductos[index].cantidadVendida > 0) {
+      newProductos[index].cantidadVendida -= 1;
+      setProductos(newProductos);
+    }
   };
 
   const handleReservarClick = () => {
@@ -52,11 +67,12 @@ function PaginaDeReserva() {
     addReservaEnCola(nuevaReserva);
     alert("Reservación Exitosa, no olvides recoger tu pedido dentro del horario adecuado.");
   };
+
   const authToken = Cookies.get('authToken');
   
   // Si la cookie no está presente, redirigir al usuario a la página de login
   if (!authToken) {
-      return <Navigate to="/" />;
+    return <Navigate to="/" />;
   }
 
   return (
@@ -65,7 +81,11 @@ function PaginaDeReserva() {
       <div className='cont-resumenReserva'>
         <button className="back-button" onClick={() => window.history.back()}>←</button>
         <CabeceraDelResumen />
-        <ResumenDelaReserva productos={productos} setProductos={setProductos} /> 
+        <ResumenDelaReserva 
+          productos={productos} 
+          onIncrement={handleIncrement} 
+          onDecrement={handleDecrement} 
+        />
         <p className='totalReserva'>Total: $ {total}</p>
       </div>
       <div className='cont-detallesReserva'>
