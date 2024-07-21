@@ -3,13 +3,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import markerIcon from '../images/map-marker-icon.png'; 
 
-const MapComponent = () => {
-  const locations = [
-    { position: [-2.9188998846326286, -79.01474831911743], name: 'McDonalds-Mall del Rio' },
-    { position: [-2.9059858414071273, -79.00878647833345], name: 'Pizza Hut-Remigio' },
-    { position: [-2.8971779643926445, -79.02216698944804], name: 'KFC-Batan Shopping' }
-  ];
-
+const MapComponent = ({ locations }) => {
+  console.log(locations);
   const customIcon = L.icon({
     iconUrl: markerIcon,
     iconSize: [35, 35],

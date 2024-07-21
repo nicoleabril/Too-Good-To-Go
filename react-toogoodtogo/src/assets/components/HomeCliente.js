@@ -10,6 +10,7 @@ import '../styles/cliente.css';
 function HomeCliente() {
   const [negocios, setNegocios] = useState([]);
   const [negociosOfertas, setNegociosOfertas] = useState([]);
+  const [negociosUbicacion, setNegociosUbicacion] = useState([]);
 
   const localesDataP = [
     { 
@@ -103,6 +104,24 @@ function HomeCliente() {
     obtenerNegocios();
   }, []); 
 
+  useEffect(() => {
+    const obtenerUbicacion = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/negocios`);
+        const negociosConUbicaciones = await Promise.all(response.data.data.map(async ubicacion => {
+          return {
+            position: [ubicacion.posicion_x, ubicacion.posicion_y],
+            name: ubicacion.nombre_negocio
+          };
+        }));
+        setNegociosUbicacion(negociosConUbicaciones);
+      } catch (error) {
+        console.error('Error al obtener negocio:', error);
+      }
+    };
+
+    obtenerUbicacion();
+  }, []); 
   
   return (
     <div className='ClienteContainer'>
@@ -125,7 +144,7 @@ function HomeCliente() {
         <h1>¿Buscas lo siempre?</h1>
         <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
         <h1>Localización</h1>
-        <MapComponent/>
+        <MapComponent locations={negociosUbicacion}/>
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">
