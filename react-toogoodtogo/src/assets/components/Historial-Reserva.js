@@ -54,7 +54,7 @@ const Historial = () => {
           comentario: "El té de menta es mi favorito. Siempre tienen opciones frescas y saludables.",
           estado: "finalizado"
         }
-      ];
+    ];
       
 
     const estadoClase = {

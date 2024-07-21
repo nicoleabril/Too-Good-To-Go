@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/restaurante.css'
 import donas from '../images/donas.png'
 import dunkin_logo from '../images/dunkin_donuts_logo.jpeg'
@@ -14,7 +14,11 @@ import perfilMujer from '../images/perfilMujer.jpg'
 import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
+import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
 function HomeNegocio() {
+  const idNegocio = Cookies.get('id');
+  const [negocio, setNegocio] = useState([]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -75,14 +79,27 @@ function HomeNegocio() {
   },
   ];
 
+  useEffect(() => {
+    const obtenerNegocio = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        setNegocio(response.data.data);
+      } catch (error) {
+        console.error('Error al obtener negocio:', error);
+      }
+    };
+  
+    obtenerNegocio();
+  }, []); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
+
 
     return (
     
         <div className="RestauranteContainer">
             <div className='textoImagen'>
-              <img src={dunkin_logo} alt="Pizza" className="imagenLogo"/>
+              <img src={negocio.logotipo} alt="Pizza" className="imagenLogo"/>
               <div className='textoRestaurante'>
-                <p className='subtexto'>Dunkin' Donuts ofrece una amplia variedad de productos, incluyendo donas, café, bebidas frías y calientes, sándwiches de desayuno, bagels, muffins y otros productos de panadería.</p>
+                <p className='subtexto'>{negocio.descripcion}</p>
               </div>
               <div class="comentario">
                 <div class="cliente">
@@ -100,7 +117,7 @@ function HomeNegocio() {
               </div>
             </div>
             <div className="imagenPizza">
-            <img src={donas} alt="Pizza" className="imagen2" />
+            <img src={negocio.imagen_referencial} alt="Pizza" className="imagen2" />
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo">

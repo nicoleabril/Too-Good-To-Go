@@ -53,7 +53,6 @@ export default class RegistroNegocio extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, telefono, password, passwordConfirm, latitude, longitude} = this.state;
-
     if(password === passwordConfirm){
       try {
         const response = await axios.post('http://localhost:8000/api/registrar-negocio', {
@@ -107,6 +106,8 @@ export default class RegistroNegocio extends Component {
     const LocationMarker = () => {
       useMapEvents({
         click: (e) => {
+          console.log(e.latlng.lat);
+          console.log(e.latlng.lng);
           this.setState({
             latitude: e.latlng.lat,
             longitude: e.latlng.lng
