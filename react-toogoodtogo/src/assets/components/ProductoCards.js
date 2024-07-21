@@ -3,7 +3,7 @@ import '../styles/productoCards.css';
 import { CarouselProvider, Slider, Slide, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
-const ProductosCards = ({ productos = [], nombreBoton, onBuyClick, cardStyle = {} }) => {
+const ProductosCards = ({ productos = [], nombreBoton, onBuyClick, cardStyle = {}, carruselId }) => {
   console.log(productos);
   const [visibleSlides, setVisibleSlides] = useState(3);
 
@@ -43,6 +43,7 @@ const ProductosCards = ({ productos = [], nombreBoton, onBuyClick, cardStyle = {
         infinite
         orientation={window.innerWidth <= 820 ? 'vertical' : 'horizontal'}
         className='carousel-container'
+        id={carruselId}
       >
         <Slider>
           {productos.map((producto, index) => {
@@ -63,11 +64,11 @@ const ProductosCards = ({ productos = [], nombreBoton, onBuyClick, cardStyle = {
           })}
         </Slider>
         <div className='carousel-controls'>
-          <ButtonNext className='carousel-next'>Next</ButtonNext>
+          <ButtonNext className={`carousel-next-${carruselId} carousel-next-hidden`}>Next</ButtonNext>
         </div>
       </CarouselProvider>
       <div className='card-more'>
-        <button onClick={() => document.querySelector('.carousel-next').click()}>VER MÁS</button>
+        <button onClick={() => document.querySelector(`.carousel-next-${carruselId}`).click()}>VER MÁS</button>
       </div>
     </div>
   );

@@ -136,7 +136,12 @@ const HomeRestaurante = ({ onBuyClick }) => {
               <>
                 <h1>OFERTAS</h1>
                 <div className="linea"></div>
-                <ProductosCards productos={productoOfertas} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
+                  <ProductosCards 
+                    productos={productoOfertas} 
+                    nombreBoton={'COMPRAR AHORA'} 
+                    onBuyClick={handleBuyClick} 
+                    carruselId={'carrusel-ofertas'}
+                  />
               </>
             )}
             {hasProductosCategoria && (
@@ -144,7 +149,12 @@ const HomeRestaurante = ({ onBuyClick }) => {
                 categoria.habilitado ? (
                   <div key={categoria.id_categoria}>
                     <h1>{categoria.nombre_categoria}</h1>
-                    <ProductosCards productos={categoria.productos} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
+                    <ProductosCards 
+                      productos={categoria.productos} 
+                      nombreBoton={'COMPRAR AHORA'} 
+                      onBuyClick={handleBuyClick} 
+                      carruselId={`carrusel-${categoria.id_categoria}`} // Identificador único
+                    />
                   </div>
                 ) : null
               ))

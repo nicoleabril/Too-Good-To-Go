@@ -22,6 +22,10 @@
   margin: 10px; 
 }
 
+.carousel-controls .carousel-next-hidden {
+  display: none;
+}
+
 .card img {
   width: 130px;
   height: 100px;
