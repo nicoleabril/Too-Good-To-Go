@@ -4,7 +4,7 @@ import LocalesCards from './LocalesCards';
 import McDonalds from '../images/McDonalds.png';
 import MapComponent from './MapComponent'; 
 import Dunkin from '../images/dunkin.png';
-import axios from 'axios'; // Importa Axios
+import axios from 'axios';
 import '../styles/cliente.css';
 
 function HomeCliente() {

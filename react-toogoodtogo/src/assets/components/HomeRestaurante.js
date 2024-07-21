@@ -56,14 +56,10 @@ const HomeRestaurante = ({ onBuyClick }) => {
         // Recupera categorías
         const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
         const categoriasData = categoriasResponse.data.categorias || [];
-
-        console.log(categoriasData);
   
         // Recupera productos
         const productosResponse = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
         const productosData = productosResponse.data.productos || [];
-
-        console.log(productosData);
   
         const categoriasConProductos = categoriasData.map(categoria => {
           const productosFiltrados = productosData.filter(producto => producto.id_categoria === categoria.nombre_categoria);
