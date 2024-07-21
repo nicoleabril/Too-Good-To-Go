@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const HomeRestaurante = ({ onBuyClick }) => {
   const idNegocio = sessionStorage.getItem("id_negocio");
-  const [restauranteData, setRestauranteData] = useState(null);
+  const [restauranteData, setRestauranteData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [productoOfertas, setProductosOfertas] = useState([]);
@@ -95,17 +95,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
     addProductoComprado(producto); 
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!restauranteData) {
-    return <div>No data found</div>;
-  }
 
   const hasOfertas = productoOfertas.length > 0;
   const hasProductosCategoria = productosCategoria.length > 0;
@@ -113,13 +103,9 @@ const HomeRestaurante = ({ onBuyClick }) => {
   return (
     <div className="RestauranteContainer">
       <div className='textoImagen'>
-        {restauranteData && restauranteData.logotipo ? (
           <img src={restauranteData.logotipo} alt="Logo del restaurante" className="imagenLogo" />
-        ) : (
-          <img src={dunkin_logo} alt="Logo predeterminado" className="imagenLogo" />
-        )}
         <div className='textoRestaurante'>
-          <p className='subtexto'>{restauranteData.descripcion}</p>
+            <p className='subtexto'>{restauranteData.descripcion}</p>
         </div>
         <div className="comentario">
           <div className="cliente">
