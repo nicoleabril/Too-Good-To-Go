@@ -185,7 +185,7 @@ useEffect(() => {
       </footer>
       <ToastContainer
           closeButtonStyle={{
-            fontSize: '12px', // Tamaño de fuente del botón de cerrar
+            fontSize: '10px', // Tamaño de fuente del botón de cerrar
             padding: '4px'    // Espaciado interno del botón de cerrar
           }}
           style={{ width: '400px' }} // Ancho deseado para ToastContainer

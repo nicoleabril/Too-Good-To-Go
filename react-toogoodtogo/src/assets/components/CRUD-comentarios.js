@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Card, Button, Spinner } from 'react-bootstrap';
 import { FiEdit, FiPlus } from 'react-icons/fi';
 import { BsTrash } from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/comments.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -16,7 +18,9 @@ const Comments = () => {
             console.log('Comentario eliminado:', response.data);
             const nuevosComentarios = comments.filter((com) => com.id_comentario !== idComentario);
             setComments(nuevosComentarios);
+            toast.success('Comentario eliminado correctamente');
         } catch (error) {
+            toast.error('Error al eliminar el comentario');
             console.error('Error al eliminar comentario:', error);
         }
     };
@@ -25,11 +29,12 @@ const Comments = () => {
         try {
             const response = await axios.put(`http://localhost:8000/api/comentarios/${idComentario}`, updatedData);
             console.log('Comentario editado:', response.data);
-            const nuevosComentarios = comments.map((com) => 
+            const nuevosComentarios = comments.map((com) =>
                 com.id_comentario === idComentario ? { ...com, ...updatedData } : com
             );
             setComments(nuevosComentarios);
         } catch (error) {
+
             console.error('Error al editar comentario:', error);
         }
     };
@@ -66,13 +71,20 @@ const Comments = () => {
                             <Link to={`/RegistroComentarios/EditarComentarios/${comment.id_comentario}`} className="btnEditar">
                                 <Button variant="outline-primary"><FiEdit size={25} /></Button>
                             </Link>
-                            <Button variant="outline-danger" size="sm" className="btnEliminar" 
+                            <Button variant="outline-danger" size="sm" className="btnEliminar"
                                 onClick={() => eliminarComentario(comment.id_comentario)}><BsTrash size={25} />
                             </Button>
                         </div>
                     </Card>
                 ))}
             </div>
+            <ToastContainer
+                closeButtonStyle={{
+                    fontSize: '10px', // Tamaño de fuente del botón de cerrar
+                    padding: '4px'    // Espaciado interno del botón de cerrar
+                }}
+                style={{ width: '400px' }} // Ancho deseado para ToastContainer
+            />
         </div>
     );
 };
