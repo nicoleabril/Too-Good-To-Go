@@ -120,6 +120,11 @@
     margin-left: -40%;
   }
 
+  .RestauranteContainer .textoImagen img{
+    height: 150px;
+    width: 150px;
+  }
+
   .RestauranteContainer .textoRestaurante {
     width: 25%; 
     margin: 0 auto; 

@@ -42,10 +42,10 @@ const PopularCard = ({ productos, nombreBoton, carruselId }) => {
               <div className='card' key={index}>
                   <h3>${producto.precio}</h3> 
                   <div className='contenidoCard'>
-                      <img src={producto.image} alt={`${producto.name} Logo`} />
-                      <h3>{producto.name}</h3> 
-                      <p>{producto.descript}</p>
-                      <a href={producto.link}><button >{nombreBoton}</button></a>
+                      <img src={producto.imagen} alt={`${producto.nombre_producto} Logo`} />
+                      <h3>{producto.nombre_producto}</h3> 
+                      <p>{producto.descripcion}</p>
+                      <a href='/RegistroProductos'><button >{nombreBoton}</button></a>
                   </div>
               </div>
             </Slide>
