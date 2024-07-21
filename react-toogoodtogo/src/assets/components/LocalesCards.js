@@ -55,7 +55,7 @@ const LocalesCards = ({ locales, nombreBoton, carruselId}) => {
                   <p>Ofrecemos:</p>
                   <ul>
                     {Array.isArray(local.categorias) && local.categorias.length > 0 ? (
-                      local.categorias.map((categoria, catIndex) => (
+                      local.categorias.slice(0, 3).map((categoria, catIndex) => (
                         <li key={catIndex}>{categoria.nombre_categoria}</li>
                       ))
                     ) : (
