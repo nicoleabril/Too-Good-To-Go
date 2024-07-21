@@ -97,7 +97,7 @@ function HomeNegocio() {
     
         <div className="RestauranteContainer">
             <div className='textoImagen'>
-              <img src={negocio.logotipo} alt="Pizza" className="imagenLogo"/>
+              <img src={negocio.logotipo} alt="Logotipo" className="imagenLogo"/>
               <div className='textoRestaurante'>
                 <p className='subtexto'>{negocio.descripcion}</p>
               </div>
@@ -117,7 +117,7 @@ function HomeNegocio() {
               </div>
             </div>
             <div className="imagenPizza">
-            <img src={negocio.imagen_referencial} alt="Pizza" className="imagen2" />
+            <img src={negocio.imagen_referencial} alt="Imagen Referencial" className="imagen2" />
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo">
