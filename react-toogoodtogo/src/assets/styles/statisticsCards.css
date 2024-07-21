@@ -59,7 +59,6 @@
   .contenedorStatisticDashboard .contenidoCard {
     display: flex;
     flex-direction: row;
-    margin-top: 70px;
     gap: 20px;
   }
   

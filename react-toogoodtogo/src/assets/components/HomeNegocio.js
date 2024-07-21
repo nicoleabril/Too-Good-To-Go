@@ -9,7 +9,6 @@ import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import PopularCard from './PopularCard';
-import ProductoCard from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
 import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
@@ -43,7 +42,21 @@ function HomeNegocio() {
         descript: 'Croissant de Jamón y Queso.',
         image: sanduche3,
         link: '/RegistroProductos'
-    }
+    },
+    {
+      precio: '1.99',
+      name: 'Cubanitos',
+      descript: 'Sánduche de pan flauta con jamón y queso. ',
+      image: sanduche1,
+      link: '/RegistroProductos'
+  },
+  {
+      precio: '2.99',
+      name: 'Croissant de Jamón y Queso.',
+      descript: 'Croissant de Jamón y Queso.',
+      image: sanduche3,
+      link: '/RegistroProductos'
+  }
   ];
 
   const masVendidos = [
@@ -125,7 +138,7 @@ function HomeNegocio() {
             <div className="contenedorBlanco">
               <h1>ÓRDENES POPULARES</h1>
               <div className="linea"></div>
-              <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'}/> 
+              <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'} carruselId={'carrusel-populares'}/> 
               <div className='componentesDashboard'>
                   <DashboardCards platos={masVendidos} /> 
                   <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} /> 

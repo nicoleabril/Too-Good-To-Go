@@ -2,8 +2,10 @@
 .contenedorGraficaDashboard {
     position: relative;
     display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente (opcional) */
     flex-direction: column;
-    height: 41vw;
+    height: 100vh;
     width: 34rem;
   }
   
@@ -18,8 +20,7 @@
     padding: 20px;
     width: 90%;
     margin:auto;
-    margin-top: 120px;
-    height: 26rem;
+    height: 27rem;
   }
 
   

@@ -119,11 +119,11 @@ function HomeCliente() {
       <div className="contenedorBlanco">
         <h1>OFERTAS</h1>
         <div className="linea"></div>
-        <LocalesCards locales={negociosOfertas} nombreBoton={'VER OFERTAS'} />
+        <LocalesCards locales={negociosOfertas} nombreBoton={'VER OFERTAS'} carruselId={`carrusel-negocios-ofertas`}/>
         <h1>Negocios</h1>
-        <LocalesCards locales={negocios} nombreBoton={'COMPRAR AHORA'} />
+        <LocalesCards locales={negocios} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios`}/>
         <h1>¿Buscas lo siempre?</h1>
-        <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} />
+        <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios-frecuentes`}/>
         <h1>Localización</h1>
         <MapComponent/>
       </div>
