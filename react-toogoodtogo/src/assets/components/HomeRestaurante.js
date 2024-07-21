@@ -1,59 +1,125 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import '../styles/restaurante.css';
-import donas from '../images/donas.png';
 import dunkin_logo from '../images/dunkin_donuts_logo.jpeg';
-import bolsa from '../images/bolsa.jpeg';
-import combo1 from '../images/combo1.jpeg';
-import combo2 from '../images/combo2.jpeg';
-import combo3 from '../images/combo3.jpeg';
-import bebida1 from '../images/bebida1.jpeg';
-import bebida2 from '../images/bebida2.jpeg';
-import bebida3 from '../images/bebida3.jpeg';
-import sanduche1 from '../images/sanduche1.jpeg';
-import sanduche2 from '../images/sanduche2.jpeg';
-import sanduche3 from '../images/sanduche3.jpeg';
 import ProductosCards from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg';
 import ComentarioCard from './ComentarioCard';
 import { addProductoComprado } from './productosComprados';
+import axios from 'axios';
 
 const HomeRestaurante = ({ onBuyClick }) => {
   const idNegocio = sessionStorage.getItem("id_negocio");
+  const [restauranteData, setRestauranteData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [productoOfertas, setProductosOfertas] = useState([]);
+  const [productosCategoria, setProductosCategoria] = useState([]);
+  const [productos, setProductos] = useState([]);
 
-  const ofertasData = [
-    { precio: '6.99', name: 'Oferta #1', descript: 'Esta bolsa sorpresa está valorada en $11,99', image: bolsa ,cantidadVendida: 1},
-    { precio: '4.99', name: 'Oferta #2', descript: 'Esta bolsa sorpresa está valorada en $7,99', image: bolsa, cantidadVendida: 1},
-    { precio: '9.99', name: 'Oferta #3', descript: 'Esta bolsa sorpresa está valorada en $31,99', image: bolsa, cantidadVendida: 1},
-  ];
-  const combosData = [
-    { precio: '25.99', name: 'Oferta #1', descript: '¡Disfruta de las donuts más famosas del mundo! Elige tus 12 donas favoritas.', image: combo1 ,cantidadVendida: 1},
-    { precio: '17.99', name: 'Oferta #2', descript: 'Desayuno para cuatro, incluye: 4 Cubanitos a elección + 1 Party Box + 4 Té helados Medianos.', image: combo2, cantidadVendida: 1},
-    { precio: '20.99', name: 'Oferta #3', descript: 'Elige tus 50 antojitos favoritos y disfruta de una variedad de sabores únicos.', image: combo3, cantidadVendida: 1},
-  ];
-  const bebidasData = [
-    { precio: '1.50', name: 'Té Helado Grande', descript: 'Despierta tus sentidos y réfrescate con nuestro famosos Té Helado Dunkin', image: bebida1 ,cantidadVendida: 1 },
-    { precio: '3.50', name: 'Iced Latte', descript: 'Despierta tus sentidos y refréscate con nuestro famoso Iced Latte Dunkin.', image: bebida2,cantidadVendida: 1 },
-    { precio: '3.75', name: 'Chocolate Frío', descript: 'La combinación ideal de frío y dulzura de nuestro chocolate Dunkin.', image: bebida3,cantidadVendida: 1 },
-  ];
-  const sanduchesData = [
-    { precio: '1.99', name: 'Cubanitos', descript: 'Sánduche de pan flauta con jamón y queso', image: sanduche1 ,cantidadVendida: 1},
-    { precio: '2.99', name: 'Donut Sandwich', descript: 'Sánduche de donut glaseada con huevo, queso y tocino.', image: sanduche2,cantidadVendida: 1 },
-    { precio: '2.99', name: 'Croissant de Jamón y Queso.', descript: 'Croissant de Jamón y Queso.', image: sanduche3 ,cantidadVendida: 1},
-  ];
+  useEffect(() => {
+    const fetchRestauranteData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        setRestauranteData(response.data.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRestauranteData();
+  }, [idNegocio]);
+
+  useEffect(() => {
+    const fetchProductosOfertas = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/ofertas/${idNegocio}`);
+        setProductosOfertas(response.data.ofertas || []);
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setProductosOfertas([]); // No hay ofertas disponibles
+        } else {
+          setError(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProductosOfertas();
+  }, [idNegocio]);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Recupera categorías
+        const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+        const categoriasData = categoriasResponse.data.categorias || [];
+
+        console.log(categoriasData);
+  
+        // Recupera productos
+        const productosResponse = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
+        const productosData = productosResponse.data.productos || [];
+
+        console.log(productosData);
+  
+        const categoriasConProductos = categoriasData.map(categoria => {
+          const productosFiltrados = productosData.filter(producto => producto.id_categoria === categoria.nombre_categoria);
+          return {
+            ...categoria,
+            productos: productosFiltrados,
+          };
+        });
+  
+        const categoriasFiltradas = categoriasConProductos.filter(categoria => 
+          categoria.nombre_categoria !== 'Ofertas' && categoria.nombre_categoria !== 'Ofertas2'
+        );
+  
+        setProductosCategoria(categoriasFiltradas);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, [idNegocio]);
 
   const handleBuyClick = (producto) => {
     if (onBuyClick) {
-      onBuyClick(producto); // Llama a la función pasada como prop
+      onBuyClick(producto); 
     }
-    addProductoComprado(producto); // Añade el producto a productosComprados
+    addProductoComprado(producto); 
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!restauranteData) {
+    return <div>No data found</div>;
+  }
+
+  const hasOfertas = productoOfertas.length > 0;
+  const hasProductosCategoria = productosCategoria.length > 0;
 
   return (
     <div className="RestauranteContainer">
       <div className='textoImagen'>
-        <img src={dunkin_logo} alt="Pizza" className="imagenLogo" />
+        {restauranteData && restauranteData.logotipo ? (
+          <img src={restauranteData.logotipo} alt="Logo del restaurante" className="imagenLogo" />
+        ) : (
+          <img src={dunkin_logo} alt="Logo predeterminado" className="imagenLogo" />
+        )}
         <div className='textoRestaurante'>
-          <p className='subtexto'>Dunkin' Donuts ofrece una amplia variedad de productos, incluyendo donas, café, bebidas frías y calientes, sándwiches de desayuno, bagels, muffins y otros productos de panadería.</p>
+          <p className='subtexto'>{restauranteData.descripcion}</p>
         </div>
         <div className="comentario">
           <div className="cliente">
@@ -71,21 +137,35 @@ const HomeRestaurante = ({ onBuyClick }) => {
         </div>
       </div>
       <div className="imagenPizza">
-        <img src={donas} alt="Pizza" className="imagen2" />
+        <img src={restauranteData.imagen_referencial} alt="Imagen referencial" className="imagen2" />
       </div>
       <div className="waves-background2"></div>
       <div className="contenedorRojo"></div>
       <div className="contenedorBlanco">
-        <h1>OFERTAS</h1>
-        <div className="linea"></div>
-        <ProductosCards productos={ofertasData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
-        <h1>Combos</h1>
-        <ProductosCards productos={combosData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
-        <h1>Bebidas</h1>
-        <ProductosCards productos={bebidasData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
-        <h1>Sánduches</h1>
-        <ProductosCards productos={sanduchesData} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
-        <ComentarioCard/>
+        {!hasOfertas && !hasProductosCategoria ? (
+          <h2>No hay ofertas ni productos disponibles en este momento.</h2>
+        ) : (
+          <>
+            {hasOfertas && (
+              <>
+                <h1>OFERTAS</h1>
+                <div className="linea"></div>
+                <ProductosCards productos={productoOfertas} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
+              </>
+            )}
+            {hasProductosCategoria && (
+              productosCategoria.map(categoria => (
+                categoria.habilitado ? (
+                  <div key={categoria.id_categoria}>
+                    <h1>{categoria.nombre_categoria}</h1>
+                    <ProductosCards productos={categoria.productos} nombreBoton={'COMPRAR AHORA'} onBuyClick={handleBuyClick} />
+                  </div>
+                ) : null
+              ))
+            )}
+          </>
+        )}
+        <ComentarioCard />
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">

@@ -47,10 +47,7 @@
  
 
 
-.RestauranteContainer .contenedorBlanco {
-  display: flex; 
-  justify-content: center; 
-  align-items: center;
+.RestauranteContainer .contenedorBlanco { 
   position: relative;
   bottom: 0;
   top: 10rem;
@@ -72,6 +69,9 @@
     
   }
   
+  .RestauranteContainer .contenedorBlanco h2{
+    text-align: center;
+  }
  
   .RestauranteContainer .imagenPizza {
     position: absolute;

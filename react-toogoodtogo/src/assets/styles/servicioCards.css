@@ -1,3 +1,9 @@
+.contenedorCard{
+  margin-top:50vh;
+  display: flex;
+  justify-content: center;
+  height: 800px;
+}
 
 .cardService {
     display: flex;
@@ -114,35 +120,34 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 90vh;
+      height: 50vh;
       flex-wrap: wrap;
       position: relative;
-      margin-top: 25%;
-      margin-bottom: -20%;
+      margin-top: -10vh;
     }
     
-    
+    .contenedorCard{
+      flex-direction: row;
+    }
   }
   @media only screen and (max-width: 950px) {
     .contenedorCard{
-      margin-top: 20%;
       height: 30%;
+      display:flex;
+      flex-wrap: wrap;
+      margin-top: 30vh;
     }
-    .cardService {
+
+    .cardService{
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 80vh;
+      height: 40vh;
       flex-wrap: wrap;
       position: relative;
-      margin-top: 20%;
-      margin-bottom: -20%;
     }
-
-
-
-
   }
+
   @media only screen and (max-width: 768px) {
     
     .cardService {
@@ -150,7 +155,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 70vh;
+      height: 40vh;
       flex-wrap: wrap;
       margin-top: 40%;
       margin-bottom: -145px;

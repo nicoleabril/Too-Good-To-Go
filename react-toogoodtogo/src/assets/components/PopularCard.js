@@ -3,7 +3,7 @@ import '../styles/productoCards.css';
 
 const PopularCard = ({ productos, nombreBoton  }) => {
   return (
-    <div className='contenedorCard'>
+    <div className='contenedorCardProducto'>
       {productos.map((producto, index) => (
         <div className='card' key={index}>
             <h3>${producto.precio}</h3> 
@@ -15,7 +15,7 @@ const PopularCard = ({ productos, nombreBoton  }) => {
             </div>
         </div>
       ))}
-      <div className='card-more'>
+      <div className='card-more-prd'>
         <button>VER MÁS</button>
       </div>
     </div>
