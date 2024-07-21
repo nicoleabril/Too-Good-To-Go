@@ -25,6 +25,7 @@ import ReservacionesRecibidas from "./pages/ReservacionesRecibidas";
 import EditComentarios from "./pages/EditComentarios";
 import AddComentario from "./pages/AddComentario";
 import { CommentsProvider } from './pages/commentsContext'; 
+import HistorialReserva from "./pages/HistorialReservas";
 function App() {
   return (
     <div className="App">
@@ -55,6 +56,7 @@ function App() {
           <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} /> //COLOCADO autenticación
           <Route path="/RegistroComentarios/EditarComentarios/:id" element={<EditComentarios />} /> //COLOCADO autenticación
           <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} /> //COLOCADO autenticación
+          <Route path="/HistorialReservas" element={<HistorialReserva />} /> //COLOCADO autenticación
         </Routes>
       </Router>
       </CommentsProvider>
