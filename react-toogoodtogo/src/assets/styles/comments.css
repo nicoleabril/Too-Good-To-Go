@@ -141,6 +141,25 @@
     width: 50px;
 }
 
+.container-comments .estado {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .container-comments .btn-cancelado {
+    background-color: red;
+  }
+  
+  .container-comments .btn-proceso {
+    background-color: green;
+  }
+  
+  .container-comments .btn-finalizado {
+    background-color: blue;
+  }
+
 @media screen and (max-width: 750px) {
     .container-comments .comments-list{
         height: 100%;

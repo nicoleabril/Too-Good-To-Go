@@ -1,14 +1,14 @@
 
-.contenedorCard {
+.contenedorCardLocales {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  overflow-x: hidden;
   align-items: center;
-  height: 100%;
-  flex-wrap: wrap;
-  margin-top: -160px;
+  padding: 10px; 
 }
 
-.card {
+.contenedorCardLocales .card {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -17,8 +17,9 @@
   align-items: center;
   padding: 20px;
   width: 300px;
-  margin: 100px  10px -80px 10px;
-  height: 70%;
+  height: auto; 
+  min-height: 500px;
+  margin: 10px; 
 }
 
 .card img {
@@ -37,7 +38,22 @@
   font-size: 14px;
 }
 
-.card-more{
+.contenedorCardLocales .carousel-container {
+  position: relative;
+  width: 100%;
+}
+
+.contenedorCardLocales .carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.contenedorCardLocales .carousel-next {
+  display: none;
+}
+
+.contenedorCardLocales .card-more {
   background-color: var(--color-button);
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -45,12 +61,13 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  width: 300px;
-  margin: 100px  10px -80px 10px;
-  height: 70%;
+  width: 300px; 
+  height: 500px; 
+  margin-top: -80px;
 }
+
 .card-more button {
-  margin: auto auto; 
+  margin: auto auto;
   width: 60%;
   background-color: #fff;
   text-transform: uppercase;
@@ -61,11 +78,11 @@
   border-radius: 5px;
 }
 
-.card-more button:hover{
+.card-more button:hover {
   cursor: pointer;
   background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(167, 163, 163) 30%, rgb(209, 209, 209) 100%);
-  color: black;
 }
+
 h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
@@ -89,5 +106,47 @@ li {
   color: black;
 }
 
+@media screen and (min-width: 810px) and (max-width: 1024px) {
+  .contenedorCardLocales {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
 
+  .contenedorCardLocales .card {
+    margin: 10px 0;
+    margin-right: 20px;
+  }
 
+  .contenedorCardLocales .card-more {
+    width: 90%;
+    margin: 10px 0;
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 809px) {
+  .contenedorCardLocales {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .contenedorCardLocales .card:first-child{
+    margin-top: 70px !important;
+    margin-left: 10px;
+  }
+  .contenedorCardLocales .card {
+    margin: 10px 0;
+    margin-right: 20px;
+  }
+
+  .contenedorCardLocales .card-more {
+    width: 90%;
+    margin: 10px 0;
+    height: 100%;
+  }
+  
+}

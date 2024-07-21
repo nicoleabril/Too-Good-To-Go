@@ -216,7 +216,8 @@ body{
     background-color: white;
     justify-content: center;
     align-items: center;
-    position: relative; /* Añade posición relativa */
+    margin-top: -50vh;
+
   }
 
   .HomeContainer .seccionPedido {
@@ -413,7 +414,7 @@ body{
   }
 
   .HomeContainer .contenedorSlide{
-    top: 150vh;
+    margin-top: -20vh;
   
   }
   .HomeContainer .seccionPedido{
@@ -488,7 +489,7 @@ body{
     margin-left: -13%;
   }
   .HomeContainer .contenedorSlide{
-    top: 15vh;
+    margin-top: 10vh;
   
   }
   .HomeContainer .seccionPedido{
@@ -609,7 +610,8 @@ body{
   }
 
   .HomeContainer .cuadroTexto {
-    height: 510px;
+    height: 310px;
+    margin-top: 300px;
   }
 
   .HomeContainer .contenedorFooter {
