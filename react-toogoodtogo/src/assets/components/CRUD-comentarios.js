@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { CommentsContext } from '../../pages/commentsContext';
 import { ToastContainer, toast } from 'react-toastify';
+import moment from 'moment';
 
 const Comments = () => {
     const { comments, deleteComment, businessNames, clientNames, loading, fetchComments } = useContext(CommentsContext);
@@ -41,32 +42,39 @@ const Comments = () => {
     if (!comments || comments.length === 0) {
         return <div className="loading-spinner">No hay comentarios disponibles.</div>;
     }
-    console.log ('Nombre de los negocios:', businessNames);
-    console.log ('Nombre de los clientes:', clientNames);
 
     return (
         <div className="container-comments">
             <div className="comments-list">
-                {comments.map(comment => (
+            {comments.map(comment => {
+                const creationDate = moment(comment.fecha_creacion);
+                const now = moment();
+                const diffMinutes = now.diff(creationDate, 'minutes');
+
+                return (
                     <Card key={comment.id_comentario} className="mb-3">
                         <Card.Header>{businessNames[comment.id_negocio] || 'Negocio Desconocido'}</Card.Header>
-                        <div>{comment.fecha_creacion}</div>
+                        <div>{creationDate.format('YYYY-MM-DD HH:mm:ss')}</div>
                         <Card.Body>
                             <Card.Title>{clientNames[comment.id_cliente] || 'Cliente Desconocido'}</Card.Title>
                             <Card.Text>{comment.descripcion}</Card.Text>
                         </Card.Body>
-                        <div className='botones_comentario'>
-                            <Link to={`/RegistroComentarios/EditarComentarios/${comment.id_comentario}`} >
-                                <Button className="btnEditar" onClick={() => {
-                                    sessionStorage.setItem('comment', JSON.stringify(comment));
-                                }} variant="outline-primary"><FiEdit size={25} /></Button>
-                            </Link>
-                            <Button variant="outline-danger" size="sm" className="btnEliminar"
-                                onClick={() => eliminarComentario(comment.id_comentario)}><BsTrash size={25} />
-                            </Button>
-                        </div>
+                        {diffMinutes <= 15 && (
+                            <div className='botones_comentario'>
+                                <Link to={`/RegistroComentarios/EditarComentarios/${comment.id_comentario}`} >
+                                    <Button className="btnEditar" onClick={() => {
+                                        sessionStorage.setItem('comment', JSON.stringify(comment));
+                                    }} variant="outline-primary"><FiEdit size={25} /></Button>
+                                </Link>
+                                <Button variant="outline-danger" size="sm" className="btnEliminar"
+                                    onClick={() => eliminarComentario(comment.id_comentario)}><BsTrash size={25} />
+                                </Button>
+                            </div>
+                        )}
                     </Card>
-                ))}
+                );
+            })}
+
             </div>
             <ToastContainer
             closeButtonStyle={{
