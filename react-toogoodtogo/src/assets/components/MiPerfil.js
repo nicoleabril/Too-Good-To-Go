@@ -14,6 +14,7 @@ function MiPerfil() {
     const [originalPassword, setOriginalPassword] = useState('******');
     const [isEditable, setIsEditable] = useState(false);
     const [idUsuario, setIdUsuario] = useState(null);
+    
 
     useEffect(() => {
         const fetchUserProfile = async () => {
