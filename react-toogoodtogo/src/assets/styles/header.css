@@ -149,6 +149,64 @@ nav .iconMenu {
   border-radius: 5px;
 }
 
+.menu .reservas-menu {
+  position: relative;
+}
+
+/* Estilos para el submenú */
+.submenu {
+  display: none; /* Oculta el submenú por defecto */
+  position: fixed;
+  top: 100%; /* Posiciona el submenú debajo del elemento padre */
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Ajusta el ancho según tu diseño */
+  z-index: 9999; /* Asegura que el submenú esté por encima de otros elementos */
+  padding: 0; /* Ajusta el padding si es necesario */
+  transform: translateZ(0);
+}
+
+nav.custom-breadcrumb {
+  position: fixed; /* O usa absolute/fixed según sea necesario */
+  z-index: -2; /* Ajusta el z-index según sea necesario */
+}
+
+
+.submenu ul {
+  font-size: 10px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.submenu li {
+  margin-bottom: 5px; /* Espacio entre los elementos del submenú */
+}
+
+.submenu a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  display: block;
+  padding: 10px; /* Espacio alrededor del texto del enlace */
+}
+
+.submenu a:hover {
+  background-color: #f0f0f0;
+
+}
+
+.menu .reservas-menu:hover .submenu {
+  display: block;
+  z-index: 1000;
+  position: absolute;
+}
+
+
 .buttonRegistrarse:hover{
   cursor: pointer;
   background: linear-gradient(90deg, rgb(109, 108, 108) 0%, rgb(78, 76, 76) 30%, rgb(0, 0, 0) 100%);
