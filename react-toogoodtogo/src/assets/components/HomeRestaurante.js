@@ -86,7 +86,8 @@ const HomeRestaurante = ({ onBuyClick }) => {
 
   const handleBuyClick = (producto) => {
     if (onBuyClick) {
-      onBuyClick(producto); 
+      onBuyClick(producto.id_oferta || producto.id_producto); 
+      
     }
     addProductoComprado(producto); 
   };

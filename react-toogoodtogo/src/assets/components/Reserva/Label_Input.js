@@ -1,29 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
-
-function Label_Input({ id,atributo, tipo, textDefault }) {
-    const [inputValue, setInputValue] = useState(textDefault);
-
-    const handleFocus = () => {
-        setInputValue('');
-    };
-    const handleChange = (e) => { /* Se ejecuta cada vez que cambia el valor del input */
-        setInputValue(e.target.value);
-    };
-
+function Label_Input({ id, atributo, tipo, textDefault, value, onChange }) {
     return (
         <div className="cont-LabelInputs">
-            <label className='labelDatosPersonales'>{atributo}</label>
+            <label className='labelDatosPersonales' htmlFor={id}>{atributo}</label>
             <input
                 id={id}
                 className='inputDatosPersonales'
                 type={tipo}
+                placeholder={textDefault}
+                value={value}
+                onChange={onChange}
                 required
-                value={inputValue}
-                onFocus={handleFocus}
-                onChange={handleChange}
             />
         </div>
     );
 }
+
 export default Label_Input;

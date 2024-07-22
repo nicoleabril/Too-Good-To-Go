@@ -6,17 +6,28 @@ import IngresoDatosPersonales from '../assets/components/Reserva/IngresoDatosPer
 import InformacionDeLaReserva from '../assets/components/Reserva/InformacionDeLaReserva';
 import { getProductosComprados } from '../assets/components/productosComprados';
 import { addReservaEnCola } from '../assets/components/Reserva/reservaEnCola';
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Cookies from 'js-cookie';
-import axios from 'axios'; // Importa Axios
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-
 
 function PaginaDeReserva() {
   const idNegocio = JSON.parse(sessionStorage.getItem('id_negocio')) || {};
   const [productos, setProductos] = useState([]);
+  const [cantidades, setCantidades] = useState({});
   const [negocio, setNegocio] = useState({});
   const [metodoPago, setMetodoPago] = useState('');
+  const [total, setTotal] = useState(0);
+  const [personalInfo, setPersonalInfo] = useState({
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    telefono: '',
+    nombreTitular: '',
+    numeroTarjeta: '',
+    codigoSeguridad: '',
+    fechaExpiracion: ''
+  });
 
   useEffect(() => {
     const obtenerNegocio = async () => {
@@ -33,51 +44,122 @@ function PaginaDeReserva() {
   useEffect(() => {
     const productosComprados = getProductosComprados();
     setProductos(productosComprados);
-  }, []);
 
-  const [total, setTotal] = useState(0);
+    const initialCantidades = {};
+    productosComprados.forEach(producto => {
+      initialCantidades[producto.id_oferta || producto.id_producto] = 1;
+    });
+    setCantidades(initialCantidades);
+  }, []);
 
   useEffect(() => {
     calcularTotal();
-  }, [productos]);
+  }, [productos, cantidades]);
 
   const calcularTotal = () => {
     const nuevoTotal = productos.reduce((acc, producto) => {
-      return acc + (producto.precio * (producto.cantidadVendida));
+      const cantidad = cantidades[producto.id_oferta || producto.id_producto] || 1;
+      return acc + (producto.precio * cantidad);
     }, 0).toFixed(2);
     setTotal(nuevoTotal);
   };
 
-  const handleIncrement = (index) => {
-    const newProductos = [...productos];
-    newProductos[index].cantidadVendida += 1;
-    setProductos(newProductos);
+  const handleIncrement = (id) => {
+    setCantidades(prevCantidades => ({
+      ...prevCantidades,
+      [id]: (prevCantidades[id] || 1) + 1
+    }));
   };
 
-  const handleDecrement = (index) => {
-    const newProductos = [...productos];
-    if (newProductos[index].cantidadVendida > 0) {
-      newProductos[index].cantidadVendida -= 1;
-      setProductos(newProductos);
+  const handleDecrement = (id) => {
+    setCantidades(prevCantidades => ({
+      ...prevCantidades,
+      [id]: prevCantidades[id] > 1 ? prevCantidades[id] - 1 : 1
+    }));
+  };
+
+  const validateForm = () => {
+    const requiredFields = ['nombres', 'apellidos', 'correo', 'telefono'];
+    for (let field of requiredFields) {
+      console.log('datos recuperados: ', personalInfo);
+      if (!personalInfo[field]) {
+        toast.error(`Llene todos los campos obligatorios de información personal.`);
+        return false;
+      }
+    }
+
+    if (metodoPago === 'visa' || metodoPago === 'mastercard' || metodoPago === 'paypal') {
+      const paymentFields = ['nombreTitular', 'numeroTarjeta', 'codigoSeguridad', 'fechaExpiracion'];
+      for (let field of paymentFields) {
+        if (!personalInfo[field]) {
+          toast.error(`Llene todos los campos obligatorios de información de pago.`);
+          return false;
+        }
+      }
+    }
+
+    if (!metodoPago) {
+      toast.error('Debe seleccionar un método de pago.');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handlePersonalInfoSubmit = (info) => {
+    setPersonalInfo(info);
+  };
+
+  const handleReservarClick = async () => {
+    if (!validateForm()) {
+      return;
+    }
+  
+    const nuevaReserva = {
+      id_negocio: idNegocio,
+      id_cliente: Cookies.get('id'),
+      metodo_pago: metodoPago,
+      fecha: new Date().toISOString(),
+      hora_minima: negocio.horario_oferta,
+      hora_maxima: negocio.horario_cierre,
+      estado: 'Pendiente',
+    };
+    try {
+      const response = await axios.post('http://localhost:8000/api/reservas', nuevaReserva, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('authToken')}`,
+        },
+      });
+  
+      if (response.status === 201) {
+        toast.success('Reserva guardada correctamente');
+        //Como ya se creo la reserva se va la venta
+        window.history.back();
+      } else {
+        toast.error('Error al guardar la reserva.');
+      
+      }
+    } catch (error) {
+      toast.error('Error al guardar la reserva.');
+      console.error('Error:', error);
     }
   };
 
-  const handleReservarClick = () => {
-    const nuevaReserva = {
-      id: '5',
-      nombreCliente: 'Camila Granda',
-      celular: '0985120236',
-      metodoPago: metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago === 'visa' || metodoPago === 'mastercard' ? 'Tarjeta de Débito' : '',
-      pedido: productos.map((producto) => `${producto.cantidadVendida} ${producto.name}`).join(', '),
-      horaReserva: '15:00-18:00',
-    };
-    addReservaEnCola(nuevaReserva);
-    alert("Reservación Exitosa, no olvides recoger tu pedido dentro del horario adecuado.");
-  };
+  const handleFactura= async (idReserva) => {
 
+    const nuevaFactura = {
+      
+    };
+
+    try {
+
+    } catch (error) {
+      console.error('Error al obtener factura:', error);
+    }
+
+  }
   const authToken = Cookies.get('authToken');
 
-  // Si la cookie no está presente, redirigir al usuario a la página de login
   if (!authToken) {
     return <Navigate to="/" />;
   }
@@ -92,14 +174,18 @@ function PaginaDeReserva() {
           productos={productos}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
+          cantidades={cantidades}
         />
         <p className='totalReserva'>Total: $ {total}</p>
       </div>
       <div className='cont-detallesReserva'>
         <h1 className='texto_CompletaReserva'>Completa tu reserva</h1>
-        <IngresoDatosPersonales onPaymentMethodSelect={setMetodoPago} />
+        <IngresoDatosPersonales 
+          onPaymentMethodSelect={setMetodoPago} 
+          onPersonalInfoSubmit={handlePersonalInfoSubmit} 
+        />
         <InformacionDeLaReserva
-          metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago === 'visa' || metodoPago === 'mastercard' || metodoPago === 'paypal' ? 'Tarjeta de Débito' : ''}
+          metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago ? 'Tarjeta de Débito' : ''}
           estado={'Pendiente'}
           restaurante={negocio.nombre_negocio}
           horario={negocio.horario_oferta + " - " + negocio.horario_cierre}
@@ -108,10 +194,17 @@ function PaginaDeReserva() {
           <p>Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>
         </div>
         <div className='grupoDeBotones'>
-          <a href='/Restaurante'><button id='btnCancelar' className='btnCancelar '>Cancelar</button></a>
-          <a href='/Inicio'><button id='btnReservar' className='btnReservar' onClick={handleReservarClick}>Reservar</button></a>
+          <button id='btnCancelar' className='btnCancelar '>Cancelar</button>
+          <button id='btnReservar' className='btnReservar' onClick={handleReservarClick}>Reservar</button>
         </div>
       </div>
+      <ToastContainer
+        closeButtonStyle={{
+            fontSize: '10px',
+            padding: '4px'
+        }}
+        style={{ width: '400px' }}
+      />
     </div>
   );
 }
