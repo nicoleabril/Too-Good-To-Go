@@ -13,7 +13,7 @@ const Historial = () => {
 
   const estadoClase = {
     Cancelado: 'btn-cancelado',
-    proceso: 'btn-proceso',
+    'En Proceso': 'btn-proceso',
     Finalizado: 'btn-finalizado',
     Realizado: 'btn-realizado',
     Pendiente: 'btn-pendiente'
@@ -21,7 +21,7 @@ const Historial = () => {
 
   const estadoTexto = {
     Cancelado: 'Cancelado',
-    Proceso: 'En Proceso',
+    'En Proceso': "En Proceso",
     Finalizado: 'Finalizado',
     Realizado: 'Realizado',
     Pendiente: 'Pendiente'
@@ -33,7 +33,6 @@ const Historial = () => {
         const response = await axios.get(`http://localhost:8000/api/reservas/${idCliente}`);
         const reservas = response.data.reservas;
         setReservas(reservas);
-        console.log(reservas);
         const nombres = {};
         const promesas = reservas.map(reserva =>
           axios.get(`http://localhost:8000/api/negocios/${reserva.id_negocio}`)
@@ -62,7 +61,7 @@ const Historial = () => {
   if (error) {
     return <div>Error al cargar las reservas: {error.message}</div>;
   }
-
+  console.log(reservas);
   return (
     <div className="container-comments">
       <div className="comments-list">
@@ -70,13 +69,13 @@ const Historial = () => {
           <div>No hay reservas.</div>
         ) : (
           reservas.map(comment => (
-            <Card key={comment.id_reserva} className="mb-3">
+            <Card key={comment.id_reserva} className={`mb-3 ${estadoClase[comment.estado] || ''}`}>
               <Card.Header>{nombresNegocios[comment.id_negocio]}</Card.Header>
               <div>{comment.fecha}</div>
               <Card.Body>
                 <Card.Title>{comment.metodo_pago}</Card.Title>
-                <div className={`estado ${estadoClase[comment.estado]}`}>
-                  {estadoTexto[comment.estado]}
+                <div className={`estado ${estadoClase[comment.estado] || ''}`}>
+                  {estadoTexto[comment.estado] }
                 </div>
               </Card.Body>
             </Card>
