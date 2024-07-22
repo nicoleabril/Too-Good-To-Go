@@ -4,7 +4,6 @@ import { CarouselProvider, Slider, Slide, ButtonNext } from 'pure-react-carousel
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const ProductosCards = ({ productos = [], nombreBoton, onBuyClick, cardStyle = {}, carruselId }) => {
-  console.log(productos);
   const [visibleSlides, setVisibleSlides] = useState(3);
 
   useEffect(() => {

@@ -9,7 +9,6 @@ import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import PopularCard from './PopularCard';
-import ProductoCard from './ProductoCards';
 import perfilMujer from '../images/perfilMujer.jpg'
 import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
@@ -19,32 +18,11 @@ import axios from 'axios'; // Importa Axios
 function HomeNegocio() {
   const idNegocio = Cookies.get('id');
   const [negocio, setNegocio] = useState([]);
-
+  const [ordenesPopulares, setOrdenesPopulares] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const ordenesPopulares = [
-    {
-      precio: '3.75',
-      name: 'Chocolate Frío',
-      descript: 'La combinación ideal de frío y dulzura de nuestro chocolate Dunkin.',
-      image: bebida3,
-      link: '/RegistroProductos'
-    },
-    {
-        precio: '1.99',
-        name: 'Cubanitos',
-        descript: 'Sánduche de pan flauta con jamón y queso. ',
-        image: sanduche1,
-        link: '/RegistroProductos'
-    },
-    {
-        precio: '2.99',
-        name: 'Croissant de Jamón y Queso.',
-        descript: 'Croissant de Jamón y Queso.',
-        image: sanduche3,
-        link: '/RegistroProductos'
-    }
-  ];
 
   const masVendidos = [
     {
@@ -80,6 +58,25 @@ function HomeNegocio() {
   ];
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Recupera productos
+        const productosResponse = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
+        const productosData = productosResponse.data.productos || [];
+        setOrdenesPopulares(productosData);
+  
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, [idNegocio]);
+  
+
+  useEffect(() => {
     const obtenerNegocio = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
@@ -92,6 +89,7 @@ function HomeNegocio() {
     obtenerNegocio();
   }, []); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
 
+  const hasOfertas = ordenesPopulares.length > 0;
 
     return (
     
@@ -117,7 +115,7 @@ function HomeNegocio() {
               </div>
             </div>
             <div className="imagenPizza">
-            <img src={negocio.imagen_referencial} alt="Imagen Referencial" className="imagen2" />
+              <img src={negocio.imagen_referencial} alt="Imagen Referencial" className="imagen2" />
             </div>
             <div className="waves-background2"></div>
             <div className="contenedorRojo">
@@ -125,7 +123,12 @@ function HomeNegocio() {
             <div className="contenedorBlanco">
               <h1>ÓRDENES POPULARES</h1>
               <div className="linea"></div>
-              <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'}/> 
+              {!hasOfertas ? (
+                <h2>No hay ofertas ni productos disponibles en este momento.</h2>
+              ) : (
+                <PopularCard productos={ordenesPopulares} nombreBoton={'EDITAR AHORA'} carruselId={'carrusel-populares'}/> 
+              )}
+              
               <div className='componentesDashboard'>
                   <DashboardCards platos={masVendidos} /> 
                   <StatisticsCards datos={datosEstadisticos} selectedIndex={selectedIndex} setSelectedIndex={setSelectedIndex} /> 
