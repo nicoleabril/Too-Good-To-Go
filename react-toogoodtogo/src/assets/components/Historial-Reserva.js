@@ -32,7 +32,7 @@ const Historial = () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/reservas/${idCliente}`);
         const reservas = response.data.reservas;
-        if(reservas.lenght>0){
+        if(reservas){
           setReservas(reservas);
           const nombres = {};
           const promesas = reservas.map(reserva =>
