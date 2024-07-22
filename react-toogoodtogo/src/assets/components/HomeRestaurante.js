@@ -140,7 +140,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
             <div className="cliente">
               <div className='fotoCliente'>
               <img 
-                src={ultimoComentario.foto_perfil || user} 
+                src={clienteComentario.foto_perfil || user} 
                 alt="Foto del cliente"
               />
               </div>
