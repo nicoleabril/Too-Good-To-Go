@@ -27,6 +27,9 @@ function PaginaDeReserva() {
     fechaExpiracion: ''
   });
 
+  const iva=0.15;
+  const porcentajeTGTG=0.03;
+
   useEffect(() => {
     const obtenerNegocio = async () => {
       try {
@@ -57,14 +60,12 @@ function PaginaDeReserva() {
   const calcularTotal = () => {
     const nuevoTotal = productos.reduce((acc, producto) => {
       const cantidad = cantidades[producto.id_oferta || producto.id_producto] || 1;
-      return acc + (producto.precio * cantidad);
+      return acc + (producto.precio * cantidad)+((producto.precio * cantidad)*iva)+((producto.precio * cantidad)*porcentajeTGTG);
     }, 0).toFixed(2);
     setTotal(nuevoTotal);
   };
 
-  const updateSessionStorage = () => {
-    sessionStorage.setItem('productos', JSON.stringify(productos));
-  };
+ 
 
   const handleIncrement = (id) => {
     setCantidades(prevCantidades => {
@@ -88,7 +89,7 @@ function PaginaDeReserva() {
   const handleDecrement = (id) => {
     setCantidades(prevCantidades => {
       const nuevaCantidad = (prevCantidades[id] || 1) > 1 ? (prevCantidades[id] || 1) - 1 : 1;
-      const producto = productos.find(p => (p.id_oferta || p.id_producto) === id);
+      
 
       const productosActualizados = productos.map(producto =>
         (producto.id_oferta || producto.id_producto) === id
@@ -198,7 +199,6 @@ function PaginaDeReserva() {
             });
 
             if (producto_reservadoResponse.status === 201) {
-              console.log('producto guardada:', producto_reservadoResponse.data);
             } else {
               console.error('Error al guardar el producto.');
             }
@@ -217,6 +217,7 @@ function PaginaDeReserva() {
       toast.error('Error al guardar la reserva.');
       console.error('Error:', error);
     }
+    window.history.back();
   };
 
   const handleReservarClickCancel = async () => { //------------------
@@ -228,8 +229,10 @@ function PaginaDeReserva() {
   if (!authToken) {
     return <Navigate to="/" />;
   }
-
+  //calculamos  el total final con la comisión de tgtg
+  
   return (
+    //declaramos la variable del iva
     <div className='cont-principalReserva'>
       <header page={'Reserva'} />
       <div className='cont-resumenReserva'>
@@ -257,7 +260,8 @@ function PaginaDeReserva() {
           horario={negocio.horario_oferta + " - " + negocio.horario_cierre}
         />
         <div className='textoAviso'>
-          <p>Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>
+          <p>Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p><br></br>
+          <p>El total de tu reserva ya considera el {iva*100}% de iva y  nuestra comisión de {porcentajeTGTG*100}%. </p>
         </div>
         <div className='grupoDeBotones'>
           <button id='btnCancelar' className='btnCancelar ' onClick={handleReservarClickCancel}>Cancelar</button>
