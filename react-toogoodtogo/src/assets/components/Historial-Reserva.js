@@ -13,7 +13,7 @@ const Historial = () => {
 
   const estadoClase = {
     Cancelado: 'btn-cancelado',
-    proceso: 'btn-proceso',
+    'En Proceso': 'btn-proceso',
     Finalizado: 'btn-finalizado',
     Realizado: 'btn-realizado',
     Pendiente: 'btn-pendiente'
@@ -21,7 +21,7 @@ const Historial = () => {
 
   const estadoTexto = {
     Cancelado: 'Cancelado',
-    Proceso: 'En Proceso',
+    'En Proceso': "En Proceso",
     Finalizado: 'Finalizado',
     Realizado: 'Realizado',
     Pendiente: 'Pendiente'
