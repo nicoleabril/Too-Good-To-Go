@@ -41,9 +41,6 @@ const Comments = () => {
     if (!comments || comments.length === 0) {
         return <div className="loading-spinner">No hay comentarios disponibles.</div>;
     }
-    console.log ('Nombre de los negocios:', businessNames);
-    console.log ('Nombre de los clientes:', clientNames);
-
     return (
         <div className="container-comments">
             <div className="comments-list">

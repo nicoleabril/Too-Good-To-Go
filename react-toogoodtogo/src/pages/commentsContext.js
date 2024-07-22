@@ -56,7 +56,7 @@ export const CommentsProvider = ({ children }) => {
             fetchBusinessNames(comentarios);
             fetchClientNames(comentarios);
             setLoading(false);
-            console.log('Comentarios:', comentarios);
+            
         } catch (error) {
             console.error('Error al obtener comentarios:', error);
             setLoading(false);

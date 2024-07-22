@@ -4,12 +4,12 @@ import MasterCard from '../../images/mastercard.png';
 import Paypal from '../../images/paypal.png';
 import PagoEfectivo from '../../images/pagoEfectivo.png';
 
-
-function EleccionTarjeta() {
+function EleccionTarjeta({ onPaymentMethodSelect }) {
     const [activeButton, setActiveButton] = useState(null);
 
     const handleButtonClick = (buttonId) => {
         setActiveButton(buttonId);
+        onPaymentMethodSelect(buttonId);
     };
 
     return (
@@ -32,7 +32,6 @@ function EleccionTarjeta() {
             >
                 <img src={Paypal} alt='Paypal' className='imgTarjeta' />
             </button></a>
-            
             <button
                 className={`btn_EleccionTarjeta ${activeButton === 'pagoEfectivo' ? 'active' : ''}`}
                 onClick={() => handleButtonClick('pagoEfectivo')}
