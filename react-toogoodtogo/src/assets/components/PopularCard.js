@@ -45,7 +45,7 @@ const PopularCard = ({ productos, nombreBoton, carruselId }) => {
                       <img src={producto.imagen} alt={`${producto.nombre_producto} Logo`} />
                       <h3>{producto.nombre_producto}</h3> 
                       <p>{producto.descripcion}</p>
-                      <a href='/RegistroProductos'><button >{nombreBoton}</button></a>
+                      <a href='/RegistroProductos/EditarProducto'><button >{nombreBoton}</button></a>
                   </div>
               </div>
             </Slide>
