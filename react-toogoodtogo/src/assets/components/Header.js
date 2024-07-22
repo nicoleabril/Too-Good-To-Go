@@ -12,6 +12,7 @@ const Header = ({page, cartCount}) => {
   };
 
   const handleLogOut = () => {
+    sessionStorage.clear();
     Cookies.remove('authToken');
     Cookies.remove('usr');
     Cookies.remove('rol');

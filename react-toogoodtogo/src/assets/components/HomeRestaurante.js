@@ -6,6 +6,7 @@ import perfilMujer from '../images/perfilMujer.jpg';
 import ComentarioCard from './ComentarioCard';
 import { addProductoComprado } from './productosComprados';
 import axios from 'axios';
+import user from '../images/user.png'
 
 const HomeRestaurante = ({ onBuyClick }) => {
   const idNegocio = sessionStorage.getItem("id_negocio");
@@ -15,6 +16,9 @@ const HomeRestaurante = ({ onBuyClick }) => {
   const [productoOfertas, setProductosOfertas] = useState([]);
   const [productosCategoria, setProductosCategoria] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [clienteComentario, setClienteComentario] = useState([]);
+  const [ultimoComentario, setUltimoComentario] = useState([]);
+  const [comentarios, setComentarios] = useState([]);
 
   useEffect(() => {
     const fetchRestauranteData = async () => {
@@ -29,6 +33,33 @@ const HomeRestaurante = ({ onBuyClick }) => {
     };
 
     fetchRestauranteData();
+  }, [idNegocio]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Recupera productos
+        const productosResponse = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+        const productosData = productosResponse.data.comentarios || [];
+        setComentarios(productosData);
+        if (productosData.length > 0) {
+          const ultimoComentario = productosData[productosData.length - 1];
+          const productosResponse = await axios.get(`http://localhost:8000/api/clientes/${ultimoComentario.id_cliente}`);
+          const cliente = productosResponse.data.data || [];
+          console.log(cliente);
+          setClienteComentario(cliente);
+          setUltimoComentario(ultimoComentario);
+        } else {
+          setUltimoComentario(null);
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
   }, [idNegocio]);
 
   useEffect(() => {
@@ -96,6 +127,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
 
   const hasOfertas = productoOfertas.length > 0;
   const hasProductosCategoria = productosCategoria.length > 0;
+  const tieneComentarios = comentarios.length > 0;
 
   return (
     <div className="RestauranteContainer">
@@ -104,20 +136,25 @@ const HomeRestaurante = ({ onBuyClick }) => {
         <div className='textoRestaurante'>
             <p className='subtexto'>{restauranteData.descripcion}</p>
         </div>
-        <div className="comentario">
-          <div className="cliente">
-            <div className='fotoCliente'>
-              <img src={perfilMujer} alt="Foto del cliente" />
-            </div>
-            <div className='textoComentario'>
-              <h3>Juliana Abril</h3>
-              ⭐⭐⭐⭐⭐
-              <div className="contenido">
-                <p>Excelente! Las donas me encantaron 10/10. Lo volveré a pedir.</p>
+        {tieneComentarios && (
+          <div className="comentario">
+            <div className="cliente">
+              <div className='fotoCliente'>
+              <img 
+                src={clienteComentario.foto_perfil || user} 
+                alt="Foto del cliente"
+              />
+              </div>
+              <div className='textoComentario'>
+                <h3>{clienteComentario.nombre}</h3>
+                ⭐⭐⭐⭐⭐
+                <div className="contenido">
+                  <p>{ultimoComentario.descripcion}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="imagenPizza">
         <img src={restauranteData.imagen_referencial} alt="Imagen referencial" className="imagen2" />

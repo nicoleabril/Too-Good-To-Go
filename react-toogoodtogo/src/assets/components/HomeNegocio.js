@@ -9,7 +9,7 @@ import bebida3 from '../images/bebida3.jpeg'
 import sanduche1 from '../images/sanduche1.jpeg'
 import sanduche3 from '../images/sanduche3.jpeg'
 import PopularCard from './PopularCard';
-import perfilMujer from '../images/perfilMujer.jpg'
+import user from '../images/user.png'
 import { GrGroup } from "react-icons/gr";
 import { IoReceipt } from "react-icons/io5";
 import { FaMoneyBillWave } from "react-icons/fa";
@@ -18,6 +18,9 @@ import axios from 'axios'; // Importa Axios
 function HomeNegocio() {
   const idNegocio = Cookies.get('id');
   const [negocio, setNegocio] = useState([]);
+  const [comentarios, setComentarios] = useState([]);
+  const [clienteComentario, setClienteComentario] = useState([]);
+  const [ultimoComentario, setUltimoComentario] = useState([]);
   const [ordenesPopulares, setOrdenesPopulares] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -74,6 +77,34 @@ function HomeNegocio() {
   
     fetchData();
   }, [idNegocio]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Recupera productos
+        const productosResponse = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+        const productosData = productosResponse.data.comentarios || [];
+        setComentarios(productosData);
+        // Obtener el último comentario registrado
+        if (productosData.length > 0) {
+          const ultimoComentario = productosData[productosData.length - 1];
+          const productosResponse = await axios.get(`http://localhost:8000/api/clientes/${ultimoComentario.id_cliente}`);
+          const cliente = productosResponse.data.data || [];
+          console.log(cliente);
+          setClienteComentario(cliente);
+          setUltimoComentario(ultimoComentario);
+        } else {
+          setUltimoComentario(null);
+        }
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, [idNegocio]);
   
 
   useEffect(() => {
@@ -90,6 +121,7 @@ function HomeNegocio() {
   }, []); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
 
   const hasOfertas = ordenesPopulares.length > 0;
+  const tieneComentarios = comentarios.length > 0;
 
     return (
     
@@ -99,20 +131,25 @@ function HomeNegocio() {
               <div className='textoRestaurante'>
                 <p className='subtexto'>{negocio.descripcion}</p>
               </div>
-              <div class="comentario">
-                <div class="cliente">
+              {tieneComentarios && (
+                <div className="comentario">
+                  <div className="cliente">
                     <div className='fotoCliente'>
-                      <img src={perfilMujer} alt="Foto del cliente"/>
+                    <img 
+                      src={ultimoComentario.foto_perfil || user} 
+                      alt="Foto del cliente"
+                    />
                     </div>
                     <div className='textoComentario'>
-                      <h3>Juliana Abril</h3>
+                      <h3>{clienteComentario.nombre}</h3>
                       ⭐⭐⭐⭐⭐
-                      <div class="contenido">
-                        <p>Excelente! Las donas me encantaron 10/10. Lo volveré a pedir.</p>
+                      <div className="contenido">
+                        <p>{ultimoComentario.descripcion}</p>
                       </div>
                     </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             <div className="imagenPizza">
               <img src={negocio.imagen_referencial} alt="Imagen Referencial" className="imagen2" />
