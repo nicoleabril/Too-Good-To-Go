@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import '../styles/comentario.css'
-import ensalada from '../images/ensalada.png'
+import '../styles/comentario.css';
+import ensalada from '../images/ensalada.png';
 import Cookies from 'js-cookie';
-import axios from 'axios'; // Importa Axios
+import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ComentarioCard = () => {
   const idNegocio = sessionStorage.getItem("id_negocio");
@@ -13,46 +14,56 @@ const ComentarioCard = () => {
   const handleAddComentario = async (e) => {
     try {
       e.preventDefault();
-      if(comentario.trim() !== ''){
+      if (comentario.trim() !== '') {
         const formData = new FormData();
-        formData.append('id_negocio', idNegocio); // Ajusta según tu lógica de categoría seleccionada
+        formData.append('id_negocio', idNegocio);
         formData.append('id_cliente', idCliente);
         formData.append('descripcion', comentario);
-        const response = await axios.post(`http://localhost:8000/api/comentarios/`, formData, {
+        await axios.post(`http://localhost:8000/api/comentarios/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         });
-        toast.success('Enviado');
+        toast.success('Comentario enviado.');
         setComentario('');
-      }else{
-        toast.error('Ingresa un comentario.');
+      } else {
+        toast.error('Por favor, ingresa un comentario.');
       }
     } catch (error) {
-      toast.error('Error al enviar.');
+      toast.error('Error al enviar el comentario.');
       console.error('Error al enviar comentario:', error);
     }
   };
 
-
   return (
     <div className="contact-form-wrapper">
-        <div className="contact-form-container">
-            <img src={ensalada} alt="Salad" className="salad-image" />
-            <div className="form-section">
-                <h2>¿CÓMO HA ESTADO LA COMIDA?</h2>
-                <p>Envíanos un correo y lo tendremos en cuenta lo antes posible</p>
-                <textarea placeholder="Escribe aquí tu experiencia." className="text-area" onChange={(e) => setComentario(e.target.value)}></textarea>
-                <button className="submit-button" onClick={handleAddComentario}>Enviar</button>
-            </div>
+      <div className="contact-form-container">
+        <img src={ensalada} alt="Salad" className="salad-image" />
+        <div className="form-section">
+          <h2>¿CÓMO HA ESTADO LA COMIDA?</h2>
+          <p>Envíanos un correo y lo tendremos en cuenta lo antes posible</p>
+          <textarea
+            placeholder="Escribe aquí tu experiencia."
+            className="text-area"
+            onChange={(e) => setComentario(e.target.value)}
+            value={comentario} // Asegúrate de que el valor del textarea esté controlado
+          ></textarea>
+          <button className="submit-button" onClick={handleAddComentario}>Enviar</button>
         </div>
-        <ToastContainer
-            closeButtonStyle={{
-                fontSize: '12px', // Tamaño de fuente del botón de cerrar
-                padding: '4px'    // Espaciado interno del botón de cerrar
-            }}
-            style={{ width: '400px' }} // Ancho deseado para ToastContainer
-            />
+      </div>
+      <ToastContainer
+        position="top-right" // Posición del ToastContainer
+        autoClose={5000} // Duración de la notificación
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={false} // Esconder botón de cerrar
+        style={{ zIndex: 9999, marginTop: '100px' }}
+      />
     </div>
   );
 };
