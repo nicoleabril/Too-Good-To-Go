@@ -15,6 +15,32 @@ function HomeCliente() {
   const [error, setError] = useState(null);
 
 
+  const [coordenadas, setCoordenadas] = useState({ latitud: null, longitud: null });
+
+  useEffect(() => {
+    const obtenerCoordenadas = async () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            setCoordenadas({
+              latitud: position.coords.latitude,
+              longitud: position.coords.longitude
+            });
+          },
+          (error) => {
+            console.error("Error al obtener las coordenadas: ", error);
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+        );
+      } else {
+        console.error("La geolocalización no es compatible con este navegador.");
+      }
+    };
+
+    obtenerCoordenadas();
+  }, [coordenadas]);
+
+
   useEffect(() => {
     const obtenerNegociosOfertas = async () => {
       try {
@@ -144,7 +170,7 @@ function HomeCliente() {
         <h1>¿Buscas lo siempre?</h1>
         <LocalesCards locales={negocios} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios-frecuentes`}/>
         <h1>Localización</h1>
-        <MapComponent locations={negociosUbicacion}/>
+        <MapComponent locations={negociosUbicacion} user={coordenadas}/>
       </div>
       <div className="contenedorFooter">
         <div className="textoFooter2">

@@ -92,7 +92,7 @@ function Home() {
                   <ServicioCards productos={ofertasData} nombreBoton={'SER PARTE'}/>  
                 </div>   
                 <div className="linea"></div>     
-                <div class="contenedorSlide">
+                <div className="contenedorSlide">
                   <div id="cliente" className={`cuadroTexto ${currentSlide === 'cliente' ? '' : 'oculto'}`}>
                     <div className='tituloCuadroTexto'>
                       <h1>¿Cómo funciona el proceso de compra</h1>
