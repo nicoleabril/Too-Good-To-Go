@@ -183,7 +183,9 @@
         padding-left: 5px;
         margin: 5px;
     }
-
+    container-comments .estado {
+        color:#000;
+    }
 
    
 }
