@@ -6,6 +6,8 @@ import Cards_Reservas from '../assets/components/Reserva/Cards_Reservas';
 import { getReservasEnCola } from '../assets/components/Reserva/reservaEnCola';
 import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
 
 function ReservacionesRecibidas() {
   const [reservas, setReservas] = useState([]);
@@ -16,20 +18,18 @@ function ReservacionesRecibidas() {
   }, []);
 
   const handleConfirm = (id) => {
-    alert("Se ha enviado un correo al cliente con los detalles de la confirmación de la reserva.");
+    toast.success("Se ha enviado un correo al cliente con los detalles de la confirmación de la reserva.");
     setReservas(prevReservas => prevReservas.filter(reserva => reserva.id !== id));
-    // Actualiza el localStorage después de eliminar la reserva
     const updatedReservas = reservas.filter(reserva => reserva.id !== id);
-    localStorage.setItem('reservasEnCola', JSON.stringify(updatedReservas));
   };
 
   const handleCancel = (id) => {
-    alert("Se ha enviado un correo al cliente con los detalles de la cancelación de la reserva.");
+    toast.error("Se ha enviado un correo al cliente con los detalles de la cancelación de la reserva.");
     setReservas(prevReservas => prevReservas.filter(reserva => reserva.id !== id));
-    // Actualiza el localStorage después de eliminar la reserva
     const updatedReservas = reservas.filter(reserva => reserva.id !== id);
-    localStorage.setItem('reservasEnCola', JSON.stringify(updatedReservas));
   };
+
+  
   const authToken = Cookies.get('authToken');
   
     // Si la cookie no está presente, redirigir al usuario a la página de login
@@ -64,6 +64,13 @@ function ReservacionesRecibidas() {
         </footer>
         <Chatbot />
       </div>
+      <ToastContainer
+            closeButtonStyle={{
+                fontSize: '10px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+            />
     </>
   );
 }

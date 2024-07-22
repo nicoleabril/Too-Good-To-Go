@@ -32,21 +32,22 @@ const Historial = () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/reservas/${idCliente}`);
         const reservas = response.data.reservas;
-        setReservas(reservas);
-        console.log(reservas);
-        const nombres = {};
-        const promesas = reservas.map(reserva =>
-          axios.get(`http://localhost:8000/api/negocios/${reserva.id_negocio}`)
-            .then(response => {
-              nombres[reserva.id_negocio] = response.data.data.nombre_negocio;
-            })
-        );
+        if(reservas.lenght>0){
+          setReservas(reservas);
+          const nombres = {};
+          const promesas = reservas.map(reserva =>
+            axios.get(`http://localhost:8000/api/negocios/${reserva.id_negocio}`)
+              .then(response => {
+                nombres[reserva.id_negocio] = response.data.data.nombre_negocio;
+              })
+          );
+  
+          await Promise.all(promesas);
+          setNombresNegocios(nombres);
+          setLoading(false);
 
-        await Promise.all(promesas);
-        setNombresNegocios(nombres);
-        setLoading(false);
+        }
       } catch (error) {
-        console.error('Error al obtener reservas:', error);
         setError(error);
         setLoading(false);
       }
@@ -55,21 +56,14 @@ const Historial = () => {
     obtenerReservas();
   }, [idCliente]);
 
-  if (loading) {
-    return <div>Cargando...</div>;
-  }
-
-  if (error) {
-    return <div>Error al cargar las reservas: {error.message}</div>;
-  }
 
   return (
     <div className="container-comments">
-      <div className="comments-list">
-        {reservas.length === 0 ? (
-          <div>No hay reservas.</div>
-        ) : (
-          reservas.map(comment => (
+      {reservas === undefined || reservas.length === 0 ? (
+        <h2>Aún no tienes reservas, realiza una.</h2>
+      ) : (
+        <div className="comments-list">
+          {reservas.map((comment) => (
             <Card key={comment.id_reserva} className="mb-3">
               <Card.Header>{nombresNegocios[comment.id_negocio]}</Card.Header>
               <div>{comment.fecha}</div>
@@ -80,9 +74,9 @@ const Historial = () => {
                 </div>
               </Card.Body>
             </Card>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
