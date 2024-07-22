@@ -41,11 +41,8 @@ const Historial = () => {
             })
         );
 
-        await Promise.all(promesas);
-        setNombresNegocios(nombres);
-        setLoading(false);
+        }
       } catch (error) {
-        console.error('Error al obtener reservas:', error);
         setError(error);
         setLoading(false);
       }
@@ -79,9 +76,9 @@ const Historial = () => {
                 </div>
               </Card.Body>
             </Card>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

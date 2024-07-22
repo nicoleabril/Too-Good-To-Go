@@ -67,12 +67,13 @@ const Header = ({ page, cartCount }) => {
               <li><a href="/RegistroProductos">Productos</a></li>
               <li><a href="/RegistroOfertas">Ofertas</a></li>
               <li className="reservas-menu">
-                <a href="#" onClick={handleToggleSubMenu}>Reservas</a>
+                <a onClick={handleToggleSubMenu}>Reservas</a>
                 {showSubMenu && (
                   <div className="submenu">
                     <ul>
-                      <li><a href="/ReservasRecibidas">Reservas Recibidas</a></li>
-                      <li><a href="/ReservasHistorial">Historial de Reservas</a></li>
+                      <li><a href="/ReservasRecibidas">Recibidas</a></li>
+                      <li><a href="/ReservasRecibidas">En Proceso</a></li>
+                      <li><a href="/ReservasHistorial">Historial</a></li>
                     </ul>
                   </div>
                 )}

@@ -3,59 +3,39 @@ import Header from '../assets/components/Header';
 import DynamicBreadcrumb from '../assets/components/Bredcrumb';
 import Chatbot from '../assets/components/Chatbot';
 import Cards_Reservas from '../assets/components/Reserva/Cards_Reservas';
-import { Navigate } from "react-router-dom";
+import { getReservasEnCola } from '../assets/components/Reserva/reservaEnCola';
+import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
 import { ToastContainer, toast } from 'react-toastify';
 
 function ReservacionesRecibidas() {
-  const idNegocio = Cookies.get('id');
   const [reservas, setReservas] = useState([]);
 
   useEffect(() => {
-    const obtenerReservas = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/api/reservasPendientes/${idNegocio}`);
-        setReservas(response.data.reservas);
-      } catch (error) {
-        console.error('Error al obtener reservas:', error);
-      }
-    };
-    obtenerReservas();
-  }, [idNegocio]);
+    const reservasEnCola = getReservasEnCola();
+    setReservas(reservasEnCola);
+  }, []);
 
-  const handleConfirm = async (id) => {
-    try {
-      const response = await axios.post(`http://localhost:8000/api/confirmarReservaEnProceso/${id}`);
-      if (response.status === 200) {
-        toast.success('Reserva confirmada');
-        setReservas(prevReservas => prevReservas.filter(reserva => reserva.id_reserva !== id));
-      }
-    } catch (error) {
-      console.error('Error al confirmar reserva:', error);
-      toast.error('Error al confirmar la reserva');
-    }
+  const handleConfirm = (id) => {
+    toast.success("Se ha enviado un correo al cliente con los detalles de la confirmación de la reserva.");
+    setReservas(prevReservas => prevReservas.filter(reserva => reserva.id !== id));
+    const updatedReservas = reservas.filter(reserva => reserva.id !== id);
   };
 
-  const handleCancel = async (id) => {
-    try {
-      const response = await axios.post(`http://localhost:8000/api/cancelarReserva/${id}`);
-      if (response.status === 200) {
-        toast.error('Reserva cancelada');
-        setReservas(prevReservas => prevReservas.filter(reserva => reserva.id_reserva !== id));
-      }
-    } catch (error) {
-      console.error('Error al cancelar reserva:', error);
-      toast.error('Error al cancelar la reserva');
-    }
-
+  const handleCancel = (id) => {
+    toast.error("Se ha enviado un correo al cliente con los detalles de la cancelación de la reserva.");
+    setReservas(prevReservas => prevReservas.filter(reserva => reserva.id !== id));
+    const updatedReservas = reservas.filter(reserva => reserva.id !== id);
   };
 
+  
   const authToken = Cookies.get('authToken');
   
-  if (!authToken) {
-    return <Navigate to="/" />;
-  }
+    // Si la cookie no está presente, redirigir al usuario a la página de login
+    if (!authToken) {
+        return <Navigate to="/" />;
+    }
 
   return (
     <>
@@ -65,13 +45,13 @@ function ReservacionesRecibidas() {
         <div className='cont-CardsReserva'>
           {reservas.map((reserva) => (
             <Cards_Reservas
-              key={reserva.id_reserva}
-              id={reserva.id_reserva}
-              nombreCliente={reserva.nombres + " " + reserva.apellidos}
-              celular={reserva.telefono}
-              metodoPago={reserva.metodo_pago}
+              key={reserva.id}
+              id={reserva.id}
+              nombreCliente={reserva.nombreCliente}
+              celular={reserva.celular}
+              metodoPago={reserva.metodoPago}
               pedido={reserva.pedido}
-              horaReserva={reserva.hora_minima + " - " + reserva.hora_maxima}
+              horaReserva={reserva.horaReserva}
               onConfirm={handleConfirm}
               onCancel={handleCancel}
             />
@@ -83,14 +63,14 @@ function ReservacionesRecibidas() {
           </div>
         </footer>
         <Chatbot />
-        <ToastContainer
-          closeButtonStyle={{
-            fontSize: '10px', // Tamaño de fuente del botón de cerrar
-            padding: '4px'    // Espaciado interno del botón de cerrar
-          }}
-          style={{ width: '400px' }} // Ancho deseado para ToastContainer
-        />
       </div>
+      <ToastContainer
+            closeButtonStyle={{
+                fontSize: '10px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+            />
     </>
   );
 }
