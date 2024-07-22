@@ -3,6 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import '../styles/editComments.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
 const EditComments = ({ comment, onSave, onCancel, comments, setComments }) => {
@@ -34,9 +35,9 @@ const EditComments = ({ comment, onSave, onCancel, comments, setComments }) => {
 
             onSave(updatedComment);
 
-            toast.success('Comentario actualizado correctamente');
-
-            navigate('/RegistroComentarios'); // Redirige a la página de comentarios después de guardar
+            toast.success('Comentario actualizado correctamente', {
+                onClose: () => navigate('/RegistroComentarios')
+            });
         } catch (error) {
             toast.error('Error al guardar el comentario');
         }
