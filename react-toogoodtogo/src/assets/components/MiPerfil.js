@@ -11,7 +11,7 @@ function MiPerfil() {
     const [nombre, setNombre] = useState(''); 
     const [password, setPassword] = useState('');
     const [originalNombre, setOriginalNombre] = useState('');
-    const [originalPassword, setOriginalPassword] = useState('****');
+    const [originalPassword, setOriginalPassword] = useState('******');
     const [isEditable, setIsEditable] = useState(false);
     const [idUsuario, setIdUsuario] = useState(null);
 
@@ -25,8 +25,8 @@ function MiPerfil() {
                 setNombre(user.data.nombre);
                 setOriginalNombre(user.data.nombre); // Guardar valor original
                 setImageSrc(user.data.foto_perfil);   // Usar URL directamente
-                setPassword('****');
-                setOriginalPassword('****'); // Contraseña original oculta
+                setPassword('******');
+                setOriginalPassword('******'); // Contraseña original oculta
             } catch (error) {
                 console.error('Error fetching user profile:', error);
             }
@@ -66,6 +66,8 @@ function MiPerfil() {
                 // Enviar los datos actualizados
                 if (nombre !== originalNombre) {
                     formData.append('nombre', nombre);
+                }else{
+                    formData.append('nombre', originalNombre);
                 }
                 if (imageFile) { // Cambiado a imageFile
                     formData.append('foto_perfil', imageFile);
@@ -77,16 +79,14 @@ function MiPerfil() {
                     }
                 });
 
-                if (password !== '****') {
+                if (password !== '******') {
                     formData2.append('contrasenia', password);
+                    const response2 = await axios.post(`http://localhost:8000/api/usuarios-cambio/${idUsuario}`, formData2, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    })
                 }
-
-                const response2 = await axios.post(`http://localhost:8000/api/usuarios-cambio/${idUsuario}`, formData2, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-
                 toast.success('Guardado');
                 setOriginalNombre(nombre); // Actualizar el nombre original
                 setOriginalPassword(password); // Actualizar la contraseña original si se ha cambiado
@@ -164,7 +164,7 @@ function MiPerfil() {
                                 onClick={() => {
                                     // Restablecer campos a los valores originales
                                     setNombre(originalNombre);
-                                    setPassword('****');
+                                    setPassword('******');
                                     setIsEditable(false);
                                 }}
                             >
