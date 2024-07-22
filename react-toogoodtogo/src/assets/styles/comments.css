@@ -164,6 +164,14 @@
     background-color: blue;
   }
 
+  .container-comments .btn-pendiente {
+    background-color: rgb(255, 174, 0);
+  }
+
+  .container-comments .btn-realizado {
+    background-color: rgb(18, 215, 61);
+  }
+
 @media screen and (max-width: 750px) {
     .container-comments .comments-list{
         height: 100%;

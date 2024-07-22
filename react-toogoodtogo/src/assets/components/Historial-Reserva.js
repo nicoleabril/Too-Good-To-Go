@@ -12,19 +12,19 @@ const Historial = () => {
   const [error, setError] = useState(null);
 
   const estadoClase = {
-    cancelado: 'btn-cancelado',
+    Cancelado: 'btn-cancelado',
     proceso: 'btn-proceso',
-    finalizado: 'btn-finalizado',
-    realizado: 'btn-realizado',
-    pendiente: 'btn-pendiente'
+    Finalizado: 'btn-finalizado',
+    Realizado: 'btn-realizado',
+    Pendiente: 'btn-pendiente'
   };
 
   const estadoTexto = {
-    cancelado: 'Cancelado',
-    proceso: 'En Proceso',
-    finalizado: 'Finalizado',
-    realizado: 'Realizado',
-    pendiente: 'Pendiente'
+    Cancelado: 'Cancelado',
+    Proceso: 'En Proceso',
+    Finalizado: 'Finalizado',
+    Realizado: 'Realizado',
+    Pendiente: 'Pendiente'
   };
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Historial = () => {
         const response = await axios.get(`http://localhost:8000/api/reservas/${idCliente}`);
         const reservas = response.data.reservas;
         setReservas(reservas);
-
+        console.log(reservas);
         const nombres = {};
         const promesas = reservas.map(reserva =>
           axios.get(`http://localhost:8000/api/negocios/${reserva.id_negocio}`)
@@ -63,8 +63,6 @@ const Historial = () => {
     return <div>Error al cargar las reservas: {error.message}</div>;
   }
 
-  console.log("las reservas: ",reservas);
-  console.log("nombres negocios: ",nombresNegocios);
   return (
     <div className="container-comments">
       <div className="comments-list">
