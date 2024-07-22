@@ -115,7 +115,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
     fetchData();
   }, [idNegocio]);
 
-  const handleBuyClick = (producto, ) => {
+  const handleBuyClick = (producto) => {
     if (onBuyClick) {
       onBuyClick(producto.id_oferta || producto.id_producto); 
       
