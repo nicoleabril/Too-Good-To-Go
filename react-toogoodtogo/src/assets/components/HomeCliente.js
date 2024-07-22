@@ -11,78 +11,67 @@ function HomeCliente() {
   const [negocios, setNegocios] = useState([]);
   const [negociosOfertas, setNegociosOfertas] = useState([]);
   const [negociosUbicacion, setNegociosUbicacion] = useState([]);
-
-  const localesDataP = [
-    { 
-      id_negocio: 'Dunkin\' Donuts',
-      name: 'Dunkin\' Donuts',
-      image: Dunkin,
-      rating: '4.7',
-      reviews: '220',
-      satisfaction: '99.5',
-      menu: ['Donas', 'Sanduches', 'Malteadas'],
-      link: '/Restaurante',
-    }
-  ];
-
-  const localesData = [
-    {
-      id_negocio: 'BurgerKing',
-      name: 'McDonalds-Remigio',
-      image: McDonalds,
-      rating: '4.5',
-      reviews: '225',
-      satisfaction: '99.9',
-      menu: ['Burgers', 'Papas fritas', 'Malteadas'],
-      link: '/Restaurante',
-    }
-  ];
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
 
   useEffect(() => {
     const obtenerNegociosOfertas = async () => {
       try {
+        // Recupera todos los negocios
         const negociosResponse = await axios.get(`http://localhost:8000/api/negocios`);
-        const negociosConOfertas = await Promise.all(negociosResponse.data.data.map(async negocio => {
+        const negocios = negociosResponse.data.data;
+
+        // Recupera ofertas, categorías y comentarios para cada negocio
+        const negociosConOfertas = await Promise.all(negocios.map(async negocio => {
           try {
+            // Recupera ofertas del negocio
             const ofertasResponse = await axios.get(`http://localhost:8000/api/ofertas/${negocio.id_negocio}`);
-            if (ofertasResponse.data && Array.isArray(ofertasResponse.data.ofertas) && ofertasResponse.data.ofertas.length > 0) {
+            
+            // Verifica si hay ofertas disponibles
+            if (Array.isArray(ofertasResponse.data.ofertas) && ofertasResponse.data.ofertas.length > 0) {
+              // Recupera categorías del negocio
               const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
+              
+              // Recupera comentarios del negocio
               const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
-              let comments =0;
-              if(responseComentarios.data.comentarios.length>0){
-                comments=responseComentarios.data.comentarios.length;
-              }
+              const commentsCount = responseComentarios.data.comentarios.length;
+
+              // Devuelve la información del negocio con ofertas
               return {
                 id_negocio: negocio.id_negocio,
                 name: negocio.nombre_negocio,
                 image: negocio.logotipo,
-                rating: '4.0',
-                reviews: comments,
-                satisfaction: '100',
+                rating: '4.0',  // Puedes reemplazar con datos reales si están disponibles
+                reviews: commentsCount,
+                satisfaction: '100',  // Puedes reemplazar con datos reales si están disponibles
                 categorias: categoriasResponse.data.categorias || [],
                 link: '/Restaurante',
                 ofertas: ofertasResponse.data.ofertas,
               };
             } else {
-              return null;
+              return null; // No hay ofertas, no incluimos este negocio
             }
           } catch (error) {
+            console.error(`Error al obtener datos del negocio ${negocio.id_negocio}:`, error);
             return null;
           }
         }));
-  
-        // Filtrar negocios que no tienen ofertas
+
+        // Filtra los negocios que tienen ofertas
         const negociosConOfertasFiltrados = negociosConOfertas.filter(negocio => negocio !== null);
+
+        // Actualiza el estado con los negocios que tienen ofertas
         setNegociosOfertas(negociosConOfertasFiltrados);
       } catch (error) {
-        console.error('Error al obtener negocios con ofertas:', error);
+        setError(error);
+      } finally {
+        setLoading(false);
       }
     };
-  
+
     obtenerNegociosOfertas();
   }, []);
-  
 
   useEffect(() => {
     const obtenerNegocios = async () => {
