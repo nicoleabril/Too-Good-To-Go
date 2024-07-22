@@ -4,7 +4,6 @@ import 'leaflet/dist/leaflet.css';
 import markerIcon from '../images/map-marker-icon.png'; 
 
 const MapComponent = ({ locations }) => {
-  console.log(locations);
   const customIcon = L.icon({
     iconUrl: markerIcon,
     iconSize: [35, 35],

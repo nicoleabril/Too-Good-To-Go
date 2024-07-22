@@ -38,6 +38,7 @@ function HomeCliente() {
     }
   ];
 
+
   useEffect(() => {
     const obtenerNegociosOfertas = async () => {
       try {
@@ -47,12 +48,17 @@ function HomeCliente() {
             const ofertasResponse = await axios.get(`http://localhost:8000/api/ofertas/${negocio.id_negocio}`);
             if (ofertasResponse.data && Array.isArray(ofertasResponse.data.ofertas) && ofertasResponse.data.ofertas.length > 0) {
               const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
+              const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
+              let comments =0;
+              if(responseComentarios.data.comentarios.length>0){
+                comments=responseComentarios.data.comentarios.length;
+              }
               return {
                 id_negocio: negocio.id_negocio,
                 name: negocio.nombre_negocio,
                 image: negocio.logotipo,
                 rating: '4.0',
-                reviews: '0',
+                reviews: comments,
                 satisfaction: '100',
                 categorias: categoriasResponse.data.categorias || [],
                 link: '/Restaurante',
@@ -84,12 +90,17 @@ function HomeCliente() {
             const response = await axios.get(`http://localhost:8000/api/negocios`);
             const negociosConCategorias = await Promise.all(response.data.data.map(async negocio => {
               const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
+              const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
+              let comments =0;
+              if(responseComentarios.data.comentarios.length>0){
+                comments=responseComentarios.data.comentarios.length;
+              }
               return {
                 id_negocio: negocio.id_negocio,
                 name: negocio.nombre_negocio,
                 image: negocio.logotipo,
                 rating: '4.0',
-                reviews: '0',
+                reviews: comments,
                 satisfaction: '100',
                 categorias: categoriasResponse.data.categorias || [],
                 link: '/Restaurante',
@@ -142,7 +153,7 @@ function HomeCliente() {
         <h1>Negocios</h1>
         <LocalesCards locales={negocios} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios`}/>
         <h1>¿Buscas lo siempre?</h1>
-        <LocalesCards locales={localesData} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios-frecuentes`}/>
+        <LocalesCards locales={negocios} nombreBoton={'COMPRAR AHORA'} carruselId={`carrusel-negocios-frecuentes`}/>
         <h1>Localización</h1>
         <MapComponent locations={negociosUbicacion}/>
       </div>
