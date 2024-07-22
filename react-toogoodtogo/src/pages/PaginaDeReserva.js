@@ -70,41 +70,41 @@ function PaginaDeReserva() {
     setCantidades(prevCantidades => {
       const nuevaCantidad = (prevCantidades[id] || 1) + 1;
       const producto = productos.find(p => (p.id_oferta || p.id_producto) === id);
-      
+
       const productosActualizados = productos.map(producto =>
         (producto.id_oferta || producto.id_producto) === id
           ? { ...producto, cantidad: nuevaCantidad }
           : producto
       );
-  
+
       setProductos(productosActualizados);
-  
+
       // Actualizar en sessionStorage
       addProductoComprado({ ...productos.find(p => (p.id_oferta || p.id_producto) === id), cantidad: nuevaCantidad }, 'incrementar-decrementar');
       return { ...prevCantidades, [id]: nuevaCantidad };
     });
   };
-  
+
   const handleDecrement = (id) => {
     setCantidades(prevCantidades => {
       const nuevaCantidad = (prevCantidades[id] || 1) > 1 ? (prevCantidades[id] || 1) - 1 : 1;
       const producto = productos.find(p => (p.id_oferta || p.id_producto) === id);
-      
+
       const productosActualizados = productos.map(producto =>
         (producto.id_oferta || producto.id_producto) === id
           ? { ...producto, cantidad: nuevaCantidad }
           : producto
       );
-  
+
       setProductos(productosActualizados);
-  
+
       // Actualizar en sessionStorage
       addProductoComprado({ ...productos.find(p => (p.id_oferta || p.id_producto) === id), cantidad: nuevaCantidad }, 'incrementar-decrementar');
       return { ...prevCantidades, [id]: nuevaCantidad };
     });
   };
-  
-  
+
+
   const handleRemove = (id) => {
     setProductos(prevProductos => {
       const productosActualizados = prevProductos.filter(producto => (producto.id_oferta || producto.id_producto) !== id);
@@ -152,7 +152,7 @@ function PaginaDeReserva() {
     if (!validateForm()) {
       return;
     }
-  
+
     const nuevaReserva = {
       id_negocio: idNegocio,
       id_cliente: Cookies.get('id'),
@@ -161,17 +161,55 @@ function PaginaDeReserva() {
       hora_minima: negocio.horario_oferta,
       hora_maxima: negocio.horario_cierre,
       estado: 'Pendiente',
+      nombres: personalInfo.nombres,
+      apellidos: personalInfo.apellidos,
+      correo_electronico: personalInfo.correo,
+      telefono: personalInfo.telefono,
     };
+
     try {
       const response = await axios.post('http://localhost:8000/api/reservas', nuevaReserva, {
         headers: {
           Authorization: `Bearer ${Cookies.get('authToken')}`,
         },
       });
-  
+
       if (response.status === 201) {
         toast.success('Reserva guardada correctamente');
-        window.history.back();
+        const nuevaReservaId = response.data.reserva.id_reserva;
+        productos.forEach(async producto => {
+          const tipoProducto = producto.id_producto ? 'Normal' : 'Oferta';
+          const idProducto = producto.id_producto || producto.id_oferta; // Usar id_producto o id_oferta
+
+          //Ahora por cada producto se va a crear una fila en la tabla productos_reservados
+          const producto_reservado = {
+            id_producto: idProducto,
+            id_reserva: nuevaReservaId,
+            id_negocio: idNegocio,
+            id_cliente: Cookies.get('id'),
+            cantidad: producto.cantidad,
+            tipo_producto: tipoProducto,
+          }
+          try {
+            const producto_reservadoResponse = await axios.post('http://localhost:8000/api/productos_reservados', producto_reservado, {
+              headers: {
+                Authorization: `Bearer ${Cookies.get('authToken')}`,
+              },
+            });
+
+            if (producto_reservadoResponse.status === 201) {
+              console.log('producto guardada:', producto_reservadoResponse.data);
+            } else {
+              console.error('Error al guardar el producto.');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+          }
+          
+          
+        });
+
+        console.log('Reserva guardada:', response.data);
       } else {
         toast.error('Error al guardar la reserva.');
       }
@@ -179,6 +217,10 @@ function PaginaDeReserva() {
       toast.error('Error al guardar la reserva.');
       console.error('Error:', error);
     }
+  };
+
+  const handleReservarClickCancel = async () => { //------------------
+    window.history.back();
   };
 
   const authToken = Cookies.get('authToken');
@@ -204,9 +246,9 @@ function PaginaDeReserva() {
       </div>
       <div className='cont-detallesReserva'>
         <h1 className='texto_CompletaReserva'>Completa tu reserva</h1>
-        <IngresoDatosPersonales 
-          onPaymentMethodSelect={setMetodoPago} 
-          onPersonalInfoSubmit={handlePersonalInfoSubmit} 
+        <IngresoDatosPersonales
+          onPaymentMethodSelect={setMetodoPago}
+          onPersonalInfoSubmit={handlePersonalInfoSubmit}
         />
         <InformacionDeLaReserva
           metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago ? 'Tarjeta de Débito' : ''}
@@ -218,14 +260,14 @@ function PaginaDeReserva() {
           <p>Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>
         </div>
         <div className='grupoDeBotones'>
-          <button id='btnCancelar' className='btnCancelar '>Cancelar</button>
+          <button id='btnCancelar' className='btnCancelar ' onClick={handleReservarClickCancel}>Cancelar</button>
           <button id='btnReservar' className='btnReservar' onClick={handleReservarClick}>Reservar</button>
         </div>
       </div>
       <ToastContainer
         closeButtonStyle={{
-            fontSize: '10px',
-            padding: '4px'
+          fontSize: '10px',
+          padding: '4px'
         }}
         style={{ width: '400px' }}
       />
