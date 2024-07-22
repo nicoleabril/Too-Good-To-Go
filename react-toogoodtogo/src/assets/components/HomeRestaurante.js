@@ -120,7 +120,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
       onBuyClick(producto.id_oferta || producto.id_producto); 
       
     }
-    addProductoComprado(producto); 
+    addProductoComprado(producto, 'comprarMas');
   };
 
 

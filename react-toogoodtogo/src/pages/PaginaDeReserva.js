@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import '../assets/styles/paginadeReserva.css';
-import CabeceraDelResumen from '../assets/components/Reserva/CabeceraDelResumen';
-import ResumenDelaReserva from '../assets/components/Reserva/ResumenDelaReserva';
-import IngresoDatosPersonales from '../assets/components/Reserva/IngresoDatosPersonales';
-import InformacionDeLaReserva from '../assets/components/Reserva/InformacionDeLaReserva';
-import { getProductosComprados } from '../assets/components/productosComprados';
-import { addReservaEnCola } from '../assets/components/Reserva/reservaEnCola';
+import { getProductosComprados, addProductoComprado, removeProductoComprado } from '../assets/components/productosComprados'; // Asegúrate de importar estas funciones
 import { Navigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
+import ResumenDelaReserva from '../assets/components/Reserva/ResumenDelaReserva';
+import CabeceraDelResumen from '../assets/components/Reserva/CabeceraDelResumen';
+import IngresoDatosPersonales from '../assets/components/Reserva/IngresoDatosPersonales';
+import InformacionDeLaReserva from '../assets/components/Reserva/InformacionDeLaReserva';
 
 function PaginaDeReserva() {
   const idNegocio = JSON.parse(sessionStorage.getItem('id_negocio')) || {};
@@ -47,7 +45,7 @@ function PaginaDeReserva() {
 
     const initialCantidades = {};
     productosComprados.forEach(producto => {
-      initialCantidades[producto.id_oferta || producto.id_producto] = 1;
+      initialCantidades[producto.id_oferta || producto.id_producto] = producto.cantidad || 1;
     });
     setCantidades(initialCantidades);
   }, []);
@@ -64,33 +62,64 @@ function PaginaDeReserva() {
     setTotal(nuevoTotal);
   };
 
+  const updateSessionStorage = () => {
+    sessionStorage.setItem('productos', JSON.stringify(productos));
+  };
+
   const handleIncrement = (id) => {
-    setCantidades(prevCantidades => ({
-      ...prevCantidades,
-      [id]: (prevCantidades[id] || 1) + 1
-    }));
-  };
-
-  const handleDecrement = (id) => {
-    setCantidades(prevCantidades => ({
-      ...prevCantidades,
-      [id]: prevCantidades[id] > 1 ? prevCantidades[id] - 1 : 1
-    }));
-  };
-
-  const handleRemove = (id) => {
-    setProductos(prevProductos => prevProductos.filter(producto => (producto.id_oferta || producto.id_producto) !== id));
     setCantidades(prevCantidades => {
-      const updatedCantidades = { ...prevCantidades };
-      delete updatedCantidades[id];
-      return updatedCantidades;
+      const nuevaCantidad = (prevCantidades[id] || 1) + 1;
+      const producto = productos.find(p => (p.id_oferta || p.id_producto) === id);
+      
+      const productosActualizados = productos.map(producto =>
+        (producto.id_oferta || producto.id_producto) === id
+          ? { ...producto, cantidad: nuevaCantidad }
+          : producto
+      );
+  
+      setProductos(productosActualizados);
+  
+      // Actualizar en sessionStorage
+      addProductoComprado({ ...productos.find(p => (p.id_oferta || p.id_producto) === id), cantidad: nuevaCantidad }, 'incrementar-decrementar');
+      return { ...prevCantidades, [id]: nuevaCantidad };
     });
-  };  
+  };
+  
+  const handleDecrement = (id) => {
+    setCantidades(prevCantidades => {
+      const nuevaCantidad = (prevCantidades[id] || 1) > 1 ? (prevCantidades[id] || 1) - 1 : 1;
+      const producto = productos.find(p => (p.id_oferta || p.id_producto) === id);
+      
+      const productosActualizados = productos.map(producto =>
+        (producto.id_oferta || producto.id_producto) === id
+          ? { ...producto, cantidad: nuevaCantidad }
+          : producto
+      );
+  
+      setProductos(productosActualizados);
+  
+      // Actualizar en sessionStorage
+      addProductoComprado({ ...productos.find(p => (p.id_oferta || p.id_producto) === id), cantidad: nuevaCantidad }, 'incrementar-decrementar');
+      return { ...prevCantidades, [id]: nuevaCantidad };
+    });
+  };
+  
+  
+  const handleRemove = (id) => {
+    setProductos(prevProductos => {
+      const productosActualizados = prevProductos.filter(producto => (producto.id_oferta || producto.id_producto) !== id);
+      setCantidades(prevCantidades => {
+        const { [id]: _, ...restCantidades } = prevCantidades;
+        return restCantidades;
+      });
+      removeProductoComprado(id); // Elimina del sessionStorage
+      return productosActualizados;
+    });
+  };
 
   const validateForm = () => {
     const requiredFields = ['nombres', 'apellidos', 'correo', 'telefono'];
     for (let field of requiredFields) {
-      console.log('datos recuperados: ', personalInfo);
       if (!personalInfo[field]) {
         toast.error(`Llene todos los campos obligatorios de información personal.`);
         return false;
@@ -142,11 +171,9 @@ function PaginaDeReserva() {
   
       if (response.status === 201) {
         toast.success('Reserva guardada correctamente');
-        //Como ya se creo la reserva se va la venta
         window.history.back();
       } else {
         toast.error('Error al guardar la reserva.');
-      
       }
     } catch (error) {
       toast.error('Error al guardar la reserva.');
@@ -154,19 +181,6 @@ function PaginaDeReserva() {
     }
   };
 
-  const handleFactura= async (idReserva) => {
-
-    const nuevaFactura = {
-      
-    };
-
-    try {
-
-    } catch (error) {
-      console.error('Error al obtener factura:', error);
-    }
-
-  }
   const authToken = Cookies.get('authToken');
 
   if (!authToken) {
