@@ -1,22 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Cookies from 'js-cookie';
 import '../styles/mi-perfil.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 function MiPerfil() {
-    const [imageSrc, setImageSrc] = useState(null);
+    const [imageFile, setImageFile] = useState(null); // Para imágenes nuevas a subir
+    const [imageSrc, setImageSrc] = useState(null);   // Para mostrar la imagen desde la URL
     const [selectedCuadro, setSelectedCuadro] = useState(null);
-    const [nombre, setNombre] = useState('Camila Granda'); 
-    const [password, setPassword] = useState('cami123');
-    const [isEditable, setIsEditable] = useState(false); 
+    const [nombre, setNombre] = useState(''); 
+    const [password, setPassword] = useState('');
+    const [originalNombre, setOriginalNombre] = useState('');
+    const [originalPassword, setOriginalPassword] = useState('****');
+    const [isEditable, setIsEditable] = useState(false);
+    const [idUsuario, setIdUsuario] = useState(null);
 
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-
-        reader.onload = (e) => {
-            setImageSrc(e.target.result);
+    useEffect(() => {
+        const fetchUserProfile = async () => {
+            const id = Cookies.get('id');
+            setIdUsuario(id);
+            try {
+                const response = await axios.get(`http://localhost:8000/api/clientes/${id}`);
+                const user = response.data;
+                setNombre(user.data.nombre);
+                setOriginalNombre(user.data.nombre); // Guardar valor original
+                setImageSrc(user.data.foto_perfil);   // Usar URL directamente
+                setPassword('****');
+                setOriginalPassword('****'); // Contraseña original oculta
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+            }
         };
 
-        reader.readAsDataURL(file);
+        fetchUserProfile();
+    }, []);
+
+    const handleImageChange = (event) => {
+        setImageFile(event.target.files[0]); // Cambiado a file
+        // Puedes mostrar una vista previa aquí si lo deseas
+        if (event.target.files[0]) {
+            const objectURL = URL.createObjectURL(event.target.files[0]);
+            setImageSrc(objectURL);
+        }
     };
 
     const handleCuadroClick = (cuadro) => {
@@ -31,8 +56,48 @@ function MiPerfil() {
         setPassword(event.target.value);
     };
 
-    const handleActualizarPerfilClick = () => {
-        setIsEditable(!isEditable); 
+    const handleActualizarPerfilClick = async () => {
+        if (isEditable) {
+            try {
+                const formData = new FormData();
+                const formData2 = new FormData();
+                formData.append('id_cliente', idUsuario);
+                
+                // Enviar los datos actualizados
+                if (nombre !== originalNombre) {
+                    formData.append('nombre', nombre);
+                }
+                if (imageFile) { // Cambiado a imageFile
+                    formData.append('foto_perfil', imageFile);
+                }
+
+                const response = await axios.post(`http://localhost:8000/api/clientes/${idUsuario}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+
+                if (password !== '****') {
+                    formData2.append('contrasenia', password);
+                }
+
+                const response2 = await axios.post(`http://localhost:8000/api/usuarios-cambio/${idUsuario}`, formData2, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+
+                toast.success('Guardado');
+                setOriginalNombre(nombre); // Actualizar el nombre original
+                setOriginalPassword(password); // Actualizar la contraseña original si se ha cambiado
+                setIsEditable(false);
+            } catch (error) {
+                toast.error('Error al editar.');
+                console.error('Error updating profile:', error);
+            }
+        } else {
+            setIsEditable(true);
+        }
     };
 
     return (
@@ -45,7 +110,7 @@ function MiPerfil() {
                     <div className="perfil-foto">
                         <div className="foto-preview">
                             {imageSrc ? (
-                                <img src={imageSrc} alt="Foto de perfilProducto" className="perfil-imagen" />
+                                <img src={imageSrc} alt="Foto de perfil" className="perfil-imagen" />
                             ) : (
                                 <div className="image-placeholder">Ingrese Foto</div>
                             )}
@@ -91,8 +156,21 @@ function MiPerfil() {
                             className="btn_actualizarPerfil" 
                             onClick={handleActualizarPerfilClick}
                         >
-                            {isEditable ? 'Guardar Cambios' : 'Actualizar Perfil'} {/* Cambiar el texto del botón */}
+                            {isEditable ? 'Guardar Cambios' : 'Actualizar Perfil'}
                         </button>
+                        {isEditable && (
+                            <button 
+                                className="btn_cancelarPerfil" 
+                                onClick={() => {
+                                    // Restablecer campos a los valores originales
+                                    setNombre(originalNombre);
+                                    setPassword('****');
+                                    setIsEditable(false);
+                                }}
+                            >
+                                Cancelar
+                            </button>
+                        )}
                     </div>
                     <div className="perfil-cuadros">
                         <div
@@ -117,6 +195,13 @@ function MiPerfil() {
                     Copyright © 2024 Too Good To Go International. All Rights Reserved.
                 </div>
             </footer>
+            <ToastContainer
+            closeButtonStyle={{
+                fontSize: '12px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+            />
             <div className="waves-background2-perfil"></div>
         </div>
     );

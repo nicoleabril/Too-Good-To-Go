@@ -90,7 +90,7 @@
     border-radius: 5px;
 }
 
-.main-container-perfil .btn_actualizarPerfil {
+.main-container-perfil .btn_actualizarPerfil, .main-container-perfil .btn_cancelarPerfil {
     background-color: var(--color-button); 
     color: white;
     border: none;
