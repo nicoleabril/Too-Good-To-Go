@@ -1,6 +1,6 @@
 import React from 'react';
 
-function InformacionDeLaReserva({ metodoPago, estado, restaurante, direccion, horario }) {
+function InformacionDeLaReserva({ metodoPago, estado, restaurante, horario }) {
     return (
         <>
             <h3 className='texto_DetallesReserva'>Detalles de la reserva</h3>
@@ -16,10 +16,6 @@ function InformacionDeLaReserva({ metodoPago, estado, restaurante, direccion, ho
                 <div className='detalle-pago'>
                     <p className='texto_InformacionReserva'>Restaurante:</p>
                     <label className='label_InformacionReserva'>{restaurante}</label>
-                </div>
-                <div className='detalle-pago'>
-                    <p className='texto_InformacionReserva'>Dirección:</p>
-                    <label className='label_InformacionReserva'>{direccion}</label>
                 </div>
                 <div className='detalle-pago'>
                     <p className='texto_InformacionReserva'>Horario:</p>

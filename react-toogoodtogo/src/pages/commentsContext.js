@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie'; // Importar js-cookie
 
 const CommentsContext = createContext();
 
@@ -8,66 +9,70 @@ export const CommentsProvider = ({ children }) => {
     const [businessNames, setBusinessNames] = useState({});
     const [clientNames, setClientNames] = useState({});
     const [loading, setLoading] = useState(true);
+    const authToken = Cookies.get('authToken');
 
-    useEffect(() => {
-        const fetchComments = async () => {
+    const fetchBusinessNames = async (comments) => {
+        const businessIds = [...new Set(comments.map(comment => comment.id_negocio))];
+        const names = {};
+        
+        for (const id of businessIds) {
             try {
-                const response = await axios.get('http://localhost:8000/api/comentarios');
-                setComments(response.data.comentarios);
-            } catch (error) {
-                console.error('Error al obtener comentarios:', error);
-            }
-        };
-
-        const fetchBusinessNames = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/api/negocios');
-                console.log('Negocios:', response.data); // Añadido para depuración
-                if (Array.isArray(response.data.data)) {
-                    const names = response.data.data.reduce((acc, negocio) => {
-                        acc[negocio.id_negocio] = negocio.nombre_negocio;
-                        return acc;
-                    }, {});
-                    setBusinessNames(names);
-                } else {
-                    console.error('El formato de datos de negocios no es correcto:', response.data);
-                }
+                const response = await axios.get(`http://localhost:8000/api/negocios/${id}`);
+                names[id] = response.data.data.nombre_negocio;
             } catch (error) {
                 console.error('Error al obtener nombres de negocios:', error);
             }
-        };
+        }
 
-        const fetchClientNames = async () => {
+        setBusinessNames(names);
+    };
+
+    const fetchClientNames = async (comments) => {
+        const clientIds = [...new Set(comments.map(comment => comment.id_cliente))];
+        const names = {};
+        
+        for (const id of clientIds) {
             try {
-                const response = await axios.get('http://localhost:8000/api/clientes');
-                console.log('Clientes:', response.data); // Añadido para depuración
-                if (Array.isArray(response.data.data)) {
-                    const names = response.data.data.reduce((acc, cliente) => {
-                        acc[cliente.id_cliente] = cliente.nombre;
-                        return acc;
-                    }, {});
-                    setClientNames(names);
-                } else {
-                    console.error('El formato de datos de clientes no es correcto:', response.data);
-                }
+                const response = await axios.get(`http://localhost:8000/api/clientes/${id}`);
+                names[id] = response.data.data.nombre;
             } catch (error) {
                 console.error('Error al obtener nombres de clientes:', error);
             }
-        };
+        }
 
-        const fetchData = async () => {
-            setLoading(true);
-            await fetchComments();
-            await fetchBusinessNames();
-            await fetchClientNames();
+        setClientNames(names);
+    };
+
+    const fetchComments = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('http://localhost:8000/api/comentarios', {
+                headers: {
+                    Authorization: `Bearer ${authToken}`,
+                },
+            });
+            const comentarios = response.data.comentarios;
+            setComments(comentarios);
+            fetchBusinessNames(comentarios);
+            fetchClientNames(comentarios);
             setLoading(false);
-        };
+            
+        } catch (error) {
+            console.error('Error al obtener comentarios:', error);
+            setLoading(false);
+        }
+    };
 
-        fetchData();
+    useEffect(() => {
+        fetchComments();
     }, []);
 
+    const deleteComment = (idComentario) => {
+        setComments(comments.filter(comment => comment.id_comentario !== idComentario));
+    };
+
     return (
-        <CommentsContext.Provider value={{ comments, setComments, businessNames, clientNames, loading }}>
+        <CommentsContext.Provider value={{ comments, deleteComment, businessNames, clientNames, loading, fetchComments }}>
             {children}
         </CommentsContext.Provider>
     );

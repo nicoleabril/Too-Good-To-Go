@@ -8,20 +8,27 @@ import { getProductosComprados } from '../assets/components/productosComprados';
 import { addReservaEnCola } from '../assets/components/Reserva/reservaEnCola';
 import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
+import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
 
-const dataInformacionReserva = [
-  {
-    metodoPago: '------',
-    estado: 'Pendiente',
-    restaurante: '------',
-    direccion: '-------------',
-    horario: '-----------'
-  }
-];
 
 function PaginaDeReserva() {
-
+  const idNegocio = JSON.parse(sessionStorage.getItem('id_negocio')) || {};
   const [productos, setProductos] = useState([]);
+  const [negocio, setNegocio] = useState({});
+  const [metodoPago, setMetodoPago] = useState('');
+
+  useEffect(() => {
+    const obtenerNegocio = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        setNegocio(response.data.data);
+      } catch (error) {
+        console.error('Error al obtener negocio:', error);
+      }
+    };
+    obtenerNegocio();
+  }, [idNegocio]);
 
   useEffect(() => {
     const productosComprados = getProductosComprados();
@@ -36,7 +43,7 @@ function PaginaDeReserva() {
 
   const calcularTotal = () => {
     const nuevoTotal = productos.reduce((acc, producto) => {
-      return acc + (producto.precio * (producto.cantidadVendida ));
+      return acc + (producto.precio * (producto.cantidadVendida));
     }, 0).toFixed(2);
     setTotal(nuevoTotal);
   };
@@ -60,8 +67,8 @@ function PaginaDeReserva() {
       id: '5',
       nombreCliente: 'Camila Granda',
       celular: '0985120236',
-      metodoPago: dataInformacionReserva[0].metodoPago,
-      pedido: productos.map((producto) => `${producto.cantidadVendida} ${producto.name}`).join(', '), 
+      metodoPago: metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago === 'visa' || metodoPago === 'mastercard' ? 'Tarjeta de Débito' : '',
+      pedido: productos.map((producto) => `${producto.cantidadVendida} ${producto.name}`).join(', '),
       horaReserva: '15:00-18:00',
     };
     addReservaEnCola(nuevaReserva);
@@ -69,7 +76,7 @@ function PaginaDeReserva() {
   };
 
   const authToken = Cookies.get('authToken');
-  
+
   // Si la cookie no está presente, redirigir al usuario a la página de login
   if (!authToken) {
     return <Navigate to="/" />;
@@ -80,23 +87,22 @@ function PaginaDeReserva() {
       <header page={'Reserva'} />
       <div className='cont-resumenReserva'>
         <button className="back-button" onClick={() => window.history.back()}>←</button>
-        <CabeceraDelResumen />
-        <ResumenDelaReserva 
-          productos={productos} 
-          onIncrement={handleIncrement} 
-          onDecrement={handleDecrement} 
+        <CabeceraDelResumen nombre_negocio={negocio.nombre_negocio} />
+        <ResumenDelaReserva
+          productos={productos}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
         />
         <p className='totalReserva'>Total: $ {total}</p>
       </div>
       <div className='cont-detallesReserva'>
         <h1 className='texto_CompletaReserva'>Completa tu reserva</h1>
-        <IngresoDatosPersonales />
+        <IngresoDatosPersonales onPaymentMethodSelect={setMetodoPago} />
         <InformacionDeLaReserva
-          metodoPago={dataInformacionReserva[0].metodoPago}
-          estado={dataInformacionReserva[0].estado}
-          restaurante={dataInformacionReserva[0].restaurante}
-          direccion={dataInformacionReserva[0].direccion}
-          horario={dataInformacionReserva[0].horario}
+          metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago === 'visa' || metodoPago === 'mastercard' || metodoPago === 'paypal' ? 'Tarjeta de Débito' : ''}
+          estado={'Pendiente'}
+          restaurante={negocio.nombre_negocio}
+          horario={negocio.horario_oferta + " - " + negocio.horario_cierre}
         />
         <div className='textoAviso'>
           <p>Haciendo su pedido a través de esta aplicación usted acepta: - Política de Procesamiento de Datos - Acuerdo de licencia de usuario final - Términos del restaurante - Políticas de privacidad</p>

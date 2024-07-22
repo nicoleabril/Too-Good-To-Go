@@ -7,27 +7,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Navigate, Link } from "react-router-dom";
 import Cookies from 'js-cookie';
 
+
 const EditarComentarios = () => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    // Lista de comentarios, puedes obtenerla de tu estado o de una API
-    const [comments, setComments] = useState([
-        {
-            id: 1,
-            restaurant: 'Dunkin Donuts',
-            user: 'Camila Granda',
-            comment: 'El café es excelente y hay muchas opciones para elegir, desde el clásico hasta los sabores más innovadores como el pumpkin spice en otoño.',
-            date: '2024-05-10'
-        },
-        {
-            id: 2,
-            restaurant: 'KFC-Mall del Río',
-            user: 'Camila Granda',
-            comment: 'El ambiente es relajado y cómodo, perfecto para una pausa rápida durante el día. Las sillas y mesas son cómodas, ideal para trabajar un rato con el portátil.',
-            date: '2024-05-12'
-        },
-    ]);
+    // Lista de comentarios vacía por defecto
+    const [comments, setComments] = useState([]);
 
     // Estado para almacenar el comentario que estamos editando
     const [editingComment, setEditingComment] = useState(null);
@@ -46,12 +32,12 @@ const EditarComentarios = () => {
             comment.id === editedComment.id ? editedComment : comment
         );
         setComments(updatedComments);
-        navigate(-1); // Regresar a la página anterior después de guardar
+        
     };
 
     // Función para cancelar la edición
     const handleCancel = () => {
-        window.history.back();
+        navigate(-1); // Regresar a la página anterior después de guardar
     };
 
     const authToken = Cookies.get('authToken');
@@ -66,8 +52,20 @@ const EditarComentarios = () => {
             <div className='crud-editComentarios-page'>
                 <Header page={'EditarComentarios'}/>
                 <DynamicBreadcrumb/>
-                {editingComment && <EditComments comment={editingComment} onSave={handleSave} onCancel={handleCancel} comments={comments} setComments={setComments} />}                <Chatbot/>
+                <div className='crud-editComentarios-container'>
+                    <EditComments
+                        comment={editingComment}
+                        onSave={handleSave}
+                        onCancel={handleCancel}
+                        comments={comments}
+                        setComments={setComments}
+                    />
+                </div>
+                 
+                            
+                <Chatbot/>
             </div>
+            
         </div>
     );
 };
