@@ -5,7 +5,7 @@ import '../../styles/paginadeReserva.css';
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 
-function ResumenDelaReserva({ productos, onIncrement, onDecrement, cantidades }) {
+function ResumenDelaReserva({ productos, onIncrement, onDecrement, onRemove, cantidades }) {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleTriggerClick = () => {
@@ -43,6 +43,7 @@ function ResumenDelaReserva({ productos, onIncrement, onDecrement, cantidades })
                             cantidad={cantidades[producto.id_oferta || producto.id_producto] || 1}
                             onIncrement={() => onIncrement(producto.id_oferta || producto.id_producto)}
                             onDecrement={() => onDecrement(producto.id_oferta || producto.id_producto)}
+                            onRemove={() => onRemove(producto.id_oferta || producto.id_producto)}
                         />
                     );
                 })}
