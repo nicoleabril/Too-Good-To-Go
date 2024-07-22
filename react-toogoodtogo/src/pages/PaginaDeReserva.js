@@ -78,6 +78,15 @@ function PaginaDeReserva() {
     }));
   };
 
+  const handleRemove = (id) => {
+    setProductos(prevProductos => prevProductos.filter(producto => (producto.id_oferta || producto.id_producto) !== id));
+    setCantidades(prevCantidades => {
+      const updatedCantidades = { ...prevCantidades };
+      delete updatedCantidades[id];
+      return updatedCantidades;
+    });
+  };  
+
   const validateForm = () => {
     const requiredFields = ['nombres', 'apellidos', 'correo', 'telefono'];
     for (let field of requiredFields) {
@@ -174,6 +183,7 @@ function PaginaDeReserva() {
           productos={productos}
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
+          onRemove={handleRemove}
           cantidades={cantidades}
         />
         <p className='totalReserva'>Total: $ {total}</p>
