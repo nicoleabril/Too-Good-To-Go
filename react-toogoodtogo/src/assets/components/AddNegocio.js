@@ -30,7 +30,10 @@ const AddNegocio = () => {
   const [logoSrc, setLogo] = useState([]);
   const [nombreNegocio, setNombreNegocio] = useState('');
   const [descNegocio, setDescNegocio] = useState('');
-  
+  const [horarioApertura, setHorarioApertura] = useState('');
+  const [horarioCierre, setHorarioCierre] = useState('');
+  const [horarioOferta, setHorarioOferta] = useState('');
+
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     setSubirImagen(file);
@@ -40,7 +43,6 @@ const AddNegocio = () => {
       const arrayBuffer = e.target.result;
       const byteArray = new Uint8Array(arrayBuffer);
       console.log(byteArray);
-      
     };
     reader.readAsArrayBuffer(file);
 
@@ -76,6 +78,9 @@ const AddNegocio = () => {
         if (response.data.data != null) {
           setNombreNegocio(response.data.data.nombre_negocio);
           setDescNegocio(response.data.data.descripcion);
+          setHorarioApertura(response.data.data.horario_apertura || '');
+          setHorarioCierre(response.data.data.horario_cierre || '');
+          setHorarioOferta(response.data.data.horario_oferta || '');
         }
         if (response.data.data.logotipo != null) {
           setLogo(response.data.data.logotipo);
@@ -100,8 +105,6 @@ const AddNegocio = () => {
     obtenerNegocio();
     obtenerCategoria();
   }, [idNegocio]); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
-  
-
 
   const handleInputNombre = (e) => {
     setNombreNegocio(e.target.value); // Actualizar la opción seleccionada
@@ -115,7 +118,6 @@ const AddNegocio = () => {
     setCategoriaSeleccionada(selectedOption.value); // Actualizar la opción seleccionada
   };
 
-
   const handleUpdateNegocio = async (e) => {
     try {
       e.preventDefault();
@@ -123,10 +125,14 @@ const AddNegocio = () => {
       formData.append('id_categoria', categoriaSeleccionada); // Ajusta según tu lógica de categoría seleccionada
       formData.append('nombre_negocio', nombreNegocio);
       formData.append('descripcion', descNegocio);
-      if(subirLogo != null) formData.append('logotipo', subirLogo);
-      if(subirImagen != null) formData.append('imagen_referencial', subirImagen);
+      formData.append('horario_apertura', horarioApertura);
+      formData.append('horario_cierre', horarioCierre);
+      formData.append('horario_oferta', horarioOferta);
+      if (subirLogo) formData.append('logotipo', subirLogo);
+      if (subirImagen) formData.append('imagen_referencial', subirImagen);
       formData.append('posicion_x', negocio.posicion_x);
       formData.append('posicion_y', negocio.posicion_y);
+
       const response = await axios.post(`http://localhost:8000/api/negocios/${idNegocio}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -135,11 +141,9 @@ const AddNegocio = () => {
 
       console.log('Negocio actualizado:', response.data);
       toast.success('Guardado');
-      // Aquí podrías manejar la respuesta como necesites (actualizar estado, mostrar mensaje de éxito, etc.)
     } catch (error) {
       toast.error('Error al editar.');
       console.error('Error al actualizar negocio:', error);
-      // Aquí podrías manejar el error como necesites (mostrar mensaje de error, rollback de cambios, etc.)
     }
   };
 
@@ -174,6 +178,35 @@ const AddNegocio = () => {
                   placeholder="Escoger categoría..."
                   styles={customStyles}
                 />
+              </div>
+              <div className="horarios">
+                <div className="horario-apertura">
+                  <label>Horario de Apertura</label>
+                  <input 
+                    type="time" 
+                    className="campo-horario" 
+                    value={horarioApertura}
+                    onChange={(e) => setHorarioApertura(e.target.value)}
+                  />
+                </div>
+                <div className="horario-cierre">
+                  <label>Horario de Cierre</label>
+                  <input 
+                    type="time" 
+                    className="campo-horario" 
+                    value={horarioCierre}
+                    onChange={(e) => setHorarioCierre(e.target.value)}
+                  />
+                </div>
+                <div className="horario-oferta">
+                  <label>Horario de Oferta</label>
+                  <input 
+                    type="time" 
+                    className="campo-horario" 
+                    value={horarioOferta}
+                    onChange={(e) => setHorarioOferta(e.target.value)}
+                  />
+                </div>
               </div>
             </form>
           </div>
