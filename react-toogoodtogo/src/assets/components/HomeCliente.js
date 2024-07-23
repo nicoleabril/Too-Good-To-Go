@@ -39,26 +39,49 @@ function HomeCliente() {
   useEffect(() => {
     const obtenerNegocios = async () => {
       try {
-        // Recupera todos los negocios
-        const response = await axios.get(`http://localhost:8000/api/negocios`);
-        const negocios = response.data.data;
+        // Función para obtener negocios
+        const fetchNegocios = async () => {
+          const response = await axios.get(`http://localhost:8000/api/negocios`);
+          return response.data.data;
+        };
+
+        // Función para obtener ofertas de un negocio
+        const fetchOfertas = async (idNegocio) => {
+          const response = await axios.get(`http://localhost:8000/api/ofertas/${idNegocio}`);
+          return response.data.ofertas;
+        };
+
+        // Función para obtener categorías de un negocio
+        const fetchCategorias = async (idNegocio) => {
+          const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+          return response.data.categorias || [];
+        };
+
+        // Función para obtener comentarios de un negocio
+        const fetchComentarios = async (idNegocio) => {
+          const response = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+          return response.data.comentarios.length;
+        };
+
+        // Función para obtener ubicaciones de negocios
+        const fetchUbicaciones = (negocios) => {
+          return negocios.map(ubicacion => ({
+            position: [ubicacion.posicion_x, ubicacion.posicion_y],
+            name: ubicacion.nombre_negocio
+          }));
+        };
+
+        const negocios = await fetchNegocios();
 
         // Recupera ofertas, categorías y comentarios para cada negocio
         const negociosConOfertas = await Promise.all(negocios.map(async negocio => {
           try {
-            // Recupera ofertas del negocio
-            const ofertasResponse = await axios.get(`http://localhost:8000/api/ofertas/${negocio.id_negocio}`);
-            
-            // Verifica si hay ofertas disponibles
-            if (Array.isArray(ofertasResponse.data.ofertas) && ofertasResponse.data.ofertas.length > 0) {
-              // Recupera categorías del negocio
-              const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
-              
-              // Recupera comentarios del negocio
-              const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
-              const commentsCount = responseComentarios.data.comentarios.length;
+            const ofertas = await fetchOfertas(negocio.id_negocio);
 
-              // Devuelve la información del negocio con ofertas
+            if (Array.isArray(ofertas) && ofertas.length > 0) {
+              const categorias = await fetchCategorias(negocio.id_negocio);
+              const commentsCount = await fetchComentarios(negocio.id_negocio);
+
               return {
                 id_negocio: negocio.id_negocio,
                 name: negocio.nombre_negocio,
@@ -66,9 +89,9 @@ function HomeCliente() {
                 rating: '4.0',  // Puedes reemplazar con datos reales si están disponibles
                 reviews: commentsCount,
                 satisfaction: '100',  // Puedes reemplazar con datos reales si están disponibles
-                categorias: categoriasResponse.data.categorias || [],
+                categorias: categorias,
                 link: '/Restaurante',
-                ofertas: ofertasResponse.data.ofertas,
+                ofertas: ofertas,
               };
             } else {
               return null; // No hay ofertas, no incluimos este negocio
@@ -79,31 +102,26 @@ function HomeCliente() {
           }
         }));
 
-        // Filtra los negocios que tienen ofertas
         const negociosConOfertasFiltrados = negociosConOfertas.filter(negocio => negocio !== null);
         setNegociosOfertas(negociosConOfertasFiltrados);
 
         // Recupera ubicaciones de negocios
-        const negociosConUbicaciones = negocios.map(ubicacion => ({
-          position: [ubicacion.posicion_x, ubicacion.posicion_y],
-          name: ubicacion.nombre_negocio
-        }));
-        setNegociosUbicacion(negociosConUbicaciones);
+        const ubicaciones = fetchUbicaciones(negocios);
+        setNegociosUbicacion(ubicaciones);
 
         // También puedes almacenar los negocios generales
         const negociosConCategorias = await Promise.all(negocios.map(async negocio => {
-          const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
-          const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
-          const comments = responseComentarios.data.comentarios.length || 0;
+          const categorias = await fetchCategorias(negocio.id_negocio);
+          const commentsCount = await fetchComentarios(negocio.id_negocio);
 
           return {
             id_negocio: negocio.id_negocio,
             name: negocio.nombre_negocio,
             image: negocio.logotipo,
             rating: '4.0',
-            reviews: comments,
+            reviews: commentsCount,
             satisfaction: '100',
-            categorias: categoriasResponse.data.categorias || [],
+            categorias: categorias,
             link: '/Restaurante',
           };
         }));
