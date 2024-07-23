@@ -15,7 +15,7 @@ const DashboardCards = ({ platos }) => {
                     <h3>{producto.name}</h3> 
                     <div className='descripcionPlato'>
                         <p class="inline">{producto.descript}</p>
-                        <p id='textoGris' class="inline">{producto.sales}</p>
+                        <p id='textoGris' class="inline">| {producto.sales} ventas</p>
                     </div>
                 </div>
             </div>

@@ -20,45 +20,15 @@ function HomeNegocio() {
   const [negocio, setNegocio] = useState([]);
   const [comentarios, setComentarios] = useState([]);
   const [clienteComentario, setClienteComentario] = useState([]);
+  const [datosEstadisticos, setDatosEstadisticos] = useState([]);
   const [ultimoComentario, setUltimoComentario] = useState([]);
   const [ordenesPopulares, setOrdenesPopulares] = useState([]);
+  const [masVendidos, setMasVendidos] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
 
-  const masVendidos = [
-    {
-      sales: '| 240 ventas',
-      name: 'Chocolate Frío',
-      descript: '4.5⭐',
-      image: bebida3,
-    },
-    {
-        sales: '| 100 ventas',
-        name: 'Cubanitos',
-        descript: '3.9⭐ ',
-        image: sanduche1,
-    },
-  ];
-
-  const datosEstadisticos = [
-    {
-      name: 'Nuevos Clientes',
-      number: '24',
-      icon: <GrGroup size={30}/>,
-    },
-    {
-        name: 'Total Ordenado',
-        number: '156',
-        icon: <IoReceipt size={30}/>,
-    },
-    {
-      name: 'Total Ingreso',
-      number: '$ 1500',
-      icon: <FaMoneyBillWave size={30}/>,
-  },
-  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,12 +44,8 @@ function HomeNegocio() {
         setLoading(false);
       }
     };
-  
-    fetchData();
-  }, [idNegocio]);
 
-  useEffect(() => {
-    const fetchData = async () => {
+    const fetchData2 = async () => {
       try {
         // Recupera productos
         const productosResponse = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
@@ -101,12 +67,7 @@ function HomeNegocio() {
         setLoading(false);
       }
     };
-  
-    fetchData();
-  }, [idNegocio]);
-  
 
-  useEffect(() => {
     const obtenerNegocio = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
@@ -115,9 +76,77 @@ function HomeNegocio() {
         console.error('Error al obtener negocio:', error);
       }
     };
+
+    const obtenerProducto = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/producto-normal-mas-vendido/${idNegocio}`);
+        const producto = response.data;
+        const response2 = await axios.get(`http://localhost:8000/api/producto-oferta-mas-vendida/${idNegocio}`);
+        const oferta = response2.data;
+        const adaptadoProductoNormal = {
+          image: producto.imagen || 'default_image_url',
+          name: producto.nombre_producto || 'Nombre del Producto Normal',
+          descript: producto.descripcion || 'Descripción del Producto Normal',
+          sales: producto.total || 0
+        };
+    
+        const adaptadoProductoOferta = {
+          image: oferta.imagen_oferta || 'default_image_url',
+          name: oferta.nombre_oferta || 'Nombre del Producto Oferta',
+          descript: oferta.descripcion || 'Descripción del Producto Oferta',
+          sales: oferta.total || 0
+        };
+    
+        // Une los productos en un array
+        const platos = [adaptadoProductoNormal, adaptadoProductoOferta];
+        setMasVendidos(platos);
+      } catch (error) {
+        console.error('Error al obtener negocio:', error);
+      }
+    };
+
+    const obtenerEstadisticas = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/total-clientes/${idNegocio}`);
+        const totalClientes = response.data;
+        const response2 = await axios.get(`http://localhost:8000/api/compras-ordenadas/${idNegocio}`);
+        const totalCompras = response2.data;
+        const response3 = await axios.get(`http://localhost:8000/api/total-ganado/${idNegocio}`);
+        const totalGanado = response3.data;
+
+        const totalClienteAdaptado = {
+          name: 'Nuevos Clientes',
+          number: totalClientes,
+          icon: <GrGroup size={30}/>,
+        };
+    
+        const totalComprasAdaptado = {
+          name: 'Total Ordenado',
+          number: totalCompras,
+          icon: <IoReceipt size={30}/>,
+        };
+
+        const totalGanadoAdaptado = {
+          name: 'Total Ingreso',
+          number: `$${totalGanado}`,
+          icon: <FaMoneyBillWave size={30}/>,
+        };
+    
+        // Une los productos en un array
+        const platos = [totalClienteAdaptado, totalComprasAdaptado, totalGanadoAdaptado];
+        setDatosEstadisticos(platos);
+      } catch (error) {
+        console.error('Error al obtener negocio:', error);
+      }
+    };
   
+    fetchData();
+    fetchData2();
     obtenerNegocio();
-  }, []); // Agregar idNegocio como dependencia si deseas que el efecto se ejecute al cambiar idNegocio
+    obtenerProducto();
+    obtenerEstadisticas();
+  }, [idNegocio]);
+
 
   const hasOfertas = ordenesPopulares.length > 0;
   const tieneComentarios = comentarios.length > 0;
