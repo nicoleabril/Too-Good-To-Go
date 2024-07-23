@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import pizza from '../images/pizza.png';
 import LocalesCards from './LocalesCards';
-import McDonalds from '../images/McDonalds.png';
-import MapComponent from './MapComponent'; 
-import Dunkin from '../images/dunkin.png';
 import axios from 'axios';
+import MapComponent from './MapComponent'; 
 import '../styles/cliente.css';
 
 function HomeCliente() {
@@ -13,12 +11,10 @@ function HomeCliente() {
   const [negociosUbicacion, setNegociosUbicacion] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-
   const [coordenadas, setCoordenadas] = useState({ latitud: null, longitud: null });
 
   useEffect(() => {
-    const obtenerCoordenadas = async () => {
+    const obtenerCoordenadas = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
@@ -38,15 +34,14 @@ function HomeCliente() {
     };
 
     obtenerCoordenadas();
-  }, [coordenadas]);
-
+  }, []);
 
   useEffect(() => {
-    const obtenerNegociosOfertas = async () => {
+    const obtenerNegocios = async () => {
       try {
         // Recupera todos los negocios
-        const negociosResponse = await axios.get(`http://localhost:8000/api/negocios`);
-        const negocios = negociosResponse.data.data;
+        const response = await axios.get(`http://localhost:8000/api/negocios`);
+        const negocios = response.data.data;
 
         // Recupera ofertas, categorías y comentarios para cada negocio
         const negociosConOfertas = await Promise.all(negocios.map(async negocio => {
@@ -86,9 +81,33 @@ function HomeCliente() {
 
         // Filtra los negocios que tienen ofertas
         const negociosConOfertasFiltrados = negociosConOfertas.filter(negocio => negocio !== null);
-
-        // Actualiza el estado con los negocios que tienen ofertas
         setNegociosOfertas(negociosConOfertasFiltrados);
+
+        // Recupera ubicaciones de negocios
+        const negociosConUbicaciones = negocios.map(ubicacion => ({
+          position: [ubicacion.posicion_x, ubicacion.posicion_y],
+          name: ubicacion.nombre_negocio
+        }));
+        setNegociosUbicacion(negociosConUbicaciones);
+
+        // También puedes almacenar los negocios generales
+        const negociosConCategorias = await Promise.all(negocios.map(async negocio => {
+          const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
+          const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
+          const comments = responseComentarios.data.comentarios.length || 0;
+
+          return {
+            id_negocio: negocio.id_negocio,
+            name: negocio.nombre_negocio,
+            image: negocio.logotipo,
+            rating: '4.0',
+            reviews: comments,
+            satisfaction: '100',
+            categorias: categoriasResponse.data.categorias || [],
+            link: '/Restaurante',
+          };
+        }));
+        setNegocios(negociosConCategorias);
       } catch (error) {
         setError(error);
       } finally {
@@ -96,59 +115,12 @@ function HomeCliente() {
       }
     };
 
-    obtenerNegociosOfertas();
+    obtenerNegocios();
   }, []);
 
-  useEffect(() => {
-    const obtenerNegocios = async () => {
-        try {
-            const response = await axios.get(`http://localhost:8000/api/negocios`);
-            const negociosConCategorias = await Promise.all(response.data.data.map(async negocio => {
-              const categoriasResponse = await axios.get(`http://localhost:8000/api/categorias/${negocio.id_negocio}`);
-              const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${negocio.id_negocio}`);
-              let comments =0;
-              if(responseComentarios.data.comentarios.length>0){
-                comments=responseComentarios.data.comentarios.length;
-              }
-              return {
-                id_negocio: negocio.id_negocio,
-                name: negocio.nombre_negocio,
-                image: negocio.logotipo,
-                rating: '4.0',
-                reviews: comments,
-                satisfaction: '100',
-                categorias: categoriasResponse.data.categorias || [],
-                link: '/Restaurante',
-              };
-            }));
-            setNegocios(negociosConCategorias);
-        } catch (error) {
-            console.error('Error al obtener negocio:', error);
-        }
-    };
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
-    obtenerNegocios();
-  }, []); 
-
-  useEffect(() => {
-    const obtenerUbicacion = async () => {
-      try {
-        const response = await axios.get(`http://localhost:8000/api/negocios`);
-        const negociosConUbicaciones = await Promise.all(response.data.data.map(async ubicacion => {
-          return {
-            position: [ubicacion.posicion_x, ubicacion.posicion_y],
-            name: ubicacion.nombre_negocio
-          };
-        }));
-        setNegociosUbicacion(negociosConUbicaciones);
-      } catch (error) {
-        console.error('Error al obtener negocio:', error);
-      }
-    };
-
-    obtenerUbicacion();
-  }, []); 
-  
   return (
     <div className='ClienteContainer'>
       <div className='textoImagen'>

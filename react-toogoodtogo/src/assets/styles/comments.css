@@ -163,6 +163,12 @@
   .container-comments .btn-finalizado {
     background-color: blue;
   }
+   .btn-finalizado {
+    background-color: blue;
+  }
+   .btn-realizado {
+    background-color: rgb(18, 215, 61);
+  }
 
   .container-comments .btn-pendiente {
     background-color: rgb(255, 174, 0);

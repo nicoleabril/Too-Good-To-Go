@@ -72,7 +72,7 @@ const Header = ({ page, cartCount }) => {
                   <div className="submenu">
                     <ul>
                       <li><a href="/ReservasRecibidas">Recibidas</a></li>
-                      <li><a href="/ReservasRecibidas">En Proceso</a></li>
+                      <li><a href="/ReservasEnProceso">En Proceso</a></li>
                       <li><a href="/ReservasHistorial">Historial</a></li>
                     </ul>
                   </div>
