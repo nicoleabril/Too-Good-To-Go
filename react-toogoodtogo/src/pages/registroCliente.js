@@ -69,8 +69,12 @@ export default class RegistroCliente extends Component {
         });
 
         if (response.status === 201) {
-          // Registro exitoso, redirige a la página de inicio de sesión
-          window.location.href = '/Login';
+          toast.success('Cliente registrado correctamente', {
+            onClose: () => {
+              // Volver atrás en el historial después de que se cierre el toast
+              window.location.href = '/Login';
+            }
+          });
         } else {
           toast.error("Datos Incorrectos")
           // Manejar otros casos de respuesta (por ejemplo, errores de validación)
@@ -156,6 +160,13 @@ export default class RegistroCliente extends Component {
             Copyright © 2024 Too Good To Go International. All Rights Reserved.
           </div>
         </div>
+        <ToastContainer
+            closeButtonStyle={{
+                fontSize: '10px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+          />
       </div>
     );
   }
