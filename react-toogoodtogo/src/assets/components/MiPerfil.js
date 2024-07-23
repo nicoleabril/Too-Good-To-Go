@@ -33,13 +33,14 @@ function MiPerfil() {
 
                 const responseOfertas = await axios.get(`http://localhost:8000/api/ventasCliente/${id}`);
                 const ventas = responseOfertas.data.ventas;
+                console.log(ventas);
                 let totalOferta = 0;
                 let totalNormal = 0;
                 // Calcular las sumas basadas en el tipo de producto
                 ventas.forEach(venta => {
-                    if (venta.tipo_producto === 'Producto Oferta') {
+                    if (venta.tipo_producto === 'Oferta') {
                         totalOferta += venta.cantidad;
-                    } else if (venta.tipo_producto === 'Producto Normal') {
+                    } else if (venta.tipo_producto === 'Normal') {
                         totalNormal += venta.cantidad;
                     }
                 });
