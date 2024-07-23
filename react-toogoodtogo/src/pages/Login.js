@@ -5,6 +5,7 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
+import { ToastContainer, toast } from 'react-toastify';
 
 export default class Login extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ export default class Login extends Component {
       const { data } = response;
 
       if (response.status === 200 && data.message === 'Ingreso de Usuario Exitoso') {
-        // Actualizar el estado del componente con el rol y el token
+        toast.success("Ingreso de Usuario Exitoso");
         this.setState({
           rol: Cookies.get('rol'),
           isLoggedIn: true,
@@ -81,12 +82,13 @@ export default class Login extends Component {
         // Si el servidor responde con 419 (Page Expired) o cualquier otro error
         // muestra un mensaje de error específico para el usuario
         if (response.status === 419) {
-          alert('Usuario no existe');
+          toast.error('Usuario no existe');
         } else {
           this.setState({ error: true });
         }
       }
     } catch (error) {
+      toast.error('Error al iniciar sesión, Datos Incorrectos');
       console.error('Error al iniciar sesión:', error);
       // Manejo de otros errores, si es necesario
       this.setState({ error: true });
@@ -141,6 +143,13 @@ export default class Login extends Component {
             Copyright © 2024 Too Good To Go International. All Rights Reserved.
           </div>
         </div>
+          <ToastContainer
+            closeButtonStyle={{
+                fontSize: '10px', // Tamaño de fuente del botón de cerrar
+                padding: '4px'    // Espaciado interno del botón de cerrar
+            }}
+            style={{ width: '400px' }} // Ancho deseado para ToastContainer
+          />
       </div>
     );
   }

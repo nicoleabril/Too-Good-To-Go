@@ -9,8 +9,6 @@ function HomeCliente() {
   const [negocios, setNegocios] = useState([]);
   const [negociosOfertas, setNegociosOfertas] = useState([]);
   const [negociosUbicacion, setNegociosUbicacion] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [coordenadas, setCoordenadas] = useState({ latitud: null, longitud: null });
 
   useEffect(() => {
@@ -127,17 +125,13 @@ function HomeCliente() {
         }));
         setNegocios(negociosConCategorias);
       } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
+        console.log(error);
       }
     };
 
     obtenerNegocios();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
 
   return (
     <div className='ClienteContainer'>

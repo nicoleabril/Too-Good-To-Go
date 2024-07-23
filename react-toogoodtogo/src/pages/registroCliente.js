@@ -3,7 +3,7 @@ import '../assets/styles/registroUsuario.css';
 import burger from '../assets/images/burger.png';
 import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
-
+import { ToastContainer, toast } from 'react-toastify';
 export default class RegistroCliente extends Component {
   constructor(props) {
     super(props);
@@ -72,10 +72,12 @@ export default class RegistroCliente extends Component {
           // Registro exitoso, redirige a la página de inicio de sesión
           window.location.href = '/Login';
         } else {
+          toast.error("Datos Incorrectos")
           // Manejar otros casos de respuesta (por ejemplo, errores de validación)
           this.setState({ error: true });
         }
       } catch (error) {
+        toast.error("Error al registrar cliente")
         console.error('Error al registrar cliente:', error);
         this.setState({ error: true });
       }
