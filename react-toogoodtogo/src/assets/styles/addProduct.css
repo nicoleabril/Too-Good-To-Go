@@ -363,4 +363,14 @@
     .main-container-product-add .btn_agregarProducto, .main-container-product-add .btn_editarProducto{
         width: 250px;
     }
+
+    .horario-apertura, .horario-cierre, .horario-oferta{
+        margin-top: 10px;
+        margin-left: -20px;
+        margin-bottom: 10px;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
 }
