@@ -218,7 +218,6 @@ function PaginaDeReserva() {
       console.error('Error:', error);
     }
     sessionStorage.removeItem('productos');
-    window.history.back();
   };
 
   const handleReservarClickCancel = async () => { //------------------
