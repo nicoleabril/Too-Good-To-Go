@@ -22,8 +22,8 @@ const Historial = () => {
   const estadoTexto = {
     Cancelado: 'Cancelado',
     'En Proceso': "En Proceso",
-    Finalizado: 'Finalizado',
-    Realizado: 'Realizado',
+    Finalizado: 'Entregado',
+    Realizado: 'Listo para Entregar',
     Pendiente: 'Pendiente'
   };
 

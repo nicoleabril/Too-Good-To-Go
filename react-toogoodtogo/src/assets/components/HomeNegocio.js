@@ -90,7 +90,6 @@ function HomeNegocio() {
           const ultimoComentario = productosData[productosData.length - 1];
           const productosResponse = await axios.get(`http://localhost:8000/api/clientes/${ultimoComentario.id_cliente}`);
           const cliente = productosResponse.data.data || [];
-          console.log(cliente);
           setClienteComentario(cliente);
           setUltimoComentario(ultimoComentario);
         } else {

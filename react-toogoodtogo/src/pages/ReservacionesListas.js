@@ -9,15 +9,16 @@ import Cookies from 'js-cookie';
 import axios from 'axios'; // Importa Axios
 import { ToastContainer, toast } from 'react-toastify';
 
-function ReservacionesHistorial() {
+function ReservacionesListas() {
   const [reservas, setReservas] = useState([]);
+  const [cliente, setCliente] = useState([]);
+  const [productos, setProductos] = useState([]);
   const idNegocio = Cookies.get('id');
 
-  
   useEffect(() => {
     const obtenerReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/reservasNegocio/${idNegocio}`);
+        const response = await axios.get(`http://localhost:8000/api/reservasListas/${idNegocio}`);
         const reservas = response.data.reservas;
         if (reservas) {
           const reservasConClientes = await Promise.all(
@@ -41,6 +42,21 @@ function ReservacionesHistorial() {
     obtenerReservas();
   }, [idNegocio]);
 
+
+  const handleEntregar = async (id) => {
+    try {
+      const response = await axios.post(`http://localhost:8000/api/confirmarReservaEntregado/${id}`);
+      if (response.status === 200) {
+        toast.success("Se ha entregado la Reserva.");
+        setReservas(reservas.filter(reserva => reserva.id_reserva !== id));
+      } else {
+        toast.error("No se ha logrado entregar la reserva.");
+        console.error('Error al entregar la reserva');
+      }
+    } catch (error) {
+      console.error('Error al entregar la reserva:', error);
+    }
+  };
 
   
   const authToken = Cookies.get('authToken');
@@ -69,7 +85,7 @@ function ReservacionesHistorial() {
                   pedido={reserva.pedido}
                   horaMinima={reserva.hora_minima}
                   horaMaxima={reserva.hora_maxima}
-                  soloVista={reserva.estado}
+                  onEntregado={handleEntregar}
                 />
               ))
             )}
@@ -93,4 +109,4 @@ function ReservacionesHistorial() {
   );
 }
 
-export default ReservacionesHistorial;
+export default ReservacionesListas;

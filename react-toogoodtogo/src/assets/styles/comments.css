@@ -151,6 +151,13 @@
     color: white;
     font-weight: bold;
   }
+
+  .estado {
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
   
   .container-comments .btn-cancelado {
     background-color: red;
@@ -163,11 +170,36 @@
   .container-comments .btn-finalizado {
     background-color: blue;
   }
+
+  .btn-cancelado {
+    font-size: small;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 14rem;
+    background-color: red;
+  }
+
    .btn-finalizado {
+    font-size: small;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 14rem;
     background-color: blue;
   }
    .btn-realizado {
+    font-size: small;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 14rem;
     background-color: rgb(18, 215, 61);
+  }
+
+  .btn-pendiente {
+    font-size: small;
+    color:#ffffff;
+    border-radius: 10px;
+    width: 14rem;
+    background-color: rgb(255, 174, 0);
   }
 
   .container-comments .btn-pendiente {
