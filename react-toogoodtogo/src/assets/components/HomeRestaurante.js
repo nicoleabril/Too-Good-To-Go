@@ -83,6 +83,7 @@ const HomeRestaurante = ({ onBuyClick }) => {
   const hasOfertas = productoOfertas.length > 0;
   const hasProductosCategoria = productosCategoria.length > 0;
   const tieneComentarios = comentarios.length > 0;
+  const ultimoComentarioDescripcion = ultimoComentario?.descripcion || '';
 
   return (
     <div className="RestauranteContainer">
@@ -101,10 +102,10 @@ const HomeRestaurante = ({ onBuyClick }) => {
                 />
               </div>
               <div className='textoComentario'>
-                <h3>{clienteComentario.nombre}</h3>
+                <h3>{clienteComentario.nombre || 'Cliente'}</h3>
                 ⭐⭐⭐⭐⭐
                 <div className="contenido">
-                  <p>{ultimoComentario.descripcion}</p>
+                  <p>{ultimoComentarioDescripcion}</p>
                 </div>
               </div>
             </div>

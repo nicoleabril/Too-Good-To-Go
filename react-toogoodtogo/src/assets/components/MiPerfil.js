@@ -14,6 +14,8 @@ function MiPerfil() {
     const [originalPassword, setOriginalPassword] = useState('******');
     const [isEditable, setIsEditable] = useState(false);
     const [idUsuario, setIdUsuario] = useState(null);
+    const [ofertasSalvadas, setOfertasSalvadas] = useState(0);
+    const [compras, setCompras] = useState(0);
     
 
     useEffect(() => {
@@ -28,6 +30,22 @@ function MiPerfil() {
                 setImageSrc(user.data.foto_perfil);   // Usar URL directamente
                 setPassword('******');
                 setOriginalPassword('******'); // Contraseña original oculta
+
+                const responseOfertas = await axios.get(`http://localhost:8000/api/ventasCliente/${id}`);
+                const ventas = responseOfertas.data.ventas;
+                let totalOferta = 0;
+                let totalNormal = 0;
+                // Calcular las sumas basadas en el tipo de producto
+                ventas.forEach(venta => {
+                    if (venta.tipo_producto === 'Producto Oferta') {
+                        totalOferta += venta.cantidad;
+                    } else if (venta.tipo_producto === 'Producto Normal') {
+                        totalNormal += venta.cantidad;
+                    }
+                });
+
+                setOfertasSalvadas(totalOferta);
+                setCompras(totalNormal);
             } catch (error) {
                 console.error('Error fetching user profile:', error);
             }
@@ -179,14 +197,14 @@ function MiPerfil() {
                             onClick={() => handleCuadroClick('ofertas')}
                         >
                             <h2>Ofertas Salvadas</h2>
-                            <p>12</p>
+                            <p>{ofertasSalvadas}</p>
                         </div>
                         <div
                             className={`perfil-cuadro ${selectedCuadro === 'compras' ? 'selected' : ''}`}
                             onClick={() => handleCuadroClick('compras')}
                         >
                             <h2>Compras</h2>
-                            <p>23</p>
+                            <p>{compras}</p>
                         </div>
                     </div>
                 </div>
