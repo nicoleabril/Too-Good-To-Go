@@ -198,20 +198,19 @@ function PaginaDeReserva() {
             });
 
             if (producto_reservadoResponse.status === 201) {
-              toast.success('Reserva guardada correctamente', {
-                onClose: () => {
-                  // Volver atrás en el historial después de que se cierre el toast
-                  window.history.back();
-                }
-              });
+              
             } else {
               console.error('Error al guardar el producto.');
             }
           } catch (error) {
             console.error('Error:', error);
           }
-          
-          
+        });
+        toast.success('Reserva guardada correctamente', {
+          onClose: () => {
+            // Volver atrás en el historial después de que se cierre el toast
+            window.history.back();
+          }
         });
 
         console.log('Reserva guardada:', response.data);

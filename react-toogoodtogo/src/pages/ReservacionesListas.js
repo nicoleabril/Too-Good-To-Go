@@ -45,10 +45,30 @@ function ReservacionesListas() {
 
   const handleEntregar = async (id) => {
     try {
+      const fecha = new Date();
+      // Confirmar la entrega de la reserva
       const response = await axios.post(`http://localhost:8000/api/confirmarReservaEntregado/${id}`);
-      const productos  = await axios.get(`http://localhost:8000/api/productos_reservados_reserva/${id}`);
-      console.log(productos);
+      
       if (response.status === 200) {
+        // Obtener los productos reservados
+        const productosResponse = await axios.get(`http://localhost:8000/api/productos_reservados_reserva/${id}`);
+        const productos = productosResponse.data.productos_reservados;
+  
+        // Agregar cada producto a las ventas
+        for (const producto of productos) {
+          await axios.post(`http://localhost:8000/api/ventas`, {
+            id_reserva: producto.id_reserva,
+            id_negocio: producto.id_negocio,
+            id_producto: producto.id_producto,
+            id_cliente: producto.id_cliente,
+            tipo_producto: producto.tipo_producto,
+            cantidad: producto.cantidad,
+            fecha_venta: fecha,
+            // Puedes agregar más campos según sea necesario
+          });
+        }
+  
+        // Mostrar mensaje de éxito y actualizar reservas
         toast.success("Se ha entregado la Reserva.");
         setReservas(reservas.filter(reserva => reserva.id_reserva !== id));
       } else {
@@ -57,8 +77,10 @@ function ReservacionesListas() {
       }
     } catch (error) {
       console.error('Error al entregar la reserva:', error);
+      toast.error("Ha ocurrido un error al entregar la reserva.");
     }
   };
+  
 
   
   const authToken = Cookies.get('authToken');
