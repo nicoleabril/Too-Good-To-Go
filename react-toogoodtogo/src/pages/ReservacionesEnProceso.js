@@ -43,18 +43,18 @@ function ReservacionesEnProceso() {
   }, [idNegocio]);
 
 
-  const handleConfirm = async (id) => {
+  const handleFinalizar = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:8000/api/confirmarReservaEnProceso/${id}`);
+      const response = await axios.post(`http://localhost:8000/api/confirmarReservaFinalizadoSinEntrega/${id}`);
       if (response.status === 200) {
-        toast.success("Se ha confirmado la Reserva.");
+        toast.success("Se ha finalizado la Reserva.");
         setReservas(reservas.filter(reserva => reserva.id_reserva !== id));
       } else {
-        toast.error("No se ha logrado confirmar la reserva.");
-        console.error('Error al confirmar la reserva');
+        toast.error("No se ha logrado finalizar la reserva.");
+        console.error('Error al finalizar la reserva');
       }
     } catch (error) {
-      console.error('Error al confirmar la reserva:', error);
+      console.error('Error al finalizar la reserva:', error);
     }
   };
 
@@ -100,8 +100,7 @@ function ReservacionesEnProceso() {
                   pedido={reserva.pedido}
                   horaMinima={reserva.hora_minima}
                   horaMaxima={reserva.hora_maxima}
-                  onRealizado={handleCancel}
-                  onEntregado={handleCancel}
+                  onRealizado={handleFinalizar}
                   onCancel={handleCancel}
                 />
               ))

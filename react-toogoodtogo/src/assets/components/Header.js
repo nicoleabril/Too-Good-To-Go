@@ -73,6 +73,7 @@ const Header = ({ page, cartCount }) => {
                     <ul>
                       <li><a href="/ReservasRecibidas">Recibidas</a></li>
                       <li><a href="/ReservasEnProceso">En Proceso</a></li>
+                      <li><a href="/ReservasListas">Listas para Entregar</a></li>
                       <li><a href="/ReservasHistorial">Historial</a></li>
                     </ul>
                   </div>

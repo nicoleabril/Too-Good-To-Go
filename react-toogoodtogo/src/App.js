@@ -27,8 +27,8 @@ import AddComentario from "./pages/AddComentario";
 import { CommentsProvider } from './pages/commentsContext'; 
 import HistorialReserva from "./pages/HistorialReservas";
 import ReservacionesEnProceso from "./pages/ReservacionesEnProceso";
-
-
+import ReservacionesListas from "./pages/ReservacionesListas";
+import ReservacionesHistorial from "./pages/ReservacionesHistorial";
 function App() {
   return (
     <div className="App">
@@ -58,7 +58,8 @@ function App() {
           <Route path="/RegistroComentarios" element={<RegistroComentarios />} /> //COLOCADO autenticación
           <Route path="/ReservasRecibidas" element={<ReservacionesRecibidas />} /> //COLOCADO autenticación
           <Route path="/ReservasEnProceso" element={<ReservacionesEnProceso />} /> //COLOCADO autenticación
-          <Route path="/ReservasHistorial" element={<ReservacionesRecibidas />} /> //COLOCADO autenticación
+          <Route path="/ReservasListas" element={<ReservacionesListas />} /> //COLOCADO autenticación
+          <Route path="/ReservasHistorial" element={<ReservacionesHistorial />} /> //COLOCADO autenticación
           <Route path="/RegistroComentarios/EditarComentarios/:id" element={<EditComentarios />} /> //COLOCADO autenticación
           <Route path="/RegistroComentarios/AgregarComentarios" element={<AddComentario />} /> //COLOCADO autenticación
           <Route path="/HistorialReservas" element={<HistorialReserva />} /> //COLOCADO autenticación

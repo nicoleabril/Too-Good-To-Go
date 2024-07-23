@@ -1,7 +1,23 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 
-function Cards_Reservas({ id, nombreCliente,celular, metodoPago, pedido, horaMinima, horaMaxima, onConfirm, onCancel, onRealizado, onEntregado,  }) {
+function Cards_Reservas({ id, nombreCliente,celular, metodoPago, pedido, horaMinima, horaMaxima, onConfirm, onCancel, onRealizado, onEntregado, soloVista }) {
+    const estadoClase = {
+        Cancelado: 'btn-cancelado',
+        'En Proceso': 'btn-proceso',
+        Finalizado: 'btn-finalizado',
+        Realizado: 'btn-realizado',
+        Pendiente: 'btn-pendiente'
+      };
+    
+      const estadoTexto = {
+        Cancelado: 'Cancelado',
+        'En Proceso': "En Proceso",
+        Finalizado: 'Entregado',
+        Realizado: 'Listo para Entregar',
+        Pendiente: 'Pendiente'
+    };
+    
     return (
         <>
             <div className="card text-center">
@@ -25,19 +41,26 @@ function Cards_Reservas({ id, nombreCliente,celular, metodoPago, pedido, horaMin
                         <button id="btn_ConfirmarReserva" onClick={() => onConfirm(id)}>Confirmar Reserva</button>
                     )}
                     {onEntregado && (
-                        <button id="btn_CancelarReserva" onClick={() => onEntregado(id)}>
+                        <button id="btn_EntregarReserva" onClick={() => onEntregado(id)}>
                             Reserva Entregada
                         </button>
                     )}
                     {onRealizado && (
-                        <button id="btn_CancelarReserva" onClick={() => onRealizado(id)}>
-                            Reserva Realizada
+                        <button id="btn_RealizarReserva" onClick={() => onRealizado(id)}>
+                            Listo para Entregar
                         </button>
                     )}
                     {onCancel && (
                         <button id="btn_CancelarReserva" onClick={() => onCancel(id)}>
                             Cancelar Reserva
                         </button>
+                    )}
+                    {soloVista && (
+                        <div id='contenedor_boton_estado'>
+                            <div className={`estado ${estadoClase[soloVista]}`}>
+                            {estadoTexto[soloVista]}
+                            </div>
+                        </div>
                     )}
                 </div>
             </div>
