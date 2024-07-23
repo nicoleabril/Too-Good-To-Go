@@ -217,6 +217,7 @@ function PaginaDeReserva() {
       toast.error('Error al guardar la reserva.');
       console.error('Error:', error);
     }
+    sessionStorage.removeItem('productos');
     window.history.back();
   };
 
