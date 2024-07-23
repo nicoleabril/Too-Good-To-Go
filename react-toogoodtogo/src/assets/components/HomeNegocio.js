@@ -28,8 +28,6 @@ function HomeNegocio() {
   const [loading, setLoading] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -146,7 +144,6 @@ function HomeNegocio() {
     obtenerProducto();
     obtenerEstadisticas();
   }, [idNegocio]);
-
 
   const hasOfertas = ordenesPopulares.length > 0;
   const tieneComentarios = comentarios.length > 0;
