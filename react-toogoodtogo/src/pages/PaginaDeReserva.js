@@ -153,11 +153,11 @@ function PaginaDeReserva() {
     if (!validateForm()) {
       return;
     }
-
+    console.log(metodoPago);
     const nuevaReserva = {
       id_negocio: idNegocio,
       id_cliente: Cookies.get('id'),
-      metodo_pago: metodoPago,
+      metodo_pago: metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago === 'visa' ? 'Tarjeta de Débito' : metodoPago === 'mastercard' ? 'Tarjeta de Crédito' : '',
       fecha: new Date().toISOString(),
       hora_minima: negocio.horario_oferta,
       hora_maxima: negocio.horario_cierre,
@@ -176,7 +176,6 @@ function PaginaDeReserva() {
       });
 
       if (response.status === 201) {
-        toast.success('Reserva guardada correctamente');
         const nuevaReservaId = response.data.reserva.id_reserva;
         productos.forEach(async producto => {
           const tipoProducto = producto.id_producto ? 'Normal' : 'Oferta';
@@ -199,6 +198,12 @@ function PaginaDeReserva() {
             });
 
             if (producto_reservadoResponse.status === 201) {
+              toast.success('Reserva guardada correctamente', {
+                onClose: () => {
+                  // Volver atrás en el historial después de que se cierre el toast
+                  window.history.back();
+                }
+              });
             } else {
               console.error('Error al guardar el producto.');
             }
@@ -218,7 +223,7 @@ function PaginaDeReserva() {
       console.error('Error:', error);
     }
     sessionStorage.removeItem('productos');
-    window.history.back();
+    //window.history.back();
   };
 
   const handleReservarClickCancel = async () => { //------------------
@@ -255,7 +260,7 @@ function PaginaDeReserva() {
           onPersonalInfoSubmit={handlePersonalInfoSubmit}
         />
         <InformacionDeLaReserva
-          metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : metodoPago ? 'Tarjeta de Débito' : ''}
+          metodoPago={metodoPago === 'pagoEfectivo' ? 'Pago en Efectivo' : 'visa' ? 'Tarjeta de Débito' : ''}
           estado={'Pendiente'}
           restaurante={negocio.nombre_negocio}
           horario={negocio.horario_oferta + " - " + negocio.horario_cierre}

@@ -56,9 +56,9 @@ function Cards_Reservas({ id, nombreCliente,celular, metodoPago, pedido, horaMin
                         </button>
                     )}
                     {soloVista && (
-                        <div id='contenedor_boton_estado'>
+                        <div id="contenedor_boton_estado">
                             <div className={`estado ${estadoClase[soloVista]}`}>
-                            {estadoTexto[soloVista]}
+                                {estadoTexto[soloVista]}
                             </div>
                         </div>
                     )}

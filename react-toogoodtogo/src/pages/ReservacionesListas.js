@@ -46,6 +46,8 @@ function ReservacionesListas() {
   const handleEntregar = async (id) => {
     try {
       const response = await axios.post(`http://localhost:8000/api/confirmarReservaEntregado/${id}`);
+      const productos  = await axios.get(`http://localhost:8000/api/productos_reservados_reserva/${id}`);
+      console.log(productos);
       if (response.status === 200) {
         toast.success("Se ha entregado la Reserva.");
         setReservas(reservas.filter(reserva => reserva.id_reserva !== id));
