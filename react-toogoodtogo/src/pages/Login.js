@@ -62,22 +62,25 @@ export default class Login extends Component {
       const { data } = response;
 
       if (response.status === 200 && data.message === 'Ingreso de Usuario Exitoso') {
-        toast.success("Ingreso de Usuario Exitoso");
-        this.setState({
-          rol: Cookies.get('rol'),
-          isLoggedIn: true,
-          error: false,
-          token: Cookies.get('authToken'),
+        toast.success('Ingreso de Usuario Exitoso', {
+          onClose: () => {
+            this.setState({
+              rol: Cookies.get('rol'),
+              isLoggedIn: true,
+              error: false,
+              token: Cookies.get('authToken'),
+            });
+    
+            // Redirigir según el rol después de la autenticación
+            if (Cookies.get('rol') === 'Cliente') {
+              window.location.href = '/Inicio';
+            } else if (Cookies.get('rol') === 'Negocio') {
+              window.location.href = '/Inicio-Negocio';
+            } else {
+              window.location.href = '/Inicio'; // Redirección por defecto
+            }
+          }
         });
-
-        // Redirigir según el rol después de la autenticación
-        if (Cookies.get('rol') === 'Cliente') {
-          window.location.href = '/Inicio';
-        } else if (Cookies.get('rol') === 'Negocio') {
-          window.location.href = '/Inicio-Negocio';
-        } else {
-          window.location.href = '/Inicio'; // Redirección por defecto
-        }
       } else {
         // Si el servidor responde con 419 (Page Expired) o cualquier otro error
         // muestra un mensaje de error específico para el usuario
