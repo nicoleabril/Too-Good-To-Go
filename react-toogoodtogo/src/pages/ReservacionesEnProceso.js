@@ -106,11 +106,6 @@ function ReservacionesEnProceso() {
               ))
             )}
         </div>
-        <footer className="contenedorFooter-ReservasRecibidas">
-          <div className="textoFooter2">
-            Copyright © 2024 Too Good To Go International. All Rights Reserved.
-          </div>
-        </footer>
         <Chatbot />
         <ToastContainer
             closeButtonStyle={{
