@@ -171,6 +171,7 @@ nav .iconMenu {
 nav.custom-breadcrumb {
   position: fixed; /* O usa absolute/fixed según sea necesario */
   z-index: -1; /* Ajusta el z-index según sea necesario */
+  position: relative;
 }
 
 
