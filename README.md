@@ -28,11 +28,11 @@ Este repositorio corresponde al **frontend** del sistema, enfocado en ofrecer un
 
 <!-- Agrega aquí tus imágenes o GIFs -->
 <p align="center">
-  <img src="ruta/a/tu/imagen1.png" alt="Home preview" width="600"/>
+  <img src="https://github.com/nicoleabril/Too-Good-To-Go/blob/main/catches/login.png" alt="Home preview" width="600"/>
 </p>
 
 <p align="center">
-  <img src="ruta/a/tu/imagen2.png" alt="Product list preview" width="600"/>
+  <img src="https://github.com/nicoleabril/Too-Good-To-Go/blob/main/catches/principal.png" alt="Product list preview" width="600"/>
 </p>
 
 ---
