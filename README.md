@@ -44,8 +44,7 @@ Este repositorio corresponde al **frontend** del sistema, enfocado en ofrecer un
 | **React.js** | Construcción de componentes y manejo del estado |
 | **CSS3** | Estilos, animaciones y diseño responsive |
 | **JavaScript (ES6+)** | Lógica del frontend |
-| **Vite / Create React App** | Entorno de desarrollo y build |
-| **Netlify / Vercel** *(opcional)* | Despliegue del proyecto |
+| **Create React App** | Entorno de desarrollo y build |
 
 ---
 
