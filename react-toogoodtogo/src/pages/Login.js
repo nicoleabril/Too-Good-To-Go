@@ -43,11 +43,11 @@ export default class Login extends Component {
     try {
       
       // Realizar la solicitud POST al endpoint de login
-      const response = await axios.post('http://localhost:8000/api/login', {
+      const response = await axios.post('https://api-too-good-to-go-production.up.railway.app/api/login', {
         email: username,
         contrasenia: password,
       });
-      const response_rol = await axios.get(`http://localhost:8000/api/usuarios_email/${username}`);
+      const response_rol = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/usuarios_email/${username}`);
       this.setState({
         rol: response_rol.data.tipo_usuario,
         token: response.data.token,

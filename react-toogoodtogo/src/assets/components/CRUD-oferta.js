@@ -17,7 +17,7 @@ function CRUDOferta() {
     useEffect(() => {
         const obtenerOferta = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/ofertas/${idNegocio}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/${idNegocio}`);
                 setOfertas(response.data.ofertas);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
@@ -29,7 +29,7 @@ function CRUDOferta() {
 
     const eliminarOferta = async (idOferta) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/ofertas/${idOferta}`);
+            const response = await axios.delete(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/${idOferta}`);
             console.log('Oferta eliminada:', response.data);
             const nuevasOfertas = ofertas.filter((cat) => cat.id_oferta !== idOferta);
             setOfertas(nuevasOfertas); 

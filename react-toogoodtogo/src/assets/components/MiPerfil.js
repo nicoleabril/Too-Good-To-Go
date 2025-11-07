@@ -23,7 +23,7 @@ function MiPerfil() {
             const id = Cookies.get('id');
             setIdUsuario(id);
             try {
-                const response = await axios.get(`http://localhost:8000/api/clientes/${id}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${id}`);
                 const user = response.data;
                 setNombre(user.data.nombre);
                 setOriginalNombre(user.data.nombre); // Guardar valor original
@@ -31,7 +31,7 @@ function MiPerfil() {
                 setPassword('******');
                 setOriginalPassword('******'); // Contraseña original oculta
 
-                const responseOfertas = await axios.get(`http://localhost:8000/api/ventasCliente/${id}`);
+                const responseOfertas = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/ventasCliente/${id}`);
                 const ventas = responseOfertas.data.ventas;
                 console.log(ventas);
                 let totalOferta = 0;
@@ -93,7 +93,7 @@ function MiPerfil() {
                     formData.append('foto_perfil', imageFile);
                 }
 
-                const response = await axios.post(`http://localhost:8000/api/clientes/${idUsuario}`, formData, {
+                const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${idUsuario}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -101,7 +101,7 @@ function MiPerfil() {
 
                 if (password !== '******') {
                     formData2.append('contrasenia', password);
-                    const response2 = await axios.post(`http://localhost:8000/api/usuarios-cambio/${idUsuario}`, formData2, {
+                    const response2 = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/usuarios-cambio/${idUsuario}`, formData2, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }

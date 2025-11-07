@@ -13,7 +13,7 @@ function AreaChart() {
     const obtenerDatos = async () => {
       try {
         // Recupera datos de la API
-        const response = await axios.get(`http://localhost:8000/api/cantidad-clientes-mes-anio/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/cantidad-clientes-mes-anio/${idNegocio}`);
         const data = response.data;
 
         // Transformar los datos

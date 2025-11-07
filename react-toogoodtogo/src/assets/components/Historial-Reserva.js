@@ -30,13 +30,13 @@ const Historial = () => {
   useEffect(() => {
     const obtenerReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/reservas/${idCliente}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/reservas/${idCliente}`);
         const reservas = response.data.reservas;
         if(reservas){
           setReservas(reservas);
           const nombres = {};
           const promesas = reservas.map(reserva =>
-            axios.get(`http://localhost:8000/api/negocios/${reserva.id_negocio}`)
+            axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${reserva.id_negocio}`)
               .then(response => {
                 nombres[reserva.id_negocio] = response.data.data.nombre_negocio;
               })

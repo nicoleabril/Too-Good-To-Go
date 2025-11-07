@@ -13,7 +13,7 @@ function EChart() {
     const obtenerDatos = async () => {
       try {
         // Recupera datos de la API
-        const response = await axios.get(`http://localhost:8000/api/total-ingreso-mes-anio/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/total-ingreso-mes-anio/${idNegocio}`);
         const data = response.data;
 
         // Transformar los datos para el gráfico de pastel

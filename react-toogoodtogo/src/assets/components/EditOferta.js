@@ -44,7 +44,7 @@ function EditOfertas() {
   useEffect(() => {
     const obtenerOferta = async () => {
         try {
-            const response = await axios.get(`http://localhost:8000/api/oferta/${id_oferta}`);
+            const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/oferta/${id_oferta}`);
             setOferta(response.data.oferta);
             if(response.data.oferta){
               setNombreOferta(response.data.oferta.nombre_oferta);
@@ -73,7 +73,7 @@ function EditOfertas() {
       formData.append('descripcion', descripcion);
       formData.append('precio', precio);
       if(subirImagen != null) formData.append('imagen_oferta', subirImagen);
-      const response = await axios.post(`http://localhost:8000/api/ofertas/${id_oferta}`, formData, {
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/${id_oferta}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

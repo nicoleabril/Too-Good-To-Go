@@ -32,7 +32,7 @@ function HomeNegocio() {
     const fetchData = async () => {
       try {
         // Recupera productos
-        const productosResponse = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
+        const productosResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/productos/${idNegocio}`);
         const productosData = productosResponse.data.productos || [];
         setOrdenesPopulares(productosData);
   
@@ -46,13 +46,13 @@ function HomeNegocio() {
     const fetchData2 = async () => {
       try {
         // Recupera productos
-        const productosResponse = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+        const productosResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/comentariosNegocios/${idNegocio}`);
         const productosData = productosResponse.data.comentarios || [];
         setComentarios(productosData);
         // Obtener el último comentario registrado
         if (productosData.length > 0) {
           const ultimoComentario = productosData[productosData.length - 1];
-          const productosResponse = await axios.get(`http://localhost:8000/api/clientes/${ultimoComentario.id_cliente}`);
+          const productosResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${ultimoComentario.id_cliente}`);
           const cliente = productosResponse.data.data || [];
           setClienteComentario(cliente);
           setUltimoComentario(ultimoComentario);
@@ -68,7 +68,7 @@ function HomeNegocio() {
 
     const obtenerNegocio = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${idNegocio}`);
         setNegocio(response.data.data);
       } catch (error) {
         console.error('Error al obtener negocio:', error);
@@ -77,9 +77,9 @@ function HomeNegocio() {
 
     const obtenerProducto = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/producto-normal-mas-vendido/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/producto-normal-mas-vendido/${idNegocio}`);
         const producto = response.data;
-        const response2 = await axios.get(`http://localhost:8000/api/producto-oferta-mas-vendida/${idNegocio}`);
+        const response2 = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/producto-oferta-mas-vendida/${idNegocio}`);
         const oferta = response2.data;
         const adaptadoProductoNormal = {
           image: producto.imagen || 'default_image_url',
@@ -105,11 +105,11 @@ function HomeNegocio() {
 
     const obtenerEstadisticas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/total-clientes/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/total-clientes/${idNegocio}`);
         const totalClientes = response.data;
-        const response2 = await axios.get(`http://localhost:8000/api/compras-ordenadas/${idNegocio}`);
+        const response2 = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/compras-ordenadas/${idNegocio}`);
         const totalCompras = response2.data;
-        const response3 = await axios.get(`http://localhost:8000/api/total-ganado/${idNegocio}`);
+        const response3 = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/total-ganado/${idNegocio}`);
         const totalGanado = response3.data;
 
         const totalClienteAdaptado = {

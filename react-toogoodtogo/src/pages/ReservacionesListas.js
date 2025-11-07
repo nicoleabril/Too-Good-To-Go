@@ -18,12 +18,12 @@ function ReservacionesListas() {
   useEffect(() => {
     const obtenerReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/reservasListas/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/reservasListas/${idNegocio}`);
         const reservas = response.data.reservas;
         if (reservas) {
           const reservasConClientes = await Promise.all(
             reservas.map(async (reserva) => {
-              const clienteResponse = await axios.get(`http://localhost:8000/api/clientes/${reserva.id_cliente}`);
+              const clienteResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${reserva.id_cliente}`);
               const cliente = clienteResponse.data.data;
               return {
                 ...reserva,
@@ -47,16 +47,16 @@ function ReservacionesListas() {
     try {
       const fecha = new Date();
       // Confirmar la entrega de la reserva
-      const response = await axios.post(`http://localhost:8000/api/confirmarReservaEntregado/${id}`);
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/confirmarReservaEntregado/${id}`);
       
       if (response.status === 200) {
         // Obtener los productos reservados
-        const productosResponse = await axios.get(`http://localhost:8000/api/productos_reservados_reserva/${id}`);
+        const productosResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/productos_reservados_reserva/${id}`);
         const productos = productosResponse.data.productos_reservados;
   
         // Agregar cada producto a las ventas
         for (const producto of productos) {
-          await axios.post(`http://localhost:8000/api/ventas`, {
+          await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/ventas`, {
             id_reserva: producto.id_reserva,
             id_negocio: producto.id_negocio,
             id_producto: producto.id_producto,

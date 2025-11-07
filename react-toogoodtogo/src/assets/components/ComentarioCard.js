@@ -19,7 +19,7 @@ const ComentarioCard = () => {
         formData.append('id_negocio', idNegocio);
         formData.append('id_cliente', idCliente);
         formData.append('descripcion', comentario);
-        await axios.post(`http://localhost:8000/api/comentarios/`, formData, {
+        await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/comentarios/`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

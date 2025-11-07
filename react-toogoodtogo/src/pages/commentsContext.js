@@ -17,7 +17,7 @@ export const CommentsProvider = ({ children }) => {
         
         for (const id of businessIds) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/negocios/${id}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${id}`);
                 names[id] = response.data.data.nombre_negocio;
             } catch (error) {
                 console.error('Error al obtener nombres de negocios:', error);
@@ -33,7 +33,7 @@ export const CommentsProvider = ({ children }) => {
         
         for (const id of clientIds) {
             try {
-                const response = await axios.get(`http://localhost:8000/api/clientes/${id}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${id}`);
                 names[id] = response.data.data.nombre;
             } catch (error) {
                 console.error('Error al obtener nombres de clientes:', error);
@@ -46,7 +46,7 @@ export const CommentsProvider = ({ children }) => {
     const fetchComments = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:8000/api/comentarios', {
+            const response = await axios.get('https://api-too-good-to-go-production.up.railway.app/api/comentarios', {
                 headers: {
                     Authorization: `Bearer ${authToken}`,
                 },

@@ -61,7 +61,7 @@ export default class RegistroCliente extends Component {
 
     if(password === passwordConfirm){
       try {
-        const response = await axios.post('http://localhost:8000/api/registrar-cliente', {
+        const response = await axios.post('https://api-too-good-to-go-production.up.railway.app/api/registrar-cliente', {
           nombre: name,
           email: email,
           telefono: telefono,

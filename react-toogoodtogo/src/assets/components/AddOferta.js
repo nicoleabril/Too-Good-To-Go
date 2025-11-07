@@ -49,7 +49,7 @@ function AddOfertas() {
       formData.append('imagen_oferta', subirImagen);
       formData.append('precio', precioCompleto);
       formData.append('fecha_creacion', fechaCreacion);
-      const response = await axios.post(`http://localhost:8000/api/ofertas/`, formData, {
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

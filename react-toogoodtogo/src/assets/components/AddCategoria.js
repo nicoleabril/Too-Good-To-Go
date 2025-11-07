@@ -40,7 +40,7 @@ const handleAddCategoria = async (e) => {
     formData.append('habilitado', estado);
     formData.append('imagen_categoria', subirImagen);
     formData.append('fecha_creacion', fechaCreacion);
-    const response = await axios.post(`http://localhost:8000/api/categorias/`, formData, {
+    const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/categorias/`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

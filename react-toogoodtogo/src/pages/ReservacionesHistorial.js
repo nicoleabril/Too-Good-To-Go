@@ -17,12 +17,12 @@ function ReservacionesHistorial() {
   useEffect(() => {
     const obtenerReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/reservasNegocio/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/reservasNegocio/${idNegocio}`);
         const reservas = response.data.reservas;
         if (reservas) {
           const reservasConClientes = await Promise.all(
             reservas.map(async (reserva) => {
-              const clienteResponse = await axios.get(`http://localhost:8000/api/clientes/${reserva.id_cliente}`);
+              const clienteResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${reserva.id_cliente}`);
               const cliente = clienteResponse.data.data;
               return {
                 ...reserva,

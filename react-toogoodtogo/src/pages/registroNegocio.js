@@ -56,7 +56,7 @@ export default class RegistroNegocio extends Component {
     const { name, email, telefono, password, passwordConfirm, latitude, longitude} = this.state;
     if(password === passwordConfirm){
       try {
-        const response = await axios.post('http://localhost:8000/api/registrar-negocio', {
+        const response = await axios.post('https://api-too-good-to-go-production.up.railway.app/api/registrar-negocio', {
           nombre_negocio: name,
           email: email,
           telefono: telefono,

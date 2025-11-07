@@ -33,7 +33,7 @@ function PaginaDeReserva() {
   useEffect(() => {
     const obtenerNegocio = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${idNegocio}`);
         setNegocio(response.data.data);
       } catch (error) {
         console.error('Error al obtener negocio:', error);
@@ -169,7 +169,7 @@ function PaginaDeReserva() {
     };
 
     try {
-      const response = await axios.post('http://localhost:8000/api/reservas', nuevaReserva, {
+      const response = await axios.post('https://api-too-good-to-go-production.up.railway.app/api/reservas', nuevaReserva, {
         headers: {
           Authorization: `Bearer ${Cookies.get('authToken')}`,
         },
@@ -191,7 +191,7 @@ function PaginaDeReserva() {
             tipo_producto: tipoProducto,
           }
           try {
-            const producto_reservadoResponse = await axios.post('http://localhost:8000/api/productos_reservados', producto_reservado, {
+            const producto_reservadoResponse = await axios.post('https://api-too-good-to-go-production.up.railway.app/api/productos_reservados', producto_reservado, {
               headers: {
                 Authorization: `Bearer ${Cookies.get('authToken')}`,
               },

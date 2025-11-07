@@ -73,7 +73,7 @@ const AddNegocio = () => {
   useEffect(() => {
     const obtenerNegocio = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${idNegocio}`);
         setNegocio(response.data.data);
         if (response.data.data != null) {
           setNombreNegocio(response.data.data.nombre_negocio);
@@ -95,7 +95,7 @@ const AddNegocio = () => {
   
     const obtenerCategoria = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/categorias-negocio/`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias-negocio/`);
         setCategorias(response.data.categorias);
       } catch (error) {
         console.error('Error al obtener categorías:', error);
@@ -133,7 +133,7 @@ const AddNegocio = () => {
       formData.append('posicion_x', negocio.posicion_x);
       formData.append('posicion_y', negocio.posicion_y);
 
-      const response = await axios.post(`http://localhost:8000/api/negocios/${idNegocio}`, formData, {
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${idNegocio}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

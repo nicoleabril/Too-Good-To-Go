@@ -16,7 +16,7 @@ const MapComponent = ({ locations, user }) => {
       const formData = new FormData();
       formData.append('posicion_x', user.latitud);
       formData.append('posicion_y', user.longitud);
-      const response = await axios.post(`http://localhost:8000/api/clientes/${idUsuario}`, formData, {
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${idUsuario}`, formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
         }

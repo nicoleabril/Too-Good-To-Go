@@ -28,7 +28,7 @@ function AddCategorias() {
   useEffect(() => {
         const obtenerCategoria = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/categoria/${id_categoria}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categoria/${id_categoria}`);
                 setCategoria(response.data.categoria);
                 if(response.data.categoria){
                   setNombreCategoria(response.data.categoria.nombre_categoria);
@@ -55,7 +55,7 @@ function AddCategorias() {
       formData.append('descripcion', descripcion);
       formData.append('habilitado', estado);
       if(subirImagen != null) formData.append('imagen_categoria', subirImagen);
-      const response = await axios.post(`http://localhost:8000/api/categorias/${id_categoria}`, formData, {
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${id_categoria}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

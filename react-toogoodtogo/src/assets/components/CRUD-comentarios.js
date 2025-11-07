@@ -18,7 +18,7 @@ const Comments = () => {
 
     const eliminarComentario = async (idComentario) => {
         try {
-            await axios.delete(`http://localhost:8000/api/comentarios/${idComentario}`);
+            await axios.delete(`https://api-too-good-to-go-production.up.railway.app/api/comentarios/${idComentario}`);
             deleteComment(idComentario);
             toast.success('Comentario eliminado correctamente');
             fetchComments(); // Actualizar la lista después de eliminar

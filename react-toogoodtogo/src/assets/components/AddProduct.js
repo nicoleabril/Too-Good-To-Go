@@ -65,7 +65,7 @@ function AddProduct() {
         formData.append('imagen', subirImagen);
         formData.append('precio', precio);
 
-        const response = await axios.post(`http://localhost:8000/api/productos/`, formData, {
+        const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/productos/`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
@@ -85,7 +85,7 @@ useEffect(() => {
 
   const obtenerCategoria = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+      const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idNegocio}`);
       setCategorias(response.data.categorias);
     } catch (error) {
       console.error('Error al obtener categorías:', error);

@@ -18,12 +18,12 @@ function ReservacionesEnProceso() {
   useEffect(() => {
     const obtenerReservas = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/reservasEnProceso/${idNegocio}`);
+        const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/reservasEnProceso/${idNegocio}`);
         const reservas = response.data.reservas;
         if (reservas) {
           const reservasConClientes = await Promise.all(
             reservas.map(async (reserva) => {
-              const clienteResponse = await axios.get(`http://localhost:8000/api/clientes/${reserva.id_cliente}`);
+              const clienteResponse = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${reserva.id_cliente}`);
               const cliente = clienteResponse.data.data;
               return {
                 ...reserva,
@@ -45,7 +45,7 @@ function ReservacionesEnProceso() {
 
   const handleFinalizar = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:8000/api/confirmarReservaFinalizadoSinEntrega/${id}`);
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/confirmarReservaFinalizadoSinEntrega/${id}`);
       if (response.status === 200) {
         toast.success("Se ha finalizado la Reserva.");
         setReservas(reservas.filter(reserva => reserva.id_reserva !== id));
@@ -60,7 +60,7 @@ function ReservacionesEnProceso() {
 
   const handleCancel = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:8000/api/cancelarReserva/${id}`);
+      const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/cancelarReserva/${id}`);
       if (response.status === 200) {
         toast.success("Se ha cancelado la Reserva");
         setReservas(reservas.filter(reserva => reserva.id_reserva !== id));

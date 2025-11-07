@@ -24,29 +24,29 @@ const HomeRestaurante = ({ onBuyClick }) => {
       setLoading(true);
       try {
         // Obtener datos del restaurante
-        const responseRestaurante = await axios.get(`http://localhost:8000/api/negocios/${idNegocio}`);
+        const responseRestaurante = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios/${idNegocio}`);
         setRestauranteData(responseRestaurante.data.data || {});
         
         // Obtener comentarios
-        const responseComentarios = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+        const responseComentarios = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/comentariosNegocios/${idNegocio}`);
         const comentariosData = responseComentarios.data.comentarios || [];
         setComentarios(comentariosData);
 
         if (comentariosData.length > 0) {
           const ultimoComentario = comentariosData[comentariosData.length - 1];
-          const responseCliente = await axios.get(`http://localhost:8000/api/clientes/${ultimoComentario.id_cliente}`);
+          const responseCliente = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/clientes/${ultimoComentario.id_cliente}`);
           setClienteComentario(responseCliente.data.data || {});
           setUltimoComentario(ultimoComentario);
         }
 
         // Obtener ofertas
-        const responseOfertas = await axios.get(`http://localhost:8000/api/ofertas/${idNegocio}`);
+        const responseOfertas = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/${idNegocio}`);
         setProductosOfertas(responseOfertas.data.ofertas || []);
 
         // Obtener categorías y productos
-        const responseCategorias = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+        const responseCategorias = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idNegocio}`);
         const categoriasData = responseCategorias.data.categorias || [];
-        const responseProductos = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
+        const responseProductos = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/productos/${idNegocio}`);
         const productosData = responseProductos.data.productos || [];
 
         const categoriasConProductos = categoriasData.map(categoria => {

@@ -22,7 +22,7 @@ const EditComments = ({ comment, onSave, onCancel, comments, setComments }) => {
     const handleSave = async () => {
         try {
             const storedComment = JSON.parse(sessionStorage.getItem('comment'));
-            const response = await axios.post(`http://localhost:8000/api/updateComentario/${storedComment.id_comentario}`, {
+            const response = await axios.post(`https://api-too-good-to-go-production.up.railway.app/api/updateComentario/${storedComment.id_comentario}`, {
                 descripcion: editedComment
             });
             const updatedComment = { ...storedComment, descripcion: editedComment };

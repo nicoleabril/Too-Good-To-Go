@@ -18,7 +18,7 @@ function CRUDCategoria() {
     useEffect(() => {
         const obtenerCategoria = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idNegocio}`);
                 setCategorias(response.data.categorias);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
@@ -30,7 +30,7 @@ function CRUDCategoria() {
 
     const eliminarCategoria = async (idCategoria) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/categorias/${idCategoria}`);
+            const response = await axios.delete(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idCategoria}`);
             console.log('Categoría eliminada:', response.data);
             const nuevasCategorias = categorias.filter((cat) => cat.id_categoria !== idCategoria);
             setCategorias(nuevasCategorias); 

@@ -18,7 +18,7 @@ function CRUDProducts() {
     useEffect(() => {
         const obtenerProducto = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/productos/${idNegocio}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/productos/${idNegocio}`);
                 setProductos(response.data.productos);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
@@ -27,7 +27,7 @@ function CRUDProducts() {
 
         const obtenerCategoria = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+                const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idNegocio}`);
                 setCategorias(response.data.categorias);
             } catch (error) {
                 console.error('Error al obtener negocio:', error);
@@ -40,7 +40,7 @@ function CRUDProducts() {
 
     const eliminarProducto = async (id_producto) => {
         try {
-            const response = await axios.delete(`http://localhost:8000/api/productos/${id_producto}`);
+            const response = await axios.delete(`https://api-too-good-to-go-production.up.railway.app/api/productos/${id_producto}`);
             console.log('Producto eliminado:', response.data);
             const nuevosProductos = productos.filter((cat) => cat.id_producto !== id_producto);
             setProductos(nuevosProductos); 

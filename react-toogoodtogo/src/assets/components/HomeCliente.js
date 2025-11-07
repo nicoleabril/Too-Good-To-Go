@@ -39,25 +39,25 @@ function HomeCliente() {
       try {
         // Función para obtener negocios
         const fetchNegocios = async () => {
-          const response = await axios.get(`http://localhost:8000/api/negocios`);
+          const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/negocios`);
           return response.data.data;
         };
 
         // Función para obtener ofertas de un negocio
         const fetchOfertas = async (idNegocio) => {
-          const response = await axios.get(`http://localhost:8000/api/ofertas/${idNegocio}`);
+          const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/ofertas/${idNegocio}`);
           return response.data.ofertas;
         };
 
         // Función para obtener categorías de un negocio
         const fetchCategorias = async (idNegocio) => {
-          const response = await axios.get(`http://localhost:8000/api/categorias/${idNegocio}`);
+          const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/categorias/${idNegocio}`);
           return response.data.categorias || [];
         };
 
         // Función para obtener comentarios de un negocio
         const fetchComentarios = async (idNegocio) => {
-          const response = await axios.get(`http://localhost:8000/api/comentariosNegocios/${idNegocio}`);
+          const response = await axios.get(`https://api-too-good-to-go-production.up.railway.app/api/comentariosNegocios/${idNegocio}`);
           return response.data.comentarios.length;
         };
 
